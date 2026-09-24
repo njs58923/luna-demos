@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lector de tarjeta. Hay que pasar la tarjeta por la ranura de izquierda a
+  derecha, a la velocidad justa: muy rápido o muy lento no la toma. En VR se
+  agarra la tarjeta del bolsillo y se la pasa de verdad; en escritorio, un
+  clic la pone en la ranura, otro clic la larga y hay que volver a tocar
+  justo cuando llega al final.
+
+  Bloque de panel: emite `aceptada`, `rechazada` y `valor`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.3 × 0.26 × 0.08 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/tarjeta.hsml"
+             resources="audio,read_pose_stream" events="aceptada"/>
+
+  Props: minimo y maximo (segundos que puede durar la pasada), color (de la tarjeta).
+  Eventos: aceptada {segundos}, rechazada {motivo: "rapido" | "lento" | "cortada"}, valor {valor: 0 | 1}.
+  Mensajes: reiniciar.
+-->
+<hsml>
+  <head><name>Lector de tarjeta</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.3" sy="0.26" sz="0.02" color="#22252E" border-radius="0.02"/>
+    <!-- El lector: un cuerpo con la ranura arriba a lo largo. -->
+    <box y="0.05" z="0.04" sx="0.26" sy="0.08" sz="0.04" color="#3A3F4B" border-radius="0.01"/>
+    <box y="0.093" z="0.052" sx="0.25" sy="0.006" sz="0.006" color="#101216"/>
+    <box y="0.093" z="0.03" sx="0.25" sy="0.006" sz="0.02" color="#3A3F4B"/>
+    <box id="visor" y="0.045" z="0.0605" sx="0.16" sy="0.03" sz="0.002" color="#0F2A1D"/>
+    <text id="texto" y="0.045" z="0.062" value="PASE LA TARJETA" size="0.012" color="#7CFC8A"/>
+    <sphere id="luz" x="0.11" y="0.045" z="0.061" sx="0.012" sy="0.012" sz="0.004" color="#3A3F4B" material-unlit="true"/>
+    <!-- El bolsillo de abajo, con la tarjeta. -->
+    <box y="-0.07" z="0.03" sx="0.12" sy="0.06" sz="0.02" color="#101216" border-radius="0.006"/>
+    <group id="tarjeta">
+      <box id="cuerpo_tarjeta" sx="0.085" sy="0.054" sz="0.003" color="#F2C200" border-radius="0.004"/>
+      <box y="0.012" z="0.0016" sx="0.085" sy="0.008" sz="0.0005" color="#1C1C1C"/>
+      <box x="-0.022" y="-0.012" z="0.0016" sx="0.02" sy="0.015" sz="0.0005" color="#C0C0C0"/>
+      <box id="toque_tarjeta" sx="0.1" sy="0.07" sz="0.02" color="transparent" material-alpha="blend"/>
+    </group>
+    <box id="toque_ranura" y="0.075" z="0.07" sx="0.26" sy="0.06" sz="0.02" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" z="0.15" sx="0.7" sy="0.6" sz="0.35" visible="false"/>
+    <script src="./tarjeta.js"/>
+  </space>
+</hsml>

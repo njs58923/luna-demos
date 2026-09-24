@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Reloj de sol. La sombra del gnomon marca la hora solar de verdad, calculada
+  con la posición del sol para la latitud y la fecha; de noche no hay sombra.
+  Tocarlo muestra la hora en números. El gnomon apunta al polo: se asume que
+  el -Z del objeto mira hacia ese polo.
+
+  De mesa (o de jardín): apoya en y=0. Mide 0.4 × 0.16 × 0.4 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/reloj_sol.hsml"
+             props='{"latitud":-34.6,"utc":-3,"longitud":-58.4}'/>
+
+  Props: latitud, longitud (grados; para la hora solar), utc (horas; sin utc,
+  la hora local), piedra (color).
+  Eventos: hora {solar} al tocarlo.
+-->
+<hsml>
+  <head><name>Reloj de sol</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="piedra" y="0.03" sx="0.4" sy="0.06" sz="0.4" color="#B8B0A0"/>
+    <cylinder y="0.061" sx="0.36" sy="0.002" sz="0.36" color="#E8E0CE"/>
+    <group id="marcas" y="0.062"/>
+    <group id="gnomon" y="0.062"/>
+    <box id="sombra" y="0.0625" sx="0.012" sy="0.001" sz="0.1" color="#3A3228" visible="false"/>
+    <text id="lectura" y="0.12" z="0.2" value="" size="0.03" color="#3A3228"/>
+    <box id="toque" y="0.06" sx="0.4" sy="0.12" sz="0.4" color="transparent" material-alpha="blend"/>
+    <script src="./reloj_sol.js"/>
+  </space>
+</hsml>

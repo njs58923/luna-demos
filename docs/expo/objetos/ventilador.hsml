@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ventilador de pie. Tres velocidades y giro de cabeza: los botones de la
+  base eligen la velocidad (0 apaga) y la perilla de arriba prende o apaga el
+  vaivén. Con audio, se oye el soplido.
+
+  De piso: apoya en y=0, la hélice mira a +Z. Mide 0.5 × 1.3 × 0.4 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/ventilador.hsml"
+             resources="audio" events="cambio" props='{"color":"#E9ECEF"}'/>
+
+  Props: color, velocidad (0..3), vaiven (bool), clave.
+  Eventos: cambio {velocidad, vaiven}.
+  Mensajes: velocidad {velocidad}, vaiven.
+-->
+<hsml>
+  <head><name>Ventilador</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder id="base" y="0.03" sx="0.4" sy="0.06" sz="0.4" color="#E9ECEF"/>
+    <cylinder y="0.6" sx="0.035" sy="1.1" sz="0.035" color="#ADB5BD"/>
+    <group id="cabeza" y="1.15">
+      <box class="cuerpo" z="-0.08" sx="0.12" sy="0.12" sz="0.14" color="#E9ECEF" border-radius="0.03"/>
+      <group id="helice" z="0.02"/>
+      <sphere z="0.035" sx="0.06" sy="0.06" sz="0.03" color="#ADB5BD"/>
+      <group id="rejilla" z="0.02"/>
+      <cylinder id="perilla" y="0.075" z="-0.1" sx="0.03" sy="0.02" sz="0.03" color="#495057"/>
+    </group>
+    <group id="botones" y="0.065" z="0.12"/>
+    <script src="./ventilador.js"/>
+  </space>
+</hsml>

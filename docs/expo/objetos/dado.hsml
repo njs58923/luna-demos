@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Dado. Un toque lo tira: salta, gira y cae mostrando un número al azar.
+
+  De mesa: apoya en y=0. El dado mide `tam` metros de lado (0.1 por defecto) y
+  al tirarlo salta hasta cuatro veces su lado.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/dado.hsml"
+             events="tirada" props='{"color":"#C8102E","puntos":"#FFFFFF"}'/>
+
+  Props: color, puntos (color), tam (lado en metros).
+  Eventos: tirada {valor}.
+  Mensajes: tirar.
+-->
+<hsml>
+  <head><name>Dado</name></head>
+  <space resources="read_pose_stream">
+    <group id="salto">
+      <group id="cuerpo"/>
+    </group>
+    <text id="resultado" y="0.3" value="" size="0.07" color="#FFFFFF" visible="false"/>
+    <box id="toque" y="0.06" sx="0.16" sy="0.16" sz="0.16" color="transparent" material-alpha="blend"/>
+    <script src="./dado.js"/>
+  </space>
+</hsml>

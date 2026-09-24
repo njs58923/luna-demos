@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Caja de música. Tocarla abre la tapa: una bailarina gira y suena una
+  melodía. Tocarla otra vez la cierra y la música se corta.
+
+  De mesa: apoya en y=0. Mide 0.2 × 0.12 × 0.14 m cerrada (la tapa abierta sube
+  a 0.26 m).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/caja_musica.hsml"
+             resources="audio" events="cambio"
+             props='{"melodia":"estrellita","caja":"#8E3B46"}'/>
+
+  Props: melodia ("estrellita" | "cumpleanos" | "escala" o una lista de notas
+  como "C5 D5 E5 -"), tempo (notas por minuto), caja, forro (colores).
+  Eventos: cambio {abierta}.
+  Mensajes: abrir, cerrar.
+-->
+<hsml>
+  <head><name>Caja de música</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="caja" y="0.04" sx="0.2" sy="0.08" sz="0.14" color="#8E3B46" border-radius="0.008"/>
+    <box id="forro" y="0.081" sx="0.18" sy="0.002" sz="0.12" color="#F2C6D0"/>
+    <box y="0.04" z="0.071" sx="0.06" sy="0.012" sz="0.002" color="#D4AF37"/>
+    <!-- La tapa gira sobre la bisagra de atrás -->
+    <group id="bisagra" y="0.08" z="-0.07">
+      <box id="tapa" y="0.01" z="0.07" sx="0.2" sy="0.02" sz="0.14" color="#8E3B46" border-radius="0.008"/>
+      <box id="espejo" y="-0.001" z="0.07" sx="0.14" sy="0.002" sz="0.09" color="#C8D8E8"/>
+    </group>
+    <!-- La bailarina, sobre su eje; se esconde con la tapa cerrada -->
+    <group id="bailarina" y="0.082" visible="false">
+      <cylinder y="0.003" sx="0.03" sy="0.006" sz="0.03" color="#D4AF37"/>
+      <group id="gira">
+        <cylinder y="0.03" sx="0.004" sy="0.05" sz="0.004" color="#F5D5C8"/>
+        <cylinder y="0.062" sx="0.05" sy="0.012" sz="0.05" color="#FFB6C1"/>
+        <cylinder y="0.078" sx="0.012" sy="0.03" sz="0.01" color="#FFB6C1"/>
+        <sphere y="0.1" sx="0.014" sy="0.016" sz="0.014" color="#F5D5C8"/>
+        <box y="0.086" sx="0.05" sy="0.003" sz="0.003" rz="0.3" color="#F5D5C8"/>
+      </group>
+    </group>
+    <box id="toque" manos="false" y="0.07" sx="0.21" sy="0.14" sz="0.15" color="transparent" material-alpha="blend"/>
+    <script src="./caja_musica.js"/>
+  </space>
+</hsml>

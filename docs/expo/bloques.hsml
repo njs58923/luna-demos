@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_expo (src/bloques.ts) - no editar a mano -->
+<hsml>
+  <head><name>El taller de bloques</name></head>
+  <space resources="navigate_self,navigate_world,read_camera_pose,read_pose_stream,spawn,skybox,audio,fetch_text,desktop_camera_control,vr_locomotion">
+    <spawn id="entrada" default="true" x="0" y="0" z="3.2" ry="0"/>
+    <include id="cielo" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+
+    <!-- La sala: piso con juntas y tres paredes; el nombre arriba del fondo. -->
+    <box y="-0.05" z="0.4" sx="10.4" sy="0.1" sz="9.8" color="#8D99AE" touchable="false"/>
+    <box y="1.6" z="4.9" sx="10.4" sy="3.2" sz="0.2" color="#EDF2F4" touchable="false"/>
+    <box y="0.001" z="-4" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="-3" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="-2" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="-1" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="0" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="1" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="2" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="3" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="0.001" z="4" sx="10.4" sy="0.002" sz="0.02" color="#7A869A" touchable="false"/>
+    <box y="1.6" z="-4" sx="10.4" sy="3.2" sz="0.2" color="#EDF2F4" touchable="false"/>
+    <box x="-5.1" y="1.6" z="0.45" sx="0.2" sy="3.2" sz="9.1" color="#E5E7EB" touchable="false"/>
+    <box x="5.1" y="1.6" z="0.45" sx="0.2" sy="3.2" sz="9.1" color="#E5E7EB" touchable="false"/>
+    <box y="0.06" z="-3.89" sx="10.2" sy="0.12" sz="0.02" color="#2B2D42" touchable="false"/>
+    <group y="3.1">
+      <box z="-3.9" sx="10.2" sy="0.2" sz="0.2" color="#2B2D42" touchable="false"/>
+      <text y="-0.02" z="-3.79" value="EL TALLER DE BLOQUES" size="0.16" color="#EDF2F4"/>
+    </group>
+    <group x="0" y="2.2" z="-3.88">
+      <text value="los que se tocan emiten valor, los que muestran lo reciben" size="0.07" color="#4A4E69"/>
+    </group>
+
+    <group id="banco_b1" x="-3.3" y="1.3" z="-3.9" ry="0">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="PERILLA -&gt; MEDIDOR" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="girala en el sentido del reloj" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b1" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b1" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b1" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/perilla.hsml" resources="audio,read_pose_stream" props='{"min":0,"max":100,"pasos":20,"etiqueta":"PRESIÓN"}'/>
+      <include id="sal_b1" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/medidor.hsml" resources="audio,read_pose_stream" props='{"unidad":"%","titulo":"PRESIÓN"}'/>
+    </group>
+    <group id="banco_b2" x="-1.1" y="1.3" z="-3.9" ry="0">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="DESLIZADOR -&gt; BARRA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="llevalo de punta a punta" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b2" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b2" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b2" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/deslizador.hsml" resources="audio,read_pose_stream" props='{"etiqueta":"CARGA"}'/>
+      <include id="sal_b2" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/barra.hsml" resources="audio,read_pose_stream" props='{"segmentos":12,"titulo":"CARGA"}'/>
+    </group>
+    <group id="banco_b3" x="1.1" y="1.3" z="-3.9" ry="0">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="PULSADOR -&gt; LED" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="un interruptor de luz" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b3" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b3" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b3" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/pulsador.hsml" resources="audio,read_pose_stream" props='{"modo":"interruptor","etiqueta":"LUZ","color":"#FFD60A"}'/>
+      <include id="sal_b3" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/led.hsml" resources="audio,read_pose_stream" props='{"color":"#FFD60A","etiqueta":"LUZ"}'/>
+    </group>
+    <group id="banco_b4" x="3.3" y="1.3" z="-3.9" ry="0">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="RUEDA -&gt; BARRA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="dale vueltas: si la soltás, vuelve" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b4" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b4" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b4" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/rueda.hsml" resources="audio,read_pose_stream" props='{"meta":3,"retroceso":true,"etiqueta":"BOMBEAR"}'/>
+      <include id="sal_b4" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/barra.hsml" resources="audio,read_pose_stream" props='{"segmentos":0,"titulo":"PRESIÓN","color":"#F77F00"}'/>
+    </group>
+    <group id="banco_b5" x="-4.9" y="1.3" z="-1.6" ry="1.571">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="PALANCA -&gt; PANTALLA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="arriba o abajo" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b5" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b5" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b5" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/palanca.hsml" resources="audio,read_pose_stream" props='{"modo":"libre"}'/>
+      <include id="sal_b5" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/pantalla.hsml" resources="audio,read_pose_stream" props='{"tinta":"ambar","inicial":"ARRIBA"}'/>
+    </group>
+    <group id="banco_b6" x="-4.9" y="1.3" z="0.8" ry="1.571">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="JOYSTICK -&gt; PANTALLA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="inclinalo; la bocha es un botón" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b6" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b6" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b6" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/joystick.hsml" resources="audio,read_pose_stream" props='{}'/>
+      <include id="sal_b6" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/pantalla.hsml" resources="audio,read_pose_stream" props='{"tinta":"azul","inicial":"X 0  Y 0"}'/>
+    </group>
+    <group id="banco_b7" x="4.9" y="1.3" z="-1.6" ry="-1.571">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="TECLADO -&gt; PANTALLA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="la clave es 1234" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b7" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b7" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b7" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/teclado_num.hsml" resources="audio,read_pose_stream" props='{"clave":"1234"}'/>
+      <include id="sal_b7" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/pantalla.hsml" resources="audio,read_pose_stream" props='{"tinta":"verde","inicial":"CERRADO"}'/>
+    </group>
+    <group id="banco_b8" x="4.9" y="1.3" z="0.8" ry="-1.571">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="CABLES -&gt; LED" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="cada enchufe a su color" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b8" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b8" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b8" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/cables.hsml" resources="audio,read_pose_stream" props='{"cantidad":4}'/>
+      <include id="sal_b8" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/led.hsml" resources="audio,read_pose_stream" props='{"color":"#30D158","etiqueta":"LISTO"}'/>
+    </group>
+    <group id="banco_b9" x="3.9" y="1.3" z="4.69" ry="3.142">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="CAJA FUERTE -&gt; LED" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="la combinación es 12 - 30 - 5" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b9" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b9" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b9" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/caja_fuerte.hsml" resources="audio,read_pose_stream" props='{"combinacion":[12,30,5]}'/>
+      <include id="sal_b9" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/led.hsml" resources="audio,read_pose_stream" props='{"color":"#FFD60A","etiqueta":"ABIERTA"}'/>
+    </group>
+    <group id="banco_b10" x="2.6" y="1.3" z="4.69" ry="3.142">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="SIMÓN -&gt; BARRA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="repetí la secuencia" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b10" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b10" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b10" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/simon.hsml" resources="audio,read_pose_stream" props='{"meta":5}'/>
+      <include id="sal_b10" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/barra.hsml" resources="audio,read_pose_stream" props='{"segmentos":5,"titulo":"RONDA"}'/>
+    </group>
+    <group id="banco_b11" x="-2.6" y="1.3" z="4.69" ry="3.142">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="TARJETA -&gt; PANTALLA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="ni muy rápido ni muy lento" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b11" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b11" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b11" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/tarjeta.hsml" resources="audio,read_pose_stream" props='{}'/>
+      <include id="sal_b11" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/pantalla.hsml" resources="audio,read_pose_stream" props='{"tinta":"verde","inicial":"ESPERANDO"}'/>
+    </group>
+    <group id="banco_b12" x="-3.9" y="1.3" z="4.69" ry="3.142">
+      <box z="0.005" sx="0.92" sy="0.64" sz="0.01" color="#2B2D42" border-radius="0.03" touchable="false"/>
+      <text y="0.265" z="0.012" value="MANTENER -&gt; BARRA" size="0.042" color="#EDF2F4"/>
+      <text y="-0.27" z="0.012" value="no lo sueltes" size="0.028" color="#8D99AE"/>
+      <!-- El cable entre los dos, y la chispa que corre por él. -->
+      <box id="cable_b12" y="0" z="0.013" sx="0.12" sy="0.008" sz="0.004" color="#4A4E69" touchable="false"/>
+      <sphere id="chispa_b12" y="0" z="0.018" sx="0.02" sy="0.02" sz="0.02" color="#FFD166" material-unlit="true" visible="false" touchable="false"/>
+      <include id="ent_b12" x="-0.24" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/mantener.hsml" resources="audio,read_pose_stream" props='{"segundos":3,"etiqueta":"CARGAR"}'/>
+      <include id="sal_b12" x="0.25" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/barra.hsml" resources="audio,read_pose_stream" props='{"segmentos":0,"titulo":"COMBUSTIBLE","color":"#F77F00"}'/>
+    </group>
+
+    <group id="panel_tarea" y="0" z="0.6">
+      <!-- Una consola baja en el medio de la sala, mirando a la llegada: por
+           encima se siguen viendo los bancos del fondo. -->
+      <box y="0.4" sx="1.8" sy="0.8" sz="0.5" color="#3D405B" touchable="false"/>
+      <!-- El tablero inclinado apoya su borde de abajo en el canto de la consola. -->
+      <group y="1.12" z="0.05" rx="-0.55">
+        <box sx="1.8" sy="0.76" sz="0.04" color="#2B2D42" border-radius="0.03" touchable="false"/>
+        <text y="0.33" z="0.025" value="PANEL DE MANTENIMIENTO" size="0.045" color="#EDF2F4"/>
+        <text id="tarea_estado" y="-0.34" z="0.025" value="bombeá, conectá y nivelá" size="0.03" color="#8D99AE"/>
+        <group z="0.02">
+          <include id="tarea_rueda" x="-0.55" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/rueda.hsml" resources="audio,read_pose_stream" props='{"meta":2,"etiqueta":"BOMBA"}'/>
+          <include id="tarea_cables" x="0" y="0.03" src="https://njs58923.github.io/luna-demos/expo/objetos/cables.hsml" resources="audio,read_pose_stream" props='{"cantidad":3}'/>
+          <include id="tarea_nivel" x="0.5" y="0" src="https://njs58923.github.io/luna-demos/expo/objetos/deslizador.hsml" resources="audio,read_pose_stream" props='{"orientacion":"vertical","pasos":10,"etiqueta":"NIVEL"}'/>
+          <include id="tarea_luz" x="0.72" y="0.22" src="https://njs58923.github.io/luna-demos/expo/objetos/led.hsml" resources="audio,read_pose_stream" props='{"color":"#30D158","etiqueta":"OK"}'/>
+          <include id="tarea_meta" x="0.62" y="-0.26" src="https://njs58923.github.io/luna-demos/expo/objetos/pantalla.hsml" resources="audio,read_pose_stream" props='{"tinta":"ambar","inicial":"NIVEL A 7"}'/>
+        </group>
+      </group>
+    </group>
+
+    <!-- La salida: de vuelta a la calle. -->
+    <include id="a_calle" x="0" z="4.55" ry="3.1415927" src="https://njs58923.github.io/luna-demos/expo/objetos/portal.hsml" resources="navigate_world"
+             props='{"destino":"https://njs58923.github.io/luna-demos/expo/calle.hsml","titulo":"La calle","sub":"los bloques se llevan de ahí","color":"#EF233C"}'/>
+
+    <script>
+      globalThis.BLOQUES = {"bancos":[{"id":"b1","evento":"valor","mensaje":"valor"},{"id":"b2","evento":"valor","mensaje":"valor"},{"id":"b3","evento":"valor","mensaje":"valor"},{"id":"b4","evento":"valor","mensaje":"valor"},{"id":"b5","evento":"valor","mensaje":"texto"},{"id":"b6","evento":"eje","mensaje":"texto"},{"id":"b7","evento":"codigo","mensaje":"texto"},{"id":"b8","evento":"completo","mensaje":"valor"},{"id":"b9","evento":"valor","mensaje":"valor"},{"id":"b10","evento":"valor","mensaje":"valor"},{"id":"b11","evento":"valor","mensaje":"texto"},{"id":"b12","evento":"valor","mensaje":"valor"}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/expo/bloques.js"/>
+  </space>
+</hsml>

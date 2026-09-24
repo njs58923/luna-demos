@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Teclado numérico. Doce teclas (1 a 9, *, 0 y #) y un visor. Con una clave,
+  al completarla (o con #) dice si es correcta; sin clave, # manda lo que se
+  escribió. * borra. En VR las teclas se aprietan empujándolas con el mando;
+  en escritorio, con clics.
+
+  Bloque de panel: emite `codigo` y `valor` (1 si fue correcto).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.16 × 0.24 × 0.04 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/teclado_num.hsml"
+             resources="audio,read_pose_stream" events="codigo"
+             props='{"clave":"1234","ocultar":true}'/>
+
+  Props: clave (dígitos; vacía = acepta cualquiera), largo (máximo, 1 a 10),
+  ocultar (muestra puntos), color.
+  Eventos: tecla {k}, codigo {texto, correcto}, valor {valor: 0 | 1}.
+  Mensajes: limpiar.
+-->
+<hsml>
+  <head><name>Teclado numérico</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.16" sy="0.24" sz="0.02" color="#22252E" border-radius="0.015"/>
+    <box id="visor" y="0.085" z="0.021" sx="0.13" sy="0.035" sz="0.002" color="#0F2A1D"/>
+    <text id="texto" y="0.085" z="0.0225" value="" size="0.022" color="#7CFC8A"/>
+    <group id="teclas" y="-0.03" z="0.02"/>
+    <posezone id="zona" z="0.15" sx="0.5" sy="0.6" sz="0.35" visible="false"/>
+    <script src="./teclado_num.js"/>
+  </space>
+</hsml>

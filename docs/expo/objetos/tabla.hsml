@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tabla de picar con una zanahoria y un cuchillo. Tocar la zanahoria corta
+  una rodaja de la punta y la corre al costado. En VR se toma el cuchillo con
+  el grip y se corta bajando el filo donde uno quiera: el pedazo que queda
+  del otro lado se separa. Tocar la tabla (sin zanahoria) trae otra.
+
+  De mesa: apoya en y=0. Mide 0.4 × 0.1 × 0.25 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/tabla.hsml"
+             resources="audio,read_pose_stream" events="corte"/>
+
+  Props: verdura ("zanahoria" | "pepino").
+  Eventos: corte {queda} (cm de verdura que quedan), terminada {}.
+  Mensajes: nueva.
+-->
+<hsml>
+  <head><name>Tabla de picar</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="tabla" y="0.01" sx="0.4" sy="0.02" sz="0.25" color="#C8A165" border-radius="0.012"/>
+    <box y="0.0205" x="0.17" sx="0.02" sy="0.001" sz="0.05" color="#A07A45"/>
+    <group id="verdura" x="-0.1" y="0.034"/>
+    <group id="rodajas"/>
+    <group id="cuchillo">
+      <box y="0" x="0.1" sx="0.2" sy="0.035" sz="0.002" color="#D9DDE1"/>
+      <box y="-0.017" x="0.1" sx="0.2" sy="0.002" sz="0.0025" color="#F5F7FA"/>
+      <box y="0.004" x="-0.045" sx="0.1" sy="0.022" sz="0.016" color="#2B2B2B" border-radius="0.005"/>
+      <box id="agarrar" x="0.03" sx="0.28" sy="0.06" sz="0.05" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.25" sx="0.9" sy="0.6" sz="0.7" visible="false"/>
+    <script src="./tabla.js"/>
+  </space>
+</hsml>

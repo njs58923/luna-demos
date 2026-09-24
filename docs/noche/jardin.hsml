@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El jardin</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=amanecer"/>
+    <!-- Donde aparece el visitante. En el sendero, mirando al pedestal y a los canteros. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="12" ry="0"/>
+
+    <group id="fondo">
+    </group>
+
+    <plane y="0" rx="1.5707963" sx="100" sy="100" color="#1C2620" touchable="false"/>
+    <cylinder y="0.01" sx="25" sy="0.02" sz="25" color="#222E26" touchable="false"/>
+    <!-- El sendero: un anillo de losas que une los canteros. -->
+    <box x="0" y="0.03" z="6.9" ry="0" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="0.676" y="0.03" z="6.867" ry="0.098" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="1.346" y="0.03" z="6.767" ry="0.196" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="2.003" y="0.03" z="6.603" ry="0.295" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="2.641" y="0.03" z="6.375" ry="0.393" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="3.253" y="0.03" z="6.085" ry="0.491" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="3.833" y="0.03" z="5.737" ry="0.589" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="4.377" y="0.03" z="5.334" ry="0.687" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="4.879" y="0.03" z="4.879" ry="0.785" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="5.334" y="0.03" z="4.377" ry="0.884" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="5.737" y="0.03" z="3.833" ry="0.982" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.085" y="0.03" z="3.253" ry="1.08" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.375" y="0.03" z="2.641" ry="1.178" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.603" y="0.03" z="2.003" ry="1.276" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.767" y="0.03" z="1.346" ry="1.374" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.867" y="0.03" z="0.676" ry="1.473" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.9" y="0.03" z="0" ry="1.571" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.867" y="0.03" z="-0.676" ry="1.669" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.767" y="0.03" z="-1.346" ry="1.767" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.603" y="0.03" z="-2.003" ry="1.865" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.375" y="0.03" z="-2.641" ry="1.963" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="6.085" y="0.03" z="-3.253" ry="2.062" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="5.737" y="0.03" z="-3.833" ry="2.16" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="5.334" y="0.03" z="-4.377" ry="2.258" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="4.879" y="0.03" z="-4.879" ry="2.356" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="4.377" y="0.03" z="-5.334" ry="2.454" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="3.833" y="0.03" z="-5.737" ry="2.553" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="3.253" y="0.03" z="-6.085" ry="2.651" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="2.641" y="0.03" z="-6.375" ry="2.749" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="2.003" y="0.03" z="-6.603" ry="2.847" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="1.346" y="0.03" z="-6.767" ry="2.945" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="0.676" y="0.03" z="-6.867" ry="3.043" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="0" y="0.03" z="-6.9" ry="3.142" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-0.676" y="0.03" z="-6.867" ry="3.24" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-1.346" y="0.03" z="-6.767" ry="3.338" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-2.003" y="0.03" z="-6.603" ry="3.436" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-2.641" y="0.03" z="-6.375" ry="3.534" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-3.253" y="0.03" z="-6.085" ry="3.632" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-3.833" y="0.03" z="-5.737" ry="3.731" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-4.377" y="0.03" z="-5.334" ry="3.829" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-4.879" y="0.03" z="-4.879" ry="3.927" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-5.334" y="0.03" z="-4.377" ry="4.025" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-5.737" y="0.03" z="-3.833" ry="4.123" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.085" y="0.03" z="-3.253" ry="4.222" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.375" y="0.03" z="-2.641" ry="4.32" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.603" y="0.03" z="-2.003" ry="4.418" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.767" y="0.03" z="-1.346" ry="4.516" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.867" y="0.03" z="-0.676" ry="4.614" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.9" y="0.03" z="0" ry="4.712" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.867" y="0.03" z="0.676" ry="4.811" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.767" y="0.03" z="1.346" ry="4.909" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.603" y="0.03" z="2.003" ry="5.007" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.375" y="0.03" z="2.641" ry="5.105" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-6.085" y="0.03" z="3.253" ry="5.203" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-5.737" y="0.03" z="3.833" ry="5.301" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-5.334" y="0.03" z="4.377" ry="5.4" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-4.879" y="0.03" z="4.879" ry="5.498" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-4.377" y="0.03" z="5.334" ry="5.596" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-3.833" y="0.03" z="5.737" ry="5.694" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-3.253" y="0.03" z="6.085" ry="5.792" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-2.641" y="0.03" z="6.375" ry="5.89" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-2.003" y="0.03" z="6.603" ry="5.989" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-1.346" y="0.03" z="6.767" ry="6.087" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+    <box x="-0.676" y="0.03" z="6.867" ry="6.185" sx="0.8" sy="0.04" sz="0.62" color="#3A3E40" touchable="false"/>
+
+      <group x="0" y="0" z="9.5" ry="-3.142">
+        <cylinder y="0.16" sx="3.4" sy="0.32" sz="3.4" color="#2E2A22" touchable="false"/>
+        <cylinder y="0.33" sx="3.0" sy="0.06" sz="3.0" color="#222E26" touchable="false"/>
+        <cylinder x="-1.5" y="0.6" sx="0.16" sy="1.2" sz="0.16" color="#3A3E40" touchable="false"/>
+        <box id="sembrar_0" x="-1.5" y="1.32" rx="-0.45" sx="1.5" sy="0.42" sz="0.05" color="#3A3E40" touchable="true" border-radius="0.04"/>
+        <text x="-1.5" y="1.4" z="0.1" rx="-0.45" value="Helecho" size="0.085" color="#EAF4EC"/>
+        <text x="-1.5" y="1.28" z="0.16" rx="-0.45" value="el clásico: una regla, tres ramas" size="0.038" color="#8FA898"/>
+      </group>
+      <group x="8.227" y="0" z="4.75" ry="-2.094">
+        <cylinder y="0.16" sx="3.4" sy="0.32" sz="3.4" color="#2E2A22" touchable="false"/>
+        <cylinder y="0.33" sx="3.0" sy="0.06" sz="3.0" color="#222E26" touchable="false"/>
+        <cylinder x="-1.5" y="0.6" sx="0.16" sy="1.2" sz="0.16" color="#3A3E40" touchable="false"/>
+        <box id="sembrar_1" x="-1.5" y="1.32" rx="-0.45" sx="1.5" sy="0.42" sz="0.05" color="#3A3E40" touchable="true" border-radius="0.04"/>
+        <text x="-1.5" y="1.4" z="0.1" rx="-0.45" value="Arbusto" size="0.085" color="#EAF4EC"/>
+        <text x="-1.5" y="1.28" z="0.16" rx="-0.45" value="la misma idea, con cabeceo" size="0.038" color="#8FA898"/>
+      </group>
+      <group x="8.227" y="0" z="-4.75" ry="-1.047">
+        <cylinder y="0.16" sx="3.4" sy="0.32" sz="3.4" color="#2E2A22" touchable="false"/>
+        <cylinder y="0.33" sx="3.0" sy="0.06" sz="3.0" color="#222E26" touchable="false"/>
+        <cylinder x="-1.5" y="0.6" sx="0.16" sy="1.2" sz="0.16" color="#3A3E40" touchable="false"/>
+        <box id="sembrar_2" x="-1.5" y="1.32" rx="-0.45" sx="1.5" sy="0.42" sz="0.05" color="#3A3E40" touchable="true" border-radius="0.04"/>
+        <text x="-1.5" y="1.4" z="0.1" rx="-0.45" value="Árbol" size="0.085" color="#EAF4EC"/>
+        <text x="-1.5" y="1.28" z="0.16" rx="-0.45" value="rola en cada bifurcación: crece en volumen" size="0.038" color="#8FA898"/>
+      </group>
+      <group x="0" y="0" z="-9.5" ry="0">
+        <cylinder y="0.16" sx="3.4" sy="0.32" sz="3.4" color="#2E2A22" touchable="false"/>
+        <cylinder y="0.33" sx="3.0" sy="0.06" sz="3.0" color="#222E26" touchable="false"/>
+        <cylinder x="-1.5" y="0.6" sx="0.16" sy="1.2" sz="0.16" color="#3A3E40" touchable="false"/>
+        <box id="sembrar_3" x="-1.5" y="1.32" rx="-0.45" sx="1.5" sy="0.42" sz="0.05" color="#3A3E40" touchable="true" border-radius="0.04"/>
+        <text x="-1.5" y="1.4" z="0.1" rx="-0.45" value="Sauce" size="0.085" color="#EAF4EC"/>
+        <text x="-1.5" y="1.28" z="0.16" rx="-0.45" value="el mismo árbol con el giro al revés" size="0.038" color="#8FA898"/>
+      </group>
+      <group x="-8.227" y="0" z="-4.75" ry="1.047">
+        <cylinder y="0.16" sx="3.4" sy="0.32" sz="3.4" color="#2E2A22" touchable="false"/>
+        <cylinder y="0.33" sx="3.0" sy="0.06" sz="3.0" color="#222E26" touchable="false"/>
+        <cylinder x="-1.5" y="0.6" sx="0.16" sy="1.2" sz="0.16" color="#3A3E40" touchable="false"/>
+        <box id="sembrar_4" x="-1.5" y="1.32" rx="-0.45" sx="1.5" sy="0.42" sz="0.05" color="#3A3E40" touchable="true" border-radius="0.04"/>
+        <text x="-1.5" y="1.4" z="0.1" rx="-0.45" value="Alga" size="0.085" color="#EAF4EC"/>
+        <text x="-1.5" y="1.28" z="0.16" rx="-0.45" value="dos símbolos que se reescriben entre sí" size="0.038" color="#8FA898"/>
+      </group>
+      <group x="-8.227" y="0" z="4.75" ry="2.094">
+        <cylinder y="0.16" sx="3.4" sy="0.32" sz="3.4" color="#2E2A22" touchable="false"/>
+        <cylinder y="0.33" sx="3.0" sy="0.06" sz="3.0" color="#222E26" touchable="false"/>
+        <cylinder x="-1.5" y="0.6" sx="0.16" sy="1.2" sz="0.16" color="#3A3E40" touchable="false"/>
+        <box id="sembrar_5" x="-1.5" y="1.32" rx="-0.45" sx="1.5" sy="0.42" sz="0.05" color="#3A3E40" touchable="true" border-radius="0.04"/>
+        <text x="-1.5" y="1.4" z="0.1" rx="-0.45" value="Cardo" size="0.085" color="#EAF4EC"/>
+        <text x="-1.5" y="1.28" z="0.16" rx="-0.45" value="sin ramas hasta el final, y ahí todas juntas" size="0.038" color="#8FA898"/>
+      </group>
+
+    <group id="pozo">
+      <box id="seg_0" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_1" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_2" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_3" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_4" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_5" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_6" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_7" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_8" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_9" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_10" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_11" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_12" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_13" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_14" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_15" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_16" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_17" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_18" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_19" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_20" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_21" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_22" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_23" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_24" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_25" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_26" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_27" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_28" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_29" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_30" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_31" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_32" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_33" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_34" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_35" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_36" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_37" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_38" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_39" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_40" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_41" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_42" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_43" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_44" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_45" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_46" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_47" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_48" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_49" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_50" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_51" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_52" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_53" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_54" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_55" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_56" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_57" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_58" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_59" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_60" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_61" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_62" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_63" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_64" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_65" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_66" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_67" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_68" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_69" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_70" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_71" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_72" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_73" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_74" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_75" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_76" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_77" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_78" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_79" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_80" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_81" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_82" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_83" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_84" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_85" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_86" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_87" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_88" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_89" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_90" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_91" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_92" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_93" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_94" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_95" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_96" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_97" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_98" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_99" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_100" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_101" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_102" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_103" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_104" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_105" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_106" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_107" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_108" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_109" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_110" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_111" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_112" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_113" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_114" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_115" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_116" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_117" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_118" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_119" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_120" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_121" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_122" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_123" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_124" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_125" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_126" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_127" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_128" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_129" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_130" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_131" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_132" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_133" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_134" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_135" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_136" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_137" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_138" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_139" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_140" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_141" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_142" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_143" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_144" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_145" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_146" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_147" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_148" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_149" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_150" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_151" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_152" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_153" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_154" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_155" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_156" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_157" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_158" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_159" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_160" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_161" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_162" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_163" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_164" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_165" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_166" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_167" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_168" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_169" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_170" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_171" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_172" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_173" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_174" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_175" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_176" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_177" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_178" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_179" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_180" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_181" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_182" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_183" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_184" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_185" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_186" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_187" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_188" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_189" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_190" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_191" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_192" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_193" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_194" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_195" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_196" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_197" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_198" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_199" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_200" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_201" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_202" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_203" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_204" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_205" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_206" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_207" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_208" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_209" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_210" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_211" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_212" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_213" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_214" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_215" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_216" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_217" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_218" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_219" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_220" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_221" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_222" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_223" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_224" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_225" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_226" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_227" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_228" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_229" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_230" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_231" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_232" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_233" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_234" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_235" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_236" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_237" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_238" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_239" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_240" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_241" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_242" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_243" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_244" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_245" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_246" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_247" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_248" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_249" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_250" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_251" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_252" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_253" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_254" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_255" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_256" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_257" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_258" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_259" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_260" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_261" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_262" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_263" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_264" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_265" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_266" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_267" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_268" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_269" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_270" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_271" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_272" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_273" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_274" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_275" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_276" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_277" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_278" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_279" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_280" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_281" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_282" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_283" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_284" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_285" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_286" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_287" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_288" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_289" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_290" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_291" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_292" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_293" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_294" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_295" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_296" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_297" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_298" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_299" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_300" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_301" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_302" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_303" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_304" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_305" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_306" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_307" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_308" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_309" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_310" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_311" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_312" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_313" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_314" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_315" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_316" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_317" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_318" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_319" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_320" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_321" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_322" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_323" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_324" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_325" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_326" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_327" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_328" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_329" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_330" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_331" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_332" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_333" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_334" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_335" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_336" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_337" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_338" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_339" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_340" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_341" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_342" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_343" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_344" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_345" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_346" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_347" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_348" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_349" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_350" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_351" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_352" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_353" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_354" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_355" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_356" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_357" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_358" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_359" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_360" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_361" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_362" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_363" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_364" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_365" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_366" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_367" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_368" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_369" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_370" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_371" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_372" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_373" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_374" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_375" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_376" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_377" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_378" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_379" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_380" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_381" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_382" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_383" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_384" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_385" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_386" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_387" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_388" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_389" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_390" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_391" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_392" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_393" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_394" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_395" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_396" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_397" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_398" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_399" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_400" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_401" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_402" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_403" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_404" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_405" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_406" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_407" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_408" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_409" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_410" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_411" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_412" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_413" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_414" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_415" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_416" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_417" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_418" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+      <box id="seg_419" x="0" y="-99" z="0" sx="0.0001" sy="0.0001" sz="0.0001" color="#4E7A46" touchable="false"/>
+    </group>
+
+    <group id="centro">
+      <cylinder y="0.3" sx="2.6" sy="0.6" sz="2.6" color="#3A3E40" touchable="false"/>
+      <cylinder y="0.63" sx="2.9" sy="0.08" sz="2.9" color="#C8A24E" touchable="false"/>
+      <cylinder y="1.05" sx="0.3" sy="0.9" sz="0.3" color="#3A3E40" touchable="false"/>
+      <box y="1.72" sx="3.2" sy="0.86" sz="0.06" color="#0E1418" touchable="false" border-radius="0.05"/>
+      <text y="1.96" z="0.05" value="El jardin" size="0.15" color="#EAF4EC"/>
+      <text id="jd_estado" y="1.76" z="0.05" value="tocá una placa: la planta crece" size="0.07" color="#8FA898"/>
+      <text id="jd_regla" y="1.61" z="0.05" value="" size="0.05" color="#8FA898"/>
+      <text id="jd_dato" y="1.48" z="0.05" value="" size="0.05" color="#8FA898"/>
+      <box y="1.72" z="-0.07" sx="3.2" sy="0.86" sz="0.06" color="#0E1418" touchable="false" border-radius="0.05"/>
+      <group ry="3.14159">
+        <text y="1.96" z="0.12" value="El jardin" size="0.15" color="#EAF4EC"/>
+        <text y="1.76" z="0.12" value="seis reglas, ninguna geometria" size="0.06" color="#8FA898"/>
+      </group>
+    </group>
+
+    <group id="portal_vuelta" x="0" y="0" z="13.5">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#3A3E40","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.JARDIN = {"base":"https://njs58923.github.io/luna-demos/noche","tope":420,"radio":9.5,"plantas":[{"nombre":"Helecho","detalle":"el clásico: una regla, tres ramas","axioma":"F","reglas":{"F":"F[+F]F[-F]F"},"giro":25.7,"pasos":3,"largo":0.5,"merma":0.62},{"nombre":"Arbusto","detalle":"la misma idea, con cabeceo","axioma":"F","reglas":{"F":"FF-[-F+F+F]+[+F-F-F]"},"giro":22.5,"pasos":3,"largo":0.72,"merma":0.68},{"nombre":"Árbol","detalle":"rola en cada bifurcación: crece en volumen","axioma":"F","reglas":{"F":"F[&+F]F[^-F]/F[&F]"},"giro":28,"pasos":3,"largo":0.62,"merma":0.7},{"nombre":"Sauce","detalle":"el mismo árbol con el giro al revés","axioma":"F","reglas":{"F":"F[&&+F][&&-F]F[&F]"},"giro":34,"pasos":3,"largo":0.66,"merma":0.72},{"nombre":"Alga","detalle":"dos símbolos que se reescriben entre sí","axioma":"A","reglas":{"A":"F[+A][-A]FA","F":"FF"},"giro":18,"pasos":4,"largo":0.34,"merma":0.86},{"nombre":"Cardo","detalle":"sin ramas hasta el final, y ahí todas juntas","axioma":"F","reglas":{"F":"FF[++F][--F][&F][^F]"},"giro":30,"pasos":3,"largo":0.8,"merma":0.6}],"colores":{"tallo":"#4E7A46","tallo2":"#6A9A52","hoja":"#8ECC6A","flor":"#E8C860"}};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/jardin.js"/>
+  </space>
+</hsml>

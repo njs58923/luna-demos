@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El reloj</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+    <!-- Donde aparece el visitante: de frente a la esfera y lo bastante lejos para verla entera; desde el portal se veía de canto. -->
+    <spawn id="entrada" default="true" x="-3" y="0" z="14" ry="-0.211"/>
+    <group id="cielo">
+      <plane y="-0.02" rx="1.5707963" sx="120" sy="120" color="#111418" touchable="false"/>
+    </group>
+
+    <!-- La caja: dos cajones y un frontón. La máquina va adentro, detrás de la
+         esfera, y se ve por los costados. -->
+    <group id="caja" y="0">
+      <box y="5.4" sx="11" sy="10.8" sz="1.1" color="#2A2118" touchable="false"/>
+      <box y="10.95" sx="11.8" sy="0.5" sz="1.5" color="#3A2E20" touchable="false"/>
+      <box y="0.3" sx="11.8" sy="0.6" sz="1.5" color="#3A2E20" touchable="false"/>
+      <box x="-5.7" y="5.4" sx="0.5" sy="10.8" sz="1.4" color="#3A2E20" touchable="false"/>
+      <box x="5.7" y="5.4" sx="0.5" sy="10.8" sz="1.4" color="#3A2E20" touchable="false"/>
+    </group>
+
+    <!-- La máquina, detrás de la esfera y a la vista por el hueco de abajo. -->
+    <group id="maquina" y="2.6" z="0.1">
+      <group id="eng_grande">
+        <cylinder rx="1.5707963" sx="3" sy="0.16" sz="3" color="#7A5F30" touchable="false"/>
+        <cylinder rx="1.5707963" sx="0.51" sy="0.256" sz="0.51" color="#4A3A20" touchable="false"/>
+        <box x="1.5" y="0" rz="0" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="1.41" y="0.513" rz="0.349" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="1.149" y="0.964" rz="0.698" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="0.75" y="1.299" rz="1.047" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="0.26" y="1.477" rz="1.396" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-0.26" y="1.477" rz="1.745" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-0.75" y="1.299" rz="2.094" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-1.149" y="0.964" rz="2.443" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-1.41" y="0.513" rz="2.793" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-1.5" y="0" rz="3.142" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-1.41" y="-0.513" rz="3.491" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-1.149" y="-0.964" rz="3.84" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-0.75" y="-1.299" rz="4.189" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="-0.26" y="-1.477" rz="4.538" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="0.26" y="-1.477" rz="4.887" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="0.75" y="-1.299" rz="5.236" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="1.149" y="-0.964" rz="5.585" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box x="1.41" y="-0.513" rz="5.934" sx="0.3" sy="0.24" sz="0.16" color="#7A5F30" touchable="false"/>
+        <box rz="0" sx="2.55" sy="0.21" sz="0.176" color="#4A3A20" touchable="false"/>
+        <box rz="1.047" sx="2.55" sy="0.21" sz="0.176" color="#4A3A20" touchable="false"/>
+        <box rz="2.094" sx="2.55" sy="0.21" sz="0.176" color="#4A3A20" touchable="false"/>
+      </group>
+      <group x="2.15" y="0.85">
+      <group id="eng_medio">
+        <cylinder rx="1.5707963" sx="1.7" sy="0.14" sz="1.7" color="#96773D" touchable="false"/>
+        <cylinder rx="1.5707963" sx="0.289" sy="0.224" sz="0.289" color="#4A3A20" touchable="false"/>
+        <box x="0.85" y="0" rz="0" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="0.736" y="0.425" rz="0.524" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="0.425" y="0.736" rz="1.047" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="0" y="0.85" rz="1.571" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="-0.425" y="0.736" rz="2.094" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="-0.736" y="0.425" rz="2.618" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="-0.85" y="0" rz="3.142" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="-0.736" y="-0.425" rz="3.665" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="-0.425" y="-0.736" rz="4.189" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="0" y="-0.85" rz="4.712" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="0.425" y="-0.736" rz="5.236" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box x="0.736" y="-0.425" rz="5.76" sx="0.17" sy="0.136" sz="0.14" color="#96773D" touchable="false"/>
+        <box rz="0" sx="1.445" sy="0.119" sz="0.154" color="#4A3A20" touchable="false"/>
+        <box rz="1.047" sx="1.445" sy="0.119" sz="0.154" color="#4A3A20" touchable="false"/>
+        <box rz="2.094" sx="1.445" sy="0.119" sz="0.154" color="#4A3A20" touchable="false"/>
+      </group>
+      </group>
+      <group x="-1.95" y="0.6">
+      <group id="eng_chico">
+        <cylinder rx="1.5707963" sx="1.1" sy="0.12" sz="1.1" color="#96773D" touchable="false"/>
+        <cylinder rx="1.5707963" sx="0.187" sy="0.192" sz="0.187" color="#4A3A20" touchable="false"/>
+        <box rz="0" sx="0.935" sy="0.077" sz="0.132" color="#4A3A20" touchable="false"/>
+        <box rz="1.047" sx="0.935" sy="0.077" sz="0.132" color="#4A3A20" touchable="false"/>
+        <box rz="2.094" sx="0.935" sy="0.077" sz="0.132" color="#4A3A20" touchable="false"/>
+      </group>
+      </group>
+    </group>
+
+    <!-- El péndulo: cuelga del centro de la máquina y llega casi al piso. -->
+    <group id="pendulo" y="6.4" z="0.28">
+      <box y="-2.6" sx="0.09" sy="5.2" sz="0.09" color="#4A3A20" touchable="false"/>
+      <cylinder y="-5.35" rx="1.5707963" sx="1.5" sy="0.14" sz="1.5" color="#C89A3A" touchable="false"/>
+      <cylinder y="-5.35" rx="1.5707963" sx="0.9" sy="0.16" sz="0.9" color="#7A5F30" touchable="false"/>
+    </group>
+
+    <!-- La esfera. -->
+    <group id="esfera" y="6.6">
+      <cylinder rx="1.5707963" z="0.43" sx="9.1" sy="0.3" sz="9.1" color="#8A6A2E" touchable="false"/>
+      <cylinder rx="1.5707963" z="0.55" sx="8.4" sy="0.12" sz="8.4" color="#E8DEC6" touchable="false"/>
+      <box x="0" y="3.57" z="0.57" rz="0" sx="0.11" sy="0.7" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="0.398" y="3.789" z="0.57" rz="-0.105" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="0.792" y="3.727" z="0.57" rz="-0.209" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="1.177" y="3.624" z="0.57" rz="-0.314" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="1.55" y="3.481" z="0.57" rz="-0.419" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="1.835" y="3.178" z="0.57" rz="-0.524" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="2.239" y="3.082" z="0.57" rz="-0.628" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="2.549" y="2.831" z="0.57" rz="-0.733" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="2.831" y="2.549" z="0.57" rz="-0.838" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.082" y="2.239" z="0.57" rz="-0.942" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.178" y="1.835" z="0.57" rz="-1.047" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.481" y="1.55" z="0.57" rz="-1.152" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.624" y="1.177" z="0.57" rz="-1.257" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.727" y="0.792" z="0.57" rz="-1.361" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.789" y="0.398" z="0.57" rz="-1.466" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.57" y="0" z="0.57" rz="-1.571" sx="0.11" sy="0.7" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.789" y="-0.398" z="0.57" rz="-1.676" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.727" y="-0.792" z="0.57" rz="-1.78" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.624" y="-1.177" z="0.57" rz="-1.885" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.481" y="-1.55" z="0.57" rz="-1.99" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.178" y="-1.835" z="0.57" rz="-2.094" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="3.082" y="-2.239" z="0.57" rz="-2.199" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="2.831" y="-2.549" z="0.57" rz="-2.304" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="2.549" y="-2.831" z="0.57" rz="-2.409" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="2.239" y="-3.082" z="0.57" rz="-2.513" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="1.835" y="-3.178" z="0.57" rz="-2.618" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="1.55" y="-3.481" z="0.57" rz="-2.723" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="1.177" y="-3.624" z="0.57" rz="-2.827" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="0.792" y="-3.727" z="0.57" rz="-2.932" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="0.398" y="-3.789" z="0.57" rz="-3.037" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="0" y="-3.57" z="0.57" rz="-3.142" sx="0.11" sy="0.7" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-0.398" y="-3.789" z="0.57" rz="-3.246" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-0.792" y="-3.727" z="0.57" rz="-3.351" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-1.177" y="-3.624" z="0.57" rz="-3.456" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-1.55" y="-3.481" z="0.57" rz="-3.56" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-1.835" y="-3.178" z="0.57" rz="-3.665" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-2.239" y="-3.082" z="0.57" rz="-3.77" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-2.549" y="-2.831" z="0.57" rz="-3.875" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-2.831" y="-2.549" z="0.57" rz="-3.979" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.082" y="-2.239" z="0.57" rz="-4.084" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.178" y="-1.835" z="0.57" rz="-4.189" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.481" y="-1.55" z="0.57" rz="-4.294" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.624" y="-1.177" z="0.57" rz="-4.398" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.727" y="-0.792" z="0.57" rz="-4.503" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.789" y="-0.398" z="0.57" rz="-4.608" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.57" y="0" z="0.57" rz="-4.712" sx="0.11" sy="0.7" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.789" y="0.398" z="0.57" rz="-4.817" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.727" y="0.792" z="0.57" rz="-4.922" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.624" y="1.177" z="0.57" rz="-5.027" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.481" y="1.55" z="0.57" rz="-5.131" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.178" y="1.835" z="0.57" rz="-5.236" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-3.082" y="2.239" z="0.57" rz="-5.341" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-2.831" y="2.549" z="0.57" rz="-5.445" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-2.549" y="2.831" z="0.57" rz="-5.55" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-2.239" y="3.082" z="0.57" rz="-5.655" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-1.835" y="3.178" z="0.57" rz="-5.76" sx="0.11" sy="0.5" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-1.55" y="3.481" z="0.57" rz="-5.864" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-1.177" y="3.624" z="0.57" rz="-5.969" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-0.792" y="3.727" z="0.57" rz="-6.074" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <box x="-0.398" y="3.789" z="0.57" rz="-6.178" sx="0.045" sy="0.22" sz="0.05" color="#2A2118" touchable="false"/>
+      <text x="0" y="2.85" z="0.61" value="XII" size="0.42" color="#2A2118"/>
+      <text x="1.425" y="2.468" z="0.61" value="I" size="0.42" color="#2A2118"/>
+      <text x="2.468" y="1.425" z="0.61" value="II" size="0.42" color="#2A2118"/>
+      <text x="2.85" y="0" z="0.61" value="III" size="0.42" color="#2A2118"/>
+      <text x="2.468" y="-1.425" z="0.61" value="IV" size="0.42" color="#2A2118"/>
+      <text x="1.425" y="-2.468" z="0.61" value="V" size="0.42" color="#2A2118"/>
+      <text x="0" y="-2.85" z="0.61" value="VI" size="0.42" color="#2A2118"/>
+      <text x="-1.425" y="-2.468" z="0.61" value="VII" size="0.42" color="#2A2118"/>
+      <text x="-2.468" y="-1.425" z="0.61" value="VIII" size="0.42" color="#2A2118"/>
+      <text x="-2.85" y="0" z="0.61" value="IX" size="0.42" color="#2A2118"/>
+      <text x="-2.468" y="1.425" z="0.61" value="X" size="0.42" color="#2A2118"/>
+      <text x="-1.425" y="2.468" z="0.61" value="XI" size="0.42" color="#2A2118"/>
+
+      <!-- Las agujas. Cada una es un grupo que el script rota en Z; la barra va
+           corrida medio largo porque la caja se dibuja centrada, y así el eje de
+           giro queda en el centro de la esfera. -->
+      <group id="ag_hora" z="0.64">
+        <box y="1.15" sx="0.22" sy="2.3" sz="0.06" color="#1A1410" touchable="false" border-radius="0.06"/>
+        <box y="-0.35" sx="0.22" sy="0.7" sz="0.06" color="#1A1410" touchable="false" border-radius="0.06"/>
+      </group>
+      <group id="ag_minuto" z="0.68">
+        <box y="1.72" sx="0.14" sy="3.44" sz="0.06" color="#241A12" touchable="false" border-radius="0.04"/>
+        <box y="-0.45" sx="0.14" sy="0.9" sz="0.06" color="#241A12" touchable="false" border-radius="0.04"/>
+      </group>
+      <group id="ag_segundo" z="0.72">
+        <box y="1.85" sx="0.05" sy="3.7" sz="0.05" color="#A8342A" touchable="false"/>
+        <box y="-0.6" sx="0.05" sy="1.2" sz="0.05" color="#A8342A" touchable="false"/>
+      </group>
+      <cylinder rx="1.5707963" z="0.75" sx="0.34" sy="0.1" sz="0.34" color="#8A6A2E" touchable="false"/>
+
+      <!-- La ventanilla de la fecha. -->
+      <box y="-2.1" z="0.58" sx="1.9" sy="0.62" sz="0.05" color="#2A2118" touchable="false" border-radius="0.04"/>
+      <text id="r_fecha" y="-2.1" z="0.62" value="" size="0.28" color="#E8DEC6"/>
+    </group>
+
+    <!-- El panel, abajo a la derecha. El botón cambia entre la hora de la
+         máquina y el cronómetro desde que se abrió la escena. -->
+    <group id="panel" x="7.6" y="0" z="2.4" ry="-0.7">
+      <cylinder x="-1.2" y="0.65" sx="0.1" sy="1.3" sz="0.1" color="#4A3A20" touchable="false"/>
+      <cylinder x="1.2" y="0.65" sx="0.1" sy="1.3" sz="0.1" color="#4A3A20" touchable="false"/>
+      <box y="1.6" sx="2.7" sy="0.92" sz="0.06" color="#0E1218" touchable="false" border-radius="0.06"/>
+      <text id="r_titulo" y="1.88" z="0.05" value="El reloj" size="0.15" color="#EFE6D2"/>
+      <text id="r_hora" y="1.68" z="0.05" value="--:--:--" size="0.12" color="#A99A7E"/>
+      <box id="modo" y="1.4" z="0.05" sx="1.6" sy="0.24" sz="0.05" color="#8A6A2E" touchable="true" border-radius="0.04"/>
+      <text id="r_modo" y="1.405" z="0.09" value="ver cronómetro" size="0.075" color="#EFE6D2"/>
+    </group>
+
+    <group id="portal_vuelta" x="-7.6" y="0" z="2.4" ry="0.7">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_reloj","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#4A4432","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.RELOJ = {"base":"https://njs58923.github.io/luna-demos/noche"};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/reloj.js"/>
+  </space>
+</hsml>

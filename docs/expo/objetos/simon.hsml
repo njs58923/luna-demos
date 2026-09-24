@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Simón. Cuatro teclas de colores: la máquina toca una secuencia y hay que
+  repetirla; cada ronda suma una nota. Llegar a la meta completa la tarea
+  (como el arranque del reactor de la nave). Un error vuelve a la primera
+  ronda. Tocar el botón del medio empieza; en VR las teclas se empujan.
+
+  Bloque de panel: emite `valor` (la ronda) y `completo`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.24 × 0.28 × 0.04 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/simon.hsml"
+             resources="audio,read_pose_stream" events="completo" props='{"meta":5}'/>
+
+  Props: meta (rondas, 2 a 20), velocidad (0.5 a 2).
+  Eventos: ronda {n}, error {}, valor {valor, fraccion}, completo {}.
+  Mensajes: empezar.
+-->
+<hsml>
+  <head><name>Simón</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.24" sy="0.28" sz="0.02" color="#22252E" border-radius="0.02"/>
+    <group id="teclas" y="0.015" z="0.02"/>
+    <cylinder id="centro" y="0.015" z="0.03" rx="1.5708" sx="0.05" sy="0.014" sz="0.05" color="#1C1F27"/>
+    <text id="ronda" y="0.015" z="0.0375" value="GO" size="0.014" color="#FFFFFF"/>
+    <text id="estado" y="-0.115" z="0.021" value="" size="0.014" color="#C8CCD8"/>
+    <posezone id="zona" z="0.15" sx="0.5" sy="0.5" sz="0.35" visible="false"/>
+    <script src="./simon.js"/>
+  </space>
+</hsml>

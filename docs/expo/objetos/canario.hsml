@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Canario en su jaula. Salta por el palito, mira para todos lados, baja a
+  picotear alpiste y canta solo cada tanto. Tocarlo lo hace cantar largo;
+  tocar la jaula lo asusta. En VR: si acercás la mano rápido se va al otro
+  lado; si la dejás quieta un rato cerca, se acerca y te canta.
+
+  De mesa: apoya en y=0. Mide 0.3 × 0.48 × 0.3 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/canario.hsml"
+             resources="audio,read_pose_stream" events="canto"/>
+
+  Props: color (del pájaro), jaula (color), canta (solo, cada tanto).
+  Eventos: canto {largo}, susto {}.
+  Mensajes: cantar.
+-->
+<hsml>
+  <head><name>Canario</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder id="base" y="0.015" sx="0.3" sy="0.03" sz="0.3" color="#C9A227"/>
+    <cylinder y="0.031" sx="0.27" sy="0.002" sz="0.27" color="#E8DCC0"/>
+    <group id="barrotes"/>
+    <cylinder y="0.15" sx="0.008" sy="0.2" sz="0.008" rz="1.5708" color="#8B5A2B"/>
+    <box x="0.1" y="0.075" sx="0.008" sy="0.15" sz="0.008" color="#8B5A2B"/>
+    <box x="-0.1" y="0.075" sx="0.008" sy="0.15" sz="0.008" color="#8B5A2B"/>
+    <cylinder x="-0.06" y="0.045" z="0.07" sx="0.05" sy="0.025" sz="0.05" color="#FFFFFF"/>
+    <cylinder x="-0.06" y="0.055" z="0.07" sx="0.042" sy="0.004" sz="0.042" color="#D9C27A"/>
+    <cylinder x="0.06" y="0.045" z="0.07" sx="0.05" sy="0.025" sz="0.05" color="#FFFFFF"/>
+    <cylinder x="0.06" y="0.055" z="0.07" sx="0.042" sy="0.004" sz="0.042" color="#9CD3F0"/>
+    <group id="pajaro" y="0.155">
+      <group id="cuerpo_p" rx="-0.35">
+        <sphere class="pluma" y="0.03" sx="0.05" sy="0.065" sz="0.05" color="#FFD60A"/>
+        <box class="pluma2" y="0.0" z="-0.035" rx="0.5" sx="0.03" sy="0.045" sz="0.006" color="#F2C200"/>
+        <group id="ala_i" x="-0.024" y="0.035">
+          <sphere class="pluma2" x="-0.004" y="-0.008" sx="0.012" sy="0.045" sz="0.038" color="#F2C200"/>
+        </group>
+        <group id="ala_d" x="0.024" y="0.035">
+          <sphere class="pluma2" x="0.004" y="-0.008" sx="0.012" sy="0.045" sz="0.038" color="#F2C200"/>
+        </group>
+      </group>
+      <group id="cabeza_p" y="0.07" z="0.012">
+        <sphere class="pluma" sx="0.04" sy="0.04" sz="0.04" color="#FFD60A"/>
+        <cylinder z="0.022" rx="1.5708" sx="0.012" sy="0.016" sz="0.01" color="#F28C28"/>
+        <sphere x="-0.016" y="0.006" z="0.012" sx="0.008" sy="0.008" sz="0.008" color="#111111"/>
+        <sphere x="0.016" y="0.006" z="0.012" sx="0.008" sy="0.008" sz="0.008" color="#111111"/>
+      </group>
+      <box x="-0.008" y="-0.002" sx="0.002" sy="0.012" sz="0.002" color="#E0A080"/>
+      <box x="0.008" y="-0.002" sx="0.002" sy="0.012" sz="0.002" color="#E0A080"/>
+    </group>
+    <cylinder id="toque" y="0.22" sx="0.29" sy="0.42" sz="0.29" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.22" sx="0.9" sy="0.7" sz="0.9" visible="false"/>
+    <script src="./canario.js"/>
+  </space>
+</hsml>

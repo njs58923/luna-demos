@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hámster con su rueda. Va del comedero a la rueda, corre un rato, vuelve,
+  y a veces se hace bolita en el nido a dormir. Tocarlo lo manda a correr;
+  tocar la rueda la hace girar (y si está adentro, da una vuelta entera y sale
+  mareado). En VR se hace girar la rueda con la mano.
+
+  De mesa: apoya en y=0. Mide 0.4 × 0.26 × 0.28 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/hamster.hsml"
+             resources="audio,read_pose_stream" events="vuelta"/>
+
+  Props: pelaje (color), rueda (color).
+  Eventos: vuelta {vueltas} cada vuelta completa de la rueda, corre {}, vuelta_entera {}.
+  Mensajes: correr.
+-->
+<hsml>
+  <head><name>Hámster</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.01" sx="0.4" sy="0.02" sz="0.28" color="#E9D8A6" border-radius="0.01"/>
+    <box y="0.021" sx="0.38" sy="0.002" sz="0.26" color="#D9C08A"/>
+    <!-- El nido y el comedero. -->
+    <sphere x="-0.13" y="0.02" z="-0.07" sx="0.12" sy="0.05" sz="0.1" color="#F3E3C3"/>
+    <cylinder x="-0.1" y="0.03" z="0.07" sx="0.06" sy="0.02" sz="0.06" color="#5DADE2"/>
+    <sphere x="-0.1" y="0.04" z="0.07" sx="0.045" sy="0.012" sz="0.045" color="#C8A165"/>
+    <!-- La rueda: su soporte atrás y la rueda que gira sobre el eje Z. -->
+    <box x="0.08" y="0.08" z="-0.07" sx="0.02" sy="0.14" sz="0.015" color="#7F8C8D"/>
+    <cylinder x="0.08" y="0.14" z="-0.04" rx="1.5708" sx="0.012" sy="0.06" sz="0.012" color="#7F8C8D"/>
+    <group id="rueda" x="0.08" y="0.14"/>
+    <group id="hamster"/>
+    <cylinder id="toque_rueda" x="0.08" y="0.14" rx="1.5708" sx="0.22" sy="0.09" sz="0.22" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.15" sx="0.7" sy="0.5" sz="0.6" visible="false"/>
+    <script src="./hamster.js"/>
+  </space>
+</hsml>

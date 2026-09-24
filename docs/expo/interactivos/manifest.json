@@ -1,0 +1,29 @@
+{
+  "_comment": "Igual que el manifest de models/, pero para piezas interactivas (.hsml). Las medidas describen el volumen que la pieza usa al animarse, no una malla: con eso el layout le calcula el pedestal. 'recursos' se emite como el atributo resources del <include>; vacío = el sub-documento arranca sin permisos. Cada pieza acepta query params: el server los inyecta como globalThis.CONFIG, así el mismo documento se monta varias veces con distinta escala, velocidad o fase.",
+  "models": {
+    "fogata.hsml": {
+      "label": "Fogata",
+      "nota": "llamas y chispas creadas desde JS",
+      "w": 0.9,
+      "d": 0.9,
+      "h": 1.6,
+      "recursos": ""
+    },
+    "mariposa.hsml": {
+      "label": "Mariposa",
+      "nota": "vuela sola: HSML + JS, sin permisos",
+      "w": 0.62,
+      "d": 0.62,
+      "h": 0.42,
+      "recursos": ""
+    },
+    "molino.hsml": {
+      "label": "Molino",
+      "nota": "aspas y cabeza que sigue las rafagas",
+      "w": 1.75,
+      "d": 1.0,
+      "h": 2.85,
+      "recursos": ""
+    }
+  }
+}

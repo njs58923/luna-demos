@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ta-te-ti. Un tablero de tres por tres: se toca un casillero y se juega ahí,
+  cruz y círculo por turnos. Marca la línea ganadora; el botón de al lado
+  empieza de nuevo. Con `maquina` juega solo contra quien lo toca.
+
+  De mesa: apoya en y=0, el tablero mira hacia arriba. Mide 0.4 × 0.05 × 0.46 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/tateti.hsml"
+             events="jugada,fin" props='{"maquina":true,"clave":"living"}'/>
+
+  Props: maquina (bool: los círculos los juega el objeto), tablero, cruz,
+  circulo (colores), clave (guarda la partida en curso).
+  Eventos: jugada {casilla, ficha}, fin {ganador: "X" | "O" | "empate"}.
+  Mensajes: nueva.
+-->
+<hsml>
+  <head><name>Ta-te-ti</name></head>
+  <space resources="read_pose_stream">
+    <box id="tablero" y="0.012" sx="0.36" sy="0.024" sz="0.36" color="#E9D8A6" border-radius="0.02"/>
+    <group id="lineas" y="0.025"/>
+    <group id="fichas" y="0.026"/>
+    <group id="toques" y="0.03"/>
+    <box id="nueva" y="0.015" z="0.215" sx="0.14" sy="0.03" sz="0.05" color="#1D3557" border-radius="0.008"/>
+    <text y="0.031" z="0.215" rx="-1.5707963" value="NUEVA" size="0.02" color="#FFFFFF"/>
+    <text id="estado" y="0.09" z="-0.2" value="" size="0.03" color="#FFFFFF"/>
+    <script src="./tateti.js"/>
+  </space>
+</hsml>

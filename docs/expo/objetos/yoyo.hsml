@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Yoyó. Cuelga de su soporte; tocarlo lo tira: baja girando y vuelve. En VR
+  se toma el piolín con el grip y se juega de verdad: tirarlo hacia abajo lo
+  lanza, y cuando llega al fondo un tironcito hacia arriba lo hace volver a
+  la mano. Sin tironcito se queda "durmiendo" abajo, girando, hasta que se
+  frena; soltarlo lo devuelve al soporte.
+
+  De mesa: apoya en y=0. Mide 0.2 × 0.47 × 0.12 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/yoyo.hsml"
+             resources="audio,read_pose_stream" events="vuelve"/>
+
+  Props: color, hilo (largo en m, 0.2 a 1.2; en el soporte se usa hasta 0.32).
+  Eventos: baja {}, vuelve {}, duerme {}.
+  Mensajes: tirar.
+-->
+<hsml>
+  <head><name>Yoyó</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.01" sx="0.2" sy="0.02" sz="0.12" color="#3B2A1A" border-radius="0.01"/>
+    <cylinder x="-0.06" y="0.235" sx="0.016" sy="0.43" sz="0.016" color="#8C6D3F"/>
+    <box x="0.02" y="0.45" sx="0.18" sy="0.014" sz="0.014" color="#8C6D3F"/>
+    <cylinder x="0.1" y="0.438" sx="0.006" sy="0.012" sz="0.006" color="#B0B0B0"/>
+    <cylinder id="hilo" sx="0.0015" sy="0.1" sz="0.0015" color="#F5F5F5"/>
+    <group id="yoyo">
+      <group id="rueda">
+        <cylinder class="tapa" z="-0.009" rx="1.5708" sx="0.056" sy="0.012" sz="0.056" color="#E63946"/>
+        <cylinder class="tapa" z="0.009" rx="1.5708" sx="0.056" sy="0.012" sz="0.056" color="#E63946"/>
+        <cylinder rx="1.5708" sx="0.01" sy="0.008" sz="0.01" color="#F1FAEE"/>
+        <box z="0.0152" sx="0.04" sy="0.006" sz="0.001" color="#F1FAEE"/>
+        <box z="-0.0152" sx="0.04" sy="0.006" sz="0.001" color="#F1FAEE"/>
+      </group>
+      <box id="toque" sx="0.07" sy="0.07" sz="0.05" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.5" sx="1.4" sy="1.4" sz="1.4" visible="false"/>
+    <script src="./yoyo.js"/>
+  </space>
+</hsml>

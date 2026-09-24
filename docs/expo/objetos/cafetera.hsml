@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cafetera. El botón la prende: gorgotea, cae un hilo de café en la taza, la
+  taza se llena y sale vapor. Tocar la taza llena la vacía (se la tomaron).
+
+  De mesa: apoya en y=0, mira a +Z. Mide 0.24 × 0.36 × 0.26 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cafetera.hsml"
+             resources="audio" events="listo" props='{"color":"#212529","taza":"#F8F9FA"}'/>
+
+  Props: color, taza (colores), segundos (lo que tarda).
+  Eventos: listo {}, tomado {}.
+  Mensajes: preparar.
+-->
+<hsml>
+  <head><name>Cafetera</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="base" y="0.015" z="0.02" sx="0.22" sy="0.03" sz="0.24" color="#212529" border-radius="0.01"/>
+    <box id="torre" y="0.19" z="-0.07" sx="0.22" sy="0.35" sz="0.1" color="#212529" border-radius="0.02"/>
+    <box id="cabezal" y="0.33" z="0.02" sx="0.22" sy="0.07" sz="0.14" color="#212529" border-radius="0.02"/>
+    <cylinder y="0.29" z="0.05" sx="0.02" sy="0.02" sz="0.02" color="#6C757D"/>
+    <cylinder id="boton" x="0.075" y="0.33" z="0.092" rx="1.5707963" sx="0.028" sy="0.01" sz="0.028" color="#C92A2A"/>
+    <sphere id="luz" x="0.075" y="0.355" z="0.09" sx="0.008" sy="0.008" sz="0.004" color="#3A1A1A" material-unlit="true"/>
+    <cylinder id="chorro" y="0.2" z="0.05" sx="0.006" sy="0.16" sz="0.006" color="#4A2C18" visible="false"/>
+    <group id="taza" y="0.03" z="0.05">
+      <cylinder id="taza_cuerpo" y="0.045" sx="0.08" sy="0.09" sz="0.08" color="#F8F9FA"/>
+      <box id="taza_asa" x="0.05" y="0.05" sx="0.02" sy="0.05" sz="0.012" color="#F8F9FA"/>
+      <cylinder id="cafe" y="0.02" sx="0.07" sy="0.002" sz="0.07" color="#4A2C18" visible="false"/>
+    </group>
+    <group id="vapor" y="0.14" z="0.05"/>
+    <box id="toque_taza" y="0.08" z="0.05" sx="0.12" sy="0.11" sz="0.1" color="transparent" material-alpha="blend"/>
+    <script src="./cafetera.js"/>
+  </space>
+</hsml>

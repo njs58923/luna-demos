@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hsml>
+<space resources="navigate_self,read_pose_stream,read_camera_pose">
+  <box y="-0.05" sx="6" sy="0.1" sz="6" color="#555555"/>
+  <include id="s1" x="1" y="1.5" z="-1" ry="0.6" sx="1.5" sy="1.5" sz="1.5" src="https://njs58923.github.io/luna-demos/expo/objetos/sondamarco.hsml?v=2" resources="read_pose_stream"/>
+</space>
+</hsml>

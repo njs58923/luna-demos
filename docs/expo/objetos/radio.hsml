@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Radio de ambientes. Cuatro estaciones que no transmiten nada: generan el
+  sonido ahí mismo —lluvia, olas, fogata y una cajita de arpegios—. El dial
+  cambia de estación, la perilla chica el volumen, y el botón la prende.
+
+  De mesa: apoya en y=0, mira a +Z. Mide 0.36 × 0.22 × 0.14 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/radio.hsml" resources="audio"
+             events="estacion" props='{"estacion":"lluvia","volumen":0.6}'/>
+
+  Props: estacion ("lluvia" | "olas" | "fogata" | "arpegios"), volumen
+  (0..1), color (del gabinete), clave.
+  Eventos: estacion {nombre, prendida}.
+  Mensajes: prender, apagar, estacion {nombre}.
+-->
+<hsml>
+  <head><name>Radio</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="gabinete" y="0.11" sx="0.36" sy="0.2" sz="0.14" color="#8C5A3C" border-radius="0.03"/>
+    <box y="0.13" x="-0.07" z="0.071" sx="0.18" sy="0.12" sz="0.004" color="#D9C8A9" border-radius="0.01"/>
+    <group id="rejilla" x="-0.07" y="0.13" z="0.074"/>
+    <box y="0.05" x="-0.07" z="0.071" sx="0.18" sy="0.03" sz="0.004" color="#1C1C1C"/>
+    <text id="dial_txt" y="0.05" x="-0.07" z="0.074" value="" size="0.014" color="#FFD27A"/>
+    <cylinder id="dial" x="0.09" y="0.14" z="0.078" rx="1.5707963" sx="0.07" sy="0.015" sz="0.07" color="#E9D8A6"/>
+    <box id="dial_marca" x="0.09" y="0.16" z="0.087" sx="0.006" sy="0.022" sz="0.002" color="#6B1E1E"/>
+    <cylinder id="volumen" x="0.13" y="0.06" z="0.078" rx="1.5707963" sx="0.035" sy="0.015" sz="0.035" color="#E9D8A6"/>
+    <cylinder id="encendido" x="0.055" y="0.06" z="0.075" rx="1.5707963" sx="0.025" sy="0.012" sz="0.025" color="#3A3A3A"/>
+    <sphere id="luz" x="0.055" y="0.085" z="0.072" sx="0.01" sy="0.01" sz="0.006" color="#3A2A1A" material-unlit="true"/>
+    <box x="-0.12" y="0.008" sx="0.04" sy="0.016" sz="0.1" color="#3A2A1A"/>
+    <box x="0.12" y="0.008" sx="0.04" sy="0.016" sz="0.1" color="#3A2A1A"/>
+    <script src="./radio.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  La muestra: un robotito de primitivas. Es lo que se manipula, y a propósito no
+  sabe nada de eso — no escucha mandos ni guarda nada. Sólo vive: gira la
+  cabeza, parpadea la antena. Así se ve que el manipulador mueve un documento
+  entero, con su script andando, y no una foto de él.
+
+  Coordenadas propias: los pies en y=0, la cara hacia +Z. La caja que lo
+  envuelve es 0.42 x 0.70 x 0.30 con el centro en y=0.35; el que lo monte en un
+  manipulador le pasa esa caja, porque desde afuera de un include no se pueden
+  medir sus nodos.
+
+  Props (opcionales): { "color": "#FF9F0A" }
+-->
+<hsml>
+  <head><name>Muestra</name></head>
+  <space>
+    <!-- ruedas -->
+    <box id="rueda_i" x="-0.08" y="0.04" z="0" sx="0.08" sy="0.08" sz="0.16" color="#1C1C26"/>
+    <box id="rueda_d" x="0.08"  y="0.04" z="0" sx="0.08" sy="0.08" sz="0.16" color="#1C1C26"/>
+
+    <!-- cuerpo -->
+    <box id="cuerpo" x="0" y="0.24" z="0" sx="0.26" sy="0.28" sz="0.20" color="#FF9F0A"/>
+    <box x="0" y="0.27" z="0.101" sx="0.15" sy="0.10" sz="0.006" color="#08080C"/>
+    <sphere id="luz_pecho" x="0" y="0.27" z="0.106" sx="0.035" sy="0.035" sz="0.035" color="#30D158"/>
+    <!-- mochila: que se vea cuál es la espalda -->
+    <box x="0" y="0.26" z="-0.125" sx="0.18" sy="0.18" sz="0.05" color="#BF5AF2"/>
+
+    <!-- brazos -->
+    <cylinder x="-0.165" y="0.25" z="0" sx="0.045" sy="0.20" sz="0.045" color="#FFFFFF"/>
+    <cylinder x="0.165"  y="0.25" z="0" sx="0.045" sy="0.20" sz="0.045" color="#FFFFFF"/>
+    <sphere x="-0.165" y="0.14" z="0" sx="0.06" sy="0.06" sz="0.06" color="#FF3B30"/>
+    <sphere x="0.165"  y="0.14" z="0" sx="0.06" sy="0.06" sz="0.06" color="#0A84FF"/>
+
+    <!-- cuello y cabeza; la cabeza gira sola -->
+    <cylinder x="0" y="0.405" z="0" sx="0.05" sy="0.05" sz="0.05" color="#5A5A70"/>
+    <group id="cabeza" x="0" y="0.50" z="0">
+      <box x="0" y="0" z="0" sx="0.22" sy="0.16" sz="0.18" color="#FFFFFF"/>
+      <sphere x="-0.05" y="0.01" z="0.09" sx="0.04" sy="0.04" sz="0.02" color="#40E0D0"/>
+      <sphere x="0.05"  y="0.01" z="0.09" sx="0.04" sy="0.04" sz="0.02" color="#40E0D0"/>
+      <box x="0" y="-0.045" z="0.091" sx="0.08" sy="0.012" sz="0.004" color="#08080C"/>
+      <cylinder x="0" y="0.12" z="0" sx="0.012" sy="0.08" sz="0.012" color="#5A5A70"/>
+      <sphere id="antena" x="0" y="0.17" z="0" sx="0.035" sy="0.035" sz="0.035" color="#FF3B30"/>
+    </group>
+
+    <script src="./muestra.js"/>
+  </space>
+</hsml>

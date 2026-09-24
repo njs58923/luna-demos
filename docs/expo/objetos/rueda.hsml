@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Rueda con manija. Un círculo que se arrastra dando vueltas en el sentido
+  del reloj (o en el que se pida): cuenta las vueltas y, con una meta, llena
+  el aro de luces hasta completarla. En VR se agarra la manija y se gira el
+  brazo; en escritorio, cada clic en el borde lleva la manija hasta ahí
+  dando la vuelta por el lado permitido, y un clic en el centro le da un
+  cuarto de vuelta.
+
+  Bloque de panel: emite `valor` (vueltas y fracción de la meta).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.3 × 0.34 × 0.1 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/rueda.hsml"
+             resources="audio,read_pose_stream" events="valor,completo"
+             props='{"meta":3,"sentido":"horario"}'/>
+
+  Props: meta (vueltas para completar; 0 = sin meta), sentido ("horario" |
+  "antihorario" | "ambos"), color, etiqueta, retroceso (true: sin mover,
+  vuelve atrás de a poco, como un resorte).
+  Eventos: valor {valor (vueltas), fraccion}, vuelta {n}, completo {}.
+  Mensajes: reiniciar.
+-->
+<hsml>
+  <head><name>Rueda con manija</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.3" sy="0.34" sz="0.02" color="#22252E" border-radius="0.02"/>
+    <group id="luces" y="0.01" z="0.021"/>
+    <group id="rueda" y="0.01" z="0.021"/>
+    <text id="lectura" y="-0.145" z="0.021" value="" size="0.02" color="#FFD166"/>
+    <text id="etiqueta" y="0.152" z="0.021" value="" size="0.014" color="#C8CCD8"/>
+    <cylinder id="toque" manos="false" y="0.01" z="0.05" rx="1.5708" sx="0.26" sy="0.04" sz="0.26" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.01" z="0.2" sx="0.7" sy="0.7" sz="0.45" visible="false"/>
+    <script src="./rueda.js"/>
+  </space>
+</hsml>

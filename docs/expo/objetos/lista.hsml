@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lista de tareas en una tablilla. Tocar una casilla la tilda; "+ agregar"
+  toma el teclado (el físico o el virtual de VR) y Enter suma la tarea;
+  "limpiar" saca las tildadas. Todo queda guardado.
+
+  De pared: el origen es el clavo; la tablilla cuelga hacia abajo y mira a +Z.
+  Mide 0.34 × 0.5 × 0.03 m, con el centro en y=-0.25.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/lista.hsml" events="cambio"
+             props='{"titulo":"Compras","tareas":["pan","leche"],"clave":"cocina"}'/>
+
+  Props: titulo, tareas (las iniciales, si no hay nada guardado), color, clave.
+  Eventos: cambio {hechas, total}.
+  Mensajes: agregar {texto}, limpiar.
+-->
+<hsml>
+  <head><name>Lista de tareas</name></head>
+  <space resources="read_pose_stream">
+    <group id="tablilla" y="-0.25">
+      <box id="tabla" z="0.006" sx="0.34" sy="0.5" sz="0.012" color="#A47148" border-radius="0.012"/>
+      <box z="0.014" y="-0.02" sx="0.3" sy="0.42" sz="0.003" color="#FFFDF5"/>
+      <box y="0.225" z="0.02" sx="0.12" sy="0.04" sz="0.012" color="#8A8A8A"/>
+      <text id="titulo" y="0.165" z="0.017" value="" size="0.028" color="#1D3557"/>
+      <group id="renglones" z="0.017"/>
+      <box id="agregar" x="-0.07" y="-0.205" z="0.018" sx="0.13" sy="0.03" sz="0.004" color="#E9F5EC"/>
+      <text id="agregar_txt" x="-0.07" y="-0.205" z="0.021" value="+ agregar" size="0.016" color="#1E8E3E"/>
+      <box id="limpiar" x="0.08" y="-0.205" z="0.018" sx="0.11" sy="0.03" sz="0.004" color="#FDECEC"/>
+      <text x="0.08" y="-0.205" z="0.021" value="limpiar" size="0.016" color="#C8102E"/>
+    </group>
+    <script src="./lista.js"/>
+  </space>
+</hsml>

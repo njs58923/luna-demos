@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Caja sorpresa. Darle a la manivela toca la melodía nota por nota ("Pop
+  Goes the Weasel", tradicional) y en el ¡pop! se abre la tapa y salta el
+  payaso con su resorte. Tocar el payaso lo mete de nuevo y cierra. Tocando la
+  manivela gira sola; en VR se la agarra y se gira con la mano (cada octavo
+  de vuelta, una nota).
+
+  De mesa: apoya en y=0. Mide 0.2 × 0.16 × 0.17 m cerrada; el payaso sube
+  hasta 0.34 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/caja_sorpresa.hsml"
+             resources="audio,read_pose_stream" events="pop"/>
+
+  Props: colores (lista de cuatro, las caras).
+  Eventos: nota {i}, pop {}, cerrada {}.
+  Mensajes: girar, cerrar.
+-->
+<hsml>
+  <head><name>Caja sorpresa</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.004" sx="0.16" sy="0.008" sz="0.16" color="#2A1B3D"/>
+    <box class="cara0" z="0.076" y="0.08" sx="0.16" sy="0.16" sz="0.008" color="#E63946"/>
+    <box class="cara1" z="-0.076" y="0.08" sx="0.16" sy="0.16" sz="0.008" color="#457B9D"/>
+    <box class="cara2" x="0.076" y="0.08" sx="0.008" sy="0.16" sz="0.144" color="#FFD166"/>
+    <box class="cara3" x="-0.076" y="0.08" sx="0.008" sy="0.16" sz="0.144" color="#06D6A0"/>
+    <text z="0.081" y="0.085" value="?" size="0.09" color="#FFFFFF"/>
+    <box y="0.009" sx="0.144" sy="0.002" sz="0.144" color="#1A1026"/>
+    <group id="tapa" y="0.16" z="-0.08">
+      <box z="0.081" y="0.004" sx="0.166" sy="0.008" sz="0.166" color="#F1FAEE"/>
+      <box z="0.081" y="0.0085" sx="0.1" sy="0.001" sz="0.1" color="#E63946"/>
+    </group>
+    <group id="payaso">
+      <group id="resorte"/>
+      <group id="cabeza">
+        <sphere y="0" sx="0.05" sy="0.012" sz="0.05" color="#FFFFFF"/>
+        <sphere y="0.035" sx="0.066" sy="0.066" sz="0.066" color="#FFE0C4"/>
+        <sphere y="0.035" z="0.034" sx="0.016" sy="0.016" sz="0.016" color="#E63946"/>
+        <sphere x="-0.013" y="0.048" z="0.028" sx="0.008" sy="0.01" sz="0.004" color="#111111"/>
+        <sphere x="0.013" y="0.048" z="0.028" sx="0.008" sy="0.01" sz="0.004" color="#111111"/>
+        <box y="0.02" z="0.031" sx="0.028" sy="0.004" sz="0.004" color="#E63946"/>
+        <sphere x="-0.033" y="0.04" sx="0.022" sy="0.03" sz="0.022" color="#FF7B00"/>
+        <sphere x="0.033" y="0.04" sx="0.022" sy="0.03" sz="0.022" color="#FF7B00"/>
+        <cylinder y="0.072" sx="0.05" sy="0.012" sz="0.05" color="#7B2FF7"/>
+        <cylinder y="0.085" sx="0.034" sy="0.014" sz="0.034" color="#7B2FF7"/>
+        <cylinder y="0.099" sx="0.02" sy="0.014" sz="0.02" color="#7B2FF7"/>
+        <sphere y="0.11" sx="0.014" sy="0.014" sz="0.014" color="#FFD166"/>
+        <box id="toque_payaso" y="0.05" sx="0.08" sy="0.11" sz="0.08" color="transparent" material-alpha="blend"/>
+      </group>
+    </group>
+    <group id="manivela" x="0.09" y="0.09">
+      <cylinder x="0.006" rz="1.5708" sx="0.012" sy="0.016" sz="0.012" color="#B0B0B0"/>
+      <box x="0.016" y="0.024" sx="0.006" sy="0.056" sz="0.012" color="#B0B0B0"/>
+      <cylinder x="0.03" y="0.048" rz="1.5708" sx="0.014" sy="0.03" sz="0.014" color="#E63946"/>
+      <box id="toque_manivela" manos="false" x="0.02" y="0.025" sx="0.05" sy="0.08" sz="0.05" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.15" sx="0.7" sy="0.6" sz="0.7" visible="false"/>
+    <script src="./caja_sorpresa.js"/>
+  </space>
+</hsml>

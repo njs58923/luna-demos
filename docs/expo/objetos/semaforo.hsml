@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Semáforo. Solo, cicla verde, amarillo y rojo con sus tiempos; tocarlo pasa
+  a manual y cada toque avanza una luz. Sirve para ordenar un juego (luz roja,
+  luz verde) o una fila.
+
+  De piso: apoya en y=0, las luces miran a +Z. Mide 0.4 × 2.6 × 0.4 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/semaforo.hsml" events="luz"
+             props='{"verde":8,"amarillo":2,"rojo":8}'/>
+
+  Props: verde, amarillo, rojo (segundos de cada una), manual (bool).
+  Eventos: luz {color}.
+  Mensajes: luz {color: "verde" | "amarillo" | "rojo"}, auto.
+-->
+<hsml>
+  <head><name>Semáforo</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="1.0" sx="0.1" sy="2.0" sz="0.1" color="#3A3A3A"/>
+    <cylinder y="0.03" sx="0.36" sy="0.06" sz="0.36" color="#2A2A2A"/>
+    <box y="2.2" sx="0.3" sy="0.78" sz="0.24" color="#1E1E1E" border-radius="0.04"/>
+    <group id="luces" y="2.2" z="0.121"/>
+    <text id="modo" y="1.72" z="0.06" value="" size="0.04" color="#FFFFFF"/>
+    <box id="toque" y="2.2" z="0.05" sx="0.34" sy="0.8" sz="0.3" color="transparent" material-alpha="blend"/>
+    <script src="./semaforo.js"/>
+  </space>
+</hsml>

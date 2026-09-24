@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sonda de diagnóstico: muestra dónde cree el objeto que quedó en el mundo. -->
+<hsml>
+<space>
+  <box id="caja" sx="0.3" sy="0.3" sz="0.05" color="#2B6CB0"/>
+  <text id="txt" y="0.3" z="0.03" size="0.05" value="..." color="#FFFFFF"/>
+  <posezone id="zona" z="0.2" sx="0.6" sy="0.6" sz="0.4" visible="false"/>
+  <script src="sondamarco.js?v=2"></script>
+</space>
+</hsml>

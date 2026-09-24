@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lámpara de mesa. Un toque la prende o la apaga; recuerda cómo quedó.
+
+  De mesa: la base apoya en y=0. Mide 0.32 × 0.52 × 0.32 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/lampara.hsml"
+             events="cambio" props='{"pantalla":"#2E6B5E","luz":"#FFD27A","clave":"living"}'/>
+
+  Props: pantalla (color), luz (color de la luz), pie (color), encendida
+  (estado inicial si no hay nada guardado), clave (dónde se guarda).
+  Eventos: cambio {encendida}.
+  Mensajes: encender, apagar, alternar.
+-->
+<hsml>
+  <head><name>Lámpara de mesa</name></head>
+  <space resources="read_pose_stream">
+    <!-- El pie -->
+    <cylinder id="base" y="0.012" sx="0.17" sy="0.024" sz="0.17" color="#3A3530"/>
+    <cylinder id="base_borde" y="0.026" sx="0.15" sy="0.006" sz="0.15" color="#C9A45C"/>
+    <box id="llave" x="0.055" y="0.034" z="0.035" sx="0.022" sy="0.012" sz="0.014" color="#1C1C1C"/>
+    <cylinder id="cano" y="0.2" sx="0.016" sy="0.34" sz="0.016" color="#C9A45C"/>
+    <cylinder y="0.37" sx="0.03" sy="0.03" sz="0.03" color="#C9A45C"/>
+    <!-- La lamparita, que se ve por abajo de la pantalla -->
+    <sphere id="foco" y="0.335" sx="0.055" sy="0.065" sz="0.055" color="#8A8578"/>
+    <!-- La pantalla: tres anillos que se angostan, porque no hay cono -->
+    <group id="pantalla">
+      <cylinder class="tela" y="0.39" sx="0.30" sy="0.07" sz="0.30" color="#2E6B5E"/>
+      <cylinder class="tela" y="0.45" sx="0.25" sy="0.06" sz="0.25" color="#2E6B5E"/>
+      <cylinder class="tela" y="0.5" sx="0.2" sy="0.05" sz="0.2" color="#2E6B5E"/>
+    </group>
+    <!-- El brillo: un halo y el círculo de luz sobre la mesa -->
+    <sphere id="halo" y="0.35" sx="0.36" sy="0.22" sz="0.36" color="#FFD27A30" material-alpha="blend" material-unlit="true" visible="false"/>
+    <plane id="charco" y="0.002" rx="-1.5707963" sx="0.7" sy="0.7" border-radius="0.5" color="#FFD27A40" material-alpha="blend" material-unlit="true" visible="false"/>
+    <!-- Todo el cuerpo es el interruptor -->
+    <box id="toque" y="0.27" sx="0.32" sy="0.54" sz="0.32" color="transparent" material-alpha="blend"/>
+    <script src="./lampara.js"/>
+  </space>
+</hsml>

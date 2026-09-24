@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El billar</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante: en diagonal a la esquina, cerca. spawn no inclina el visor: la mesa esta a un metro por debajo de los ojos y hay que llegarle de cerca; pegado a la banda, las tres lamparas tapaban media vista, y en diagonal quedan arriba y la mesa entera abajo. -->
+    <spawn id="entrada" default="true" x="3.2" y="0" z="3.4" ry="0.755"/>
+
+    <group id="sala">
+      <plane z="-40" y="6" sx="80" sy="24" color="#1C222A" touchable="false"/>
+      <plane z="40" y="6" sx="80" sy="24" color="#1C222A" touchable="false"/>
+      <plane x="-40" y="6" ry="1.5707963" sx="80" sy="24" color="#1C222A" touchable="false"/>
+      <plane x="40" y="6" ry="1.5707963" sx="80" sy="24" color="#1C222A" touchable="false"/>
+      <plane y="40" rx="1.5707963" sx="80" sy="80" color="#070A0E" touchable="false"/>
+      <plane y="0" rx="1.5707963" sx="80" sy="80" color="#14181E" touchable="false"/>
+    </group>
+
+      <group x="-1.5" y="0" z="0">
+        <box y="3.1" sx="0.05" sy="1.2" sz="0.05" color="#1C222A" touchable="false"/>
+        <cylinder y="2.45" sx="0.95" sy="0.35" sz="0.95" color="#3E2A1A" touchable="false"/>
+        <cylinder y="2.28" sx="0.8" sy="0.06" sz="0.8" color="#F0DCA8" touchable="false"/>
+      </group>
+      <group x="0" y="0" z="0">
+        <box y="3.1" sx="0.05" sy="1.2" sz="0.05" color="#1C222A" touchable="false"/>
+        <cylinder y="2.45" sx="0.95" sy="0.35" sz="0.95" color="#3E2A1A" touchable="false"/>
+        <cylinder y="2.28" sx="0.8" sy="0.06" sz="0.8" color="#F0DCA8" touchable="false"/>
+      </group>
+      <group x="1.5" y="0" z="0">
+        <box y="3.1" sx="0.05" sy="1.2" sz="0.05" color="#1C222A" touchable="false"/>
+        <cylinder y="2.45" sx="0.95" sy="0.35" sz="0.95" color="#3E2A1A" touchable="false"/>
+        <cylinder y="2.28" sx="0.8" sy="0.06" sz="0.8" color="#F0DCA8" touchable="false"/>
+      </group>
+
+    <!-- La mesa. El paño va un poco hundido entre las bandas: si queda al ras, el
+         borde no se lee y las bolas parecen apoyadas sobre una tabla. -->
+    <group id="mesa">
+      <box y="0.83" sx="5.7" sy="0.24" sz="3.2" color="#3E2A1A" touchable="false"/>
+      <box y="0.955" sx="5" sy="0.02" sz="2.5" color="#1E5A3E" touchable="false"/>
+      <box y="0.958" sx="4.5" sy="0.02" sz="2.1" color="#17492F" touchable="false"/>
+      <box x="-2.66" y="1.03" sx="0.32" sy="0.18" sz="3.2" color="#173F2C" touchable="false"/>
+      <box x="2.66" y="1.03" sx="0.32" sy="0.18" sz="3.2" color="#173F2C" touchable="false"/>
+      <box z="-1.41" y="1.03" sx="5.7" sy="0.18" sz="0.32" color="#173F2C" touchable="false"/>
+      <box z="1.41" y="1.03" sx="5.7" sy="0.18" sz="0.32" color="#173F2C" touchable="false"/>
+      <cylinder x="-2.5" y="0.965" z="-1.25" sx="0.34" sy="0.03" sz="0.34" color="#0A0C0E" touchable="false"/>
+      <cylinder x="0" y="0.965" z="-1.28" sx="0.34" sy="0.03" sz="0.34" color="#0A0C0E" touchable="false"/>
+      <cylinder x="2.5" y="0.965" z="-1.25" sx="0.34" sy="0.03" sz="0.34" color="#0A0C0E" touchable="false"/>
+      <cylinder x="-2.5" y="0.965" z="1.25" sx="0.34" sy="0.03" sz="0.34" color="#0A0C0E" touchable="false"/>
+      <cylinder x="0" y="0.965" z="1.28" sx="0.34" sy="0.03" sz="0.34" color="#0A0C0E" touchable="false"/>
+      <cylinder x="2.5" y="0.965" z="1.25" sx="0.34" sy="0.03" sz="0.34" color="#0A0C0E" touchable="false"/>
+      <cylinder x="-2.35" y="0.355" z="-1.1" sx="0.26" sy="0.71" sz="0.26" color="#54381F" touchable="false"/>
+      <cylinder x="2.35" y="0.355" z="-1.1" sx="0.26" sy="0.71" sz="0.26" color="#54381F" touchable="false"/>
+      <cylinder x="-2.35" y="0.355" z="1.1" sx="0.26" sy="0.71" sz="0.26" color="#54381F" touchable="false"/>
+      <cylinder x="2.35" y="0.355" z="1.1" sx="0.26" sy="0.71" sz="0.26" color="#54381F" touchable="false"/>
+    </group>
+
+    <group id="bolas">
+      <sphere id="bola_0" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#F2F0E8" touchable="false"/>
+      <sphere id="bola_1" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#E8C020" touchable="false"/>
+      <sphere id="bola_2" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#2A50C0" touchable="false"/>
+      <sphere id="bola_3" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#C82820" touchable="false"/>
+      <sphere id="bola_4" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#6A2C90" touchable="false"/>
+      <sphere id="bola_5" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#E07020" touchable="false"/>
+      <sphere id="bola_6" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#1E7A48" touchable="false"/>
+      <sphere id="bola_7" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#7A2018" touchable="false"/>
+      <sphere id="bola_8" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#14161A" touchable="false"/>
+      <sphere id="bola_9" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#E8C020" touchable="false"/>
+      <sphere id="bola_10" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#2A50C0" touchable="false"/>
+      <sphere id="bola_11" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#C82820" touchable="false"/>
+      <sphere id="bola_12" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#6A2C90" touchable="false"/>
+      <sphere id="bola_13" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#E07020" touchable="false"/>
+      <sphere id="bola_14" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#1E7A48" touchable="false"/>
+      <sphere id="bola_15" x="0" y="1.025" z="0" sx="0.15" sy="0.15" sz="0.15" color="#7A2018" touchable="false"/>
+    </group>
+
+    <!-- El taco: no se usa para apuntar, se usa como botón. Apuntar de verdad
+         necesitaría arrastrar, y lo que la escena muestra son los choques. -->
+    <group id="taco" x="-3.6" y="1.07" z="0" rz="0.18">
+      <cylinder rz="1.5707963" sx="0.045" sy="1.5" sz="0.045" color="#54381F" touchable="false"/>
+      <cylinder x="-0.85" rz="1.5707963" sx="0.06" sy="0.4" sz="0.06" color="#3E2A1A" touchable="false"/>
+      <box id="tirar" y="0.28" sx="1.3" sy="0.38" sz="0.38" color="#C8A24E" touchable="true" border-radius="0.05"/>
+      <text y="0.28" z="0.22" value="TIRAR" size="0.11" color="#0C1016"/>
+    </group>
+
+    <group id="panel" x="0" y="0" z="3.65" ry="3.14159">
+      <cylinder x="-1.6" y="0.85" sx="0.11" sy="1.7" sz="0.11" color="#3E2A1A" touchable="false"/>
+      <cylinder x="1.6" y="0.85" sx="0.11" sy="1.7" sz="0.11" color="#3E2A1A" touchable="false"/>
+      <box y="2.0" sx="3.6" sy="1.0" sz="0.06" color="#0C1016" touchable="false" border-radius="0.05"/>
+      <text y="2.33" z="0.05" value="El billar" size="0.15" color="#EEF4F8"/>
+      <text id="bi_estado" y="2.12" z="0.05" value="tocá el taco" size="0.075" color="#93A4B4"/>
+      <text id="bi_dato" y="1.96" z="0.05" value="" size="0.055" color="#93A4B4"/>
+      <text id="bi_dato2" y="1.83" z="0.05" value="" size="0.055" color="#93A4B4"/>
+      <box id="rearmar" y="1.63" z="0.05" sx="1.6" sy="0.24" sz="0.05" color="#3E2A1A" touchable="true" border-radius="0.03"/>
+      <text y="1.63" z="0.09" value="rearmar" size="0.062" color="#EEF4F8"/>
+    </group>
+
+    <group id="portal_vuelta" x="-3.7" y="0" z="3.45" ry="2.321">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#54381F","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.BILLAR = {"base":"https://njs58923.github.io/luna-demos/noche","largo":5,"ancho":2.5,"alto":0.95,"radio":0.075,"bolas":[{"n":0,"color":"#F2F0E8"},{"n":1,"color":"#E8C020"},{"n":2,"color":"#2A50C0"},{"n":3,"color":"#C82820"},{"n":4,"color":"#6A2C90"},{"n":5,"color":"#E07020"},{"n":6,"color":"#1E7A48"},{"n":7,"color":"#7A2018"},{"n":8,"color":"#14161A"},{"n":9,"color":"#E8C020"},{"n":10,"color":"#2A50C0"},{"n":11,"color":"#C82820"},{"n":12,"color":"#6A2C90"},{"n":13,"color":"#E07020"},{"n":14,"color":"#1E7A48"},{"n":15,"color":"#7A2018"}],"buchacas":[[-2.5,-1.25],[0,-1.28],[2.5,-1.25],[-2.5,1.25],[0,1.28],[2.5,1.25]]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/billar.js"/>
+  </space>
+</hsml>

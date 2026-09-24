@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mezclas de colores. Cuatro frascos (rojo, amarillo, azul y blanco) y un
+  vaso. Tocar un frasco lo vuelca en el vaso y el líquido cambia de color
+  como pintura: rojo y amarillo dan naranja, azul y amarillo verde, el blanco
+  aclara. Tocar el vaso lo vacía. En VR se toma un frasco con el grip y se
+  sirve inclinándolo sobre el vaso.
+
+  De mesa: apoya en y=0. Mide 0.5 × 0.2 × 0.3 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/mezclas.hsml"
+             resources="audio,read_pose_stream" events="mezcla"/>
+
+  Eventos: mezcla {color, rojo, amarillo, azul, blanco} con cada chorro;
+  vaciado {}.
+  Mensajes: vaciar, echar {pigmento: "rojo" | "amarillo" | "azul" | "blanco"}.
+-->
+<hsml>
+  <head><name>Mezclas de colores</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.005" sx="0.5" sy="0.01" sz="0.3" color="#E8E8EC" border-radius="0.01"/>
+    <box y="0.02" z="-0.07" sx="0.46" sy="0.02" sz="0.1" color="#8B6B3E"/>
+    <group id="frascos"/>
+    <group id="vaso" x="0.0" z="0.07">
+      <cylinder y="0.0105" sx="0.13" sy="0.001" sz="0.13" color="#FFFFFF"/>
+      <cylinder id="liquido" y="0.011" sx="0.094" sy="0.001" sz="0.094" color="#FFFFFF" visible="false"/>
+      <cylinder id="vidrio" y="0.07" sx="0.1" sy="0.12" sz="0.1" color="#DDEEFF30" material-alpha="blend"/>
+      <box y="0.04" z="0.0505" sx="0.02" sy="0.001" sz="0.001" color="#556"/>
+      <box y="0.07" z="0.0505" sx="0.02" sy="0.001" sz="0.001" color="#556"/>
+      <box y="0.1" z="0.0505" sx="0.02" sy="0.001" sz="0.001" color="#556"/>
+    </group>
+    <cylinder id="chorro" sx="0.008" sy="0.1" sz="0.008" color="#FFFFFF" visible="false"/>
+    <group id="burbujas"/>
+    <text id="nombre" y="0.2" z="0.07" value="" size="0.022" color="#FFFFFF"/>
+    <posezone id="zona" y="0.2" sx="0.9" sy="0.6" sz="0.8" visible="false"/>
+    <script src="./mezclas.js"/>
+  </space>
+</hsml>

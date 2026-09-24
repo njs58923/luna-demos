@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tablero de dardos. Veinte sectores con dobles, triples y el centro. Con el
+  mouse, tocar el tablero tira un dardo hacia ahí (con un poco de pulso
+  tembloroso). En VR se toma un dardo del portadardos de abajo y se lo
+  arroja. Tres dardos por ronda; el puntaje va en la pizarrita.
+
+  De pared: el origen es el centro del tablero, que mira a +Z. Mide
+  0.5 × 0.75 × 0.1 m (con el portadardos).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/dardos.hsml"
+             resources="read_pose_stream" events="dardo,ronda" props='{"clave":"bar"}'/>
+
+  Props: pulso (0..1: cuánto tiembla la mano del mouse), clave (guarda el récord).
+  Eventos: dardo {puntos, sector, anillo}, ronda {total, record}.
+  Mensajes: nueva.
+-->
+<hsml>
+  <head><name>Tablero de dardos</name></head>
+  <space resources="read_pose_stream">
+    <cylinder z="0.012" rx="1.5707963" sx="0.5" sy="0.024" sz="0.5" color="#1C1C1C"/>
+    <group id="tablero" z="0.025"/>
+    <group id="clavados" z="0.025"/>
+    <group id="numeros" z="0.026"/>
+    <box y="-0.34" z="0.05" sx="0.3" sy="0.03" sz="0.08" color="#3A2A1A"/>
+    <group id="portadardos" y="-0.32" z="0.05"/>
+    <box y="0.33" z="0.012" sx="0.32" sy="0.1" sz="0.01" color="#1E3A2F"/>
+    <text id="puntaje" y="0.345" z="0.018" value="" size="0.03" color="#F2F2EE"/>
+    <text id="record" y="0.305" z="0.018" value="" size="0.018" color="#B8D8C8"/>
+    <plane id="toque" z="0.04" sx="0.5" sy="0.5" border-radius="0.5" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" z="1.2" sx="2.5" sy="2.2" sz="2.6" visible="false"/>
+    <script src="./dardos.js"/>
+  </space>
+</hsml>

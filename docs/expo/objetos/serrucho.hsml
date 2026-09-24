@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Serrucho y tirante. Un tirante apoyado en dos caballetes, con la línea de
+  corte marcada. Tocar el tirante da dos pasadas de serrucho; a la quinta, la
+  punta se corta y cae al piso. En VR se agarra el serrucho con el grip y se
+  corta de verdad, yendo y viniendo sobre la línea.
+
+  De piso: apoya en y=0. Mide 1.2 × 0.66 × 0.5 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/serrucho.hsml"
+             resources="audio,read_pose_stream" events="corte,cortado"/>
+
+  Props: madera (color del tirante).
+  Eventos: corte {profundidad (0 a 1)}, cortado {}.
+  Mensajes: reponer.
+-->
+<hsml>
+  <head><name>Serrucho y tirante</name></head>
+  <space resources="audio,read_pose_stream">
+    <!-- Caballetes: dos patas abiertas y el travesaño. -->
+    <group x="-0.3">
+      <box y="0.53" sx="0.08" sy="0.04" sz="0.5" color="#8B6B3E"/>
+      <box y="0.26" z="-0.15" rx="0.2" sx="0.05" sy="0.54" sz="0.04" color="#8B6B3E"/>
+      <box y="0.26" z="0.15" rx="-0.2" sx="0.05" sy="0.54" sz="0.04" color="#8B6B3E"/>
+    </group>
+    <group x="0.12">
+      <box y="0.53" sx="0.08" sy="0.04" sz="0.5" color="#8B6B3E"/>
+      <box y="0.26" z="-0.15" rx="0.2" sx="0.05" sy="0.54" sz="0.04" color="#8B6B3E"/>
+      <box y="0.26" z="0.15" rx="-0.2" sx="0.05" sy="0.54" sz="0.04" color="#8B6B3E"/>
+    </group>
+    <!-- El tirante: la parte que queda y la punta que se corta. -->
+    <box id="tirante" x="-0.1" y="0.6" sx="0.8" sy="0.1" sz="0.1" color="#D2A86E"/>
+    <box id="punta" x="0.4" y="0.6" sx="0.2" sy="0.1" sz="0.1" color="#D2A86E"/>
+    <box y="0.6505" x="0.3" sx="0.002" sy="0.001" sz="0.1" color="#333333"/>
+    <box y="0.6" x="0.3" z="0.0505" sx="0.002" sy="0.1" sz="0.001" color="#333333"/>
+    <box id="ranura" x="0.3" y="0.65" sx="0.004" sy="0.001" sz="0.102" color="#3B2A1A" visible="false"/>
+    <box id="toque" x="0.1" y="0.6" sx="0.9" sy="0.14" sz="0.14" color="transparent" material-alpha="blend"/>
+    <group id="aserrin"/>
+    <group id="serrucho">
+      <box y="0.04" sx="0.1" sy="0.1" sz="0.026" color="#B22222" border-radius="0.02"/>
+      <box x="0.01" y="0.28" sx="0.07" sy="0.42" sz="0.0015" color="#C9CDD2"/>
+      <box x="-0.03" y="0.2" rz="-0.1" sx="0.03" sy="0.26" sz="0.0015" color="#C9CDD2"/>
+      <box x="0.045" y="0.28" sx="0.004" sy="0.42" sz="0.0016" color="#7D8288"/>
+      <box id="agarrar" y="0.2" sx="0.14" sy="0.5" sz="0.1" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.7" sx="1.6" sy="1.2" sz="1.4" visible="false"/>
+    <script src="./serrucho.js"/>
+  </space>
+</hsml>

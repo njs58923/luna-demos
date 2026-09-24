@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Poste indicador. Hasta cuatro flechas de madera, cada una con su texto y su
+  dirección. Si una flecha tiene `destino`, tocarla lleva a ese mundo; si no,
+  sólo avisa cuál se eligió.
+
+  De piso: apoya en y=0. Mide 1.6 × 2.4 × 1.6 m (según hacia dónde apunten).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/poste.hsml"
+             resources="navigate_world" events="elegir"
+             props='{"flechas":[{"texto":"PLAYA","angulo":30,"destino":"http://..."},{"texto":"BOSQUE","angulo":-120}]}'/>
+
+  Props: flechas (lista de {texto, angulo en grados (0 = hacia +X), color,
+  destino}), madera (color).
+  Eventos: elegir {texto, destino}.
+-->
+<hsml>
+  <head><name>Poste indicador</name></head>
+  <space resources="navigate_world,read_pose_stream">
+    <cylinder id="palo" y="1.1" sx="0.09" sy="2.2" sz="0.09" color="#6B4A30"/>
+    <cylinder y="2.22" sx="0.12" sy="0.05" sz="0.12" color="#4A3322"/>
+    <cylinder y="0.04" sx="0.3" sy="0.08" sz="0.3" color="#5A5A5A"/>
+    <group id="flechas"/>
+    <script src="./poste.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Molinete de viento. Tocarlo le da un soplido y gira, cada vez más lento. En
+  VR gira si se le pasa la mano rápido por delante, como soplándolo.
+
+  De mesa: apoya en y=0 sobre una macetita. Mide 0.3 × 0.62 × 0.2 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/molinete.hsml"
+             resources="read_pose_stream" props='{"colores":["#FF595E","#FFCA3A","#8AC926","#1982C4"]}'/>
+
+  Props: colores (cuatro), palo (color).
+  Eventos: gira {velocidad} al recibir un soplido.
+  Mensajes: soplar {fuerza}.
+-->
+<hsml>
+  <head><name>Molinete</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.04" sx="0.1" sy="0.08" sz="0.1" color="#C1652F"/>
+    <cylinder id="palo" y="0.3" sx="0.01" sy="0.5" sz="0.01" color="#E9D8A6"/>
+    <group id="rueda" y="0.5" z="0.012"/>
+    <sphere y="0.5" z="0.03" sx="0.02" sy="0.02" sz="0.02" color="#FFFFFF"/>
+    <posezone id="zona" y="0.5" z="0.1" sx="0.4" sy="0.4" sz="0.3" visible="false"/>
+    <box id="toque" y="0.5" sx="0.3" sy="0.3" sz="0.08" color="transparent" material-alpha="blend"/>
+    <script src="./molinete.js"/>
+  </space>
+</hsml>

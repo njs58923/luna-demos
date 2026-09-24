@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Heladera. Freezer arriba y heladera abajo, cada puerta con su bisagra; al
+  abrir se prende la luz de adentro y se ven estantes con cosas. Tiene imanes
+  en la puerta. Si queda abierta mucho rato, pita.
+
+  De piso: apoya en y=0, las puertas miran a +Z. Mide 0.7 × 1.8 × 0.7 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/heladera.hsml"
+             resources="audio" events="puerta" props='{"color":"#F8F9FA"}'/>
+
+  Props: color, alarma (segundos abierta antes de pitar; 0 = nunca).
+  Eventos: puerta {cual: "freezer" | "heladera", abierta}.
+  Mensajes: cerrar.
+-->
+<hsml>
+  <head><name>Heladera</name></head>
+  <space resources="audio,read_pose_stream">
+    <group id="cuerpo"/>
+    <group id="adentro"/>
+    <group id="bisagra_freezer" x="0.345" y="1.52" z="0.35"/>
+    <group id="bisagra_heladera" x="0.345" y="0.62" z="0.35"/>
+    <script src="./heladera.js"/>
+  </space>
+</hsml>

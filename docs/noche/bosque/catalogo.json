@@ -1,0 +1,72 @@
+[
+ {
+  "id": "abeto",
+  "sprite": 0,
+  "caras": 1202,
+  "ancho": 0.285,
+  "alto": 0.958
+ },
+ {
+  "id": "fronda",
+  "sprite": 1,
+  "caras": 3106,
+  "ancho": 0.635,
+  "alto": 0.931
+ },
+ {
+  "id": "pino",
+  "sprite": 4,
+  "caras": 2142,
+  "ancho": 0.578,
+  "alto": 0.944
+ },
+ {
+  "id": "pinito",
+  "sprite": 7,
+  "caras": 836,
+  "ancho": 0.348,
+  "alto": 0.931
+ },
+ {
+  "id": "copa_a",
+  "sprite": 2,
+  "caras": 2790,
+  "ancho": 0.949,
+  "alto": 0.891
+ },
+ {
+  "id": "copa_b",
+  "sprite": 3,
+  "caras": 3662,
+  "ancho": 0.961,
+  "alto": 0.903
+ },
+ {
+  "id": "pastizal",
+  "sprite": 5,
+  "caras": 3808,
+  "ancho": 0.994,
+  "alto": 0.875
+ },
+ {
+  "id": "retonio",
+  "sprite": 8,
+  "caras": 962,
+  "ancho": 0.565,
+  "alto": 0.903
+ },
+ {
+  "id": "rama",
+  "sprite": 9,
+  "caras": 804,
+  "ancho": 0.838,
+  "alto": 0.847
+ },
+ {
+  "id": "terreno",
+  "sprite": null,
+  "caras": 2601,
+  "ancho": 38.28,
+  "alto": 4.57
+ }
+]

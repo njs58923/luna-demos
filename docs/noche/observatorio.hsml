@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El observatorio</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante. Al costado, mirando al telescopio en diagonal. Sobre el eje no funciona: a seis metros el tubo no entra en el campo de vision, y a nueve la espalda del tablero tapa todo. El eje de una sala redonda casi nunca es el mejor lugar para llegar. -->
+    <spawn id="entrada" default="true" x="3.80" y="0" z="7.20" ry="0.486"/>
+
+    <group id="fondo">
+      <plane z="-120" sx="240" sy="240" color="#05070E" touchable="false"/>
+      <plane z="120" sx="240" sy="240" color="#05070E" touchable="false"/>
+      <plane x="-120" ry="1.5707963" sx="240" sy="240" color="#05070E" touchable="false"/>
+      <plane x="120" ry="1.5707963" sx="240" sy="240" color="#05070E" touchable="false"/>
+      <plane y="120" rx="1.5707963" sx="240" sy="240" color="#05070E" touchable="false"/>
+    </group>
+
+    <group id="cielo">
+      <box x="0" y="-65" z="0" sx="0.24" sy="0.24" sz="0.24" color="#DCE6FF" touchable="false"/>
+      <box x="49.835" y="-29.85" z="-54.401" sx="0.313" sy="0.313" sz="0.313" color="#DCE6FF" touchable="false"/>
+      <box x="-91.382" y="5.3" z="8.02" sx="0.386" sy="0.386" sz="0.386" color="#DCE6FF" touchable="false"/>
+      <box x="74.935" y="40.45" z="57.451" sx="0.458" sy="0.458" sz="0.458" color="#DCE6FF" touchable="false"/>
+      <box x="-14.516" y="75.6" z="-82.067" sx="0.531" sy="0.531" sz="0.531" color="#DCE6FF" touchable="false"/>
+      <box x="-26.86" y="110.75" z="42.225" sx="0.604" sy="0.604" sz="0.604" color="#DCE6FF" touchable="false"/>
+      <box x="57.411" y="-44.1" z="-15.433" sx="0.677" sy="0.677" sz="0.677" color="#DCE6FF" touchable="false"/>
+      <box x="-76.896" y="-8.95" z="-39.937" sx="0.75" sy="0.75" sz="0.75" color="#DCE6FF" touchable="false"/>
+      <box x="32.562" y="26.2" z="89.164" sx="0.262" sy="0.262" sz="0.262" color="#DCE6FF" touchable="false"/>
+      <box x="34.217" y="61.35" z="-82.894" sx="0.335" sy="0.335" sz="0.335" color="#DCE6FF" touchable="false"/>
+      <box x="-61.448" y="96.5" z="28.755" sx="0.408" sy="0.408" sz="0.408" color="#DCE6FF" touchable="false"/>
+      <box x="33.318" y="-58.35" z="10.451" sx="0.481" sy="0.481" sz="0.481" color="#DCE6FF" touchable="false"/>
+      <box x="-39.464" y="-23.2" z="-68.098" sx="0.554" sy="0.554" sz="0.554" color="#DCE6FF" touchable="false"/>
+      <box x="-20.027" y="11.95" z="91.094" sx="0.626" sy="0.626" sz="0.626" color="#DCE6FF" touchable="false"/>
+      <box x="76.447" y="47.1" z="-53.745" sx="0.699" sy="0.699" sz="0.699" color="#DCE6FF" touchable="false"/>
+      <box x="-78.683" y="82.25" z="-10.196" sx="0.772" sy="0.772" sz="0.772" color="#DCE6FF" touchable="false"/>
+      <box x="23.994" y="117.4" z="28.47" sx="0.285" sy="0.285" sz="0.285" color="#DCE6FF" touchable="false"/>
+      <box x="2.764" y="-37.45" z="-66.842" sx="0.358" sy="0.358" sz="0.358" color="#DCE6FF" touchable="false"/>
+      <box x="-63.019" y="-2.3" z="63.327" sx="0.43" sy="0.43" sz="0.43" color="#DCE6FF" touchable="false"/>
+      <box x="94.856" y="32.85" z="-4.386" sx="0.503" sy="0.503" sz="0.503" color="#DCE6FF" touchable="false"/>
+      <box x="-66.85" y="68" z="-55.786" sx="0.576" sy="0.576" sz="0.576" color="#DCE6FF" touchable="false"/>
+      <box x="8.082" y="103.15" z="60.073" sx="0.649" sy="0.649" sz="0.649" color="#DCE6FF" touchable="false"/>
+      <box x="27.687" y="-51.7" z="-39.793" sx="0.722" sy="0.722" sz="0.722" color="#DCE6FF" touchable="false"/>
+      <box x="-80.794" y="-16.55" z="18.176" sx="0.794" sy="0.794" sz="0.794" color="#DCE6FF" touchable="false"/>
+      <box x="81.831" y="18.6" z="46.891" sx="0.307" sy="0.307" sz="0.307" color="#DCE6FF" touchable="false"/>
+      <box x="-27.956" y="53.75" z="-87.632" sx="0.38" sy="0.38" sz="0.38" color="#DCE6FF" touchable="false"/>
+      <box x="-31.263" y="88.9" z="67.664" sx="0.453" sy="0.453" sz="0.453" color="#DCE6FF" touchable="false"/>
+      <box x="12.362" y="124.05" z="-5.174" sx="0.526" sy="0.526" sz="0.526" color="#DCE6FF" touchable="false"/>
+      <box x="-68.688" y="-30.8" z="-24.706" sx="0.598" sy="0.598" sz="0.598" color="#DCE6FF" touchable="false"/>
+      <box x="42.555" y="4.35" z="80.97" sx="0.671" sy="0.671" sz="0.671" color="#DCE6FF" touchable="false"/>
+      <box x="24.094" y="39.5" z="-91.402" sx="0.744" sy="0.744" sz="0.744" color="#DCE6FF" touchable="false"/>
+      <box x="-70.532" y="74.65" z="45.351" sx="0.257" sy="0.257" sz="0.257" color="#DCE6FF" touchable="false"/>
+      <box x="50.801" y="109.8" z="8.731" sx="0.33" sy="0.33" sz="0.33" color="#DCE6FF" touchable="false"/>
+      <box x="-35.663" y="-45.05" z="-46.05" sx="0.402" sy="0.402" sz="0.402" color="#DCE6FF" touchable="false"/>
+      <box x="-7.119" y="-9.9" z="85.92" sx="0.475" sy="0.475" sz="0.475" color="#DCE6FF" touchable="false"/>
+      <box x="69.649" y="25.25" z="-64.431" sx="0.548" sy="0.548" sz="0.548" color="#DCE6FF" touchable="false"/>
+      <box x="-90.004" y="60.4" z="0.438" sx="0.621" sy="0.621" sz="0.621" color="#DCE6FF" touchable="false"/>
+      <box x="50.928" y="95.55" z="46.201" sx="0.694" sy="0.694" sz="0.694" color="#DCE6FF" touchable="false"/>
+      <box x="-2.991" y="-59.3" z="-32.273" sx="0.766" sy="0.766" sz="0.766" color="#DCE6FF" touchable="false"/>
+      <box x="-47.19" y="-24.15" z="62.176" sx="0.279" sy="0.279" sz="0.279" color="#DCE6FF" touchable="false"/>
+      <box x="91.578" y="11" z="-16.659" sx="0.352" sy="0.352" sz="0.352" color="#DCE6FF" touchable="false"/>
+      <box x="-79.234" y="46.15" z="-49.862" sx="0.425" sy="0.425" sz="0.425" color="#DCE6FF" touchable="false"/>
+      <box x="21.133" y="81.3" z="77.115" sx="0.498" sy="0.498" sz="0.498" color="#DCE6FF" touchable="false"/>
+      <box x="17.984" y="116.45" z="-35.043" sx="0.57" sy="0.57" sz="0.57" color="#DCE6FF" touchable="false"/>
+      <box x="-61.816" y="-38.4" z="22.917" sx="0.643" sy="0.643" sz="0.643" color="#DCE6FF" touchable="false"/>
+      <box x="82.423" y="-3.25" z="33.554" sx="0.716" sy="0.716" sz="0.716" color="#DCE6FF" touchable="false"/>
+      <box x="-40.676" y="31.9" z="-85.831" sx="0.789" sy="0.789" sz="0.789" color="#DCE6FF" touchable="false"/>
+      <box x="-25.774" y="67.05" z="83.594" sx="0.302" sy="0.302" sz="0.302" color="#DCE6FF" touchable="false"/>
+      <box x="53.269" y="102.2" z="-31.218" sx="0.374" sy="0.374" sz="0.374" color="#DCE6FF" touchable="false"/>
+      <box x="-45.796" y="-52.65" z="-9.835" sx="0.447" sy="0.447" sz="0.447" color="#DCE6FF" touchable="false"/>
+      <box x="47.644" y="-17.5" z="67.073" sx="0.52" sy="0.52" sz="0.52" color="#DCE6FF" touchable="false"/>
+      <box x="11.65" y="17.65" z="-93.471" sx="0.593" sy="0.593" sz="0.593" color="#DCE6FF" touchable="false"/>
+      <box x="-70.228" y="52.8" z="59.776" sx="0.666" sy="0.666" sz="0.666" color="#DCE6FF" touchable="false"/>
+      <box x="75.228" y="87.95" z="2.744" sx="0.738" sy="0.738" sz="0.738" color="#DCE6FF" touchable="false"/>
+      <box x="-13.465" y="123.1" z="-13.27" sx="0.251" sy="0.251" sz="0.251" color="#DCE6FF" touchable="false"/>
+      <box x="3.686" y="-31.75" z="72.1" sx="0.324" sy="0.324" sz="0.324" color="#DCE6FF" touchable="false"/>
+      <box x="58.091" y="3.4" z="-70.305" sx="0.397" sy="0.397" sz="0.397" color="#DCE6FF" touchable="false"/>
+      <box x="-93.707" y="38.55" z="13.073" sx="0.47" sy="0.47" sz="0.47" color="#DCE6FF" touchable="false"/>
+      <box x="69.475" y="73.7" z="47.839" sx="0.542" sy="0.542" sz="0.542" color="#DCE6FF" touchable="false"/>
+      <box x="-11.881" y="108.85" z="-51.638" sx="0.615" sy="0.615" sz="0.615" color="#DCE6FF" touchable="false"/>
+      <box x="-28.098" y="-46" z="49.593" sx="0.688" sy="0.688" sz="0.688" color="#DCE6FF" touchable="false"/>
+      <box x="81.583" y="-10.85" z="-26.465" sx="0.761" sy="0.761" sz="0.761" color="#DCE6FF" touchable="false"/>
+      <box x="-86.277" y="24.3" z="-39.354" sx="0.274" sy="0.274" sz="0.274" color="#DCE6FF" touchable="false"/>
+      <box x="35.274" y="59.45" z="83.147" sx="0.346" sy="0.346" sz="0.346" color="#DCE6FF" touchable="false"/>
+      <box x="23.256" y="94.6" z="-65.658" sx="0.419" sy="0.419" sz="0.419" color="#DCE6FF" touchable="false"/>
+      <box x="-26.191" y="-60.25" z="13.928" sx="0.492" sy="0.492" sz="0.492" color="#DCE6FF" touchable="false"/>
+      <box x="74.927" y="-25.1" z="19.361" sx="0.565" sy="0.565" sz="0.565" color="#DCE6FF" touchable="false"/>
+      <box x="-50.613" y="10.05" z="-77.88" sx="0.638" sy="0.638" sz="0.638" color="#DCE6FF" touchable="false"/>
+      <box x="-15.434" y="45.2" z="92.497" sx="0.71" sy="0.71" sz="0.71" color="#DCE6FF" touchable="false"/>
+      <box x="63.452" y="80.35" z="-49.636" sx="0.783" sy="0.783" sz="0.783" color="#DCE6FF" touchable="false"/>
+      <box x="-41.284" y="115.5" z="-3.218" sx="0.296" sy="0.296" sz="0.296" color="#DCE6FF" touchable="false"/>
+      <box x="44.322" y="-39.35" z="47.446" sx="0.369" sy="0.369" sz="0.369" color="#DCE6FF" touchable="false"/>
+      <box x="-0.863" y="-4.2" z="-88.626" sx="0.442" sy="0.442" sz="0.442" color="#DCE6FF" touchable="false"/>
+      <box x="-63.483" y="30.95" z="70.668" sx="0.514" sy="0.514" sz="0.514" color="#DCE6FF" touchable="false"/>
+      <box x="87.458" y="66.1" z="-8.535" sx="0.587" sy="0.587" sz="0.587" color="#DCE6FF" touchable="false"/>
+      <box x="-50.237" y="101.25" z="-37.745" sx="0.66" sy="0.66" sz="0.66" color="#DCE6FF" touchable="false"/>
+      <box x="8.292" y="-53.6" z="44.354" sx="0.733" sy="0.733" sz="0.733" color="#DCE6FF" touchable="false"/>
+      <box x="43.186" y="-18.45" z="-69.373" sx="0.246" sy="0.246" sz="0.246" color="#DCE6FF" touchable="false"/>
+      <box x="-90.597" y="16.7" z="25.303" sx="0.318" sy="0.318" sz="0.318" color="#DCE6FF" touchable="false"/>
+      <box x="82.458" y="51.85" z="41.811" sx="0.391" sy="0.391" sz="0.391" color="#DCE6FF" touchable="false"/>
+      <box x="-26.765" y="87" z="-71.131" sx="0.464" sy="0.464" sz="0.464" color="#DCE6FF" touchable="false"/>
+      <box x="-8.604" y="122.15" z="21.433" sx="0.537" sy="0.537" sz="0.537" color="#DCE6FF" touchable="false"/>
+      <box x="64.345" y="-32.7" z="-30.878" sx="0.61" sy="0.61" sz="0.61" color="#DCE6FF" touchable="false"/>
+      <box x="-87.011" y="2.45" z="-26.364" sx="0.682" sy="0.682" sz="0.682" color="#DCE6FF" touchable="false"/>
+      <box x="48.277" y="37.6" z="81.465" sx="0.755" sy="0.755" sz="0.755" color="#DCE6FF" touchable="false"/>
+      <box x="17.409" y="72.75" z="-83.032" sx="0.268" sy="0.268" sz="0.268" color="#DCE6FF" touchable="false"/>
+      <box x="-44.175" y="107.9" z="31.704" sx="0.341" sy="0.341" sz="0.341" color="#DCE6FF" touchable="false"/>
+      <box x="55.316" y="-46.95" z="6.621" sx="0.414" sy="0.414" sz="0.414" color="#DCE6FF" touchable="false"/>
+      <box x="-55.61" y="-11.8" z="-64.694" sx="0.486" sy="0.486" sz="0.486" color="#DCE6FF" touchable="false"/>
+      <box x="-2.994" y="23.35" z="94.72" sx="0.559" sy="0.559" sz="0.559" color="#DCE6FF" touchable="false"/>
+      <box x="63.296" y="58.5" z="-64.856" sx="0.632" sy="0.632" sz="0.632" color="#DCE6FF" touchable="false"/>
+      <box x="-70.414" y="93.65" z="3.943" sx="0.705" sy="0.705" sz="0.705" color="#DCE6FF" touchable="false"/>
+      <box x="20.588" y="-61.2" z="16.843" sx="0.778" sy="0.778" sz="0.778" color="#DCE6FF" touchable="false"/>
+      <box x="-10.968" y="-26.05" z="-75.915" sx="0.29" sy="0.29" sz="0.29" color="#DCE6FF" touchable="false"/>
+      <box x="-52.185" y="9.1" z="76.583" sx="0.363" sy="0.363" sz="0.363" color="#DCE6FF" touchable="false"/>
+      <box x="91.43" y="44.25" z="-21.506" sx="0.436" sy="0.436" sz="0.436" color="#DCE6FF" touchable="false"/>
+      <box x="-70.795" y="79.4" z="-39.657" sx="0.509" sy="0.509" sz="0.509" color="#DCE6FF" touchable="false"/>
+      <box x="13.566" y="114.55" z="41.137" sx="0.582" sy="0.582" sz="0.582" color="#DCE6FF" touchable="false"/>
+      <box x="26.234" y="-40.3" z="-58.264" sx="0.654" sy="0.654" sz="0.654" color="#DCE6FF" touchable="false"/>
+      <box x="-81.08" y="-5.15" z="34.864" sx="0.727" sy="0.727" sz="0.727" color="#DCE6FF" touchable="false"/>
+      <box x="89.702" y="30" z="31.281" sx="0.24" sy="0.24" sz="0.24" color="#DCE6FF" touchable="false"/>
+      <box x="-41.819" y="65.15" z="-77.722" sx="0.313" sy="0.313" sz="0.313" color="#DCE6FF" touchable="false"/>
+      <box x="-15.685" y="100.3" z="61.943" sx="0.386" sy="0.386" sz="0.386" color="#DCE6FF" touchable="false"/>
+      <box x="36.205" y="-54.55" z="-23.781" sx="0.458" sy="0.458" sz="0.458" color="#DCE6FF" touchable="false"/>
+      <box x="-80.103" y="-19.4" z="-12.965" sx="0.531" sy="0.531" sz="0.531" color="#DCE6FF" touchable="false"/>
+      <box x="58.231" y="15.75" z="73.696" sx="0.604" sy="0.604" sz="0.604" color="#DCE6FF" touchable="false"/>
+      <box x="6.752" y="50.9" z="-92.426" sx="0.677" sy="0.677" sz="0.677" color="#DCE6FF" touchable="false"/>
+      <box x="-55.796" y="86.05" z="52.633" sx="0.75" sy="0.75" sz="0.75" color="#DCE6FF" touchable="false"/>
+      <box x="26.597" y="121.2" z="-0.389" sx="0.262" sy="0.262" sz="0.262" color="#DCE6FF" touchable="false"/>
+      <box x="-52.693" y="-33.65" z="-46.874" sx="0.335" sy="0.335" sz="0.335" color="#DCE6FF" touchable="false"/>
+      <box x="9.241" y="1.5" z="90.152" sx="0.408" sy="0.408" sz="0.408" color="#DCE6FF" touchable="false"/>
+      <box x="56.555" y="36.65" z="-76.041" sx="0.481" sy="0.481" sz="0.481" color="#DCE6FF" touchable="false"/>
+      <box x="-83.78" y="71.8" z="16.085" sx="0.554" sy="0.554" sz="0.554" color="#DCE6FF" touchable="false"/>
+      <box x="47.438" y="106.95" z="29.212" sx="0.626" sy="0.626" sz="0.626" color="#DCE6FF" touchable="false"/>
+      <box x="-14.881" y="-47.9" z="-52.298" sx="0.699" sy="0.699" sz="0.699" color="#DCE6FF" touchable="false"/>
+      <box x="-37.998" y="-12.75" z="75.852" sx="0.772" sy="0.772" sz="0.772" color="#DCE6FF" touchable="false"/>
+      <box x="88.465" y="22.4" z="-33.78" sx="0.285" sy="0.285" sz="0.285" color="#DCE6FF" touchable="false"/>
+      <box x="-84.537" y="57.55" z="-33.459" sx="0.358" sy="0.358" sz="0.358" color="#DCE6FF" touchable="false"/>
+      <box x="31.191" y="92.7" z="64.194" sx="0.43" sy="0.43" sz="0.43" color="#DCE6FF" touchable="false"/>
+      <box x="6.589" y="-62.15" z="-22.135" sx="0.503" sy="0.503" sz="0.503" color="#DCE6FF" touchable="false"/>
+      <box x="-65.192" y="-27" z="39.063" sx="0.576" sy="0.576" sz="0.576" color="#DCE6FF" touchable="false"/>
+      <box x="90.577" y="8.15" z="18.53" sx="0.649" sy="0.649" sz="0.649" color="#DCE6FF" touchable="false"/>
+      <box x="-55.217" y="43.3" z="-76.152" sx="0.722" sy="0.722" sz="0.722" color="#DCE6FF" touchable="false"/>
+      <box x="-9.317" y="78.45" z="81.184" sx="0.794" sy="0.794" sz="0.794" color="#DCE6FF" touchable="false"/>
+      <box x="34.074" y="113.6" z="-29.58" sx="0.307" sy="0.307" sz="0.307" color="#DCE6FF" touchable="false"/>
+      <box x="-62.814" y="-41.25" z="-1.679" sx="0.38" sy="0.38" sz="0.38" color="#DCE6FF" touchable="false"/>
+      <box x="63.186" y="-6.1" z="61.068" sx="0.453" sy="0.453" sz="0.453" color="#DCE6FF" touchable="false"/>
+      <box x="-5.773" y="29.05" z="-94.82" sx="0.526" sy="0.526" sz="0.526" color="#DCE6FF" touchable="false"/>
+      <box x="-55.786" y="64.2" z="68.871" sx="0.598" sy="0.598" sz="0.598" color="#DCE6FF" touchable="false"/>
+      <box x="64.214" y="99.35" z="-9.597" sx="0.671" sy="0.671" sz="0.671" color="#DCE6FF" touchable="false"/>
+      <box x="-34.333" y="-55.5" z="-23.151" sx="0.744" sy="0.744" sz="0.744" color="#DCE6FF" touchable="false"/>
+      <box x="18.827" y="-20.35" z="78.329" sx="0.257" sy="0.257" sz="0.257" color="#DCE6FF" touchable="false"/>
+      <box x="45.43" y="14.8" z="-82.037" sx="0.33" sy="0.33" sz="0.33" color="#DCE6FF" touchable="false"/>
+      <box x="-88.066" y="49.95" z="29.519" sx="0.402" sy="0.402" sz="0.402" color="#DCE6FF" touchable="false"/>
+      <box x="70.719" y="85.1" z="31.429" sx="0.475" sy="0.475" sz="0.475" color="#DCE6FF" touchable="false"/>
+      <box x="-11.85" y="120.25" z="-27.194" sx="0.548" sy="0.548" sz="0.548" color="#DCE6FF" touchable="false"/>
+      <box x="-22.615" y="-34.6" z="65.882" sx="0.621" sy="0.621" sz="0.621" color="#DCE6FF" touchable="false"/>
+      <box x="79.328" y="0.55" z="-43.183" sx="0.694" sy="0.694" sz="0.694" color="#DCE6FF" touchable="false"/>
+      <box x="-92.04" y="35.7" z="-22.829" sx="0.766" sy="0.766" sz="0.766" color="#DCE6FF" touchable="false"/>
+      <box x="47.435" y="70.85" z="71.457" sx="0.279" sy="0.279" sz="0.279" color="#DCE6FF" touchable="false"/>
+      <box x="8.833" y="106" z="-56.311" sx="0.352" sy="0.352" sz="0.352" color="#DCE6FF" touchable="false"/>
+      <box x="-41.415" y="-48.85" z="33.053" sx="0.425" sy="0.425" sz="0.425" color="#DCE6FF" touchable="false"/>
+      <box x="84.157" y="-13.7" z="5.736" sx="0.498" sy="0.498" sz="0.498" color="#DCE6FF" touchable="false"/>
+      <box x="-65.258" y="21.45" z="-68.508" sx="0.57" sy="0.57" sz="0.57" color="#DCE6FF" touchable="false"/>
+      <box x="1.776" y="56.6" z="91.183" sx="0.643" sy="0.643" sz="0.643" color="#DCE6FF" touchable="false"/>
+      <box x="47.72" y="91.75" z="-54.173" sx="0.716" sy="0.716" sz="0.716" color="#DCE6FF" touchable="false"/>
+      <box x="-18.797" y="-63.1" z="2.019" sx="0.789" sy="0.789" sz="0.789" color="#DCE6FF" touchable="false"/>
+      <box x="60.622" y="-27.95" z="44.63" sx="0.302" sy="0.302" sz="0.302" color="#DCE6FF" touchable="false"/>
+      <box x="-17.829" y="7.2" z="-90.484" sx="0.374" sy="0.374" sz="0.374" color="#DCE6FF" touchable="false"/>
+      <box x="-48.999" y="42.35" z="80.446" sx="0.447" sy="0.447" sz="0.447" color="#DCE6FF" touchable="false"/>
+      <box x="79.021" y="77.5" z="-22.902" sx="0.52" sy="0.52" sz="0.52" color="#DCE6FF" touchable="false"/>
+      <box x="-41.981" y="112.65" z="-20.775" sx="0.593" sy="0.593" sz="0.593" color="#DCE6FF" touchable="false"/>
+      <box x="22.306" y="-42.2" z="57.573" sx="0.666" sy="0.666" sz="0.666" color="#DCE6FF" touchable="false"/>
+      <box x="31.796" y="-7.05" z="-81.494" sx="0.738" sy="0.738" sz="0.738" color="#DCE6FF" touchable="false"/>
+      <box x="-85.227" y="28.1" z="41.925" sx="0.251" sy="0.251" sz="0.251" color="#DCE6FF" touchable="false"/>
+      <box x="85.415" y="63.25" z="24.975" sx="0.324" sy="0.324" sz="0.324" color="#DCE6FF" touchable="false"/>
+      <box x="-34.161" y="98.4" z="-56.387" sx="0.397" sy="0.397" sz="0.397" color="#DCE6FF" touchable="false"/>
+      <box x="-7.706" y="-56.45" z="38.627" sx="0.47" sy="0.47" sz="0.47" color="#DCE6FF" touchable="false"/>
+      <box x="64.503" y="-21.3" z="-47.251" sx="0.542" sy="0.542" sz="0.542" color="#DCE6FF" touchable="false"/>
+      <box x="-93.058" y="13.85" z="-10.22" sx="0.615" sy="0.615" sz="0.615" color="#DCE6FF" touchable="false"/>
+      <box x="61.36" y="49" z="69.992" sx="0.688" sy="0.688" sz="0.688" color="#DCE6FF" touchable="false"/>
+      <box x="1.706" y="84.15" z="-78.038" sx="0.761" sy="0.761" sz="0.761" color="#DCE6FF" touchable="false"/>
+      <box x="-22.411" y="119.3" z="23.415" sx="0.274" sy="0.274" sz="0.274" color="#DCE6FF" touchable="false"/>
+      <box x="68.614" y="-35.55" z="-4.513" sx="0.346" sy="0.346" sz="0.346" color="#DCE6FF" touchable="false"/>
+      <box x="-70.214" y="-0.4" z="-56.31" sx="0.419" sy="0.419" sz="0.419" color="#DCE6FF" touchable="false"/>
+      <box x="14.481" y="34.75" z="93.77" sx="0.492" sy="0.492" sz="0.492" color="#DCE6FF" touchable="false"/>
+      <box x="47.853" y="69.9" z="-71.716" sx="0.565" sy="0.565" sz="0.565" color="#DCE6FF" touchable="false"/>
+      <box x="-56.565" y="105.05" z="13.888" sx="0.638" sy="0.638" sz="0.638" color="#DCE6FF" touchable="false"/>
+      <box x="45.214" y="-49.8" z="24.752" sx="0.71" sy="0.71" sz="0.71" color="#DCE6FF" touchable="false"/>
+      <box x="-27.037" y="-14.65" z="-79.375" sx="0.783" sy="0.783" sz="0.783" color="#DCE6FF" touchable="false"/>
+      <box x="-37.967" y="20.5" z="86.564" sx="0.296" sy="0.296" sz="0.296" color="#DCE6FF" touchable="false"/>
+      <box x="83.677" y="55.65" z="-36.95" sx="0.369" sy="0.369" sz="0.369" color="#DCE6FF" touchable="false"/>
+      <box x="-69.156" y="90.8" z="-23.363" sx="0.442" sy="0.442" sz="0.442" color="#DCE6FF" touchable="false"/>
+      <box x="6.465" y="-64.05" z="11.739" sx="0.514" sy="0.514" sz="0.514" color="#DCE6FF" touchable="false"/>
+      <box x="17.592" y="-28.9" z="-72.431" sx="0.587" sy="0.587" sz="0.587" color="#DCE6FF" touchable="false"/>
+      <box x="-76.386" y="6.25" z="51.245" sx="0.66" sy="0.66" sz="0.66" color="#DCE6FF" touchable="false"/>
+      <box x="93.244" y="41.4" z="14.162" sx="0.733" sy="0.733" sz="0.733" color="#DCE6FF" touchable="false"/>
+      <box x="-51.972" y="76.55" z="-64.475" sx="0.246" sy="0.246" sz="0.246" color="#DCE6FF" touchable="false"/>
+      <box x="-3.061" y="111.7" z="48.381" sx="0.318" sy="0.318" sz="0.318" color="#DCE6FF" touchable="false"/>
+      <box x="43.685" y="-43.15" z="-42.02" sx="0.391" sy="0.391" sz="0.391" color="#DCE6FF" touchable="false"/>
+      <box x="-87.043" y="-8" z="2.12" sx="0.464" sy="0.464" sz="0.464" color="#DCE6FF" touchable="false"/>
+      <box x="71.559" y="27.15" z="62.419" sx="0.537" sy="0.537" sz="0.537" color="#DCE6FF" touchable="false"/>
+      <box x="-9.975" y="62.3" z="-88.782" sx="0.61" sy="0.61" sz="0.61" color="#DCE6FF" touchable="false"/>
+      <box x="-39.399" y="97.45" z="54.067" sx="0.682" sy="0.682" sz="0.682" color="#DCE6FF" touchable="false"/>
+      <box x="36.494" y="-57.4" z="-7.376" sx="0.755" sy="0.755" sz="0.755" color="#DCE6FF" touchable="false"/>
+      <box x="-67.961" y="-22.25" z="-40.942" sx="0.268" sy="0.268" sz="0.268" color="#DCE6FF" touchable="false"/>
+      <box x="26.45" y="12.9" z="89.627" sx="0.341" sy="0.341" sz="0.341" color="#DCE6FF" touchable="false"/>
+      <box x="40.961" y="48.05" z="-83.794" sx="0.414" sy="0.414" sz="0.414" color="#DCE6FF" touchable="false"/>
+      <box x="-73.252" y="83.2" z="28.791" sx="0.486" sy="0.486" sz="0.486" color="#DCE6FF" touchable="false"/>
+      <box x="32.591" y="118.35" z="12.534" sx="0.559" sy="0.559" sz="0.559" color="#DCE6FF" touchable="false"/>
+      <box x="-30.243" y="-36.5" z="-60.73" sx="0.632" sy="0.632" sz="0.632" color="#DCE6FF" touchable="false"/>
+      <box x="-24.748" y="-1.35" z="86.196" sx="0.705" sy="0.705" sz="0.705" color="#DCE6FF" touchable="false"/>
+      <box x="80.946" y="33.8" z="-49.581" sx="0.778" sy="0.778" sz="0.778" color="#DCE6FF" touchable="false"/>
+      <box x="-85.055" y="68.95" z="-16.539" sx="0.29" sy="0.29" sz="0.29" color="#DCE6FF" touchable="false"/>
+      <box x="35.365" y="104.1" z="47.786" sx="0.363" sy="0.363" sz="0.363" color="#DCE6FF" touchable="false"/>
+      <box x="5.221" y="-50.75" z="-49.771" sx="0.436" sy="0.436" sz="0.436" color="#DCE6FF" touchable="false"/>
+      <box x="-62.4" y="-15.6" z="55.244" sx="0.509" sy="0.509" sz="0.509" color="#DCE6FF" touchable="false"/>
+      <box x="94.41" y="19.55" z="1.604" sx="0.582" sy="0.582" sz="0.582" color="#DCE6FF" touchable="false"/>
+      <box x="-66.579" y="54.7" z="-63.104" sx="0.654" sy="0.654" sz="0.654" color="#DCE6FF" touchable="false"/>
+      <box x="5.201" y="89.85" z="73.593" sx="0.727" sy="0.727" sz="0.727" color="#DCE6FF" touchable="false"/>
+      <box x="0" y="-65" z="0" sx="0.24" sy="0.24" sz="0.24" color="#DCE6FF" touchable="false"/>
+      <box x="-72.857" y="-29.85" z="11.615" sx="0.313" sy="0.313" sz="0.313" color="#DCE6FF" touchable="false"/>
+      <box x="76.553" y="5.3" z="50.543" sx="0.386" sy="0.386" sz="0.386" color="#DCE6FF" touchable="false"/>
+      <box x="-22.961" y="40.45" z="-91.589" sx="0.458" sy="0.458" sz="0.458" color="#DCE6FF" touchable="false"/>
+      <box x="-39.663" y="75.6" z="73.297" sx="0.531" sy="0.531" sz="0.531" color="#DCE6FF" touchable="false"/>
+      <box x="47.293" y="110.75" z="-16.366" sx="0.604" sy="0.604" sz="0.604" color="#DCE6FF" touchable="false"/>
+      <box x="-54.558" y="-44.1" z="-23.613" sx="0.677" sy="0.677" sz="0.677" color="#DCE6FF" touchable="false"/>
+      <box x="35.387" y="-8.95" z="79.093" sx="0.75" sy="0.75" sz="0.75" color="#DCE6FF" touchable="false"/>
+      <box x="29.944" y="26.2" z="-90.077" sx="0.262" sy="0.262" sz="0.262" color="#DCE6FF" touchable="false"/>
+      <box x="-78.343" y="61.35" z="43.641" sx="0.335" sy="0.335" sz="0.335" color="#DCE6FF" touchable="false"/>
+      <box x="66.004" y="96.5" z="15.691" sx="0.408" sy="0.408" sz="0.408" color="#DCE6FF" touchable="false"/>
+      <box x="-19.594" y="-58.35" z="-28.902" sx="0.481" sy="0.481" sz="0.481" color="#DCE6FF" touchable="false"/>
+      <box x="-11.439" y="-23.2" z="77.871" sx="0.554" sy="0.554" sz="0.554" color="#DCE6FF" touchable="false"/>
+      <box x="72.329" y="11.95" z="-58.887" sx="0.626" sy="0.626" sz="0.626" color="#DCE6FF" touchable="false"/>
+      <box x="-93.289" y="47.1" z="-5.447" sx="0.699" sy="0.699" sz="0.699" color="#DCE6FF" touchable="false"/>
+      <box x="55.28" y="82.25" z="56.913" sx="0.772" sy="0.772" sz="0.772" color="#DCE6FF" touchable="false"/>
+      <box x="-1.088" y="117.4" z="-37.216" sx="0.285" sy="0.285" sz="0.285" color="#DCE6FF" touchable="false"/>
+      <box x="-43.729" y="-37.45" z="50.629" sx="0.358" sy="0.358" sz="0.358" color="#DCE6FF" touchable="false"/>
+      <box x="88.732" y="-2.3" z="-10.407" sx="0.43" sy="0.43" sz="0.43" color="#DCE6FF" touchable="false"/>
+      <box x="-77.014" y="32.85" z="-55.549" sx="0.503" sy="0.503" sz="0.503" color="#DCE6FF" touchable="false"/>
+      <box x="17.664" y="68" z="85.258" sx="0.576" sy="0.576" sz="0.576" color="#DCE6FF" touchable="false"/>
+      <box x="31.025" y="103.15" z="-52.072" sx="0.649" sy="0.649" sz="0.649" color="#DCE6FF" touchable="false"/>
+      <box x="-46.428" y="-51.7" z="13.947" sx="0.722" sy="0.722" sz="0.722" color="#DCE6FF" touchable="false"/>
+      <box x="74.577" y="-16.55" z="36.006" sx="0.794" sy="0.794" sz="0.794" color="#DCE6FF" touchable="false"/>
+      <box x="-34.927" y="18.6" z="-87.608" sx="0.307" sy="0.307" sz="0.307" color="#DCE6FF" touchable="false"/>
+      <box x="-32.598" y="53.75" z="86.013" sx="0.38" sy="0.38" sz="0.38" color="#DCE6FF" touchable="false"/>
+      <box x="66.559" y="88.9" z="-33.551" sx="0.453" sy="0.453" sz="0.453" color="#DCE6FF" touchable="false"/>
+      <box x="-12.899" y="124.05" z="-3.636" sx="0.526" sy="0.526" sz="0.526" color="#DCE6FF" touchable="false"/>
+      <box x="38.43" y="-30.8" z="62.06" sx="0.598" sy="0.598" sz="0.598" color="#DCE6FF" touchable="false"/>
+      <box x="17.023" y="4.35" z="-89.874" sx="0.671" sy="0.671" sz="0.671" color="#DCE6FF" touchable="false"/>
+      <box x="-75.705" y="39.5" z="56.599" sx="0.744" sy="0.744" sz="0.744" color="#DCE6FF" touchable="false"/>
+      <box x="83.437" y="74.65" z="8.342" sx="0.257" sy="0.257" sz="0.257" color="#DCE6FF" touchable="false"/>
+      <box x="-34.356" y="109.8" z="-38.427" sx="0.33" sy="0.33" sz="0.33" color="#DCE6FF" touchable="false"/>
+      <box x="-0.706" y="-45.05" z="58.241" sx="0.402" sy="0.402" sz="0.402" color="#DCE6FF" touchable="false"/>
+      <box x="59.003" y="-9.9" z="-62.862" sx="0.475" sy="0.475" sz="0.475" color="#DCE6FF" touchable="false"/>
+      <box x="-94.611" y="25.25" z="7.15" sx="0.548" sy="0.548" sz="0.548" color="#DCE6FF" touchable="false"/>
+      <box x="70.759" y="60.4" z="55.624" sx="0.621" sy="0.621" sz="0.621" color="#DCE6FF" touchable="false"/>
+      <box x="-11.156" y="95.55" z="-67.851" sx="0.694" sy="0.694" sz="0.694" color="#DCE6FF" touchable="false"/>
+      <box x="-17.726" y="-59.3" z="27.135" sx="0.766" sy="0.766" sz="0.766" color="#DCE6FF" touchable="false"/>
+      <box x="75.62" y="-24.15" z="-19.349" sx="0.279" sy="0.279" sz="0.279" color="#DCE6FF" touchable="false"/>
+      <box x="-82.078" y="11" z="-43.899" sx="0.352" sy="0.352" sz="0.352" color="#DCE6FF" touchable="false"/>
+      <box x="31.047" y="46.15" z="88.319" sx="0.425" sy="0.425" sz="0.425" color="#DCE6FF" touchable="false"/>
+      <box x="31.402" y="81.3" z="-73.534" sx="0.498" sy="0.498" sz="0.498" color="#DCE6FF" touchable="false"/>
+      <box x="-35.875" y="116.45" z="16.261" sx="0.57" sy="0.57" sz="0.57" color="#DCE6FF" touchable="false"/>
+      <box x="62.662" y="-38.4" z="20.492" sx="0.643" sy="0.643" sz="0.643" color="#DCE6FF" touchable="false"/>
+      <box x="-43.685" y="-3.25" z="-77.531" sx="0.716" sy="0.716" sz="0.716" color="#DCE6FF" touchable="false"/>
+      <box x="-21.517" y="31.9" z="92.512" sx="0.789" sy="0.789" sz="0.789" color="#DCE6FF" touchable="false"/>
+      <box x="72.166" y="67.05" z="-49.44" sx="0.302" sy="0.302" sz="0.302" color="#DCE6FF" touchable="false"/>
+      <box x="-61.13" y="102.2" z="-8.676" sx="0.374" sy="0.374" sz="0.374" color="#DCE6FF" touchable="false"/>
+      <box x="29.75" y="-52.65" z="36.179" sx="0.447" sy="0.447" sz="0.447" color="#DCE6FF" touchable="false"/>
+      <box x="4.395" y="-17.5" z="-82.155" sx="0.52" sy="0.52" sz="0.52" color="#DCE6FF" touchable="false"/>
+      <box x="-67.247" y="17.65" z="65.957" sx="0.593" sy="0.593" sz="0.593" color="#DCE6FF" touchable="false"/>
+      <box x="92.17" y="52.8" z="-3.143" sx="0.666" sy="0.666" sz="0.666" color="#DCE6FF" touchable="false"/>
+      <box x="-57.209" y="87.95" z="-48.928" sx="0.738" sy="0.738" sz="0.738" color="#DCE6FF" touchable="false"/>
+      <box x="2.294" y="123.1" z="18.765" sx="0.251" sy="0.251" sz="0.251" color="#DCE6FF" touchable="false"/>
+      <box x="41.947" y="-31.75" z="-58.757" sx="0.324" sy="0.324" sz="0.324" color="#DCE6FF" touchable="false"/>
+      <box x="-89.212" y="3.4" z="18.937" sx="0.397" sy="0.397" sz="0.397" color="#DCE6FF" touchable="false"/>
+      <box x="81.516" y="38.55" z="48.032" sx="0.47" sy="0.47" sz="0.47" color="#DCE6FF" touchable="false"/>
+      <box x="-24.662" y="73.7" z="-80.667" sx="0.542" sy="0.542" sz="0.542" color="#DCE6FF" touchable="false"/>
+      <box x="-22.805" y="108.85" z="47.829" sx="0.615" sy="0.615" sz="0.615" color="#DCE6FF" touchable="false"/>
+    </group>
+
+    <cylinder y="-0.15" sx="23" sy="0.3" sz="23" color="#2A2E36" touchable="false"/>
+    <cylinder y="0.01" sx="19" sy="0.02" sz="19" color="#333842" touchable="false"/>
+    <cylinder y="0.02" sx="4.2" sy="0.06" sz="4.2" color="#2A2E36" touchable="false"/>
+
+    <group id="pared">
+      <box x="6.466" y="3.25" z="8.899" ry="0.628" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="7.778" y="3.25" z="7.778" ry="0.785" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="8.899" y="3.25" z="6.466" ry="0.942" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="9.801" y="3.25" z="4.994" ry="1.1" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="10.462" y="3.25" z="3.399" ry="1.257" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="10.865" y="3.25" z="1.721" ry="1.414" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="11" y="3.25" z="0" ry="1.571" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="10.865" y="3.25" z="-1.721" ry="1.728" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="10.462" y="3.25" z="-3.399" ry="1.885" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="9.801" y="3.25" z="-4.994" ry="2.042" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="8.899" y="3.25" z="-6.466" ry="2.199" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="7.778" y="3.25" z="-7.778" ry="2.356" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="6.466" y="3.25" z="-8.899" ry="2.513" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="4.994" y="3.25" z="-9.801" ry="2.67" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="3.399" y="3.25" z="-10.462" ry="2.827" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="1.721" y="3.25" z="-10.865" ry="2.985" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="0" y="3.25" z="-11" ry="3.142" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="-1.721" y="3.25" z="-10.865" ry="3.299" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-3.399" y="3.25" z="-10.462" ry="3.456" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-4.994" y="3.25" z="-9.801" ry="3.613" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-6.466" y="3.25" z="-8.899" ry="3.77" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="-7.778" y="3.25" z="-7.778" ry="3.927" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-8.899" y="3.25" z="-6.466" ry="4.084" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-9.801" y="3.25" z="-4.994" ry="4.241" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-10.462" y="3.25" z="-3.399" ry="4.398" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="-10.865" y="3.25" z="-1.721" ry="4.555" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-11" y="3.25" z="0" ry="4.712" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-10.865" y="3.25" z="1.721" ry="4.869" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-10.462" y="3.25" z="3.399" ry="5.027" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="-9.801" y="3.25" z="4.994" ry="5.184" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-8.899" y="3.25" z="6.466" ry="5.341" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-7.778" y="3.25" z="7.778" ry="5.498" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-6.466" y="3.25" z="8.899" ry="5.655" sx="2.128" sy="6.5" sz="0.5" color="#454C58" touchable="false"/>
+      <box x="-4.994" y="3.25" z="9.801" ry="5.812" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-3.399" y="3.25" z="10.462" ry="5.969" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+      <box x="-1.721" y="3.25" z="10.865" ry="6.126" sx="2.128" sy="6.5" sz="0.5" color="#383E48" touchable="false"/>
+    </group>
+    <group id="boveda">
+      <box x="6.425" y="7.264" z="8.843" ry="0.628" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="7.729" y="7.264" z="7.729" ry="0.785" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="8.843" y="7.264" z="6.425" ry="0.942" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="9.739" y="7.264" z="4.962" ry="1.1" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="10.396" y="7.264" z="3.378" ry="1.257" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="10.796" y="7.264" z="1.71" ry="1.414" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="10.931" y="7.264" z="0" ry="1.571" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="10.796" y="7.264" z="-1.71" ry="1.728" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="10.396" y="7.264" z="-3.378" ry="1.885" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="9.739" y="7.264" z="-4.962" ry="2.042" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="8.843" y="7.264" z="-6.425" ry="2.199" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="7.729" y="7.264" z="-7.729" ry="2.356" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="6.425" y="7.264" z="-8.843" ry="2.513" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="4.962" y="7.264" z="-9.739" ry="2.67" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="3.378" y="7.264" z="-10.396" ry="2.827" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="1.71" y="7.264" z="-10.796" ry="2.985" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="0" y="7.264" z="-10.931" ry="3.142" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-1.71" y="7.264" z="-10.796" ry="3.299" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-3.378" y="7.264" z="-10.396" ry="3.456" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-4.962" y="7.264" z="-9.739" ry="3.613" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-6.425" y="7.264" z="-8.843" ry="3.77" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-7.729" y="7.264" z="-7.729" ry="3.927" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-8.843" y="7.264" z="-6.425" ry="4.084" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-9.739" y="7.264" z="-4.962" ry="4.241" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-10.396" y="7.264" z="-3.378" ry="4.398" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-10.796" y="7.264" z="-1.71" ry="4.555" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-10.931" y="7.264" z="0" ry="4.712" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-10.796" y="7.264" z="1.71" ry="4.869" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-10.396" y="7.264" z="3.378" ry="5.027" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-9.739" y="7.264" z="4.962" ry="5.184" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-8.843" y="7.264" z="6.425" ry="5.341" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-7.729" y="7.264" z="7.729" ry="5.498" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-6.425" y="7.264" z="8.843" ry="5.655" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-4.962" y="7.264" z="9.739" ry="5.812" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-3.378" y="7.264" z="10.396" ry="5.969" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-1.71" y="7.264" z="10.796" ry="6.126" sx="2.067" sy="2.618" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="6.377" y="8.753" z="8.193" ry="0.661" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.639" y="8.753" z="7.032" ry="0.827" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="8.692" y="8.753" z="5.679" ry="0.992" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="9.508" y="8.753" z="4.171" ry="1.157" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="10.065" y="8.753" z="2.549" ry="1.323" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="10.347" y="8.753" z="0.857" ry="1.488" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="10.347" y="8.753" z="-0.857" ry="1.653" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="10.065" y="8.753" z="-2.549" ry="1.819" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="9.508" y="8.753" z="-4.171" ry="1.984" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="8.692" y="8.753" z="-5.679" ry="2.15" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.639" y="8.753" z="-7.032" ry="2.315" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="6.377" y="8.753" z="-8.193" ry="2.48" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="4.942" y="8.753" z="-9.131" ry="2.646" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="3.371" y="8.753" z="-9.82" ry="2.811" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="1.709" y="8.753" z="-10.241" ry="2.976" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="0" y="8.753" z="-10.383" ry="3.142" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-1.709" y="8.753" z="-10.241" ry="3.307" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-3.371" y="8.753" z="-9.82" ry="3.472" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-4.942" y="8.753" z="-9.131" ry="3.638" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-6.377" y="8.753" z="-8.193" ry="3.803" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.639" y="8.753" z="-7.032" ry="3.968" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-8.692" y="8.753" z="-5.679" ry="4.134" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-9.508" y="8.753" z="-4.171" ry="4.299" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-10.065" y="8.753" z="-2.549" ry="4.464" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-10.347" y="8.753" z="-0.857" ry="4.63" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-10.347" y="8.753" z="0.857" ry="4.795" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-10.065" y="8.753" z="2.549" ry="4.96" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-9.508" y="8.753" z="4.171" ry="5.126" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-8.692" y="8.753" z="5.679" ry="5.291" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.639" y="8.753" z="7.032" ry="5.456" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-6.377" y="8.753" z="8.193" ry="5.622" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-4.942" y="8.753" z="9.131" ry="5.787" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-3.371" y="8.753" z="9.82" ry="5.952" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-1.709" y="8.753" z="10.241" ry="6.118" sx="2.067" sy="2.541" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="4.903" y="10.128" z="7.919" ry="0.554" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="6.275" y="10.128" z="6.883" ry="0.739" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="7.433" y="10.128" z="5.613" ry="0.924" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="8.338" y="10.128" z="4.152" ry="1.109" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="8.958" y="10.128" z="2.549" ry="1.294" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="9.274" y="10.128" z="0.859" ry="1.478" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="9.274" y="10.128" z="-0.859" ry="1.663" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="8.958" y="10.128" z="-2.549" ry="1.848" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="8.338" y="10.128" z="-4.152" ry="2.033" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="7.433" y="10.128" z="-5.613" ry="2.218" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="6.275" y="10.128" z="-6.883" ry="2.402" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="4.903" y="10.128" z="-7.919" ry="2.587" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="3.365" y="10.128" z="-8.685" ry="2.772" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="1.711" y="10.128" z="-9.155" ry="2.957" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="0" y="10.128" z="-9.314" ry="3.142" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-1.711" y="10.128" z="-9.155" ry="3.326" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-3.365" y="10.128" z="-8.685" ry="3.511" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-4.903" y="10.128" z="-7.919" ry="3.696" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-6.275" y="10.128" z="-6.883" ry="3.881" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-7.433" y="10.128" z="-5.613" ry="4.066" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-8.338" y="10.128" z="-4.152" ry="4.25" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-8.958" y="10.128" z="-2.549" ry="4.435" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-9.274" y="10.128" z="-0.859" ry="4.62" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-9.274" y="10.128" z="0.859" ry="4.805" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-8.958" y="10.128" z="2.549" ry="4.99" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-8.338" y="10.128" z="4.152" ry="5.174" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-7.433" y="10.128" z="5.613" ry="5.359" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-6.275" y="10.128" z="6.883" ry="5.544" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-4.903" y="10.128" z="7.919" ry="5.729" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-3.365" y="10.128" z="8.685" ry="5.914" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-1.711" y="10.128" z="9.155" ry="6.098" sx="2.071" sy="2.393" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="4.85" y="11.322" z="6.081" ry="0.673" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="6.081" y="11.322" z="4.85" ry="0.898" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.008" y="11.322" z="3.375" ry="1.122" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.583" y="11.322" z="1.731" ry="1.346" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.778" y="11.322" z="0" ry="1.571" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.583" y="11.322" z="-1.731" ry="1.795" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="7.008" y="11.322" z="-3.375" ry="2.02" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="6.081" y="11.322" z="-4.85" ry="2.244" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="4.85" y="11.322" z="-6.081" ry="2.468" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="3.375" y="11.322" z="-7.008" ry="2.693" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="1.731" y="11.322" z="-7.583" ry="2.917" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="0" y="11.322" z="-7.778" ry="3.142" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-1.731" y="11.322" z="-7.583" ry="3.366" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-3.375" y="11.322" z="-7.008" ry="3.59" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-4.85" y="11.322" z="-6.081" ry="3.815" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-6.081" y="11.322" z="-4.85" ry="4.039" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.008" y="11.322" z="-3.375" ry="4.264" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.583" y="11.322" z="-1.731" ry="4.488" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.778" y="11.322" z="0" ry="4.712" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.583" y="11.322" z="1.731" ry="4.937" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-7.008" y="11.322" z="3.375" ry="5.161" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-6.081" y="11.322" z="4.85" ry="5.386" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-4.85" y="11.322" z="6.081" ry="5.61" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-3.375" y="11.322" z="7.008" ry="5.834" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-1.731" y="11.322" z="7.583" ry="6.059" sx="2.095" sy="2.18" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="3.297" y="12.275" z="4.835" ry="0.598" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="4.576" y="12.275" z="3.649" ry="0.898" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="5.448" y="12.275" z="2.138" ry="1.197" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="5.836" y="12.275" z="0.437" ry="1.496" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="5.706" y="12.275" z="-1.302" ry="1.795" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="5.068" y="12.275" z="-2.926" ry="2.094" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="3.981" y="12.275" z="-4.29" ry="2.394" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="2.539" y="12.275" z="-5.273" ry="2.693" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="0.872" y="12.275" z="-5.787" ry="2.992" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-0.872" y="12.275" z="-5.787" ry="3.291" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-2.539" y="12.275" z="-5.273" ry="3.59" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-3.981" y="12.275" z="-4.29" ry="3.89" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-5.068" y="12.275" z="-2.926" ry="4.189" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-5.706" y="12.275" z="-1.302" ry="4.488" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-5.836" y="12.275" z="0.437" ry="4.787" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-5.448" y="12.275" z="2.138" ry="5.086" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-4.576" y="12.275" z="3.649" ry="5.386" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-3.297" y="12.275" z="4.835" ry="5.685" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-1.725" y="12.275" z="5.592" ry="5.984" sx="2.101" sy="1.913" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="1.688" y="12.937" z="3.217" ry="0.483" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="2.99" y="12.937" z="2.064" ry="0.967" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="3.607" y="12.937" z="0.438" ry="1.45" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="3.397" y="12.937" z="-1.288" ry="1.933" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="2.409" y="12.937" z="-2.719" ry="2.417" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="0.869" y="12.937" z="-3.527" ry="2.9" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-0.869" y="12.937" z="-3.527" ry="3.383" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-2.409" y="12.937" z="-2.719" ry="3.867" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-3.397" y="12.937" z="-1.288" ry="4.35" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-3.607" y="12.937" z="0.438" ry="4.833" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-2.99" y="12.937" z="2.064" ry="5.317" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="-1.688" y="12.937" z="3.217" ry="5.8" sx="2.106" sy="1.604" sz="0.45" color="#454C58" touchable="false"/>
+      <box x="0.871" y="13.277" z="0.871" ry="0.785" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="1.232" y="13.277" z="0" ry="1.571" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="0.871" y="13.277" z="-0.871" ry="2.356" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="0" y="13.277" z="-1.232" ry="3.142" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-0.871" y="13.277" z="-0.871" ry="3.927" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-1.232" y="13.277" z="0" ry="4.712" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+      <box x="-0.871" y="13.277" z="0.871" ry="5.498" sx="1.317" sy="1.271" sz="0.45" color="#383E48" touchable="false"/>
+    </group>
+    <!-- El riel sobre el que giraría la cúpula. No gira: está para que la
+         rendija se lea como una abertura de una cúpula y no como un agujero. -->
+    <group id="riel">
+      <box x="6.73" y="6.6" z="9.263" ry="0.628" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="8.096" y="6.6" z="8.096" ry="0.785" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="9.263" y="6.6" z="6.73" ry="0.942" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="10.202" y="6.6" z="5.198" ry="1.1" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="10.89" y="6.6" z="3.538" ry="1.257" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="11.309" y="6.6" z="1.791" ry="1.414" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="11.45" y="6.6" z="0" ry="1.571" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="11.309" y="6.6" z="-1.791" ry="1.728" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="10.89" y="6.6" z="-3.538" ry="1.885" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="10.202" y="6.6" z="-5.198" ry="2.042" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="9.263" y="6.6" z="-6.73" ry="2.199" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="8.096" y="6.6" z="-8.096" ry="2.356" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="6.73" y="6.6" z="-9.263" ry="2.513" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="5.198" y="6.6" z="-10.202" ry="2.67" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="3.538" y="6.6" z="-10.89" ry="2.827" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="1.791" y="6.6" z="-11.309" ry="2.985" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="0" y="6.6" z="-11.45" ry="3.142" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-1.791" y="6.6" z="-11.309" ry="3.299" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-3.538" y="6.6" z="-10.89" ry="3.456" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-5.198" y="6.6" z="-10.202" ry="3.613" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-6.73" y="6.6" z="-9.263" ry="3.77" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-8.096" y="6.6" z="-8.096" ry="3.927" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-9.263" y="6.6" z="-6.73" ry="4.084" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-10.202" y="6.6" z="-5.198" ry="4.241" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-10.89" y="6.6" z="-3.538" ry="4.398" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-11.309" y="6.6" z="-1.791" ry="4.555" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-11.45" y="6.6" z="0" ry="4.712" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-11.309" y="6.6" z="1.791" ry="4.869" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-10.89" y="6.6" z="3.538" ry="5.027" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-10.202" y="6.6" z="5.198" ry="5.184" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-9.263" y="6.6" z="6.73" ry="5.341" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-8.096" y="6.6" z="8.096" ry="5.498" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-6.73" y="6.6" z="9.263" ry="5.655" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-5.198" y="6.6" z="10.202" ry="5.812" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-3.538" y="6.6" z="10.89" ry="5.969" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+      <box x="-1.791" y="6.6" z="11.309" ry="6.126" sx="2.128" sy="0.22" sz="0.5" color="#5A6270" touchable="false"/>
+    </group>
+
+      <group x="-6.937" y="0" z="3.105" ry="1.992">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_0" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Polar" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="el eje apunta acá" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="-5.564" y="0" z="5.177" ry="2.32">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_1" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Sirio" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="la más brillante del cielo" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="-3.596" y="0" z="6.695" ry="2.649">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_2" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Vega" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="cenit de verano" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="-1.243" y="0" z="7.498" ry="2.977">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_3" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Antares" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="el corazón del escorpión" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="1.243" y="0" z="7.498" ry="-2.977">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_4" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Arturo" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="naranja, y cerca" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="3.596" y="0" z="6.695" ry="-2.649">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_5" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Aldebarán" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="el ojo del toro" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="5.564" y="0" z="5.177" ry="-2.32">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_6" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Deneb" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="lejísimos, y aún así brilla" size="0.04" color="#96A4B8"/>
+      </group>
+      <group x="6.937" y="0" z="3.105" ry="-1.992">
+        <cylinder y="0.5" sx="0.12" sy="1.0" sz="0.12" color="#3E4552" touchable="false"/>
+        <box id="obj_7" y="1.12" rx="-0.5" sx="1.15" sy="0.5" sz="0.06" color="#3E4552" touchable="true" border-radius="0.04"/>
+        <text y="1.24" z="0.09" rx="-0.5" value="Fomalhaut" size="0.085" color="#EEF4FC"/>
+        <text y="1.13" z="0.15" rx="-0.5" value="sola en el sur" size="0.04" color="#96A4B8"/>
+      </group>
+
+    <!-- ---------------------------------------------------------------- -->
+    <!-- El telescopio. Cuatro grupos anidados, y el orden es el que importa: -->
+    <!--                                                                    -->
+    <!--   pilar        fijo                                                -->
+    <!--   +- polar     inclinado la latitud: el eje apunta a la Polar      -->
+    <!--      +- hora   gira alrededor de ese eje (un motor, y alcanza)     -->
+    <!--         +- dec gira perpendicular: elige la altura sobre el ecuador -->
+    <!--            +- tubo y contrapeso                                     -->
+    <!--                                                                    -->
+    <!-- Cada grupo hereda al anterior, así que el script sólo escribe dos    -->
+    <!-- ángulos: hora y dec. Toda la geometría de la montura está en la  -->
+    <!-- jerarquía, no en el código.                                          -->
+    <group id="pilar" x="0" y="0" z="0">
+      <cylinder y="0.28" sx="2.4" sy="0.56" sz="2.4" color="#3E4552" touchable="false"/>
+      <!-- La columna tiene que ser mas alta que la mitad del tubo o el tubo
+           raspa el piso al bajar de declinacion. En un observatorio de verdad la
+           altura del pilar la manda exactamente esto. -->
+      <cylinder y="1.65" sx="0.9" sy="2.3" sz="0.9" color="#6A7280" touchable="false"/>
+      <cylinder y="2.88" sx="1.2" sy="0.22" sz="1.2" color="#C8A24E" touchable="false"/>
+
+      <group id="polar" y="3.0" rx="0.855">
+        <!-- El eje polar, dibujado: es la pieza que explica la montura. -->
+        <cylinder sx="0.42" sy="1.5" sz="0.42" color="#6A7280" touchable="false"/>
+
+        <group id="hora" y="0.85">
+          <cylinder y="0.1" sx="0.9" sy="0.16" sz="0.9" color="#C8A24E" touchable="false"/>
+          <cylinder y="0.35" rz="1.5707963" sx="0.34" sy="1.7" sz="0.34" color="#6A7280" touchable="false"/>
+
+          <group id="dec" y="0.35">
+            <!-- El tubo: dos cilindros y una boca. Va corrido en X para que el
+                 contrapeso del otro lado tenga sentido. -->
+            <group id="tubo" x="0.95">
+              <cylinder rx="1.5707963" sx="0.62" sy="3.4" sz="0.62" color="#8A9099" touchable="false"/>
+              <cylinder z="1.72" rx="1.5707963" sx="0.72" sy="0.16" sz="0.72" color="#C8A24E" touchable="false"/>
+              <cylinder z="-1.66" rx="1.5707963" sx="0.68" sy="0.3" sz="0.68" color="#4A5058" touchable="false"/>
+              <!-- El buscador, arriba del tubo. Es la pieza que hace que se lea
+                   como un telescopio y no como un caño. -->
+              <cylinder y="0.42" z="0.9" rx="1.5707963" sx="0.18" sy="0.9" sz="0.18" color="#3E4552" touchable="false"/>
+              <box y="0.3" z="1.1" sx="0.06" sy="0.2" sz="0.06" color="#3E4552" touchable="false"/>
+              <box y="0.3" z="0.7" sx="0.06" sy="0.2" sz="0.06" color="#3E4552" touchable="false"/>
+              <!-- El ocular, atrás y abajo. -->
+              <cylinder y="-0.34" z="-1.5" sx="0.16" sy="0.5" sz="0.16" color="#C8A24E" touchable="false"/>
+            </group>
+            <!-- El contrapeso: la barra y dos discos. En una montura de verdad
+                 es lo que permite que un motor chico mueva el tubo. -->
+            <group id="lastre" x="-1.15">
+              <cylinder rz="1.5707963" sx="0.14" sy="1.5" sz="0.14" color="#3E4552" touchable="false"/>
+              <cylinder x="-0.5" rz="1.5707963" sx="0.75" sy="0.22" sz="0.75" color="#2A2C30" touchable="false"/>
+              <cylinder x="-0.78" rz="1.5707963" sx="0.75" sy="0.22" sz="0.75" color="#2A2C30" touchable="false"/>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+
+    <group id="tablero" x="0" y="0" z="8.6" ry="3.14159">
+      <cylinder x="-1.7" y="0.75" sx="0.12" sy="1.5" sz="0.12" color="#3E4552" touchable="false"/>
+      <cylinder x="1.7" y="0.75" sx="0.12" sy="1.5" sz="0.12" color="#3E4552" touchable="false"/>
+      <box y="1.66" rx="-0.35" sx="3.8" sy="1.15" sz="0.07" color="#0E1218" touchable="false" border-radius="0.05"/>
+      <text y="2.02" z="0.16" rx="-0.35" value="El observatorio" size="0.15" color="#EEF4FC"/>
+      <text id="ob_objeto" y="1.83" z="0.23" rx="-0.35" value="en reposo" size="0.085" color="#96A4B8"/>
+      <text id="ob_coord" y="1.67" z="0.28" rx="-0.35" value="" size="0.055" color="#96A4B8"/>
+      <text id="ob_ejes" y="1.54" z="0.33" rx="-0.35" value="" size="0.055" color="#96A4B8"/>
+      <box id="seguir" x="-1.0" y="1.24" z="0.44" rx="-0.35" sx="1.5" sy="0.26" sz="0.05" color="#3E4552" touchable="true" border-radius="0.03"/>
+      <text y="1.24" x="-1.0" z="0.47" rx="-0.35" value="seguimiento" size="0.06" color="#EEF4FC"/>
+      <box id="parquear" x="1.0" y="1.24" z="0.44" rx="-0.35" sx="1.5" sy="0.26" sz="0.05" color="#3E4552" touchable="true" border-radius="0.03"/>
+      <text y="1.24" x="1.0" z="0.47" rx="-0.35" value="a reposo" size="0.06" color="#EEF4FC"/>
+    </group>
+
+    <group id="portal_vuelta" x="-6.4" y="0" z="7.4" ry="2.429">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#4A515C","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.OBSERVATORIO = {"base":"https://njs58923.github.io/luna-demos/noche","latitud":41,"objetos":[{"nombre":"Polar","detalle":"el eje apunta acá","ar":2.53,"dec":89.26,"mag":2},{"nombre":"Sirio","detalle":"la más brillante del cielo","ar":6.75,"dec":-16.72,"mag":-1.5},{"nombre":"Vega","detalle":"cenit de verano","ar":18.62,"dec":38.78,"mag":0},{"nombre":"Antares","detalle":"el corazón del escorpión","ar":16.49,"dec":-26.43,"mag":1.1},{"nombre":"Arturo","detalle":"naranja, y cerca","ar":14.26,"dec":19.18,"mag":-0.05},{"nombre":"Aldebarán","detalle":"el ojo del toro","ar":4.6,"dec":16.51,"mag":0.85},{"nombre":"Deneb","detalle":"lejísimos, y aún así brilla","ar":20.69,"dec":45.28,"mag":1.25},{"nombre":"Fomalhaut","detalle":"sola en el sur","ar":22.96,"dec":-29.62,"mag":1.16}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/observatorio.js"/>
+  </space>
+</hsml>

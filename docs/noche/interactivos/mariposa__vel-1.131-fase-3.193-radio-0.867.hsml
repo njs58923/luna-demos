@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pieza interactiva: no es una malla, es un documento con su propio script.
+     Se monta con <include>, así que corre en su propio isolate y con permisos
+     vacíos (no necesita ninguno: sólo requestAnimationFrame y el DOM).
+
+     Escala real: ~18 cm de envergadura, como una mariposa grande de verdad.
+     Los <plane> de Luna son double-sided (dom.rs), por eso cada ala es un solo
+     plano y se ve desde arriba y desde abajo. Total: 4 planos = 8 triángulos. -->
+<hsml>
+  <head>
+    <name>Mariposa</name>
+  </head>
+
+  <space>
+    <group id="mariposa" y="0.22">
+      <!-- Cuerpo: el cilindro de Luna tiene eje Y, acostado queda sobre -z,
+           que es "adelante". La cabeza va al frente. -->
+      <cylinder rx="1.5707963" sx="0.011" sy="0.072" sz="0.011" color="#3B2E24"/>
+      <sphere z="-0.042" s="0.015" color="#3B2E24"/>
+      <cylinder x="-0.008" y="0.014" z="-0.055" rx="0.5" rz="0.45" sx="0.003" sy="0.031" sz="0.003" color="#3B2E24"/>
+      <cylinder x="0.008" y="0.014" z="-0.055" rx="0.5" rz="-0.45" sx="0.003" sy="0.031" sz="0.003" color="#3B2E24"/>
+
+      <!-- Cada ala pivota en x=0: el plano está corrido, el grupo no. Así el
+           aleteo es una rotación en z del grupo. El `ry` de cada plano les da
+           barrido, para que no se lean como dos rectángulos. -->
+      <group id="ala_izq" rz="-0.25">
+        <plane x="-0.046" y="0.002" z="-0.014" rx="-1.5707963" ry="0.22" sx="0.086" sy="0.076" color="#E3A03A"/>
+        <plane x="-0.032" y="0.001" z="0.038" rx="-1.5707963" ry="-0.3" sx="0.059" sy="0.051" color="#C4741E"/>
+      </group>
+      <group id="ala_der" rz="0.25">
+        <plane x="0.046" y="0.002" z="-0.014" rx="-1.5707963" ry="-0.22" sx="0.086" sy="0.076" color="#E3A03A"/>
+        <plane x="0.032" y="0.001" z="0.038" rx="-1.5707963" ry="0.3" sx="0.059" sy="0.051" color="#C4741E"/>
+      </group>
+    </group>
+
+    <script>
+      globalThis.CONFIG = {"vel":1.131,"fase":3.193,"radio":0.867};
+    </script>
+    <script src="mariposa.js"/>
+  </space>
+</hsml>

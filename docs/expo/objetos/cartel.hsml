@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cartel de pie. Un tablero sobre dos postes con hasta cuatro renglones. Se
+  escribe tocándolo: toma el teclado, Enter pasa de renglón y Esc termina. Lo
+  escrito queda guardado.
+
+  De piso: apoya en y=0, mira a +Z. Mide 1.3 × 1.9 × 0.2 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cartel.hsml" events="cambio"
+             props='{"texto":"BIENVENIDOS\nA MI CASA","estilo":"pizarra","clave":"entrada"}'/>
+
+  Props: texto (renglones separados por \n), estilo ("madera" | "pizarra" |
+  "neon"), color (del texto, para "madera"), editable (bool), clave.
+  Eventos: cambio {texto}.
+  Mensajes: texto {texto}.
+-->
+<hsml>
+  <head><name>Cartel de pie</name></head>
+  <space resources="read_pose_stream">
+    <box class="poste" x="-0.55" y="0.8" sx="0.07" sy="1.6" sz="0.07" color="#6B4A30"/>
+    <box class="poste" x="0.55" y="0.8" sx="0.07" sy="1.6" sz="0.07" color="#6B4A30"/>
+    <box id="marco" y="1.4" z="0.04" sx="1.3" sy="0.8" sz="0.06" color="#6B4A30" border-radius="0.02"/>
+    <box id="fondo" y="1.4" z="0.072" sx="1.2" sy="0.7" sz="0.004" color="#8B5E3C"/>
+    <group id="renglones" y="1.4" z="0.076"/>
+    <text id="ayuda" y="0.98" z="0.08" value="" size="0.03" color="#FFD60A"/>
+    <plane id="toque" y="1.4" z="0.09" sx="1.3" sy="0.8" color="transparent" material-alpha="blend"/>
+    <script src="./cartel.js"/>
+  </space>
+</hsml>

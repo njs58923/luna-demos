@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Televisor. Cinco canales que se dibujan solos: barras de color, nieve, un
+  reloj, un logo que rebota por la pantalla y una pecera. Los botones del
+  costado cambian de canal y lo prenden o apagan.
+
+  De mesa: apoya en y=0, la pantalla mira a +Z. Mide 0.56 × 0.44 × 0.36 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/televisor.hsml"
+             events="canal" props='{"canal":4,"mueble":"#6B4A30"}'/>
+
+  Props: canal (1..5), mueble (color), prendido (bool).
+  Eventos: canal {numero, nombre, prendido}.
+  Mensajes: canal {numero}, prender, apagar.
+-->
+<hsml>
+  <head><name>Televisor</name></head>
+  <space resources="read_pose_stream">
+    <box id="mueble" y="0.22" z="-0.02" sx="0.56" sy="0.42" sz="0.36" color="#6B4A30" border-radius="0.03"/>
+    <box y="0.24" z="0.16" sx="0.44" sy="0.34" sz="0.01" color="#1A1A1A" border-radius="0.02"/>
+    <group id="pantalla" x="-0.035" y="0.24" z="0.166"/>
+    <plane id="fondo" x="-0.035" y="0.24" z="0.166" sx="0.4" sy="0.3" color="#0A0C0A" material-unlit="true"/>
+    <box id="subir" x="0.235" y="0.33" z="0.16" sx="0.05" sy="0.04" sz="0.01" color="#2A2A2A"/>
+    <box id="bajar" x="0.235" y="0.27" z="0.16" sx="0.05" sy="0.04" sz="0.01" color="#2A2A2A"/>
+    <cylinder id="encendido" x="0.235" y="0.14" z="0.16" rx="1.5707963" sx="0.035" sy="0.012" sz="0.035" color="#C8102E"/>
+    <text x="0.235" y="0.33" z="0.166" value="+" size="0.025" color="#FFFFFF"/>
+    <text x="0.235" y="0.27" z="0.166" value="-" size="0.025" color="#FFFFFF"/>
+    <box x="-0.2" y="0.005" sx="0.03" sy="0.01" sz="0.3" color="#3A2A1A"/>
+    <box x="0.2" y="0.005" sx="0.03" sy="0.01" sz="0.3" color="#3A2A1A"/>
+    <script src="./televisor.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La fragua</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante. A la derecha y en diagonal, mirando al conjunto yunque-hogar. Dos restricciones lo definen: no puede quedar detras del panel de la escena (z=3.1, ancho 3.7) porque lo taparia todo, y no puede estar muy cerca porque spawn no inclina el visor y el yunque esta un metro por debajo de los ojos. La regla para apuntar la mirada a un punto P desde S es ry = atan2(Sx-Px, Sz-Pz). -->
+    <spawn id="entrada" default="true" x="3.00" y="0" z="2.60" ry="0.825"/>
+
+    <group id="taller">
+      <plane z="-40" y="4" sx="80" sy="18" color="#141210" touchable="false"/>
+      <plane z="40" y="4" sx="80" sy="18" color="#141210" touchable="false"/>
+      <plane x="-40" y="4" ry="1.5707963" sx="80" sy="18" color="#141210" touchable="false"/>
+      <plane x="40" y="4" ry="1.5707963" sx="80" sy="18" color="#141210" touchable="false"/>
+      <plane y="40" rx="1.5707963" sx="80" sy="80" color="#05060A" touchable="false"/>
+      <plane y="0" rx="1.5707963" sx="80" sy="80" color="#1A1814" touchable="false"/>
+      <cylinder y="0.005" sx="14" sy="0.01" sz="14" color="#221E18" touchable="false"/>
+    </group>
+
+    <!-- El hogar: una caja de ladrillo con las brasas adentro y una campana
+         encima. El fuelle al costado es el que sube la temperatura. -->
+    <group id="hogar" x="-2.6" y="0" z="-0.4" ry="0.35">
+      <box y="0.45" sx="1.9" sy="0.9" sz="1.6" color="#3A2418" touchable="false"/>
+      <box y="0.92" sx="2.0" sy="0.08" sz="1.7" color="#4A2E1E" touchable="false"/>
+      <group x="0" y="0.98" z="0">
+        <box id="brasa_0_0" x="-0.51" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_0_1" x="-0.51" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_0_2" x="-0.51" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_0_3" x="-0.51" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_0_4" x="-0.51" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_1_0" x="-0.34" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_1_1" x="-0.34" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_1_2" x="-0.34" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_1_3" x="-0.34" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_1_4" x="-0.34" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_2_0" x="-0.17" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_2_1" x="-0.17" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_2_2" x="-0.17" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_2_3" x="-0.17" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_2_4" x="-0.17" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_3_0" x="0" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_3_1" x="0" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_3_2" x="0" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_3_3" x="0" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_3_4" x="0" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_4_0" x="0.17" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_4_1" x="0.17" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_4_2" x="0.17" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_4_3" x="0.17" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_4_4" x="0.17" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_5_0" x="0.34" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_5_1" x="0.34" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_5_2" x="0.34" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_5_3" x="0.34" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_5_4" x="0.34" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_6_0" x="0.51" y="0" z="-0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_6_1" x="0.51" y="0" z="-0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_6_2" x="0.51" y="0" z="0" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_6_3" x="0.51" y="0" z="0.17" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+        <box id="brasa_6_4" x="0.51" y="0" z="0.34" sx="0.16" sy="0.08" sz="0.16" color="#100C0A" touchable="false"/>
+      </group>
+      <!-- La campana de la chimenea: cuatro planos inclinados. Sin cono, un
+           embudo son cuatro caras y punto. -->
+      <box x="0" y="1.9" z="0.62" ry="0" rx="0.35" rz="0" sx="1.5" sy="1.3" sz="0.05" color="#4A2E1E" touchable="false"/>
+      <box x="0.62" y="1.9" z="0" ry="1.571" rx="0" rz="-0.35" sx="1.5" sy="1.3" sz="0.05" color="#4A2E1E" touchable="false"/>
+      <box x="0" y="1.9" z="-0.62" ry="3.142" rx="-0.35" rz="0" sx="1.5" sy="1.3" sz="0.05" color="#4A2E1E" touchable="false"/>
+      <box x="-0.62" y="1.9" z="0" ry="4.712" rx="0" rz="0.35" sx="1.5" sy="1.3" sz="0.05" color="#4A2E1E" touchable="false"/>
+      <box y="2.9" sx="0.7" sy="0.9" sz="0.7" color="#3A2418" touchable="false"/>
+
+      <!-- El fuelle. La tapa de arriba baja cuando se lo usa: es la unica pieza
+           de la escena que se mueve por jerarquia y no por color. -->
+      <group id="fuelle" x="-1.35" y="0.72" z="0" ry="1.5707963">
+        <box y="-0.12" sx="1.1" sy="0.08" sz="0.7" color="#3A2A1C" touchable="false"/>
+        <group id="tapa" y="0.16">
+          <box sx="1.1" sy="0.08" sz="0.7" color="#3A2A1C" touchable="false"/>
+          <box y="0.1" x="0.5" sx="0.1" sy="0.5" sz="0.1" color="#3A2A1C" touchable="false"/>
+        </group>
+        <box y="0.02" sx="1.0" sy="0.22" sz="0.62" color="#4A3524" touchable="false"/>
+        <box id="soplar" y="0.55" sx="1.2" sy="0.4" sz="0.8" color="#C8A24E" touchable="true" border-radius="0.06"/>
+        <text y="0.55" z="0.45" value="SOPLAR" size="0.09" color="#0C0A08"/>
+      </group>
+    </group>
+
+    <!-- El yunque, con la barra encima. -->
+    <group id="banco" x="1.1" y="0" z="0.2" ry="-0.2">
+      <box y="0.28" sx="0.9" sy="0.56" sz="0.9" color="#3A2A1C" touchable="false"/>
+      <box y="0.66" sx="1.5" sy="0.22" sz="0.55" color="#33373C" touchable="false"/>
+      <box y="0.5" sx="0.55" sy="0.22" sz="0.42" color="#33373C" touchable="false"/>
+      <box x="1.0" y="0.7" sx="0.6" sy="0.14" sz="0.3" color="#33373C" touchable="false"/>
+
+      <group id="barra" x="0" y="0.84" z="0">
+        <box id="esl_0" x="-1.031" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_1" x="-0.894" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_2" x="-0.756" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_3" x="-0.619" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_4" x="-0.481" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_5" x="-0.344" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_6" x="-0.206" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_7" x="-0.069" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_8" x="0.069" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_9" x="0.206" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_10" x="0.344" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_11" x="0.481" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_12" x="0.619" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_13" x="0.756" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_14" x="0.894" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+        <box id="esl_15" x="1.031" y="0" z="0" sx="0.14" sy="0.13" sz="0.13" color="#2A2C30" touchable="true"/>
+      </group>
+
+      <!-- El martillo. Lo levanta y lo baja el script en cada golpe. -->
+      <group id="martillo" x="0" y="1.6" z="0.55">
+        <cylinder y="0.32" rx="0.25" sx="0.06" sy="0.75" sz="0.06" color="#3A2A1C" touchable="false"/>
+        <box y="-0.06" sx="0.3" sy="0.16" sz="0.16" color="#3E4248" touchable="false"/>
+      </group>
+    </group>
+
+    <group id="panel" x="0.4" y="0" z="3.1" ry="3.14159">
+      <cylinder x="-1.7" y="0.9" sx="0.1" sy="1.8" sz="0.1" color="#2A2C30" touchable="false"/>
+      <cylinder x="1.7" y="0.9" sx="0.1" sy="1.8" sz="0.1" color="#2A2C30" touchable="false"/>
+      <box y="2.05" sx="3.7" sy="1.05" sz="0.06" color="#0C0A08" touchable="false" border-radius="0.05"/>
+      <text y="2.4" z="0.05" value="La fragua" size="0.15" color="#F4EADC"/>
+      <text id="fr_estado" y="2.19" z="0.05" value="soplá el fuelle, después tocá la barra" size="0.07" color="#A89684"/>
+      <text id="fr_temp" y="2.03" z="0.05" value="" size="0.055" color="#A89684"/>
+      <text id="fr_dato" y="1.9" z="0.05" value="" size="0.055" color="#A89684"/>
+      <box id="alfuego" x="-1.0" y="1.68" z="0.05" sx="1.55" sy="0.26" sz="0.05" color="#4A2E1E" touchable="true" border-radius="0.03"/>
+      <text x="-1.0" y="1.68" z="0.09" value="barra al fuego" size="0.058" color="#F4EADC"/>
+      <box id="templar" x="1.0" y="1.68" z="0.05" sx="1.55" sy="0.26" sz="0.05" color="#3E4248" touchable="true" border-radius="0.03"/>
+      <text x="1.0" y="1.68" z="0.09" value="templar / empezar de nuevo" size="0.05" color="#F4EADC"/>
+    </group>
+
+    <group id="portal_vuelta" x="-2.6" y="0" z="3.0" ry="2.428">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#4A2E1E","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.FRAGUA = {"base":"https://njs58923.github.io/luna-demos/noche","eslabones":16,"paso":0.1375,"fuego":[{"t":0,"color":"#2A2C30","nombre":"frio"},{"t":0.18,"color":"#4A2418","nombre":"apenas tibio"},{"t":0.34,"color":"#8C2010","nombre":"rojo oscuro"},{"t":0.48,"color":"#C03008","nombre":"rojo cereza"},{"t":0.62,"color":"#E85818","nombre":"naranja"},{"t":0.76,"color":"#F89828","nombre":"amarillo"},{"t":0.88,"color":"#FBD070","nombre":"amarillo claro"},{"t":1,"color":"#FFF4D8","nombre":"blanco - se quema"}],"brasas":{"filas":7,"cols":5}};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/fragua.js"/>
+  </space>
+</hsml>

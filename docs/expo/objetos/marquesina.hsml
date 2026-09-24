@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Marquesina de luces. Un letrero oscuro donde el texto corre de derecha a
+  izquierda en letras de color. Tocarla toma el teclado para escribir un
+  mensaje nuevo (Enter lo deja); el mensaje queda guardado.
+
+  De pared: el origen es el centro, que mira a +Z. Mide 1.2 × 0.22 × 0.06 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/marquesina.hsml" events="cambio"
+             props='{"texto":"BIENVENIDOS A MI MUNDO","color":"#FF3B30","clave":"puerta"}'/>
+
+  Props: texto, color, velocidad (letras por segundo), editable, clave.
+  Eventos: cambio {texto}.
+  Mensajes: texto {texto}.
+-->
+<hsml>
+  <head><name>Marquesina</name></head>
+  <space resources="read_pose_stream">
+    <box z="0.02" sx="1.2" sy="0.22" sz="0.04" color="#141414" border-radius="0.02"/>
+    <box z="0.041" sx="1.12" sy="0.15" sz="0.002" color="#050505"/>
+    <group id="letras" z="0.043"/>
+    <text id="ayuda" y="-0.14" z="0.03" value="" size="0.025" color="#FFD60A"/>
+    <plane id="toque" z="0.06" sx="1.2" sy="0.22" color="transparent" material-alpha="blend"/>
+    <script src="./marquesina.js"/>
+  </space>
+</hsml>

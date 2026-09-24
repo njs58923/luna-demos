@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bola 8 mágica. Se le hace una pregunta, se la toca, se sacude, y en su
+  ventanita aparece la respuesta flotando en el líquido azul.
+
+  De mesa: apoya en y=0 sobre su base, la ventanita mira a +Z. Mide
+  0.16 × 0.2 × 0.16 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/bola8.hsml" events="respuesta"
+             props='{"respuestas":["Sí","No","Preguntá mañana"]}'/>
+
+  Props: respuestas (lista; sin esto, las veinte clásicas en castellano).
+  Eventos: respuesta {texto}.
+  Mensajes: preguntar.
+-->
+<hsml>
+  <head><name>Bola 8 mágica</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.012" sx="0.1" sy="0.024" sz="0.1" color="#2A2A2A"/>
+    <group id="bola" y="0.1">
+      <sphere sx="0.16" sy="0.16" sz="0.16" color="#101010"/>
+      <cylinder y="0.075" sx="0.06" sy="0.006" sz="0.06" color="#F4F4F4"/>
+      <text y="0.079" rx="-1.5707963" value="8" size="0.04" color="#101010"/>
+      <cylinder id="ventana" z="0.074" rx="1.5707963" sx="0.07" sy="0.006" sz="0.07" color="#0B1E5B"/>
+      <group id="dado" z="0.07">
+        <box rz="0.785398" sx="0.045" sy="0.045" sz="0.004" color="#1D4ED8" material-unlit="true"/>
+        <text id="r0" y="0.007" z="0.003" value="" size="0.0065" color="#FFFFFF" material-unlit="true"/>
+        <text id="r1" z="0.003" value="" size="0.0065" color="#FFFFFF" material-unlit="true"/>
+        <text id="r2" y="-0.007" z="0.003" value="" size="0.0065" color="#FFFFFF" material-unlit="true"/>
+      </group>
+    </group>
+    <sphere id="toque" y="0.1" sx="0.18" sy="0.18" sz="0.18" color="transparent" material-alpha="blend"/>
+    <script src="./bola8.js"/>
+  </space>
+</hsml>

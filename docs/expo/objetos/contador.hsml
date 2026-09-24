@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Contador de mano. Cada toque al botón grande suma uno, con su clic, en un
+  contador de cuatro ruedas; la perillita de al lado lo vuelve a cero. La
+  cuenta queda guardada.
+
+  De mesa: apoya en y=0 sobre su base, mira a +Z. Mide 0.1 × 0.14 × 0.08 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/contador.hsml"
+             resources="audio" events="cuenta" props='{"clave":"visitas"}'/>
+
+  Props: metal (color), clave.
+  Eventos: cuenta {valor}.
+  Mensajes: sumar {n}, cero.
+-->
+<hsml>
+  <head><name>Contador de mano</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.006" sx="0.1" sy="0.012" sz="0.08" color="#2A2A2A" border-radius="0.004"/>
+    <group id="aparato" y="0.06" rx="-0.35">
+      <cylinder id="cuerpo" rx="1.5707963" sx="0.08" sy="0.035" sz="0.08" color="#C0C0C0"/>
+      <box y="0" z="0.018" sx="0.058" sy="0.022" sz="0.004" color="#101010"/>
+      <group id="ruedas" z="0.021"/>
+      <cylinder id="boton" y="0.052" sx="0.022" sy="0.02" sz="0.022" color="#B0B0B0"/>
+      <cylinder y="0.042" sx="0.012" sy="0.012" sz="0.012" color="#8A8A8A"/>
+      <cylinder id="cero" x="0.045" y="0.015" rz="1.5707963" sx="0.012" sy="0.014" sz="0.012" color="#8A8A8A"/>
+    </group>
+    <script src="./contador.js"/>
+  </space>
+</hsml>

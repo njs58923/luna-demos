@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hsml>
+  <head><name>lab attrs</name></head>
+  <space resources="navigate_self,desktop_camera_control">
+    <plane y="-1" rx="1.5707963" sx="30" sy="30" color="#20242A" touchable="false"/>
+    <text id="t1" y="1.6" z="-3" value="ANTES" size="0.3" color="#FFFFFF"/>
+    <box id="b1" x="-1.2" y="0.6" z="-3" sx="0.8" sy="0.8" sz="0.8" color="#3355AA" touchable="false"/>
+    <box id="b2" x="1.2" y="0.6" z="-3" sx="0.8" sy="0.8" sz="0.8" color="#AA3355" touchable="false"/>
+    <sphere id="s1" x="0" y="0.4" z="-3" sx="0.5" sy="0.5" sz="0.5" color="#EEDD55" touchable="false"/>
+    <text id="log" y="0.1" z="-2.4" value="..." size="0.09" color="#88FFAA"/>
+    <script>
+      (function () {
+        const raiz = hiperspace.dimention;
+        const linea = [];
+        function probar(nombre, fn) {
+          try { fn(); linea.push(nombre + ':ok'); }
+          catch (e) { linea.push(nombre + ':ERR ' + e); }
+        }
+        let n = 0;
+        function tic() {
+          const t1 = raiz.getElementById('t1');
+          const b1 = raiz.getElementById('b1');
+          const b2 = raiz.getElementById('b2');
+          const s1 = raiz.getElementById('s1');
+          const log = raiz.getElementById('log');
+          if (!t1 || !b1 || !log) return requestAnimationFrame(tic);
+          if (n++ < 90) return requestAnimationFrame(tic);
+
+          probar('text.value', () => t1.setAttribute('value', 'DESPUES 42'));
+          probar('box.color', () => b1.setAttribute('color', '#22DD66'));
+          probar('sphere.color', () => s1.setAttribute('color', '#FF44AA'));
+          probar('box.sx', () => b2.setAttribute('sx', '1.8'));
+          probar('text.size', () => t1.setAttribute('size', '0.45'));
+          probar('getAttr', () => { if (b1.getAttribute('color') !== '#22DD66') throw 'leyo ' + b1.getAttribute('color'); });
+          console.log('[lab] ' + linea.join(' | '));
+          log.setAttribute('value', linea.join('  '));
+        }
+        requestAnimationFrame(tic);
+      })();
+    </script>
+  </space>
+</hsml>

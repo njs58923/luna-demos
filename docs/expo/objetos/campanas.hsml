@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Campanas de viento. Tubos colgando de un aro que se mecen solos; tocarlas
+  las hace sonar en cascada. En VR suenan al pasar la mano entre los tubos.
+
+  De pared: el origen es el gancho; cuelgan hacia abajo. Mide 0.34 × 0.7 × 0.34 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/campanas.hsml"
+             resources="audio,read_pose_stream" events="suena"
+             props='{"metal":"#B8C4CE"}'/>
+
+  Props: metal (color), viento (0..1: cuánto se mecen solas).
+  Eventos: suena {tubo}.
+  Mensajes: sonar.
+-->
+<hsml>
+  <head><name>Campanas de viento</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.01" z="0.02" sx="0.02" sy="0.04" sz="0.04" color="#5A5A5A"/>
+    <cylinder y="-0.04" z="0.18" sx="0.004" sy="0.1" sz="0.004" color="#C8C8C8"/>
+    <group id="aro" y="-0.09" z="0.18">
+      <cylinder sx="0.24" sy="0.02" sz="0.24" color="#6B4A30"/>
+    </group>
+    <posezone id="zona" y="-0.4" z="0.18" sx="0.4" sy="0.6" sz="0.4" visible="false"/>
+    <box id="toque" y="-0.38" z="0.18" sx="0.3" sy="0.6" sz="0.3" color="transparent" material-alpha="blend"/>
+    <script src="./campanas.js"/>
+  </space>
+</hsml>

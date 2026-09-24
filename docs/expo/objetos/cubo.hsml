@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cubo mágico de 3×3. Tocar una cara la gira un cuarto de vuelta en el
+  sentido del reloj (mirándola de frente). MEZCLAR le da veinte vueltas al
+  azar y RESOLVER deshace todas las que se hicieron, rápido. Se acuerda de
+  cómo quedó (por `clave`). Para ver las caras de atrás, girá el objeto con
+  un manipulador o caminá alrededor.
+
+  De mesa: apoya en y=0. El cubo mide 0.15 m; con la base, 0.22 × 0.21 × 0.2.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cubo.hsml" events="resuelto"
+             props='{"clave":"mi-cubo"}'/>
+
+  Props: clave (para guardar el estado), lado (m, 0.08 a 0.4).
+  Eventos: giro {cara, movidas}, resuelto {movidas}.
+  Mensajes: mezclar, resolver, girar {cara: "U"|"D"|"L"|"R"|"F"|"B", vueltas}.
+-->
+<hsml>
+  <head><name>Cubo mágico</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.01" sx="0.16" sy="0.02" sz="0.16" color="#2A2A36"/>
+    <cylinder y="0.025" sx="0.05" sy="0.02" sz="0.05" color="#3A3A48"/>
+    <group id="cubo" y="0.125"/>
+    <group x="0" y="0.01" z="0.1">
+      <box id="mezclar" x="-0.045" sx="0.08" sy="0.018" sz="0.035" color="#0A84FF" border-radius="0.006"/>
+      <text x="-0.045" y="0.0" z="0.018" value="MEZCLAR" size="0.011" color="#FFFFFF"/>
+      <box id="resolver" x="0.045" sx="0.08" sy="0.018" sz="0.035" color="#30D158" border-radius="0.006"/>
+      <text x="0.045" y="0.0" z="0.018" value="RESOLVER" size="0.011" color="#FFFFFF"/>
+    </group>
+    <text id="cuenta" y="0.23" value="" size="0.018" color="#FFFFFF"/>
+    <script src="./cubo.js"/>
+  </space>
+</hsml>

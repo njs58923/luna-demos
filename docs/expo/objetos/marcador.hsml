@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Marcador de dos equipos. Números grandes, un + y un − para cada lado, y un
+  botón para volver a cero. Guarda el tanteo.
+
+  De pared: el origen es el centro del tablero, que mira a +Z. Mide
+  0.9 × 0.5 × 0.06 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/marcador.hsml"
+             events="punto" props='{"local":"LOCAL","visita":"VISITA","clave":"patio"}'/>
+
+  Props: local, visita (nombres), color_local, color_visita, clave.
+  Eventos: punto {local, visita} en cada cambio.
+  Mensajes: sumar {equipo: "local" | "visita", puntos}, cero.
+-->
+<hsml>
+  <head><name>Marcador</name></head>
+  <space resources="read_pose_stream">
+    <box z="0.02" sx="0.9" sy="0.5" sz="0.04" color="#14171F" border-radius="0.03"/>
+    <box y="0.19" z="0.041" sx="0.9" sy="0.012" sz="0.002" color="#2E3440"/>
+    <box z="0.041" sx="0.006" sy="0.3" sz="0.002" color="#2E3440"/>
+    <text id="nombre_local" x="-0.22" y="0.215" z="0.042" value="LOCAL" size="0.04" color="#FFFFFF"/>
+    <text id="nombre_visita" x="0.22" y="0.215" z="0.042" value="VISITA" size="0.04" color="#FFFFFF"/>
+    <text id="puntos_local" x="-0.22" y="0.03" z="0.042" value="0" size="0.2" color="#FF3B30"/>
+    <text id="puntos_visita" x="0.22" y="0.03" z="0.042" value="0" size="0.2" color="#0A84FF"/>
+    <box id="mas_local" x="-0.15" y="-0.17" z="0.045" sx="0.1" sy="0.07" sz="0.012" color="#30D158" border-radius="0.012"/>
+    <box id="menos_local" x="-0.29" y="-0.17" z="0.045" sx="0.1" sy="0.07" sz="0.012" color="#3A3F4B" border-radius="0.012"/>
+    <box id="mas_visita" x="0.29" y="-0.17" z="0.045" sx="0.1" sy="0.07" sz="0.012" color="#30D158" border-radius="0.012"/>
+    <box id="menos_visita" x="0.15" y="-0.17" z="0.045" sx="0.1" sy="0.07" sz="0.012" color="#3A3F4B" border-radius="0.012"/>
+    <text x="-0.15" y="-0.17" z="0.052" value="+" size="0.06" color="#08240F"/>
+    <text x="-0.29" y="-0.17" z="0.052" value="-" size="0.06" color="#FFFFFF"/>
+    <text x="0.29" y="-0.17" z="0.052" value="+" size="0.06" color="#08240F"/>
+    <text x="0.15" y="-0.17" z="0.052" value="-" size="0.06" color="#FFFFFF"/>
+    <box id="cero" y="-0.17" z="0.045" sx="0.07" sy="0.05" sz="0.012" color="#FFD60A" border-radius="0.01"/>
+    <text y="-0.17" z="0.052" value="0-0" size="0.022" color="#1C1C1C"/>
+    <script src="./marcador.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pantalla de texto. Un visor de cristal líquido de dos renglones que muestra
+  lo que le mandan: un texto o un número. Tocarla muestra una prueba.
+
+  Bloque de panel de salida: recibe `texto` y `valor`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.24 × 0.1 × 0.03 m.
+
+    <include id="visor" src="https://njs58923.github.io/luna-demos/expo/objetos/pantalla.hsml"
+             props='{"tinta":"ambar"}'/>
+    (visor.send("texto", {texto: "HOLA"}); visor.send("valor", {valor: 3.5, unidad: "V"}))
+
+  Props: tinta ("verde" | "ambar" | "azul"), inicial (texto), decimales.
+  Mensajes: texto {texto} (un salto de línea separa los dos renglones),
+  valor {valor, unidad}, limpiar.
+-->
+<hsml>
+  <head><name>Pantalla de texto</name></head>
+  <space resources="read_pose_stream">
+    <box id="placa" z="0.01" sx="0.24" sy="0.1" sz="0.02" color="#22252E" border-radius="0.012"/>
+    <box id="vidrio" z="0.021" sx="0.21" sy="0.07" sz="0.002" color="#0F2A1D"/>
+    <text id="renglon1" y="0.012" z="0.0225" value="" size="0.024" color="#7CFC8A"/>
+    <text id="renglon2" y="-0.018" z="0.0225" value="" size="0.024" color="#7CFC8A"/>
+    <box id="toque" z="0.03" sx="0.24" sy="0.1" sz="0.02" color="transparent" material-alpha="blend"/>
+    <script src="./pantalla.js"/>
+  </space>
+</hsml>

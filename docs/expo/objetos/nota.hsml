@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Nota adhesiva. Se toca y se escribe, con el teclado de la compu o el
+  virtual de VR; Ctrl+V pega lo que haya en el portapapeles. Lo escrito queda
+  guardado.
+
+  De pared: el origen es el punto de la pared donde se pega; el papel mira a +Z.
+  Mide 0.2 × 0.2 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/nota.hsml"
+             events="cambio" props='{"color":"#FFE66D","clave":"heladera"}'/>
+
+  Props: color (del papel), texto (el inicial, si no hay nada guardado),
+  tinta (color de la letra), clave.
+  Eventos: cambio {texto} al dejar de escribir.
+  Mensajes: escribir {texto}, borrar.
+-->
+<hsml>
+  <head><name>Nota adhesiva</name></head>
+  <space resources="read_pose_stream">
+    <group id="hoja" rz="0.04">
+      <box id="sombra" y="-0.004" z="0.001" sx="0.2" sy="0.2" sz="0.002" color="#00000040" material-alpha="blend"/>
+      <box id="papel" z="0.004" sx="0.2" sy="0.2" sz="0.003" color="#FFE66D"/>
+      <box id="franja" y="0.085" z="0.0058" sx="0.2" sy="0.03" sz="0.001" color="#FFE66D"/>
+      <group id="lineas" z="0.0062"/>
+      <sphere id="chinche" y="0.082" z="0.012" sx="0.018" sy="0.018" sz="0.012" color="#C8102E"/>
+      <text id="ayuda" y="-0.086" z="0.0065" value="" size="0.011" color="#8A7A2A"/>
+    </group>
+    <plane id="toque" z="0.02" sx="0.22" sy="0.22" color="transparent" material-alpha="blend"/>
+    <script src="./nota.js"/>
+  </space>
+</hsml>

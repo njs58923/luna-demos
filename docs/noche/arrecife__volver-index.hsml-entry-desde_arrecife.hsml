@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El arrecife</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="10.4" ry="0"/>
+    <group id="agua">
+      <!-- El techo del agua, visto desde abajo: el plano es de doble cara, así
+           que alcanza con uno. -->
+      <plane y="17" rx="1.5707963" sx="120" sy="120" color="#2A6E86" touchable="false"/>
+      <plane y="-6" rx="1.5707963" sx="120" sy="120" color="#05131E" touchable="false"/>
+      <plane z="-16" sx="48" sy="32" color="#0E3A50" touchable="false"/>
+      <plane z="16" sx="48" sy="32" color="#0E3A50" touchable="false"/>
+      <plane x="-16" ry="1.5707963" sx="48" sy="32" color="#0E3A50" touchable="false"/>
+      <plane x="16" ry="1.5707963" sx="48" sy="32" color="#0E3A50" touchable="false"/>
+      <plane z="-23" sx="69" sy="46" color="#0B3047" touchable="false"/>
+      <plane z="23" sx="69" sy="46" color="#0B3047" touchable="false"/>
+      <plane x="-23" ry="1.5707963" sx="69" sy="46" color="#0B3047" touchable="false"/>
+      <plane x="23" ry="1.5707963" sx="69" sy="46" color="#0B3047" touchable="false"/>
+      <plane z="-30" sx="90" sy="60" color="#08263A" touchable="false"/>
+      <plane z="30" sx="90" sy="60" color="#08263A" touchable="false"/>
+      <plane x="-30" ry="1.5707963" sx="90" sy="60" color="#08263A" touchable="false"/>
+      <plane x="30" ry="1.5707963" sx="90" sy="60" color="#08263A" touchable="false"/>
+      <plane z="-37" sx="111" sy="74" color="#061B2B" touchable="false"/>
+      <plane z="37" sx="111" sy="74" color="#061B2B" touchable="false"/>
+      <plane x="-37" ry="1.5707963" sx="111" sy="74" color="#061B2B" touchable="false"/>
+      <plane x="37" ry="1.5707963" sx="111" sy="74" color="#061B2B" touchable="false"/>
+      <plane z="-44" sx="132" sy="88" color="#05131E" touchable="false"/>
+      <plane z="44" sx="132" sy="88" color="#05131E" touchable="false"/>
+      <plane x="-44" ry="1.5707963" sx="132" sy="88" color="#05131E" touchable="false"/>
+      <plane x="44" ry="1.5707963" sx="132" sy="88" color="#05131E" touchable="false"/>
+    </group>
+
+    <!-- Cuatro mallas para el decorado, tres para los peces, una para las
+         burbujas. Nueve nodos, y adentro está todo el arrecife. -->
+    <model id="arena"/>
+    <model id="causticas"/>
+    <!-- El coral en tres mallas: en una sola, 70 corales son 302 000 vértices y
+         el motor acepta hasta 262 144 por malla. -->
+    <model id="coral"/>
+    <model id="coral_1"/>
+    <model id="coral_2"/>
+    <model id="burbujas"/>
+    <model id="banco_0"/>
+    <model id="banco_1"/>
+    <model id="banco_2"/>
+
+    <!-- La manta: un solo bicho, un solo nodo, su propia órbita. -->
+    <group id="manta">
+      <box sx="4.6" sy="0.16" sz="2.4" color="#26404E" touchable="false" border-radius="0.7"/>
+      <box y="-0.06" sx="3.4" sy="0.1" sz="1.7" color="#3C5E6E" touchable="false" border-radius="0.5"/>
+      <box z="-1.9" sx="0.3" sy="0.09" sz="1.9" color="#26404E" touchable="false" border-radius="0.1"/>
+    </group>
+
+    <!-- El jardín de coral tocable: una losa baja sobre la arena. Igual que en
+         la biblioteca, la malla del coral es una entidad sola y no se puede
+         tocar por partes, así que el toque va en un nodo aparte. -->
+    <group x="0" y="0" z="-7">
+      <cylinder id="jardin" y="-1.2" sx="7" sy="0.16" sz="7" color="#8E7C55" touchable="true"/>
+      <box y="1.5" sx="2.6" sy="0.56" sz="0.06" color="#052030" touchable="false" border-radius="0.05"/>
+      <cylinder x="-1.1" y="0.6" sx="0.08" sy="1.2" sz="0.08" color="#3A4E58" touchable="false"/>
+      <cylinder x="1.1" y="0.6" sx="0.08" sy="1.2" sz="0.08" color="#3A4E58" touchable="false"/>
+      <text y="1.62" z="0.05" value="El arrecife" size="0.13" color="#DFF2F7"/>
+      <text id="a_texto" y="1.42" z="0.05" value="tocá el jardín de coral" size="0.07" color="#E07A63"/>
+    </group>
+
+    <group id="portal_vuelta" x="0" y="0" z="13" ry="3.14159">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_arrecife","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#2E5064","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.ARRECIFE = {"base":"https://njs58923.github.io/luna-demos/noche","bancos":[{"peces":170,"radio":2.6,"alto":5.2,"paseo":13,"vel":0.3,"tam":0.17,"color":[1,0.78,0.32]},{"peces":140,"radio":2.1,"alto":3.4,"paseo":9.5,"vel":0.42,"tam":0.13,"color":[0.55,0.85,0.95]},{"peces":110,"radio":1.6,"alto":8,"paseo":16,"vel":0.22,"tam":0.22,"color":[0.85,0.45,0.55]}],"burbujas":260,"corales":70,"semilla":3,"caustica":40};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/arrecife.js"/>
+  </space>
+</hsml>

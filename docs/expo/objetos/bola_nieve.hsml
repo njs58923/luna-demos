@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bola de nieve. Adentro, una casita con un pino. Tocarla (o sacudir la mano
+  al lado, en VR) levanta la nieve, que se arremolina y baja despacio.
+
+  De mesa: apoya en y=0. Mide 0.26 × 0.28 × 0.26 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/bola_nieve.hsml"
+             resources="read_pose_stream" events="agitada"
+             props='{"base":"#6B2737","texto":"Bariloche"}'/>
+
+  Props: base (color del pie), texto (en el pie), copos (20 a 90),
+  casa (color de la casita).
+  Eventos: agitada {}.
+  Mensajes: agitar.
+-->
+<hsml>
+  <head><name>Bola de nieve</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="pie" y="0.03" sx="0.26" sy="0.06" sz="0.26" color="#6B2737"/>
+    <cylinder y="0.065" sx="0.2" sy="0.012" sz="0.2" color="#D4AF37"/>
+    <text id="texto" y="0.03" z="0.131" value="" size="0.02" color="#F4E3B2"/>
+    <group id="adentro" y="0.071">
+      <cylinder y="0.006" sx="0.15" sy="0.012" sz="0.15" color="#F7F9FC"/>
+      <group x="-0.025" z="-0.01">
+        <box id="casa" y="0.035" sx="0.06" sy="0.05" sz="0.05" color="#C0392B"/>
+        <box x="-0.015" y="0.068" rz="0.6" sx="0.044" sy="0.005" sz="0.058" color="#5D4037"/>
+        <box x="0.015" y="0.068" rz="-0.6" sx="0.044" sy="0.005" sz="0.058" color="#5D4037"/>
+        <box y="0.068" sx="0.034" sy="0.018" sz="0.05" color="#C0392B"/>
+        <box y="0.03" z="0.026" sx="0.014" sy="0.024" sz="0.002" color="#3E2723"/>
+        <box x="0.018" y="0.04" z="0.026" sx="0.012" sy="0.012" sz="0.002" color="#FFE08A" material-unlit="true"/>
+      </group>
+      <group x="0.045" z="0.02">
+        <cylinder y="0.012" sx="0.01" sy="0.024" sz="0.01" color="#5D4037"/>
+        <cylinder y="0.04" sx="0.05" sy="0.03" sz="0.05" color="#1B5E20"/>
+        <cylinder y="0.065" sx="0.036" sy="0.028" sz="0.036" color="#2E7D32"/>
+        <cylinder y="0.087" sx="0.02" sy="0.024" sz="0.02" color="#388E3C"/>
+      </group>
+    </group>
+    <group id="nieve"/>
+    <sphere id="vidrio" y="0.16" sx="0.24" sy="0.24" sz="0.24" color="#DDEEFF30" material-alpha="blend"/>
+    <box id="toque" y="0.15" sx="0.26" sy="0.3" sz="0.26" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.15" sx="0.6" sy="0.5" sz="0.6" visible="false"/>
+    <script src="./bola_nieve.js"/>
+  </space>
+</hsml>

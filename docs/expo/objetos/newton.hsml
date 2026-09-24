@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Péndulo de Newton. Cinco bolitas colgadas en fila: tocar la de una punta la
+  levanta y la suelta, y el golpe atraviesa la fila hasta la otra punta. Con
+  dos tocadas, salen dos. Hace clic en cada choque.
+
+  De mesa: apoya en y=0, la fila corre en X. Mide 0.3 × 0.26 × 0.16 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/newton.hsml"
+             resources="audio" events="choque" props='{"metal":"#C0C0C0"}'/>
+
+  Props: metal (color de las bolitas), bolitas (3 a 7).
+  Eventos: choque {} en cada golpe (muchos: mejor no escucharlo por nada).
+  Mensajes: soltar {cuantas}.
+-->
+<hsml>
+  <head><name>Péndulo de Newton</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.008" sx="0.3" sy="0.016" sz="0.16" color="#1C1C1C" border-radius="0.006"/>
+    <group id="marco"/>
+    <group id="bolitas" y="0.22"/>
+    <script src="./newton.js"/>
+  </space>
+</hsml>

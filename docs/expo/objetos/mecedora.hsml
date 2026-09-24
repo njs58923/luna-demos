@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mecedora. Tocarla le da un empujón y se hamaca, cada vez menos, hasta
+  quedarse quieta. Cada toque suma empuje.
+
+  De piso: apoya en y=0 sobre los balancines, mira a +Z. Mide
+  0.6 × 1.05 × 0.85 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/mecedora.hsml"
+             events="hamaca" props='{"madera":"#8B5A2B","almohadon":"#9A2A2A"}'/>
+
+  Props: madera, almohadon (colores).
+  Eventos: hamaca {fuerza} en cada empujón.
+  Mensajes: empujar.
+-->
+<hsml>
+  <head><name>Mecedora</name></head>
+  <space resources="read_pose_stream">
+    <!-- Todo cuelga del pivote, en el punto de apoyo de los balancines -->
+    <group id="silla"/>
+    <box id="toque" y="0.55" sx="0.62" sy="1.05" sz="0.8" color="transparent" material-alpha="blend"/>
+    <script src="./mecedora.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_nave - no editar a mano -->
+<hsml>
+  <head><name>Banco de juegos</name></head>
+
+  <space resources="navigate_self,navigate_world,spawn,read_camera_pose,read_hmd_pose,read_pose_stream,desktop_camera_control,vr_locomotion">
+    <spawn id="entrada" default="true" x="0" y="0" z="3.2" ry="0"/>
+
+    <plane y="0" rx="-1.5707963" sx="14" sy="12" color="#12161C" touchable="false"/>
+    <box y="1.935" z="-0.05" sx="4.6" sy="3.87" sz="0.1" color="#2A303B" touchable="false"/>
+    <box y="0.06" z="0.02" sx="4.6" sy="0.12" sz="0.06" color="#E67E22" touchable="false"/>
+    <text y="3.69" z="0.02" value="BANCO DE JUEGOS · 19 cajas a escala x3" size="0.08" color="#FFFFFF"/>
+
+    <group x="-1.6" y="2.79" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="ARREGLAR CABLES" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_cables" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_cables" class="cara" juego="cables" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-0.8" y="2.79" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="DESBLOQUEAR COLECTORES" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_manifolds" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_manifolds" class="cara" juego="manifolds" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0" y="2.79" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="LLENAR LOS TANQUES" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_clave" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_clave" class="cara" juego="clave" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0.8" y="2.79" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="VACIAR LA BASURA" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_palanca" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_palanca" class="cara" juego="palanca" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="1.6" y="2.79" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="CARGAR COMBUSTIBLE" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_llenar" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_llenar" class="cara" juego="llenar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-1.6" y="2.11" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="DESCARGAR DATOS" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_descargar" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_descargar" class="cara" juego="descargar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-0.8" y="2.11" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="CEBAR LOS ESCUDOS" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_escudos" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_escudos" class="cara" juego="escudos" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0" y="2.11" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="ARRANCAR EL REACTOR" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_secuencia" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_secuencia" class="cara" juego="secuencia" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0.8" y="2.11" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="CALIBRAR DISTRIBUIDOR" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_calibrar" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_calibrar" class="cara" juego="calibrar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="1.6" y="2.11" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="ALINEAR LA SALIDA" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_alinear" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_alinear" class="cara" juego="alinear" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-1.6" y="1.43" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="PASAR LA TARJETA" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_tarjeta" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_tarjeta" class="cara" juego="tarjeta" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-0.8" y="1.43" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="TRAZAR EL RUMBO" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_rumbo" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_rumbo" class="cara" juego="rumbo" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0" y="1.43" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="DESPEJAR ASTEROIDES" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_asteroides" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_asteroides" class="cara" juego="asteroides" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0.8" y="1.43" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="ANALIZAR MUESTRA" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_muestra" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_muestra" class="cara" juego="muestra" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="1.6" y="1.43" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+
+      <text y="0.305" z="0.02" value="ESCANEO MEDICO" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_escaneo" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_escaneo" class="cara" juego="escaneo" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-1.6" y="0.75" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.275" z="-0.02" sx="0.74" sy="0.02" sz="0.02" color="#E74C3C" touchable="false"/>
+      <text y="0.305" z="0.02" value="SABOTAJE: LUCES" size="0.03" color="#E74C3C"/>
+      <text id="mensaje_interruptores" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_interruptores" class="cara" juego="interruptores" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-0.8" y="0.75" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.275" z="-0.02" sx="0.74" sy="0.02" sz="0.02" color="#E74C3C" touchable="false"/>
+      <text y="0.305" z="0.02" value="SABOTAJE: REACTOR" size="0.03" color="#E74C3C"/>
+      <text id="mensaje_mano" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_mano" class="cara" juego="mano" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0" y="0.75" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.275" z="-0.02" sx="0.74" sy="0.02" sz="0.02" color="#E74C3C" touchable="false"/>
+      <text y="0.305" z="0.02" value="SABOTAJE: OXIGENO" size="0.03" color="#E74C3C"/>
+      <text id="mensaje_oxigeno" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_oxigeno" class="cara" juego="oxigeno" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0.8" y="0.75" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.275" z="-0.02" sx="0.74" sy="0.02" sz="0.02" color="#E74C3C" touchable="false"/>
+      <text y="0.305" z="0.02" value="SABOTAJE: COMUNICACIONES" size="0.03" color="#E74C3C"/>
+      <text id="mensaje_sintonia" y="-0.3" z="0.02" value="" size="0.024" color="#8E9CB4"/>
+      <group id="cara_sintonia" class="cara" juego="sintonia" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+
+    <posezone id="zona" x="0" y="1.935" z="0.6" sx="5" sy="3.87" sz="2" visible="false"/>
+
+    <script src="https://njs58923.github.io/luna-demos/nave/kit.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/juegos.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/banco.js?v=mudboip4"/>
+  </space>
+</hsml>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- La puerta, como documento propio.
+
+     Es el mismo archivo para las veintiocho del atrio Y para el portal de vuelta
+     de las veintisiete escenas. No lo genera nadie y no tiene escrito el nombre
+     de ningun lugar: todo lo que lo distingue viaja en sus **props**.
+
+       <include src="https://.../puerta.hsml" resources="navigate_world"
+                props='{"id":"cueva","titulo":"La cueva","sub":"una onda",
+                        "num":"19","roca":"#4A515C","color":"#151820",
+                        "destino":"https://.../cueva.hsml"}'/>
+
+     Antes viajaba en la query — ./puerta.hsml?id=cueva&titulo=... — y eso hacia
+     que las veintiocho puertas del atrio fueran veintiocho URLs distintas del
+     mismo archivo. Ahora son una sola URL, y ademas las props se pueden cambiar
+     sin volver a montar el include.
+
+     Ojo con dos cosas, las dos medidas contra el motor:
+
+     1. La puerta NAVEGA SOLA, con hiperspace.world.navigate(destino). Fue lo
+        ultimo que falto: location.href navega el propio include y la escena de
+        destino aparecia adentro del marco, asi que la puerta avisaba con
+        component.emit('abrir') y el padre navegaba. world.navigate reemplaza
+        el include principal del mundo, desde aca adentro.
+
+        Pide dos cosas del que la monta: que le DELEGUE navigate_world en el
+        include (resources="navigate_world", y su propio space tiene que
+        tenerlo) y que el destino sea ABSOLUTO, porque una ruta relativa se
+        resuelve contra este archivo y no contra el mundo. Sin destino cae al
+        canal viejo, emite abrir y espera que alguien navegue.
+
+     2. El toque se despacha unicamente al espacio dueno del nodo
+        (find_owner_space_id sube hasta el <space> mas cercano). Sigue siendo
+        cierto, pero ya no obliga a nada: el vano vive aca, su toque llega aca,
+        y lo que cruza el borde es el evento.
+
+     Por eso el vano tocable **es parte de la puerta**, y ahora tambien lo es
+     la navegacion: el que la usa solo decide su color y su destino, por props,
+     y no escucha nada.
+
+     ···········································································
+     Dos cosas que este objeto NO tiene, y las dos por la misma razon: **la puerta
+     tiene que poder pararse en cualquier lado**.
+
+     - No tiene piso. Tuvo umbral, escalon y un charco de luz tibia, y en el atrio
+       quedaban bien; pero una losa a ras del suelo pelea con el piso de cualquier
+       escena que la reciba —z-fighting, o un rectangulo mas claro que no pega con
+       nada— y este mismo archivo se para hoy sobre nieve, sobre pasto, sobre roca
+       de cueva y sobre pano de billar. Lo unico que toca el suelo son los plintos,
+       que son volumen y no chapa.
+
+     - No tiene cornisa. La tuvo, y en el anillo del atrio se veia muy bien porque
+       las veintiocho juntas formaban una linea continua. Pero esa linea es del
+       **anillo**, no de la puerta: sola en medio de una pradera, una cornisa de
+       3,66 m flotando sobre un arco no es arquitectura, es un pedazo de otra cosa.
+       Si el atrio quiere su aro, que lo dibuje el atrio.
+
+     La regla, que vale para cualquier componente: **lo que solo tiene sentido en
+     el contexto que lo aloja no va adentro del componente.**
+     ···········································································
+
+     El color de la piedra entra por la prop `roca` y el script deriva de ahi los tres
+     tonos —oscuro, medio, claro— y los reparte por clase. Asi cada escena le pasa
+     la piedra de su propia paleta y la puerta se integra sin saber donde esta. -->
+<hsml>
+  <head><name>Puerta</name></head>
+
+  <!-- Un solo permiso, el de cambiar el mundo. No pide red ni audio. Declararlo
+       aca no alcanza: el que monta la puerta tiene que delegarselo en el
+       include, y rige la interseccion de los dos. -->
+  <space resources="navigate_world">
+    <!-- Las dos columnas: plinto, fuste, capitel, abaco. Lo unico que apoya en
+         el suelo, y apoya con volumen. -->
+    <box class="r-osc" x="-1.15" y="0.15" sx="0.50" sy="0.30" sz="0.50" color="#3E444F" touchable="false"/>
+    <box class="r-osc" x="1.15" y="0.15" sx="0.50" sy="0.30" sz="0.50" color="#3E444F" touchable="false"/>
+    <cylinder class="r-med" x="-1.15" y="1.50" sx="0.26" sy="2.40" sz="0.26" color="#4A515C" touchable="false"/>
+    <cylinder class="r-med" x="1.15" y="1.50" sx="0.26" sy="2.40" sz="0.26" color="#4A515C" touchable="false"/>
+    <box class="r-alt" x="-1.15" y="2.80" sx="0.42" sy="0.20" sz="0.42" color="#5C6472" touchable="false"/>
+    <box class="r-alt" x="1.15" y="2.80" sx="0.42" sy="0.20" sz="0.42" color="#5C6472" touchable="false"/>
+    <box class="r-osc" x="-1.15" y="2.94" sx="0.52" sy="0.08" sz="0.52" color="#3E444F" touchable="false"/>
+    <box class="r-osc" x="1.15" y="2.94" sx="0.52" sy="0.08" sz="0.52" color="#3E444F" touchable="false"/>
+
+    <!-- Las jambas, 14 cm detras del vano: el nicho. Sin esto el color de afuera
+         queda pegado al frente y la puerta no tiene espesor. -->
+    <box class="r-osc" x="-1.06" y="1.45" z="-0.14" sx="0.14" sy="2.90" sz="0.34" color="#3E444F" touchable="false"/>
+    <box class="r-osc" x="1.06" y="1.45" z="-0.14" sx="0.14" sy="2.90" sz="0.34" color="#3E444F" touchable="false"/>
+    <box class="r-osc" y="2.92" z="-0.14" sx="2.30" sy="0.14" sz="0.34" color="#3E444F" touchable="false"/>
+
+    <!-- El arco: once dovelas sobre un radio de 1,15 m con centro en y=2,98.
+         Cada una gira su propio angulo, y con eso el lado largo queda tangente a
+         la curva; es la misma cuenta que la del anillo del atrio, de costado. -->
+    <box class="r-med" x="1.15" y="2.98" rz="0" sx="0.30" sy="0.40" sz="0.34" color="#4A515C" touchable="false"/>
+    <box class="r-alt" x="1.094" y="3.336" rz="0.314" sx="0.30" sy="0.40" sz="0.34" color="#5C6472" touchable="false"/>
+    <box class="r-med" x="0.930" y="3.656" rz="0.628" sx="0.30" sy="0.40" sz="0.34" color="#4A515C" touchable="false"/>
+    <box class="r-alt" x="0.676" y="3.910" rz="0.942" sx="0.30" sy="0.40" sz="0.34" color="#5C6472" touchable="false"/>
+    <box class="r-med" x="0.355" y="4.074" rz="1.257" sx="0.30" sy="0.40" sz="0.34" color="#4A515C" touchable="false"/>
+    <box class="r-med" x="-0.355" y="4.074" rz="1.885" sx="0.30" sy="0.40" sz="0.34" color="#4A515C" touchable="false"/>
+    <box class="r-alt" x="-0.676" y="3.910" rz="2.199" sx="0.30" sy="0.40" sz="0.34" color="#5C6472" touchable="false"/>
+    <box class="r-med" x="-0.930" y="3.656" rz="2.513" sx="0.30" sy="0.40" sz="0.34" color="#4A515C" touchable="false"/>
+    <box class="r-alt" x="-1.094" y="3.336" rz="2.827" sx="0.30" sy="0.40" sz="0.34" color="#5C6472" touchable="false"/>
+    <box class="r-med" x="-1.15" y="2.98" rz="3.142" sx="0.30" sy="0.40" sz="0.34" color="#4A515C" touchable="false"/>
+    <!-- La clave, mas grande y mas clara que las dovelas. -->
+    <box class="r-alt" y="4.13" rz="1.571" sx="0.40" sy="0.48" sz="0.40" color="#6A7280" touchable="false"/>
+
+    <!-- Los dos apliques, montados sobre el eje de la columna y proyectados con
+         un brazo. Una version los puso al costado, a 27 cm del fuste, y de lejos
+         se leian como dos agujeros oscuros flotando: un aplique tiene que tocar
+         algo. La luz no se parametriza — es lo unico que iguala a todas las
+         puertas y lo que hace que se reconozcan como puertas. -->
+    <box class="r-osc" x="-1.15" y="2.28" z="0.20" sx="0.06" sy="0.06" sz="0.28" color="#3E444F" touchable="false"/>
+    <box x="-1.15" y="2.30" z="0.37" sx="0.18" sy="0.26" sz="0.18" color="#FFD9A0" touchable="false"/>
+    <box class="r-osc" x="1.15" y="2.28" z="0.20" sx="0.06" sy="0.06" sz="0.28" color="#3E444F" touchable="false"/>
+    <box x="1.15" y="2.30" z="0.37" sx="0.18" sy="0.26" sz="0.18" color="#FFD9A0" touchable="false"/>
+    <!-- Y la lampara de la clave, arriba de todo. -->
+    <box y="4.36" z="0.18" sx="0.76" sy="0.07" sz="0.20" color="#FFD9A0" touchable="false"/>
+
+    <!-- El vano: el unico nodo tocable. Va **hundido** (z negativo) y mas
+         angosto que el hueco, para que las jambas lo enmarquen; al ras y a lo
+         ancho se leia como una calcomania pegada al frente y el nicho no se
+         veia. Arranca invisible y el script lo enciende solo si hay canal: un
+         vano que no lleva a ningun lado es peor que una pared. -->
+    <box id="vano" y="1.44" z="-0.05" sx="1.86" sy="2.62" sz="0.06"
+         color="#16223A" touchable="true" border-radius="0.04" visible="false"/>
+
+    <!-- Los tres textos que el script rellena desde las props. Van delante del
+         vano, por eso z=0.08. -->
+    <text id="titulo" y="1.98" z="0.08" value="Puerta" size="0.17" color="#EAF0F8"/>
+    <text id="sub" y="1.72" z="0.08" value="" size="0.062" color="#94A2B4"/>
+    <text id="num" y="0.46" z="0.08" value="" size="0.12" color="#C8A24E"/>
+    <!-- Un filete de laton entre el titulo y el subtitulo: separa dos textos de
+         tamanos parecidos mejor que el espacio en blanco. -->
+    <box y="1.86" z="0.07" sx="0.9" sy="0.012" sz="0.01" color="#C8A24E" touchable="false"/>
+
+    <script src="./puerta.js"/>
+  </space>
+</hsml>

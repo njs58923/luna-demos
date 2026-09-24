@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Led. Una luz de panel en su aro: prendida, apagada, a media luz o
+  parpadeando. Tocarla la prueba (prende y apaga).
+
+  Bloque de panel de salida: recibe `valor` (0 apagada, 1 prendida, en el
+  medio a media luz).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.07 × 0.09 × 0.03 m.
+
+    <include id="luz" src="https://njs58923.github.io/luna-demos/expo/objetos/led.hsml" props='{"color":"#30D158"}'/>
+    (luz.send("valor", {valor: 1}); luz.send("parpadear", {hz: 2}))
+
+  Props: color, etiqueta, inicial (0..1).
+  Mensajes: valor {valor} (0..1), color {color}, parpadear {hz} (0 = quieta).
+-->
+<hsml>
+  <head><name>Led</name></head>
+  <space resources="read_pose_stream">
+    <box id="placa" y="0.008" z="0.01" sx="0.07" sy="0.09" sz="0.02" color="#22252E" border-radius="0.012"/>
+    <cylinder y="0.018" z="0.022" rx="1.5708" sx="0.05" sy="0.006" sz="0.05" color="#3A3F4B"/>
+    <sphere id="luz" y="0.018" z="0.026" sx="0.036" sy="0.036" sz="0.022" color="#1B3A24"/>
+    <sphere id="halo" y="0.018" z="0.027" sx="0.05" sy="0.05" sz="0.02" color="#30D15800" material-alpha="blend" material-unlit="true"/>
+    <text id="etiqueta" y="-0.024" z="0.021" value="" size="0.011" color="#C8CCD8"/>
+    <box id="toque" y="0.008" z="0.03" sx="0.07" sy="0.09" sz="0.02" color="transparent" material-alpha="blend"/>
+    <script src="./led.js"/>
+  </space>
+</hsml>

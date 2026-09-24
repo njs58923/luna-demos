@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Vela. La llama titila; un toque la apaga con un soplido (sale humo) y otro la
+  vuelve a prender. Si se le da un `consumo`, se va gastando mientras arde, y
+  lo que se gastó queda guardado.
+
+  De mesa: apoya en y=0. Mide 0.12 × 0.3 × 0.12 m (entera).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/vela.hsml"
+             events="cambio" props='{"cera":"#F4E1C1","consumo":120,"clave":"comedor"}'/>
+
+  Props: cera (color), plato (color), encendida (al empezar), consumo (minutos
+  que tarda en gastarse entera; 0 = no se gasta), clave.
+  Eventos: cambio {encendida, queda} (queda: 0..1 de cera).
+  Mensajes: encender, apagar, nueva (repone la cera).
+-->
+<hsml>
+  <head><name>Vela</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="plato" y="0.006" sx="0.12" sy="0.012" sz="0.12" color="#B08D57"/>
+    <cylinder y="0.014" sx="0.09" sy="0.006" sz="0.09" color="#C9A45C"/>
+    <group id="cuerpo" y="0.017">
+      <cylinder id="cera" y="0.1" sx="0.05" sy="0.2" sz="0.05" color="#F4E1C1"/>
+      <cylinder id="cera_borde" y="0.199" sx="0.046" sy="0.004" sz="0.046" color="#EAD2A8"/>
+      <cylinder id="mecha" y="0.21" sx="0.003" sy="0.02" sz="0.003" color="#2A2A2A"/>
+      <group id="llama" y="0.232">
+        <sphere id="llama_afuera" sx="0.022" sy="0.05" sz="0.022" color="#FF9F1C" material-unlit="true"/>
+        <sphere id="llama_adentro" y="-0.006" sx="0.011" sy="0.026" sz="0.011" color="#FFF3B0" material-unlit="true"/>
+        <sphere id="halo" sx="0.14" sy="0.16" sz="0.14" color="#FFB84D22" material-alpha="blend" material-unlit="true"/>
+      </group>
+      <group id="humo" y="0.225"/>
+    </group>
+    <box id="toque" y="0.14" sx="0.1" sy="0.3" sz="0.1" color="transparent" material-alpha="blend"/>
+    <script src="./vela.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Medidor de aguja. Un cuadrante de media luna con zonas de color y una
+  aguja que va al valor que le mandan, con un poco de rebote. Tocarlo lo
+  prueba (la aguja va a un valor al azar).
+
+  Bloque de panel de salida: recibe `valor` (con valor, o con fraccion de 0 a 1).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.2 × 0.16 × 0.03 m.
+
+    <include id="medidor" src="https://njs58923.github.io/luna-demos/expo/objetos/medidor.hsml"
+             props='{"min":0,"max":100,"unidad":"%","titulo":"PRESIÓN"}'/>
+    (y desde el mundo: medidor.send("valor", {valor: 42}))
+
+  Props: min, max, unidad, titulo, zonas (true: verde, amarillo, rojo).
+  Mensajes: valor {valor} o {fraccion}.
+-->
+<hsml>
+  <head><name>Medidor</name></head>
+  <space resources="read_pose_stream">
+    <box id="placa" z="0.01" sx="0.2" sy="0.16" sz="0.02" color="#22252E" border-radius="0.015"/>
+    <box y="0.01" z="0.021" sx="0.18" sy="0.1" sz="0.002" color="#F4F1E8" border-radius="0.01"/>
+    <group id="zonas" y="-0.025" z="0.0225"/>
+    <group id="aguja" y="-0.025" z="0.024">
+      <box y="0.035" sx="0.003" sy="0.07" sz="0.002" color="#D62828"/>
+    </group>
+    <cylinder y="-0.025" z="0.025" rx="1.5708" sx="0.012" sy="0.004" sz="0.012" color="#1C1C1C"/>
+    <text id="lectura" y="-0.052" z="0.021" value="" size="0.018" color="#FFD166"/>
+    <text id="titulo" y="0.068" z="0.021" value="" size="0.012" color="#C8CCD8"/>
+    <box id="toque" z="0.03" sx="0.2" sy="0.16" sz="0.02" color="transparent" material-alpha="blend"/>
+    <script src="./medidor.js"/>
+  </space>
+</hsml>

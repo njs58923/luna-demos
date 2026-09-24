@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lámpara de pie. Tocar la pantalla pasa por apagada y tres intensidades;
+  tocar la perilla del caño cambia el color de la luz. Recuerda las dos cosas.
+
+  De piso: apoya en y=0. Mide 0.5 × 1.65 × 0.5 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/lampara_pie.hsml"
+             events="cambio" props='{"pantalla":"#F2E8CF","clave":"rincon"}'/>
+
+  Props: pantalla (color), metal (color del caño), clave.
+  Eventos: cambio {nivel (0..3), color}.
+  Mensajes: nivel {nivel}, color {color}.
+-->
+<hsml>
+  <head><name>Lámpara de pie</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="base" y="0.015" sx="0.32" sy="0.03" sz="0.32" color="#2A2A2A"/>
+    <cylinder id="cano" y="0.8" sx="0.025" sy="1.54" sz="0.025" color="#B8923E"/>
+    <sphere id="perilla" y="1.0" z="0.02" sx="0.04" sy="0.04" sz="0.04" color="#FFD27A"/>
+    <sphere id="foco" y="1.42" sx="0.07" sy="0.08" sz="0.07" color="#8A8578"/>
+    <group id="pantalla">
+      <cylinder class="tela" y="1.48" sx="0.46" sy="0.1" sz="0.46" color="#F2E8CF"/>
+      <cylinder class="tela" y="1.56" sx="0.4" sy="0.08" sz="0.4" color="#F2E8CF"/>
+      <cylinder class="tela" y="1.62" sx="0.34" sy="0.06" sz="0.34" color="#F2E8CF"/>
+    </group>
+    <sphere id="halo" y="1.45" sx="0.8" sy="0.5" sz="0.8" color="#FFD27A20" material-alpha="blend" material-unlit="true" visible="false"/>
+    <plane id="charco" y="0.004" rx="-1.5707963" sx="1.6" sy="1.6" border-radius="0.5" color="#FFD27A30" material-alpha="blend" material-unlit="true" visible="false"/>
+    <cylinder id="toque" y="1.55" sx="0.5" sy="0.24" sz="0.5" color="transparent" material-alpha="blend"/>
+    <script src="./lampara_pie.js"/>
+  </space>
+</hsml>

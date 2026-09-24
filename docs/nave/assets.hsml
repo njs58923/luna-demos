@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_nave - no editar a mano -->
+<hsml>
+  <head><name>Muestrario de la nave</name></head>
+
+  <space resources="navigate_self,navigate_world,spawn,read_camera_pose,read_hmd_pose,desktop_camera_control,vr_locomotion">
+    <spawn id="entrada" default="true" x="0" y="0" z="6" ry="0"/>
+
+    <plane y="0" rx="-1.5707963" sx="60" sy="40" color="#12161C" touchable="false"/>
+    <box y="-0.6" sx="60" sy="1" sz="40" color="#0A0F16" touchable="false"/>
+    <text y="4.8" z="-2" value="MUESTRARIO" size="0.4" color="#FFFFFF"/>
+    <text y="4.4" z="-2" value="24 modelos · todos miran al visitante" size="0.12" color="#8E9CB4"/>
+
+    <group x="-16.2" z="-3">
+      <box y="0.5" sx="0.06" sy="1" sz="0.06" color="#FFFFFF" touchable="false"/>
+      <box y="1.0" sx="0.3" sy="0.04" sz="0.3" color="#E74C3C" touchable="false"/>
+      <box y="0.02" sx="0.3" sy="0.04" sz="0.3" color="#E74C3C" touchable="false"/>
+      <text y="1.3" z="0.2" value="1 metro" size="0.12" color="#FFFFFF"/>
+    </group>
+    <group x="0" y="0" z="3.5">
+      <text y="1.6" value="calibración: arriba HSML, abajo el modelo" size="0.12" color="#F1C40F"/>
+      <box x="-1.25" y="1.1" sx="0.4" sy="0.4" sz="0.4" color="#202020" touchable="false"/>
+      <text x="-1.25" y="0.72" value="#202020" size="0.055" color="#8E9CB4"/>
+      <box x="-0.75" y="1.1" sx="0.4" sy="0.4" sz="0.4" color="#404040" touchable="false"/>
+      <text x="-0.75" y="0.72" value="#404040" size="0.055" color="#8E9CB4"/>
+      <box x="-0.25" y="1.1" sx="0.4" sy="0.4" sz="0.4" color="#808080" touchable="false"/>
+      <text x="-0.25" y="0.72" value="#808080" size="0.055" color="#8E9CB4"/>
+      <box x="0.25" y="1.1" sx="0.4" sy="0.4" sz="0.4" color="#C0C0C0" touchable="false"/>
+      <text x="0.25" y="0.72" value="#C0C0C0" size="0.055" color="#8E9CB4"/>
+      <box x="0.75" y="1.1" sx="0.4" sy="0.4" sz="0.4" color="#4A5464" touchable="false"/>
+      <text x="0.75" y="0.72" value="#4A5464" size="0.055" color="#8E9CB4"/>
+      <box x="1.25" y="1.1" sx="0.4" sy="0.4" sz="0.4" color="#E74C3C" touchable="false"/>
+      <text x="1.25" y="0.72" value="#E74C3C" size="0.055" color="#8E9CB4"/>
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/calibracion.glb?v=mug5cadx" y="0.2" touchable="false"/>
+    </group>
+    <group x="-12.6" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_prueba_color" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/prueba_color.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="prueba de color" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="magenta y verde" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="prueba_color.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-9" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_tripulante_rojo" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_rojo.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="tripulante" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,45 m de alto" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="tripulante_rojo.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-5.4" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+      <box y="1.6" z="-1.15" sx="2.8" sy="3.2" sz="0.12" color="#2A303B" touchable="false"/>
+      <model id="muestra_consola_pared" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/consola_pared.glb?v=mug5cadx"
+             y="0.12" z="-1" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="consola de pared" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,9 × 2,4 × 0,4" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="consola_pared.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-1.8" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_consola_mesa" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/consola_mesa.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="consola de mesa" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,6 × 1,1 × 0,8" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="consola_mesa.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="1.8" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+      <box y="1.6" z="-1.15" sx="2.8" sy="3.2" sz="0.12" color="#2A303B" touchable="false"/>
+      <model id="muestra_puerta_marco" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mug5cadx"
+             y="0.12" z="-1" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="marco de puerta" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="3,2 × 2,8" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="puerta_marco.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="5.4" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+      <box y="1.6" z="-1.15" sx="2.8" sy="3.2" sz="0.12" color="#2A303B" touchable="false"/>
+      <model id="muestra_panel_pared" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/panel_pared.glb?v=mug5cadx"
+             y="0.12" z="-1" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="panel de pared" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="2,0 × 2,6" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="panel_pared.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="9" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+      <box y="1.6" z="-1.15" sx="2.8" sy="3.2" sz="0.12" color="#2A303B" touchable="false"/>
+      <model id="muestra_casillero" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mug5cadx"
+             y="0.12" z="-1" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="casillero" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,0 × 2,0 × 0,5" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="casillero.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="12.6" z="-3">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_mesa_cafeteria" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/mesa_cafeteria.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="mesa de cafetería" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="3,6 de diámetro" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="mesa_cafeteria.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-12.6" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_silla" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="silla" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="0,5 × 0,9" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="silla.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-9" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_caja_carga" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="caja de carga" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="0,8 × 0,8 × 0,8" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="caja_carga.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-5.4" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_barril" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="barril" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="0,66 × 0,9" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="barril.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-1.8" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_bidon" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/bidon.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="bidón" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="0,45 × 0,7" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="bidon.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="1.8" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_conducto_tapa" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="tapa de conducto" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,3 × 1,3" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="conducto_tapa.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="5.4" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_tuberia_recta" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mug5cadx"
+             y="1.72" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="tubería recta" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="3,0 de largo" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="tuberia_recta.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="9" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_tuberia_codo" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_codo.glb?v=mug5cadx"
+             y="1.72" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="codo de tubería" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="0,9 × 0,9" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="tuberia_codo.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="12.6" z="-9">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_luz_techo" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mug5cadx"
+             y="3.32" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="luz de techo" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,2 × 0,25" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="luz_techo.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-12.6" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_reactor_nucleo" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/reactor_nucleo.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="núcleo del reactor" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="2,6 × 3,4" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="reactor_nucleo.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-9" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_motor" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/motor.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="motor" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="2,2 × 2,6 × 4,0" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="motor.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-5.4" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_camilla" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/camilla.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="camilla" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,0 × 0,9 × 2,2" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="camilla.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="-1.8" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_escaner" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/escaner.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="escáner médico" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,8 × 2,6" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="escaner.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="1.8" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_antena" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/antena.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="antena" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,6 × 2,2" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="antena.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="5.4" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_volante" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/volante.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="timón" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,4 × 1,3 × 0,9" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="volante.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="9" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+      <box y="1.6" z="-1.15" sx="2.8" sy="3.2" sz="0.12" color="#2A303B" touchable="false"/>
+      <model id="muestra_tablero_electrico" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/tablero_electrico.glb?v=mug5cadx"
+             y="0.12" z="-1" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="tablero eléctrico" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,6 × 2,1" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="tablero_electrico.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+    <group x="12.6" z="-15">
+      <cylinder y="0.05" sx="2.6" sy="0.1" sz="2.6" color="#1B2028" touchable="false"/>
+      <cylinder y="0.11" sx="2.4" sy="0.02" sz="2.4" color="#232A34" touchable="false"/>
+
+      <model id="muestra_torreta" class="muestra" src="https://njs58923.github.io/luna-demos/nave/modelos/torreta.glb?v=mug5cadx"
+             y="0.12" z="0" ry="3.14159" touchable="false"/>
+      <text y="3.9" z="0.2" value="torreta" size="0.16" color="#F1C40F"/>
+      <text y="3.68" z="0.2" value="1,4 × 1,6 × 2,4" size="0.1" color="#8E9CB4"/>
+      <text y="3.5" z="0.2" value="torreta.glb" size="0.075" color="#4E5A6B"/>
+    </group>
+
+    <script src="https://njs58923.github.io/luna-demos/nave/muestrario.js"/>
+  </space>
+</hsml>

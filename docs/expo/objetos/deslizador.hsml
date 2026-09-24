@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Deslizador. Una perilla que corre por un riel, horizontal o vertical, con o
+  sin muescas. En VR se la agarra y se la lleva; en escritorio, un clic en el
+  riel la manda hasta ahí.
+
+  Bloque de panel: emite `valor` al cambiar y acepta `poner`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.3 × 0.1 × 0.05 m
+  (vertical: 0.1 × 0.3).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/deslizador.hsml"
+             resources="audio,read_pose_stream" events="valor"
+             props='{"orientacion":"vertical","etiqueta":"NIVEL"}'/>
+
+  Props: orientacion ("horizontal" | "vertical"), min, max, pasos (0 =
+  continuo), inicial, color, etiqueta, clave.
+  Eventos: valor {valor, fraccion}.
+  Mensajes: poner {valor} o {fraccion}.
+-->
+<hsml>
+  <head><name>Deslizador</name></head>
+  <space resources="audio,read_pose_stream">
+    <group id="todo">
+      <box id="placa" z="0.01" sx="0.3" sy="0.1" sz="0.02" color="#22252E" border-radius="0.015"/>
+      <box id="riel" y="0.008" z="0.022" sx="0.24" sy="0.012" sz="0.004" color="#101216" border-radius="0.004"/>
+      <box id="relleno" y="0.008" z="0.0245" sx="0.001" sy="0.006" sz="0.002" color="#2EC4B6"/>
+      <group id="marcas" y="0.008" z="0.021"/>
+      <group id="perilla" y="0.008" z="0.024">
+        <box z="0.012" sx="0.026" sy="0.04" sz="0.024" color="#2B2F3A" border-radius="0.006"/>
+        <box z="0.0245" sx="0.004" sy="0.03" sz="0.001" color="#2EC4B6"/>
+      </group>
+      <box id="toque" manos="false" y="0.008" z="0.04" sx="0.27" sy="0.06" sz="0.04" color="transparent" material-alpha="blend"/>
+    </group>
+    <text id="lectura" y="-0.035" x="0.09" z="0.021" value="" size="0.016" color="#FFD166"/>
+    <text id="etiqueta" y="-0.035" x="-0.06" z="0.021" value="" size="0.013" color="#C8CCD8"/>
+    <posezone id="zona" z="0.15" sx="0.6" sy="0.6" sz="0.35" visible="false"/>
+    <script src="./deslizador.js"/>
+  </space>
+</hsml>

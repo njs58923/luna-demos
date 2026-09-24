@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ramo de globos. Flotan atados a una pesita y se mecen con la brisa; tocar
+  uno lo revienta (en VR, pincharlo con la mano). Al rato se vuelven a inflar.
+
+  De piso: la pesa apoya en y=0 y los globos suben hasta ~1.9 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/globos.hsml"
+             resources="audio,read_pose_stream" events="pop"
+             props='{"cantidad":5,"colores":["#FF3B30","#FFD60A"]}'/>
+
+  Props: cantidad (1 a 9), colores (lista), alto (largo de los hilos, m),
+  brisa (0 a 1).
+  Eventos: pop {quedan}.
+  Mensajes: inflar.
+-->
+<hsml>
+  <head><name>Ramo de globos</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder y="0.04" sx="0.12" sy="0.08" sz="0.12" color="#C0C0C8"/>
+    <sphere y="0.09" sx="0.03" sy="0.03" sz="0.03" color="#8E8E96"/>
+    <group id="ramo"/>
+    <posezone id="zona" y="1.1" sx="1.2" sy="1.9" sz="1.2" visible="false"/>
+    <script src="./globos.js"/>
+  </space>
+</hsml>

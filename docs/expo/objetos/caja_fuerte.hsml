@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Caja fuerte. Un dial de combinación de 0 a 39: se gira en el sentido del
+  reloj hasta el primer número, al revés hasta el segundo y otra vez en el
+  sentido del reloj hasta el tercero; con los tres, la manija abre. En VR se
+  agarra el dial y se gira la muñeca (o se lo lleva con la mano alrededor);
+  en escritorio, un clic en un número del borde lleva el dial hasta ahí por
+  el lado que toca, y un clic en el centro empieza de nuevo.
+
+  Bloque de panel: emite `abierto` y `valor` (cuántos números van bien).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.26 × 0.3 × 0.08 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/caja_fuerte.hsml"
+             resources="audio,read_pose_stream" events="abierto"
+             props='{"combinacion":[12,30,5]}'/>
+
+  Props: combinacion (tres números de 0 a 39), color.
+  Eventos: numero {n, paso, bien}, valor {valor, fraccion}, abierto {}, cerrado {}.
+  Mensajes: cerrar.
+-->
+<hsml>
+  <head><name>Caja fuerte</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" y="0" z="0.01" sx="0.26" sy="0.3" sz="0.02" color="#3A3F4B" border-radius="0.02"/>
+    <box y="0" z="0.021" sx="0.24" sy="0.28" sz="0.002" color="#2B2F3A" border-radius="0.016"/>
+    <group id="numeros" y="0.025" z="0.022"/>
+    <box y="0.123" z="0.024" sx="0.006" sy="0.012" sz="0.004" color="#E63946"/>
+    <group id="dial" y="0.025" z="0.022"/>
+    <group id="manija" y="-0.1" z="0.022">
+      <cylinder z="0.008" rx="1.5708" sx="0.026" sy="0.016" sz="0.026" color="#B0B0B0"/>
+      <box x="0.03" z="0.016" sx="0.06" sy="0.012" sz="0.012" color="#B0B0B0" border-radius="0.004"/>
+    </group>
+    <sphere id="luz" x="0.1" y="-0.12" z="0.024" sx="0.012" sy="0.012" sz="0.006" color="#5A0B12" material-unlit="true"/>
+    <text id="pasos" x="-0.08" y="-0.115" z="0.023" value="" size="0.014" color="#FFD166"/>
+    <cylinder id="toque" manos="false" y="0.025" z="0.05" rx="1.5708" sx="0.2" sy="0.04" sz="0.2" color="transparent" material-alpha="blend"/>
+    <box id="toque_manija" y="-0.1" x="0.02" z="0.04" sx="0.09" sy="0.04" sz="0.03" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.025" z="0.15" sx="0.5" sy="0.5" sz="0.35" visible="false"/>
+    <script src="./caja_fuerte.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Nivel de burbuja. Mide la inclinación de verdad: si lo ponen sobre algo
+  torcido (o lo giran con un manipulador) la burbuja se corre hacia el lado
+  alto y el visor dice cuántos grados le faltan. Con el ojo de buey de arriba
+  se ve la inclinación en los dos sentidos.
+
+  De mesa: apoya en y=0. Mide 0.6 × 0.05 × 0.03 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/nivel.hsml" events="nivelado"/>
+
+  Tocar el visor cambia la unidad: grados, pendiente en % o mm por metro.
+
+  Props: color (del cuerpo), tolerancia (grados para dar por nivelado).
+  Eventos: nivelado {grados} al quedar parejo; inclinado {grados, costado}
+  cada vez que cambia más de medio grado.
+-->
+<hsml>
+  <head><name>Nivel de burbuja</name></head>
+  <space resources="read_pose_stream">
+    <box id="cuerpo" y="0.025" sx="0.6" sy="0.05" sz="0.03" color="#F2C200"/>
+    <box x="-0.3" y="0.025" sx="0.012" sy="0.052" sz="0.032" color="#1C1C1C"/>
+    <box x="0.3" y="0.025" sx="0.012" sy="0.052" sz="0.032" color="#1C1C1C"/>
+    <!-- La ampolla del medio, al frente. -->
+    <box y="0.025" z="0.0155" sx="0.11" sy="0.036" sz="0.002" color="#2A2A2A"/>
+    <cylinder id="ampolla" y="0.025" z="0.017" rz="1.5708" sx="0.022" sy="0.09" sz="0.012" color="#C8F7A6" material-unlit="true"/>
+    <box x="-0.0095" y="0.025" z="0.0235" sx="0.0015" sy="0.024" sz="0.001" color="#111111"/>
+    <box x="0.0095" y="0.025" z="0.0235" sx="0.0015" sy="0.024" sz="0.001" color="#111111"/>
+    <sphere id="burbuja" y="0.025" z="0.0215" sx="0.016" sy="0.011" sz="0.006" color="#FFFFF0" material-unlit="true"/>
+    <!-- El ojo de buey, arriba. -->
+    <cylinder x="0.2" y="0.051" sx="0.03" sy="0.004" sz="0.03" color="#2A2A2A"/>
+    <cylinder id="ojo" x="0.2" y="0.053" sx="0.026" sy="0.002" sz="0.026" color="#C8F7A6" material-unlit="true"/>
+    <sphere id="burbuja2" x="0.2" y="0.0545" sx="0.006" sy="0.003" sz="0.006" color="#FFFFF0" material-unlit="true"/>
+    <!-- El visor. -->
+    <box id="visor" x="-0.17" y="0.025" z="0.0155" sx="0.13" sy="0.036" sz="0.002" color="#E8F0E0"/>
+    <text id="grados" x="-0.17" y="0.029" z="0.017" value="0.0°" size="0.018" color="#111111"/>
+    <text id="costado" x="-0.17" y="0.014" z="0.017" value="" size="0.009" color="#333333"/>
+    <script src="./nivel.js"/>
+  </space>
+</hsml>

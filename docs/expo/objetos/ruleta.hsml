@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ruleta de la fortuna. Se toca y gira, frena de a poco, y la flecha de arriba
+  marca la opción que salió. Las opciones las pone quien la monta.
+
+  De pared: el origen es el eje, la rueda mira a +Z. Mide 0.84 × 0.95 × 0.1 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/ruleta.hsml" resources="audio"
+             events="resultado" props='{"opciones":["Pizza","Sushi","Tacos","Pasta"]}'/>
+
+  Props: opciones (lista de 2 a 12 textos), colores (lista), sonido (bool).
+  Eventos: resultado {opcion, indice}.
+  Mensajes: girar.
+-->
+<hsml>
+  <head><name>Ruleta de la fortuna</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder z="0.01" rx="1.5707963" sx="0.84" sy="0.02" sz="0.84" color="#3D2B1F"/>
+    <group id="rueda" z="0.03"/>
+    <cylinder z="0.06" rx="1.5707963" sx="0.07" sy="0.03" sz="0.07" color="#C9A45C"/>
+    <!-- La flecha, arriba, apuntando al centro -->
+    <group y="0.44" z="0.06">
+      <box rz="0.785398" sx="0.05" sy="0.05" sz="0.02" color="#FFFFFF"/>
+      <box y="0.035" sx="0.05" sy="0.04" sz="0.02" color="#FFFFFF"/>
+    </group>
+    <text id="salio" y="-0.47" z="0.03" value="" size="0.045" color="#FFD60A"/>
+    <plane id="toque" z="0.08" sx="0.84" sy="0.84" border-radius="0.5" color="transparent" material-alpha="blend"/>
+    <script src="./ruleta.js"/>
+  </space>
+</hsml>

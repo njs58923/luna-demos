@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La ciudad</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="-6.873" y="0" z="140.403" ry="-0.049"/>
+    <group id="cielo">
+    </group>
+
+    <!-- El suelo, por debajo del asfalto: tapa las juntas entre corredores. -->
+    <cylinder y="-0.2" sx="680" sy="0.3" sz="680" color="#05070B" touchable="false"/>
+
+    <!-- Una malla por manzana. Cada una son ~1 800 triángulos con sus
+         edificios, cornisas y ventanas, y se repinta sola cuando le toca. -->
+    <model id="calles"/>
+      <model id="m_0_0"/>
+      <model id="m_1_0"/>
+      <model id="m_2_0"/>
+      <model id="m_3_0"/>
+      <model id="m_4_0"/>
+      <model id="m_5_0"/>
+      <model id="m_6_0"/>
+      <model id="m_7_0"/>
+      <model id="m_0_1"/>
+      <model id="m_1_1"/>
+      <model id="m_2_1"/>
+      <model id="m_3_1"/>
+      <model id="m_4_1"/>
+      <model id="m_5_1"/>
+      <model id="m_6_1"/>
+      <model id="m_7_1"/>
+      <model id="m_0_2"/>
+      <model id="m_1_2"/>
+      <model id="m_2_2"/>
+      <model id="m_3_2"/>
+      <model id="m_4_2"/>
+      <model id="m_5_2"/>
+      <model id="m_6_2"/>
+      <model id="m_7_2"/>
+      <model id="m_0_3"/>
+      <model id="m_1_3"/>
+      <model id="m_2_3"/>
+      <model id="m_3_3"/>
+      <model id="m_4_3"/>
+      <model id="m_5_3"/>
+      <model id="m_6_3"/>
+      <model id="m_7_3"/>
+      <model id="m_0_4"/>
+      <model id="m_1_4"/>
+      <model id="m_2_4"/>
+      <model id="m_3_4"/>
+      <model id="m_4_4"/>
+      <model id="m_5_4"/>
+      <model id="m_6_4"/>
+      <model id="m_7_4"/>
+      <model id="m_0_5"/>
+      <model id="m_1_5"/>
+      <model id="m_2_5"/>
+      <model id="m_3_5"/>
+      <model id="m_4_5"/>
+      <model id="m_5_5"/>
+      <model id="m_6_5"/>
+      <model id="m_7_5"/>
+      <model id="m_0_6"/>
+      <model id="m_1_6"/>
+      <model id="m_2_6"/>
+      <model id="m_3_6"/>
+      <model id="m_4_6"/>
+      <model id="m_5_6"/>
+      <model id="m_6_6"/>
+      <model id="m_7_6"/>
+      <model id="m_0_7"/>
+      <model id="m_1_7"/>
+      <model id="m_2_7"/>
+      <model id="m_3_7"/>
+      <model id="m_4_7"/>
+      <model id="m_5_7"/>
+      <model id="m_6_7"/>
+      <model id="m_7_7"/>
+
+      <group id="auto_0">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#B23A3A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_1">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#2F5EA8" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_2">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#C8B23A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_3">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#E8E4DA" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_4">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#3A7A5E" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_5">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#B23A3A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_6">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#2F5EA8" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_7">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#C8B23A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_8">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#E8E4DA" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_9">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#3A7A5E" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_10">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#B23A3A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_11">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#2F5EA8" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_12">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#C8B23A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_13">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#E8E4DA" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_14">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#3A7A5E" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_15">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#B23A3A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_16">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#2F5EA8" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_17">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#C8B23A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_18">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#E8E4DA" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_19">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#3A7A5E" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_20">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#B23A3A" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+      <group id="auto_21">
+        <box sx="1.8" sy="0.7" sz="4.2" color="#2F5EA8" touchable="false" border-radius="0.18"/>
+        <box y="0.5" sx="1.55" sy="0.55" sz="2.2" color="#12161C" touchable="false" border-radius="0.14"/>
+        <box y="-0.05" z="2.15" sx="1.5" sy="0.2" sz="0.1" color="#FFF0C8" touchable="false"/>
+        <box y="-0.05" z="-2.15" sx="1.5" sy="0.2" sz="0.1" color="#8E1F1F" touchable="false"/>
+      </group>
+
+    <group x="0" y="0" z="145" ry="3.14159">
+      <box y="2.2" sx="4" sy="0.7" sz="0.08" color="#0E1420" touchable="false" border-radius="0.06"/>
+      <cylinder x="-1.8" y="1.1" sx="0.12" sy="2.2" sz="0.12" color="#1A1D22" touchable="false"/>
+      <cylinder x="1.8" y="1.1" sx="0.12" sy="2.2" sz="0.12" color="#1A1D22" touchable="false"/>
+      <text y="2.36" z="0.06" value="La ciudad" size="0.18" color="#DCE6F2"/>
+      <text y="2.14" z="0.06" value="8 × 8 manzanas · 65 nodos · ningún .glb" size="0.06" color="#8FA0B4"/>
+      <text y="2.0" z="0.06" value="todo generado por código, una malla dinámica por manzana" size="0.05" color="#8FA0B4"/>
+    </group>
+
+    <group id="portal_vuelta" x="-7" y="0" z="143" ry="3.093">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_ciudad","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#3A4048","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.CIUDAD = {"lado":8,"paso":34,"manzana":24,"semilla":7,"autos":22,"cielo":[0.031,0.043,0.071]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/ciudad.js"/>
+  </space>
+</hsml>

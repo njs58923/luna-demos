@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maceta con mariposas. Revolotean entre las flores y se posan un rato en
+  alguna. Tocarlas las espanta (vuelven enseguida). En VR, dejá la mano
+  quieta cerca de las flores: una se te posa, y se queda mientras la muevas
+  despacio.
+
+  De piso: apoya en y=0. Mide 0.3 × 0.55 × 0.3 m; las mariposas vuelan hasta
+  unos 40 cm alrededor.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/mariposas.hsml"
+             resources="read_pose_stream" events="posada"
+             props='{"cantidad":3}'/>
+
+  Props: cantidad (1 a 5), colores (lista, de las alas), maceta (color).
+  Eventos: posada {donde: "flor" | "mano"}, vuelan {}.
+  Mensajes: espantar.
+-->
+<hsml>
+  <head><name>Mariposas</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="maceta" y="0.11" sx="0.24" sy="0.22" sz="0.24" color="#C0663A"/>
+    <cylinder y="0.225" sx="0.26" sy="0.03" sz="0.26" color="#A8552E"/>
+    <cylinder y="0.235" sx="0.22" sy="0.012" sz="0.22" color="#4A3322"/>
+    <group id="flores"/>
+    <group id="bichos"/>
+    <box id="toque" y="0.4" sx="0.5" sy="0.5" sz="0.5" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.45" sx="1.2" sy="0.9" sz="1.2" visible="false"/>
+    <script src="./mariposas.js"/>
+  </space>
+</hsml>

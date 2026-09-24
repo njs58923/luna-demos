@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>Valle nocturno</name></head>
+
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="1.6" ry="0"/>
+    <group id="cielo">
+      <plane z="-3400" sx="6800" sy="6800" color="#0A0E1A" touchable="false"/>
+      <plane z="3400" sx="6800" sy="6800" color="#0A0E1A" touchable="false"/>
+      <plane x="-3400" ry="1.5707963" sx="6800" sy="6800" color="#0A0E1A" touchable="false"/>
+      <plane x="3400" ry="1.5707963" sx="6800" sy="6800" color="#0A0E1A" touchable="false"/>
+      <plane y="3400" rx="1.5707963" sx="6800" sy="6800" color="#0A0E1A" touchable="false"/>
+      <plane y="-3400" rx="1.5707963" sx="6800" sy="6800" color="#0A0E1A" touchable="false"/>
+      <!-- Luna **detrás** de la cordillera, a 2,8 km. Puesta más cerca que las
+           montañas no había escala: parecía una lámpara colgada del decorado.
+           Recortada por los picos, el ojo deduce el tamaño del paisaje. -->
+      <sphere x="-780" y="700" z="-3200" sx="640" sy="640" sz="640" color="#3A4258" touchable="false"/>
+      <sphere x="-780" y="700" z="-3200" sx="330" sy="330" sz="330" color="#E8ECD8" touchable="false"/>
+    </group>
+
+    <!-- Los cuatro anillos del terreno, las montañas y las tres capas de nubes.
+         Todos vacíos: los llena public/valle.js con mallas dinámicas. El LOD es
+         eso — un nodo por anillo, con el paso creciendo hacia afuera. -->
+    <model id="suelo_0"/>
+    <model id="suelo_1"/>
+    <model id="suelo_2"/>
+    <model id="suelo_3"/>
+    <model id="montanias"/>
+    <model id="nubes_0"/>
+    <model id="nubes_1"/>
+    <model id="nubes_2"/>
+
+    <group id="vegetacion">
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="28.238" y="1.1" z="22.718" ry="3.182" s="0.942"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-18.685" y="-1.481" z="6.731" ry="5.837" s="1.459"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-14.514" y="-0.794" z="42.299" ry="5.758" s="1.338"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="5.865" y="-2.185" z="53.227" ry="0.699" s="0.954"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="31.67" y="-2.041" z="-50.374" ry="2.489" s="1.078"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="24.915" y="-0.756" z="-54.562" ry="1.847" s="1.298"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="28.322" y="-1.118" z="-35.242" ry="2.34" s="0.788"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="15.379" y="-0.874" z="44.229" ry="1.03" s="1.4"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-45.375" y="-0.694" z="25.838" ry="3.141" s="1.004"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="20.81" y="-0.475" z="30.814" ry="5.464" s="1.024"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-51.762" y="-1.897" z="-2.958" ry="4.053" s="0.937"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-54.777" y="-1.018" z="-30.18" ry="6.123" s="1.383"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="37.992" y="2.228" z="11.726" ry="4.258" s="2.814"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="44.12" y="1.41" z="23.724" ry="0.674" s="1.231"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="34.884" y="0.541" z="-22.485" ry="0.9" s="1.192"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-47.902" y="-0.11" z="29.742" ry="0.711" s="0.891"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="36.108" y="1.584" z="17.774" ry="4.144" s="0.893"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-9.182" y="-0.651" z="2.472" ry="2.86" s="1.091"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-27.438" y="-0.494" z="-57.791" ry="1.966" s="1.365"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-35.068" y="-1.948" z="-9.452" ry="4.159" s="1.911"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="36.302" y="1.201" z="-17.742" ry="2.845" s="0.912"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-6.094" y="-1.969" z="42.645" ry="3.512" s="1.174"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="28.304" y="-1.71" z="52.257" ry="3.68" s="1.112"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="9.46" y="1.087" z="-18.875" ry="4.028" s="1.139"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="26.201" y="0.913" z="22.913" ry="0.089" s="1.301"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="44.964" y="-2.323" z="49.487" ry="1.198" s="0.796"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-10.752" y="-1.234" z="46.395" ry="6.05" s="0.895"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="33.077" y="2.074" z="11.485" ry="2.797" s="0.775"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-37.378" y="-0.315" z="27.954" ry="4.511" s="1.527"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="15.271" y="-0.701" z="17.895" ry="5.163" s="1.75"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-27.665" y="-0.13" z="-53.923" ry="4.721" s="0.998"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-16.447" y="1.087" z="-63.822" ry="3.685" s="1.74"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-15.77" y="1.061" z="-57.275" ry="4.267" s="2.819"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-19.014" y="0.529" z="-30.118" ry="5.359" s="1.396"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="59.499" y="-1.168" z="-27.465" ry="5.362" s="0.719"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-6.606" y="0.471" z="-15.315" ry="3.213" s="0.756"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="54.859" y="2.121" z="-3.872" ry="5.403" s="0.893"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="55.861" y="1.914" z="-6.79" ry="3.509" s="0.698"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-4.707" y="1.659" z="-40.526" ry="6.209" s="1.521"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-15.91" y="-1.849" z="17.172" ry="2.458" s="1.067"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-10.757" y="-1.619" z="27.148" ry="1.168" s="1.147"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="29.062" y="-0.535" z="-30.778" ry="0.539" s="3.333"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-9.094" y="1.069" z="-51.454" ry="5.019" s="1.127"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-53.791" y="-1.295" z="-26.219" ry="0.068" s="1.27"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-33.241" y="-0.544" z="57.151" ry="5.923" s="0.996"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-14.695" y="-1.198" z="58.804" ry="0.019" s="1.412"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-36.428" y="-2.554" z="-4.577" ry="1.522" s="1.415"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-66.665" y="-1.977" z="0.788" ry="5.462" s="1.091"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="18.069" y="0.869" z="-47.625" ry="5.576" s="0.996"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="38.507" y="-0.753" z="37.809" ry="3.272" s="0.819"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-21.143" y="-0.779" z="42.943" ry="3.805" s="1.116"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-38.825" y="0.512" z="-45.686" ry="5.942" s="0.863"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-1.615" y="-0.946" z="15.841" ry="2.032" s="1.3"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-9.677" y="1.057" z="-40.487" ry="5.276" s="0.978"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-19.11" y="0.472" z="-49.565" ry="0.4" s="1.039"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-53.556" y="-2.075" z="-5.231" ry="2.639" s="0.797"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-57.154" y="-1.348" z="-13.336" ry="5.438" s="2.944"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="60.215" y="1.512" z="0.88" ry="1.891" s="1.138"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="35.223" y="-1.442" z="53.906" ry="3.992" s="1.086"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-9.426" y="-1.493" z="28.235" ry="4.379" s="0.865"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-2.804" y="-0.801" z="30.435" ry="1.285" s="1.229"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-38.522" y="-0.762" z="40.995" ry="1.024" s="0.911"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-54.025" y="-1.305" z="-25.612" ry="3.094" s="1.108"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-33.898" y="0.423" z="-40.587" ry="4.686" s="1.477"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="33.743" y="0.977" z="26.372" ry="1.098" s="0.864"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-25.679" y="-0.897" z="27.981" ry="3.03" s="1.695"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="3.921" y="2.055" z="-30.436" ry="2.687" s="1.437"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-0.98" y="0.157" z="-17.507" ry="4.165" s="1.429"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="62.941" y="-0.635" z="13.408" ry="5.171" s="0.92"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="54.932" y="0.862" z="12.697" ry="1.195" s="0.913"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="29.228" y="0.753" z="26.141" ry="2.946" s="1.228"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="38.483" y="0.231" z="33.886" ry="1.23" s="0.86"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="38.522" y="0.034" z="-28.217" ry="2.155" s="1.043"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-16.578" y="-1.945" z="23.401" ry="4.057" s="1.327"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="42.611" y="-2.28" z="46.941" ry="4.927" s="1.385"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="43.241" y="-0.018" z="34.582" ry="2.742" s="1.13"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-30.567" y="-2.679" z="-1.874" ry="5.918" s="0.911"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="59.979" y="-0.806" z="21.233" ry="1.109" s="0.801"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-17.095" y="0.521" z="-15.162" ry="3.799" s="1.966"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-0.412" y="-2.818" z="49.655" ry="2.498" s="1.064"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-9.781" y="0.91" z="-47.451" ry="3.974" s="1.351"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="22.395" y="-1.403" z="42.592" ry="0.209" s="1.034"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-8.701" y="1.016" z="-22.281" ry="0.932" s="1.124"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-0.291" y="-2.336" z="64.457" ry="3.466" s="0.987"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="9.706" y="2.139" z="-41.876" ry="3.041" s="1.094"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="43.776" y="-1.895" z="41.364" ry="3.892" s="1.121"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="27.32" y="1.6" z="8.384" ry="2.826" s="2.121"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-18.785" y="0.624" z="-52.597" ry="0.476" s="1.062"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="7.024" y="2.332" z="-38.109" ry="5.356" s="1.13"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-41.85" y="-2.213" z="-9.95" ry="6.12" s="1.155"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-37.547" y="-1.463" z="21.726" ry="4.816" s="1.012"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="53.881" y="-1.33" z="-32.437" ry="1.755" s="3.321"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="46.532" y="1.549" z="20.099" ry="1.885" s="1.001"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-58.128" y="-2.448" z="12.45" ry="5.797" s="0.767"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="6.336" y="-2.178" z="65.132" ry="0.924" s="1.056"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="37.676" y="1.205" z="22.069" ry="3.193" s="1.129"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="34.016" y="-2.292" z="-42.829" ry="0.549" s="1.421"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="12.698" y="1.425" z="-49.044" ry="1.124" s="0.882"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="14.534" y="1.833" z="-36.826" ry="5.814" s="1.756"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-36.073" y="-0.636" z="48.54" ry="1.596" s="0.84"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-28.606" y="-0.784" z="49.662" ry="2.438" s="1.384"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="29.87" y="0.563" z="28.247" ry="4.194" s="1.035"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="28.185" y="-1.594" z="53.555" ry="4.029" s="1.348"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-20.286" y="0.515" z="-61.829" ry="0.144" s="3.027"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-27.817" y="-0.229" z="-31.079" ry="0.765" s="0.941"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="4.057" y="1.643" z="-24.305" ry="5.852" s="2.418"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="33.802" y="0.977" z="26.557" ry="0.917" s="1.451"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="61.254" y="0.919" z="-16.185" ry="2.732" s="1.384"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="8.589" y="1.328" z="-66.157" ry="3.132" s="3.137"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-27.881" y="-0.664" z="-58.892" ry="3.895" s="1.786"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="27.778" y="-1.678" z="44.32" ry="2.133" s="1.355"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-36.721" y="-0.279" z="33.598" ry="5.716" s="0.696"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-45.784" y="-0.676" z="25.865" ry="5.699" s="0.962"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="14.706" y="-1.782" z="58.793" ry="2.81" s="0.892"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="3.09" y="-2.286" z="54.471" ry="2.202" s="1.495"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="31.044" y="0.526" z="28.987" ry="2.475" s="1.72"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="20.518" y="-0.322" z="-59.204" ry="5.741" s="3.039"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="4.631" y="2.037" z="-31.058" ry="4.156" s="1.019"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-51.872" y="-1.779" z="-15.709" ry="2.234" s="1.071"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-59.163" y="-1.344" z="-4.336" ry="1.568" s="0.967"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-40.051" y="-0.098" z="34.25" ry="2.612" s="0.959"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="29.972" y="1.841" z="11.871" ry="1.244" s="1.085"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-53.686" y="-0.447" z="34.519" ry="2.319" s="2.949"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-8.884" y="-1.6" z="42.501" ry="1.388" s="0.87"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="48.47" y="2.434" z="-2.81" ry="2.228" s="1.21"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="36.729" y="0.795" z="-20.619" ry="4.132" s="0.69"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-65.978" y="-1.807" z="-4.113" ry="6.008" s="1.105"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-6.955" y="1.07" z="-23.972" ry="4.941" s="1.099"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="11.405" y="-0.559" z="12.133" ry="4.985" s="1.099"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="14.993" y="1.723" z="-24.852" ry="2.972" s="1.16"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="30.056" y="-0.552" z="35.989" ry="1.989" s="1.252"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-2.711" y="-0.638" z="25.568" ry="1.684" s="0.769"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="25.192" y="-1.611" z="58.21" ry="3.365" s="1.246"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="17.619" y="-0.26" z="-58.746" ry="4.753" s="1.682"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="43.422" y="0.719" z="-16.216" ry="1.317" s="0.989"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="38.058" y="-0.29" z="35.863" ry="0.848" s="1.717"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="35.764" y="-2.203" z="-41.015" ry="5.12" s="0.852"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-31.598" y="-0.947" z="41.923" ry="5.427" s="0.857"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="9.521" y="-1.329" z="35.469" ry="2.486" s="1.232"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="31.116" y="0.894" z="-19.856" ry="3.448" s="2.591"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="5.071" y="-2.22" z="53.477" ry="4.667" s="1.07"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="30.213" y="0.295" z="31.874" ry="1.93" s="1.006"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-11.333" y="1.24" z="-35.528" ry="1.442" s="0.924"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="6.496" y="-1.608" z="37.375" ry="0.682" s="0.875"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="6.1" y="2.121" z="-28.498" ry="1.619" s="2.113"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-42.615" y="-0.905" z="-34.447" ry="3.89" s="1.032"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-34.634" y="-0.577" z="35.774" ry="3.703" s="0.924"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-30.296" y="-0.815" z="39.245" ry="0.966" s="0.834"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-59.327" y="-2.44" z="12.165" ry="5.68" s="0.912"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="37.748" y="-1.286" z="-35.44" ry="0.543" s="0.734"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-9.444" y="1.208" z="-38.235" ry="4.864" s="2.165"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-62.595" y="-1.026" z="-17.418" ry="4.517" s="1.435"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-32.355" y="-1.003" z="-28.506" ry="5.085" s="1.017"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-58.59" y="-2.497" z="17.586" ry="1.29" s="3.116"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-62.754" y="-1.147" z="22.513" ry="5.317" s="0.902"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="64.213" y="1.004" z="0.502" ry="1.651" s="1.831"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-37.331" y="-2.615" z="4.905" ry="5.76" s="1.032"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-8.333" y="0.953" z="-18.893" ry="2.107" s="1.382"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="25.521" y="-0.895" z="-57.946" ry="2.549" s="0.733"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="19.394" y="0.215" z="8.059" ry="2.386" s="0.935"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="47.354" y="2.706" z="1.298" ry="0.451" s="2.282"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="10.257" y="1.778" z="-24.719" ry="0.843" s="1.626"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-4.049" y="-2.323" z="52.836" ry="6.015" s="1.365"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-42.459" y="-2.249" z="-4.788" ry="2.592" s="0.85"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-5.062" y="-1.054" z="15.694" ry="3.434" s="1.296"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="5.819" y="2.414" z="-36.552" ry="1.457" s="0.918"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="0.941" y="-2.276" z="54.948" ry="3.882" s="1.667"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="34.359" y="0.873" z="-20.245" ry="5.908" s="0.73"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-14.612" y="-0.12" z="-7.942" ry="3.998" s="1.189"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-5.274" y="-2.18" z="51.903" ry="0.934" s="1.648"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="5.961" y="-0.455" z="-2.238" ry="2.978" s="2.043"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-3.044" y="1.414" z="-25.669" ry="1.09" s="0.702"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-55.819" y="-1.679" z="-8.485" ry="4.012" s="1.004"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-47.107" y="-0.524" z="-36.617" ry="1.774" s="1.198"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="57.06" y="-0.29" z="19.513" ry="1.289" s="1.052"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="19.443" y="0.067" z="-63.81" ry="2.216" s="1.362"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-47.653" y="-0.001" z="31.219" ry="5.156" s="0.792"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-5.881" y="0.732" z="-17.905" ry="4.816" s="1.799"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-47.829" y="-0.687" z="38.995" ry="2.633" s="2.334"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="36.543" y="-1.867" z="45.927" ry="0.719" s="3.269"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-21.574" y="0.313" z="-32.474" ry="0.614" s="0.755"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="16.559" y="-1.3" z="51.225" ry="0.151" s="1.143"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="15.086" y="1.783" z="-23.291" ry="2.361" s="1.065"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-27.198" y="-0.334" z="-29.689" ry="3.662" s="1.646"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="11.692" y="1.637" z="-21.694" ry="2.967" s="1.061"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="17.042" y="-0.997" z="37.119" ry="0.49" s="1.038"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-11.725" y="0.821" z="-40.94" ry="5.442" s="1.334"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="34.477" y="0.87" z="29.217" ry="4.218" s="0.93"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-33.557" y="-0.287" z="-36.501" ry="2.073" s="1.083"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-21.529" y="-0.823" z="48.141" ry="1.887" s="1.321"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-38.783" y="-0.625" z="52.974" ry="1.962" s="1.426"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-2.465" y="-2.707" z="45.689" ry="3.427" s="0.865"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-23.174" y="-0.851" z="44.509" ry="0.255" s="0.977"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="29.554" y="-1.886" z="-42.007" ry="3.932" s="3.146"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="2.063" y="2.025" z="-47.524" ry="4.822" s="0.891"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-34.418" y="-0.284" z="-54.065" ry="1.009" s="1.278"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="12.441" y="-0.644" z="14.104" ry="0.929" s="1.373"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-15.293" y="1.079" z="-56.592" ry="2.113" s="0.618"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-45.804" y="-0.771" z="39.221" ry="2.525" s="1.017"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-13.478" y="0.801" z="-31.816" ry="4.986" s="1.244"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-5.273" y="-0.993" z="29.501" ry="4.92" s="0.748"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-55.94" y="-0.855" z="-28.776" ry="5.899" s="1.342"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="29.104" y="1.775" z="8.096" ry="1.803" s="2.554"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="17.115" y="1.656" z="-12.845" ry="4.526" s="1.046"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-43.233" y="0.418" z="-45.624" ry="1.718" s="0.938"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="50.161" y="2.175" z="-6.189" ry="0.07" s="0.968"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-16.839" y="-1.067" z="39.2" ry="2.159" s="2.712"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="11.874" y="-1.683" z="53.275" ry="1.4" s="0.941"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="27.659" y="1.615" z="-15.105" ry="6.054" s="1.771"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-30.392" y="-2.747" z="-0.762" ry="4.752" s="1.258"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-3.904" y="2.089" z="-34.143" ry="2.658" s="1.134"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="38.982" y="0.553" z="-21.647" ry="4.148" s="1.379"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="17.231" y="-0.99" z="34.411" ry="4.59" s="3.113"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="31.571" y="0.232" z="32.444" ry="4.828" s="0.773"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="63.897" y="-0.904" z="15.484" ry="2.068" s="0.955"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="55.201" y="-0.661" z="27.122" ry="1.416" s="1.481"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-5.186" y="1.313" z="-66.745" ry="3.274" s="1.362"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="34.013" y="-1.154" z="39.564" ry="1.995" s="3.164"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-30.234" y="-2.602" z="14.02" ry="4.307" s="0.858"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="12.399" y="-1.173" z="50.267" ry="6.244" s="0.723"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-14.391" y="-1.723" z="21.257" ry="4.083" s="1.195"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-50.82" y="-0.711" z="25.232" ry="0.664" s="1.385"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="34.68" y="-1.798" z="49.409" ry="6.173" s="0.726"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-15.462" y="0.826" z="-21.08" ry="2.028" s="0.804"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-12.997" y="1.086" z="-23.631" ry="0.96" s="1.319"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="6.728" y="-1.299" z="34.688" ry="1.592" s="1.031"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="-60.17" y="-1.084" z="-20.038" ry="4.716" s="1.23"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="22.47" y="1.633" z="-15.354" ry="1.005" s="2.629"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-48.928" y="-0.509" z="-39.619" ry="6.213" s="1.057"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbol.glb" x="-9.582" y="-0.219" z="-6.428" ry="4.784" s="2.767"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-9.316" y="-1.548" z="21.466" ry="5.418" s="0.773"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="-60.115" y="-1.285" z="22.56" ry="3.792" s="0.877"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/hongo.glb" x="39.965" y="2.233" z="-1.11" ry="1.73" s="0.971"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-31.657" y="-1.059" z="44.107" ry="5.838" s="0.838"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="51.459" y="-0.156" z="31.245" ry="2.909" s="0.873"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-21.589" y="0.727" z="-46.458" ry="5.594" s="0.991"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/roca.glb" x="8.101" y="1.575" z="-23.583" ry="3.409" s="0.714"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="35.504" y="1.288" z="-17.29" ry="5.23" s="0.866"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/arbusto.glb" x="-57.882" y="-2.371" z="10.757" ry="3.942" s="1.07"/>
+      <model src="https://njs58923.github.io/luna-demos/noche/escenografia/pasto.glb" x="-10.702" y="-1.228" z="45.262" ry="3.483" s="1.108"/>
+    </group>
+
+    <group id="bichos">
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-1.177-fase-0.797-radio-0.635.hsml" x="0.081" y="0.305" z="-6.582"/>
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-1.808-fase-3.594-radio-0.753.hsml" x="4.52" y="0.604" z="-0.579"/>
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-2.199-fase-1.289-radio-1.002.hsml" x="-0.631" y="0.655" z="5.956"/>
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-1.572-fase-1.348-radio-0.728.hsml" x="-4.711" y="0.966" z="2.532"/>
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-1.58-fase-0.611-radio-0.504.hsml" x="2.503" y="0.892" z="-8.325"/>
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-1.148-fase-3.369-radio-0.835.hsml" x="4.206" y="0.483" z="-4.65"/>
+      <include src="https://njs58923.github.io/luna-demos/noche/interactivos/mariposa__vel-1.258-fase-3.823-radio-0.707.hsml" x="6.565" y="0.842" z="6.036"/>
+    </group>
+
+    <!-- Portal de vuelta al bestiario. -->
+    <group id="portal_vuelta" x="0" y="0" z="4.2" ry="3.14159">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_valle","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#4A5250","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.VALLE = {"base":"https://njs58923.github.io/luna-demos/noche"};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/valle.js"/>
+  </space>
+</hsml>

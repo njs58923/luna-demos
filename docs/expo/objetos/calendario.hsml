@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Calendario de pared. Muestra el mes con el día de hoy marcado; las flechas
+  pasan de mes, y tocar un día lo marca (o lo desmarca). Las marcas quedan.
+
+  De pared: el origen es el clavo, la hoja cuelga hacia abajo y mira a +Z.
+  Mide 0.44 × 0.52 × 0.02 m, con el centro en y=-0.26.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/calendario.hsml"
+             events="marca" props='{"color":"#1D3557","clave":"oficina"}'/>
+
+  Props: color (de la cabecera), utc (horas; sin utc, la fecha local), clave.
+  Eventos: marca {fecha, marcado}.
+  Mensajes: hoy (vuelve al mes actual).
+-->
+<hsml>
+  <head><name>Calendario</name></head>
+  <space resources="read_pose_stream">
+    <sphere y="0.0" z="0.01" sx="0.016" sy="0.016" sz="0.01" color="#8A8A8A"/>
+    <group id="hoja" y="-0.26">
+      <box z="0.004" sx="0.44" sy="0.52" sz="0.006" color="#FAF7F0"/>
+      <box id="cabecera" y="0.21" z="0.008" sx="0.44" sy="0.1" sz="0.002" color="#1D3557"/>
+      <text id="mes" y="0.215" z="0.01" value="" size="0.04" color="#FFFFFF"/>
+      <box id="anterior" x="-0.18" y="0.21" z="0.01" sx="0.05" sy="0.07" sz="0.004" color="#1D3557"/>
+      <text x="-0.18" y="0.21" z="0.013" value="&lt;" size="0.04" color="#FFFFFF"/>
+      <box id="siguiente" x="0.18" y="0.21" z="0.01" sx="0.05" sy="0.07" sz="0.004" color="#1D3557"/>
+      <text x="0.18" y="0.21" z="0.013" value="&gt;" size="0.04" color="#FFFFFF"/>
+      <group id="grilla" z="0.008"/>
+      <!-- Los aros del espiral de arriba -->
+      <group id="espiral" y="0.26"/>
+    </group>
+    <script src="./calendario.js"/>
+  </space>
+</hsml>

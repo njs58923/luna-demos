@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Joystick. Una palanca de dos ejes que sale de la placa hacia el que mira y
+  vuelve sola al centro al soltarla. En VR se agarra la bocha y se inclina;
+  en escritorio, un clic en la placa la inclina hacia ese lado un momento, y
+  un clic en la bocha es el botón de arriba.
+
+  Bloque de panel: emite `eje` (x e y de -1 a 1) mientras se mueve.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.18 × 0.18 × 0.14 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/joystick.hsml"
+             resources="audio,read_pose_stream" events="eje,boton"/>
+
+  Props: retorno (vuelve al centro al soltarlo), color, etiqueta.
+  Eventos: eje {x, y}, valor {valor (cuánto se inclina, 0..1), x, y}, boton {}.
+  Mensajes: centrar.
+-->
+<hsml>
+  <head><name>Joystick</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.18" sy="0.18" sz="0.02" color="#22252E" border-radius="0.02"/>
+    <cylinder z="0.022" rx="1.5708" sx="0.11" sy="0.004" sz="0.11" color="#101216"/>
+    <box z="0.0245" sx="0.1" sy="0.002" sz="0.001" color="#3A3F4B"/>
+    <box z="0.0245" sx="0.002" sy="0.1" sz="0.001" color="#3A3F4B"/>
+    <group id="palo" z="0.028">
+      <sphere z="0.004" sx="0.05" sy="0.05" sz="0.03" color="#1C1F27"/>
+      <cylinder z="0.045" rx="1.5708" sx="0.012" sy="0.08" sz="0.012" color="#8C8C8C"/>
+      <sphere id="bocha" z="0.09" sx="0.036" sy="0.036" sz="0.036" color="#7B2FF7"/>
+      <sphere id="toque_bocha" z="0.09" sx="0.05" sy="0.05" sz="0.05" color="transparent" material-alpha="blend"/>
+    </group>
+    <box id="toque" z="0.026" sx="0.17" sy="0.17" sz="0.004" color="transparent" material-alpha="blend"/>
+    <text id="etiqueta" y="-0.078" z="0.021" value="" size="0.012" color="#C8CCD8"/>
+    <posezone id="zona" z="0.18" sx="0.5" sy="0.5" sz="0.45" visible="false"/>
+    <script src="./joystick.js"/>
+  </space>
+</hsml>

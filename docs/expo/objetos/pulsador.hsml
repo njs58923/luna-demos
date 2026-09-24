@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pulsador. Un botón de panel que se hunde: en VR se lo aprieta empujándolo
+  con el mando (o con el grip o el gatillo encima); en escritorio, con un clic.
+  En modo "momento" vuelve solo; en modo "interruptor" queda prendido hasta
+  el próximo toque, con su tapa iluminada.
+
+  Es un bloque: sirve para armar paneles y cablearlo con otros por eventos y
+  mensajes. Todos los bloques hablan de lo mismo: los que se tocan emiten
+  `valor`, los que muestran reciben `valor`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.14 × 0.16 × 0.05 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/pulsador.hsml"
+             resources="audio,read_pose_stream" events="valor"
+             props='{"modo":"interruptor","color":"#E63946","etiqueta":"LUZ"}'/>
+
+  Props: modo ("momento" | "interruptor"), forma ("redondo" | "cuadrado"),
+  color, etiqueta, clave (en interruptor, guarda el estado).
+  Eventos: apretado {}, soltado {}, valor {valor: 0 | 1}.
+  Mensajes: poner {valor}, apretar.
+-->
+<hsml>
+  <head><name>Pulsador</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" y="0.01" z="0.01" sx="0.14" sy="0.16" sz="0.02" color="#22252E" border-radius="0.015"/>
+    <cylinder id="aro" y="0.02" z="0.024" rx="1.5708" sx="0.085" sy="0.008" sz="0.085" color="#3A3F4B"/>
+    <group id="movil" y="0.02" z="0.034">
+      <cylinder id="tapa_redonda" rx="1.5708" sx="0.066" sy="0.02" sz="0.066" color="#E63946"/>
+      <box id="tapa_cuadrada" sx="0.066" sy="0.066" sz="0.02" color="#E63946" border-radius="0.008" visible="false"/>
+    </group>
+    <text id="etiqueta" y="-0.052" z="0.021" value="" size="0.018" color="#C8CCD8"/>
+    <box id="toque" manos="false" y="0.02" z="0.04" sx="0.09" sy="0.09" sz="0.04" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.02" z="0.12" sx="0.4" sy="0.4" sz="0.3" visible="false"/>
+    <script src="./pulsador.js"/>
+  </space>
+</hsml>

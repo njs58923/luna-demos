@@ -1,0 +1,20 @@
+{
+  "_comment": "Metadatos opcionales por modelo. El servidor lista el directorio; esto solo refina etiqueta y medidas. Un .glb sin entrada acá igual aparece en la sala (con tamaño por defecto).",
+  "models": {
+    "arbol.glb":  { "label": "Arbol",  "nota": "conos apilados", "w": 1.852, "d": 1.806, "h": 3.15,  "tris": 80 },
+    "arbusto.glb":{ "label": "Arbusto","nota": "esferas ruidosas", "w": 1.028, "d": 0.753, "h": 0.694, "tris": 87 },
+    "banco.glb":  { "label": "Banco",  "nota": "listones y fundicion", "w": 1.55, "d": 0.5, "h": 0.865, "tris": 66 },
+    "barril.glb": { "label": "Barril", "nota": "duelas y aros",  "w": 0.618, "d": 0.65,  "h": 0.895, "tris": 48 },
+    "cactus.glb": { "label": "Cactus", "nota": "con flor",       "w": 1.086, "d": 0.36,  "h": 1.685, "tris": 81 },
+    "casa.glb":   { "label": "Casa",   "nota": "techo a cuatro aguas", "w": 2.193, "d": 2.193, "h": 2.277, "tris": 66 },
+    "estatua.glb":{ "label": "Estatua","nota": "figura de marmol", "w": 0.806, "d": 0.801, "h": 2.03, "tris": 89 },
+    "farol.glb":  { "label": "Farol",  "nota": "emisivo",        "w": 0.4,   "d": 0.4,   "h": 2.81,  "tris": 47 },
+    "fuente.glb": { "label": "Fuente", "nota": "pileta y plato", "w": 1.92,  "d": 1.92,  "h": 1.29,  "tris": 72 },
+    "hongo.glb":  { "label": "Hongo",  "nota": "sombrero rojo",  "w": 0.335, "d": 0.33,  "h": 0.38,  "tris": 72 },
+    "pasto.glb":  { "label": "Pasto",  "nota": "siete briznas",  "w": 0.199, "d": 0.168, "h": 0.302, "tris": 28 },
+    "pez.glb":    { "label": "Pez",    "nota": "aletas planas",  "w": 0.522, "d": 0.209, "h": 0.33,  "tris": 52 },
+    "roca.glb":   { "label": "Roca",   "nota": "icosfera ruidosa", "w": 1.057, "d": 0.868, "h": 0.756, "tris": 20 },
+    "silla.glb":  { "label": "Silla",  "nota": "cuatro patas",   "w": 0.44,  "d": 0.44,  "h": 0.925, "tris": 48 },
+    "valla.glb":  { "label": "Valla",  "nota": "tramo de cerco", "w": 1.967, "d": 0.127, "h": 1.06,  "tris": 34 }
+  }
+}

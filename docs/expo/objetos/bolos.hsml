@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bolos de mesa. Una pista de madera con seis palos al fondo y una bocha
+  adelante. Con el mouse, tocar la bocha la lanza (con un desvío chico al
+  azar); en VR se la agarra y se la hace rodar. Los palos caen, se cuentan, y
+  la pista se vuelve a armar sola.
+
+  De piso: apoya en y=0; la pista corre hacia -Z. Mide 0.7 × 0.4 × 2.6 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/bolos.hsml"
+             resources="read_pose_stream" events="tirada" props='{"madera":"#D4A373"}'/>
+
+  Props: madera (color de la pista), bocha (color).
+  Eventos: tirada {caidos}.
+  Mensajes: tirar, armar.
+-->
+<hsml>
+  <head><name>Bolos</name></head>
+  <space resources="read_pose_stream">
+    <box id="pista" y="0.02" z="-0.1" sx="0.6" sy="0.04" sz="2.5" color="#D4A373"/>
+    <box x="-0.33" y="0.03" z="-0.1" sx="0.06" sy="0.06" sz="2.5" color="#3A3A3A"/>
+    <box x="0.33" y="0.03" z="-0.1" sx="0.06" sy="0.06" sz="2.5" color="#3A3A3A"/>
+    <box y="0.2" z="-1.37" sx="0.72" sy="0.4" sz="0.04" color="#1C1C1C"/>
+    <text id="cuenta" y="0.3" z="-1.345" value="" size="0.06" color="#FFD60A"/>
+    <group id="palos" y="0.04"/>
+    <group id="bocha" y="0.04">
+      <sphere id="bocha_cuerpo" y="0.07" sx="0.14" sy="0.14" sz="0.14" color="#1D3557"/>
+    </group>
+    <sphere id="toque" y="0.11" sx="0.2" sy="0.2" sz="0.2" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.8" z="0.2" sx="1.4" sy="1.6" sz="2.4" visible="false"/>
+    <script src="./bolos.js"/>
+  </space>
+</hsml>

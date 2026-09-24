@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bandera en su mástil. Flamea con el viento; tocar el mástil la iza o la
+  arría. Las franjas y el emblema del medio los pone quien la monta.
+
+  De piso: apoya en y=0. Mide 1.3 × 3.0 × 0.4 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/bandera.hsml" events="izada"
+             props='{"franjas":["#74ACDF","#FFFFFF","#74ACDF"],"emblema":"#F6B40E"}'/>
+
+  Props: franjas (colores, de arriba hacia abajo, 1 a 6), emblema (color de
+  un círculo en el medio, o vacío), viento (0..1), clave.
+  Eventos: izada {izada}.
+  Mensajes: izar, arriar.
+-->
+<hsml>
+  <head><name>Bandera</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.04" sx="0.4" sy="0.08" sz="0.4" color="#6C757D"/>
+    <cylinder id="mastil" y="1.5" sx="0.05" sy="3.0" sz="0.05" color="#DADADA"/>
+    <sphere y="3.02" sx="0.08" sy="0.08" sz="0.08" color="#D4AF37"/>
+    <group id="bandera" x="0.025" y="2.9"/>
+    <box id="toque" y="1.5" sx="0.3" sy="3.0" sz="0.3" color="transparent" material-alpha="blend"/>
+    <script src="./bandera.js"/>
+  </space>
+</hsml>

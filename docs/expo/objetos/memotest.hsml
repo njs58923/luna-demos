@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Memotest. Dieciséis fichas boca abajo: tocar dos las da vuelta; si son
+  iguales quedan, si no, se vuelven a tapar. Al encontrar todos los pares
+  dice en cuántas jugadas y se acuerda del mejor resultado (por `clave`).
+  MEZCLAR arranca otra partida.
+
+  De mesa: apoya en y=0. Mide 0.42 × 0.05 × 0.5 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/memotest.hsml" resources="audio" events="ganado"
+             props='{"clave":"sala"}'/>
+
+  Props: clave, pares (4 a 8).
+  Eventos: par {jugadas}, ganado {jugadas, segundos, record}.
+  Mensajes: mezclar.
+-->
+<hsml>
+  <head><name>Memotest</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.01" sx="0.42" sy="0.02" sz="0.42" color="#1D3557" border-radius="0.02"/>
+    <group id="fichas" y="0.021"/>
+    <group z="0.23" y="0.012">
+      <box id="mezclar" x="-0.1" sx="0.12" sy="0.02" sz="0.035" color="#E63946" border-radius="0.008"/>
+      <text x="-0.1" z="0.018" value="MEZCLAR" size="0.012" color="#FFFFFF"/>
+      <text id="marcador" x="0.08" z="0.018" y="0.005" value="" size="0.014" color="#FFFFFF"/>
+    </group>
+    <script src="./memotest.js"/>
+  </space>
+</hsml>

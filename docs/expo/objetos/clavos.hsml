@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tablón con clavos y martillo. Tocar un clavo lo martilla (tres golpes y
+  entra entero). En VR se agarra el martillo con el grip y se clava de
+  verdad: cuanto más fuerte el golpe, más entra. Con todos adentro, salen de
+  nuevo para seguir.
+
+  De mesa: apoya en y=0. Mide 0.5 × 0.1 × 0.22 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/clavos.hsml"
+             resources="audio,read_pose_stream" events="golpe,listo"/>
+
+  Props: clavos (1 a 7), madera (color).
+  Eventos: golpe {clavo, hundido (0 a 1)}, listo {} con todos adentro.
+  Mensajes: reponer.
+-->
+<hsml>
+  <head><name>Tablón con clavos</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="tabla" y="0.025" sx="0.5" sy="0.05" sz="0.22" color="#C19A6B"/>
+    <box y="0.0505" z="-0.06" sx="0.5" sy="0.001" sz="0.004" color="#A87F52"/>
+    <box y="0.0505" z="0.075" sx="0.5" sy="0.001" sz="0.003" color="#A87F52"/>
+    <box y="0.0505" z="-0.02" sx="0.36" sy="0.001" sz="0.002" color="#A87F52"/>
+    <group id="clavos"/>
+    <group id="martillo">
+      <cylinder y="0.15" sx="0.022" sy="0.3" sz="0.022" color="#A0522D"/>
+      <cylinder y="0.06" sx="0.027" sy="0.12" sz="0.027" color="#1C1C1C"/>
+      <box y="0.28" sx="0.07" sy="0.03" sz="0.03" color="#6E7378"/>
+      <cylinder x="0.04" y="0.28" rz="1.5708" sx="0.034" sy="0.02" sz="0.034" color="#8A9096"/>
+      <box x="-0.05" y="0.285" rz="0.35" sx="0.045" sy="0.012" sz="0.012" color="#6E7378"/>
+      <box id="agarrar" y="0.17" sx="0.1" sy="0.36" sz="0.1" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.3" sx="1.4" sy="1" sz="1.4" visible="false"/>
+    <script src="./clavos.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_nave - no editar a mano -->
+<hsml>
+  <head><name>El kit de consola</name></head>
+
+  <space resources="navigate_self,navigate_world,spawn,read_camera_pose,read_hmd_pose,read_pose_stream,desktop_camera_control,vr_locomotion">
+    <spawn id="entrada" default="true" x="0" y="0" z="1.7" ry="0"/>
+
+    <plane y="0" rx="-1.5707963" sx="12" sy="10" color="#12161C" touchable="false"/>
+    <box y="1.6" z="-0.05" sx="4.2" sy="3.2" sz="0.1" color="#2A303B" touchable="false"/>
+    <box y="0.06" z="0.02" sx="4.2" sy="0.12" sz="0.06" color="#E67E22" touchable="false"/>
+    <text y="2.72" z="0.02" value="KIT DE CONSOLA" size="0.12" color="#FFFFFF"/>
+    <text y="2.58" z="0.02" value="escala x3 · se juega con las manos o con clics · ?demo lo juega solo" size="0.035" color="#8E9CB4"/>
+
+    <!-- El estante de piezas sueltas. -->
+    <group y="2.1" z="0.2">
+      <box y="-0.045" sx="2.38" sy="0.01" sz="0.2" color="#3D4654" touchable="false"/>
+      <group x="-1.045">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_boton_base" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/boton_base.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="aro de botón" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="75 mm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="-0.855">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_tecla_base" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/tecla_base.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="hueco de tecla" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="80 mm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="-0.665">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_palanca_base" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/palanca_base.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="base palanca" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="6 x 13 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="-0.475">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_palanca_mango" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/palanca_mango.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="mango palanca" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="11 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="-0.285">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_palanca_grande_base" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/palanca_grande_base.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="base grande" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="9 x 26 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="-0.095">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_palanca_grande_mango" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/palanca_grande_mango.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="mango grande" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="23 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="0.095">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_corredera" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/corredera.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="corredera" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="5 x 3,6 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="0.285">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_riel_tope" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/riel_tope.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="tope de riel" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="28 mm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="0.475">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_enchufe" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/enchufe.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="enchufe" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="6 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="0.665">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_toma" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/toma.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="toma" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="5 cm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="0.855">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_borne" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/borne.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="borne" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="36 mm" size="0.014" color="#8E9CB4"/>
+      </group>
+      <group x="1.045">
+        <box y="-0.03" sx="0.15" sy="0.02" sz="0.15" color="#232A34" touchable="false"/>
+        <group id="pieza_led_base" class="pieza" y="0.07">
+          <model src="https://njs58923.github.io/luna-demos/nave/modelos/led_base.glb?v=mudboip4" touchable="false"/>
+        </group>
+        <text y="-0.07" z="0.08" value="aro de led" size="0.018" color="#F1C40F"/>
+        <text y="-0.095" z="0.08" value="32 mm" size="0.014" color="#8E9CB4"/>
+      </group>
+    </group>
+
+    <!-- Una regla de 10 cm al lado del estante. -->
+    <group x="-1.26" y="2.1" z="0.2">
+      <box y="0.02" sx="0.004" sy="0.1" sz="0.004" color="#FFFFFF" touchable="false"/>
+      <text y="0.09" value="10 cm" size="0.016" color="#FFFFFF"/>
+    </group>
+
+    <!-- Las cuatro cajas de prueba. -->
+    <group x="-1.11" y="1.3" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <text y="0.3" z="0.02" value="BOTONES" size="0.035" color="#F1C40F"/>
+      <group id="panel_botones" class="panel_kit" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="-0.37" y="1.3" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <text y="0.3" z="0.02" value="PALANCAS" size="0.035" color="#F1C40F"/>
+      <group id="panel_palancas" class="panel_kit" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="0.37" y="1.3" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <text y="0.3" z="0.02" value="EMPUJABLES" size="0.035" color="#F1C40F"/>
+      <group id="panel_correderas" class="panel_kit" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+    <group x="1.11" y="1.3" z="0.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <text y="0.3" z="0.02" value="ESTIRABLES" size="0.035" color="#F1C40F"/>
+      <group id="panel_cables" class="panel_kit" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+    </group>
+
+    <!-- Las manos: el volumen que manda la pose de los mandos. Invisible,
+         pero sigue mandando (touch.rs lo prueba). -->
+    <posezone id="zona" x="0" y="1.5" z="0.6" sx="5" sy="3" sz="2" visible="false"/>
+
+    <script src="https://njs58923.github.io/luna-demos/nave/kit.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/kit_escena.js?v=mudboip4"/>
+  </space>
+</hsml>

@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El tren</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+    <group id="cielo">
+    </group>
+
+    <!-- El campo. Dos discos: el de abajo llega hasta el horizonte y el de
+         arriba es la franja cercana, un tono más clara, que es lo que da
+         sensación de suelo cerca. -->
+    <cylinder y="-0.62" sx="700" sy="0.4" sz="700" color="#0E1520" touchable="false"/>
+    <cylinder y="-0.5" sx="150" sy="0.3" sz="288" color="#141A16" touchable="false"/>
+
+    <!-- Los rieles: dos tiras larguísimas que no se mueven. Lo que se mueve son
+         los durmientes, y con eso alcanza para leer la velocidad. -->
+    <box x="-0.72" y="0.06" sx="0.1" sy="0.12" sz="288" color="#3A3A40" touchable="false"/>
+    <box x="0.72" y="0.06" sx="0.1" sy="0.12" sz="288" color="#3A3A40" touchable="false"/>
+
+    <group id="afuera">
+      <group id="poste_0">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_1">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_2">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_3">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_4">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_5">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_6">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_7">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_8">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_9">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_10">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_11">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_12">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_13">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_14">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_15">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_16">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_17">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_18">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_19">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_20">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_21">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_22">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_23">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_24">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_25">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_26">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_27">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_28">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_29">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_30">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_31">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_32">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_33">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_34">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_35">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_36">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_37">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_38">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_39">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_40">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_41">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_42">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_43">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_44">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="poste_45">
+        <box y="3.1" sx="0.16" sy="6.2" sz="0.16" color="#22262C" touchable="false"/>
+        <box y="5.9" sx="1.5" sy="0.12" sz="0.12" color="#22262C" touchable="false"/>
+      </group>
+      <group id="arbol_0">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_1">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_2">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_3">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_4">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_5">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_6">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_7">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_8">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_9">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_10">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_11">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_12">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_13">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_14">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_15">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_16">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_17">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_18">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_19">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_20">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_21">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_22">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_23">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_24">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_25">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_26">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_27">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_28">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_29">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_30">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_31">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_32">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_33">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_34">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_35">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_36">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_37">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_38">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_39">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_40">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_41">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_42">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_43">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_44">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_45">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_46">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_47">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_48">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_49">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_50">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_51">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_52">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_53">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_54">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_55">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_56">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_57">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_58">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_59">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_60">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_61">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_62">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_63">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_64">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_65">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_66">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_67">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_68">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_69">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_70">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_71">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_72">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_73">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_74">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_75">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_76">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_77">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_78">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_79">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_80">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_81">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_82">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_83">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_84">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_85">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_86">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_87">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_88">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_89">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_90">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_91">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_92">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_93">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_94">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_95">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_96">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_97">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_98">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_99">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_100">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_101">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_102">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_103">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_104">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_105">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_106">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_107">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_108">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_109">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_110">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_111">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_112">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_113">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_114">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_115">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_116">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_117">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_118">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_119">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_120">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_121">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_122">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_123">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_124">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_125">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_126">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_127">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_128">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_129">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_130">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_131">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_132">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_133">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_134">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_135">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_136">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_137">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_138">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_139">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_140">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_141">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_142">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_143">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_144">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_145">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_146">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_147">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_148">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <group id="arbol_149">
+        <cylinder y="1.1" sx="0.3" sy="2.2" sz="0.3" color="#241A14" touchable="false"/>
+        <sphere y="3.1" sx="2.6" sy="3.4" sz="2.6" color="#1A2A20" touchable="false"/>
+      </group>
+      <box id="durm_0" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_1" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_2" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_3" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_4" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_5" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_6" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_7" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_8" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_9" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_10" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_11" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_12" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_13" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_14" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_15" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_16" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_17" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_18" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_19" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_20" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_21" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_22" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_23" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_24" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_25" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_26" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_27" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_28" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_29" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_30" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_31" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_32" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_33" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_34" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_35" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_36" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_37" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_38" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_39" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_40" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_41" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_42" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_43" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_44" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_45" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_46" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_47" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_48" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_49" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_50" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_51" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_52" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_53" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_54" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_55" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_56" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_57" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_58" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_59" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_60" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_61" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_62" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_63" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_64" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_65" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_66" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_67" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_68" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_69" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_70" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_71" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_72" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_73" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_74" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_75" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_76" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_77" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_78" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_79" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_80" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_81" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_82" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_83" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_84" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_85" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_86" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_87" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_88" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <box id="durm_89" y="0.03" sx="2.9" sy="0.1" sz="0.3" color="#2A2018" touchable="false"/>
+      <sphere id="loma_0" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_1" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_2" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_3" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_4" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_5" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_6" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_7" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_8" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_9" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_10" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_11" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_12" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_13" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_14" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_15" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_16" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_17" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_18" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_19" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_20" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_21" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_22" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_23" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_24" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_25" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_26" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_27" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_28" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+      <sphere id="loma_29" sx="34" sy="9" sz="26" color="#131C18" touchable="false"/>
+    </group>
+
+    <!-- El vagón. No se mueve: cabecea. -->
+    <group id="vagon" y="0.9">
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="9.8" ry="0"/>
+      <box y="-0.06" sx="3.2" sy="0.12" sz="26" color="#2E241A" touchable="false"/>
+      <box y="-0.02" sx="1.3" sy="0.06" sz="26" color="#3A2C1E" touchable="false"/>
+      <box y="2.7" sx="3.5" sy="0.14" sz="26" color="#241C15" touchable="false"/>
+      <box y="1.35" z="-13" sx="3.2" sy="2.7" sz="0.14" color="#3E3126" touchable="false"/>
+      <box y="1.35" z="13" sx="3.2" sy="2.7" sz="0.14" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="0.55" z="-11.45" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="-11.45" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-12.6" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-10.3" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="-11.45" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="-11.45" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="-12.6" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="-10.3" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="-8.35" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="-8.35" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-9.5" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-7.2" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="-8.35" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="-8.35" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="-9.5" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="-7.2" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="-5.25" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="-5.25" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-6.4" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-4.1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="-5.25" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="-5.25" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="-6.4" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="-4.1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="-2.15" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="-2.15" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-3.3" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="-2.15" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="-2.15" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="-3.3" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="-1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="0.95" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="0.95" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="-0.2" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="2.1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="0.95" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="0.95" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="-0.2" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="2.1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="4.05" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="4.05" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="2.9" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="5.2" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="4.05" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="4.05" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="2.9" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="5.2" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="7.15" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="7.15" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="6" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="8.3" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="7.15" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="7.15" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="6" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="8.3" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="0.55" z="10.25" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="2.28" z="10.25" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="-1.6" y="1.43" z="9.1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="-1.6" y="1.43" z="11.4" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="0.55" z="10.25" sx="0.14" sy="1.1" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="2.28" z="10.25" sx="0.14" sy="0.84" sz="2.3" color="#3E3126" touchable="false"/>
+      <box x="1.6" y="1.43" z="9.1" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <box x="1.6" y="1.43" z="11.4" sx="0.14" sy="0.66" sz="0.5" color="#4C3B2C" touchable="false"/>
+      <group x="-1" y="0" z="-9.6" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="-8.1" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="-9.6" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="-8.1" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="-5.4" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="-3.9" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="-5.4" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="-3.9" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="-1.2" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="0.3" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="-1.2" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="0.3" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="3" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="4.5" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="3" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="4.5" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="7.2" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="8.7" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="7.2" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="8.7" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="11.4" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="-1" y="0" z="12.9" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="11.4" ry="0">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group x="1" y="0" z="12.9" ry="3.142">
+        <box y="0.44" sx="1.5" sy="0.16" sz="0.62" color="#5A3A34" touchable="false" border-radius="0.06"/>
+        <box y="0.82" z="-0.32" sx="1.5" sy="0.9" sz="0.14" color="#6E4A42" touchable="false" border-radius="0.06"/>
+        <box x="-0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+        <box x="0.62" y="0.2" sx="0.1" sy="0.4" sz="0.1" color="#4A4A50" touchable="false"/>
+      </group>
+      <group z="-11">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_0" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+      <group z="-7.3">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_1" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+      <group z="-3.6">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_2" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+      <group z="0.1">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_3" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+      <group z="3.8">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_4" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+      <group z="7.5">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_5" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+      <group z="11.2">
+        <box y="2.64" sx="0.9" sy="0.1" sz="0.34" color="#4A4A50" touchable="false"/>
+        <box id="luz_6" y="2.54" sx="0.76" sy="0.1" sz="0.26" color="#FFD9A0" touchable="false"/>
+      </group>
+
+      <!-- Portaequipajes: dos estantes largos que cierran la sección. -->
+      <box x="-1.42" y="2.02" sx="0.44" sy="0.06" sz="25" color="#4A4A50" touchable="false"/>
+      <box x="1.42" y="2.02" sx="0.44" sy="0.06" sz="25" color="#4A4A50" touchable="false"/>
+
+      <!-- El panel del vagón, en la pared del fondo. -->
+      <group z="-12.88">
+        <box y="1.9" sx="1.9" sy="0.72" sz="0.05" color="#12161E" touchable="false" border-radius="0.05"/>
+        <text id="t_titulo" y="2.1" z="0.04" value="El tren" size="0.12" color="#EDE3D2"/>
+        <text id="t_dato" y="1.94" z="0.04" value="" size="0.07" color="#A89A85"/>
+        <box id="acelerar" y="1.72" z="0.04" sx="1.5" sy="0.2" sz="0.04" color="#6E4A42" touchable="true" border-radius="0.03"/>
+        <text id="t_vel" y="1.725" z="0.07" value="más rápido" size="0.065" color="#EDE3D2"/>
+      </group>
+
+      <group id="portal_vuelta" z="12.4" ry="3.14159">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_tren","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#3A3630","color":"#1C2430"}'/>
+      </group>
+    </group>
+
+    <script>
+      globalThis.TREN = {"base":"https://njs58923.github.io/luna-demos/noche","arboles":150,"postes":46,"durmientes":90,"lomas":30,"corredor":120,"lamparas":7};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/tren.js"/>
+  </space>
+</hsml>

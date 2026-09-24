@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cañón de confeti. Tocarlo dispara una lluvia de papelitos de colores hacia
+  arriba, que caen dando vueltas y se quedan un rato en el piso.
+
+  De piso: apoya en y=0, dispara hacia arriba y un poco hacia +Z. Mide
+  0.3 × 0.5 × 0.3 m (el confeti vuela hasta 3 m).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/confeti.hsml"
+             resources="audio" events="disparo" props='{"colores":["#FFD60A","#FF3B30"]}'/>
+
+  Props: colores (lista), cantidad (20 a 120), color (del tubo).
+  Eventos: disparo {}.
+  Mensajes: disparar.
+-->
+<hsml>
+  <head><name>Cañón de confeti</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder y="0.03" sx="0.3" sy="0.06" sz="0.3" color="#2A2A38"/>
+    <group id="tubo" y="0.06" rx="0.25">
+      <cylinder id="cuerpo" y="0.2" sx="0.12" sy="0.4" sz="0.12" color="#7B2FF7"/>
+      <cylinder y="0.405" sx="0.13" sy="0.02" sz="0.13" color="#FFD60A"/>
+    </group>
+    <group id="papelitos"/>
+    <box id="toque" y="0.25" sx="0.3" sy="0.5" sz="0.3" color="transparent" material-alpha="blend"/>
+    <script src="./confeti.js"/>
+  </space>
+</hsml>

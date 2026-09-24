@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cronómetro de bolsillo. La corona de arriba lo arranca y lo para; el botón
+  del costado lo vuelve a cero. Una aguja da la vuelta en un minuto y abajo
+  se leen los minutos, segundos y centésimas.
+
+  De mesa: apoya en y=0 sobre un soporte, la esfera mira a +Z. Mide
+  0.16 × 0.24 × 0.08 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cronometro.hsml"
+             events="parado" props='{"caja":"#C9A45C"}'/>
+
+  Props: caja (color del metal), esfera (color).
+  Eventos: parado {ms} cada vez que se detiene.
+  Mensajes: arrancar, parar, reiniciar.
+-->
+<hsml>
+  <head><name>Cronómetro</name></head>
+  <space resources="read_pose_stream">
+    <!-- El soporte, para que se pare solo sobre la mesa -->
+    <box y="0.008" sx="0.12" sy="0.016" sz="0.07" color="#2A2A2A" border-radius="0.006"/>
+    <box y="0.03" z="-0.012" rx="-0.2" sx="0.02" sy="0.04" sz="0.01" color="#2A2A2A"/>
+    <group id="reloj" y="0.11" rx="-0.12">
+      <cylinder id="caja" rx="1.5707963" sx="0.15" sy="0.035" sz="0.15" color="#C9A45C"/>
+      <cylinder id="esfera" z="0.018" rx="1.5707963" sx="0.13" sy="0.004" sz="0.13" color="#FAF7F0"/>
+      <group id="marcas" z="0.021"/>
+      <group id="aguja" z="0.023"/>
+      <sphere z="0.025" sx="0.01" sy="0.01" sz="0.006" color="#C8102E"/>
+      <text id="lectura" y="-0.03" z="0.021" value="00:00.00" size="0.016" color="#1C1C1C"/>
+      <!-- La corona y el botón de reinicio -->
+      <cylinder id="corona_tallo" y="0.08" sx="0.014" sy="0.02" sz="0.014" color="#C9A45C"/>
+      <cylinder id="corona" y="0.095" sx="0.03" sy="0.014" sz="0.03" color="#B8923E"/>
+      <cylinder id="reinicio" x="0.058" y="0.058" rz="-0.785" sx="0.014" sy="0.022" sz="0.014" color="#B8923E"/>
+      <sphere y="0.112" sx="0.028" sy="0.028" sz="0.01" color="#B8923E"/>
+    </group>
+    <text id="ayuda" y="0.215" value="corona: arranca / para · botón: a cero" size="0.009" color="#6A6258"/>
+    <script src="./cronometro.js"/>
+  </space>
+</hsml>

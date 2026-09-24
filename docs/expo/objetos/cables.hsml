@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cables. A la izquierda salen cables de colores con su enchufe; a la derecha
+  están las tomas, mezcladas. Hay que llevar cada enchufe a la toma de su
+  color. En VR se agarra el enchufe (grip o gatillo) y el cable se estira con
+  la mano; en escritorio, un clic elige el enchufe y otro en la toma lo lleva.
+
+  Bloque de panel: emite `valor` (cuántos conectados) y `completo`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.36 × 0.26 × 0.05 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cables.hsml"
+             resources="audio,read_pose_stream" events="completo"
+             props='{"cantidad":4}'/>
+
+  Props: cantidad (2 a 5), colores (lista), mezclar (true: las tomas en otro orden).
+  Eventos: conectado {color, bien}, valor {valor, fraccion}, completo {}.
+  Mensajes: reiniciar.
+-->
+<hsml>
+  <head><name>Cables</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.36" sy="0.26" sz="0.02" color="#22252E" border-radius="0.02"/>
+    <box x="-0.155" z="0.022" sx="0.03" sy="0.22" sz="0.006" color="#101216"/>
+    <box x="0.155" z="0.022" sx="0.03" sy="0.22" sz="0.006" color="#101216"/>
+    <group id="tomas" z="0.02"/>
+    <group id="cables" z="0.02"/>
+    <sphere id="luz" y="0.118" z="0.022" sx="0.012" sy="0.012" sz="0.006" color="#3A3F4B" material-unlit="true"/>
+    <posezone id="zona" z="0.15" sx="0.7" sy="0.6" sz="0.35" visible="false"/>
+    <script src="./cables.js"/>
+  </space>
+</hsml>

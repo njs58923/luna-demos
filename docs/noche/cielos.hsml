@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hsml>
+  <head><name>Atlas del cielo</name></head>
+  <space resources="navigate_self,navigate_world,spawn,skybox,read_camera_pose,vr_locomotion,desktop_camera_control">
+    <spawn id="entrada" default="true" x="0" y="0" z="7" ry="0"/>
+    <skybox id="sky_background"/>
+    <model id="sky_celestial" material-unlit="true" material-alpha="mask" touchable="false"/>
+    <model id="sky_clouds" material-unlit="true" material-alpha="blend" touchable="false"/>
+    <model id="sky_aurora" material-unlit="true" material-alpha="blend" touchable="false"/>
+
+    <!-- Terraza abierta: el suelo termina en y=0; ningún techo tapa el cielo. -->
+    <cylinder y="-0.32" sx="24" sy="0.64" sz="24" color="#313D48" touchable="false"/>
+    <cylinder y="-0.09" sx="23.6" sy="0.18" sz="23.6" color="#D5CDBA" touchable="false"/>
+    <cylinder y="0.004" sx="19.6" sy="0.006" sz="19.6" color="#B6B6A9" touchable="false"/>
+    <cylinder y="0.009" sx="19.3" sy="0.006" sz="19.3" color="#D5CDBA" touchable="false"/>
+    <box x="-7.8" y="0.24" z="-1" sx="0.8" sy="0.48" sz="5" color="#65727A" touchable="false"/>
+    <box x="7.8" y="0.24" z="-1" sx="0.8" sy="0.48" sz="5" color="#65727A" touchable="false"/>
+    <box x="-7.8" y="0.49" z="-1" sx="1.1" sy="0.12" sz="5.2" color="#E8DDC6" touchable="false"/>
+    <box x="7.8" y="0.49" z="-1" sx="1.1" sy="0.12" sz="5.2" color="#E8DDC6" touchable="false"/>
+    <!-- Dos hitos laterales dan escala sin cerrar el horizonte. -->
+    <box x="-9.5" y="1.65" z="-4.5" sx="0.36" sy="3.3" sz="0.36" color="#455765" touchable="false"/>
+    <box x="9.5" y="1.65" z="-4.5" sx="0.36" sy="3.3" sz="0.36" color="#455765" touchable="false"/>
+    <box x="-9.5" y="3.32" z="-4.5" sx="0.46" sy="0.14" sz="0.46" color="#EBD1A1" touchable="false"/>
+    <box x="9.5" y="3.32" z="-4.5" sx="0.46" sy="0.14" sz="0.46" color="#EBD1A1" touchable="false"/>
+
+    <group z="-2">
+      <box y="3.02" z="-0.12" sx="8.6" sy="0.96" sz="0.12" color="#253744" touchable="false"/>
+      <box x="-4.1" y="2.38" z="-0.12" sx="0.09" sy="0.5" sz="0.09" color="#496170" touchable="false"/>
+      <box x="4.1" y="2.38" z="-0.12" sx="0.09" sy="0.5" sz="0.09" color="#496170" touchable="false"/>
+      <text y="3.15" value="ATLAS DEL CIELO" size="0.43" color="#FCF0D7" touchable="false"/>
+      <text y="2.71" value="CINCO ATMÓSFERAS / UNA MISMA TERRAZA" size="0.18" color="#FFF0D9" touchable="false"/>
+      <box y="1.1" sx="8.6" sy="2.2" sz="0.28" color="#253744" touchable="false"/>
+      <box y="2.17" z="0.16" sx="8.6" sy="0.045" sz="0.03" color="#D9B77D" touchable="false"/>
+      <text id="nombre" y="1.91" z="0.17" value="01 / AMANECER" size="0.24" color="#FFF0D9" touchable="false"/>
+      <text id="descripcion" y="1.58" z="0.17" value="Luz de durazno, nubes bajas y un sol nuevo." size="0.20" color="#BACED6" touchable="false"/>
+      <group y="1.11" z="0.21">
+        <box id="elegir_amanecer" x="-3.28" sx="1.5" sy="0.5" sz="0.12" color="#D9B77D" touchable="true"/>
+        <text x="-3.28" z="0.08" value="AMANECER" size="0.20" color="#142B38" touchable="false"/>
+        <box id="elegir_dia" x="-1.64" sx="1.5" sy="0.5" sz="0.12" color="#AECBD9" touchable="true"/>
+        <text x="-1.64" z="0.08" value="DÍA" size="0.20" color="#142B38" touchable="false"/>
+        <box id="elegir_atardecer" sx="1.5" sy="0.5" sz="0.12" color="#AECBD9" touchable="true"/>
+        <text z="0.08" value="ATARDECER" size="0.20" color="#142B38" touchable="false"/>
+        <box id="elegir_noche" x="1.64" sx="1.5" sy="0.5" sz="0.12" color="#AECBD9" touchable="true"/>
+        <text x="1.64" z="0.08" value="NOCHE" size="0.20" color="#142B38" touchable="false"/>
+        <box id="elegir_aurora" x="3.28" sx="1.5" sy="0.5" sz="0.12" color="#AECBD9" touchable="true"/>
+        <text x="3.28" z="0.08" value="AURORA" size="0.20" color="#142B38" touchable="false"/>
+      </group>
+      <box id="anterior" x="-3.2" y="0.51" z="0.21" sx="1.45" sy="0.38" sz="0.12" color="#496170" touchable="true"/>
+      <text x="-3.2" y="0.51" z="0.29" value="&lt; ANTERIOR" size="0.15" color="#F1EBD9" touchable="false"/>
+      <box id="auto" x="-0.9" y="0.51" z="0.21" sx="2.6" sy="0.38" sz="0.12" color="#496170" touchable="true"/>
+      <text id="auto_label" x="-0.9" y="0.51" z="0.29" value="RECORRIDO: MANUAL" size="0.15" color="#F1EBD9" touchable="false"/>
+      <box id="movimiento" x="1.45" y="0.51" z="0.21" sx="1.9" sy="0.38" sz="0.12" color="#496170" touchable="true"/>
+      <text id="movimiento_label" x="1.45" y="0.51" z="0.29" value="MOVIMIENTO: SÍ" size="0.14" color="#F1EBD9" touchable="false"/>
+      <box id="siguiente" x="3.2" y="0.51" z="0.21" sx="1.45" sy="0.38" sz="0.12" color="#496170" touchable="true"/>
+      <text x="3.2" y="0.51" z="0.29" value="SIGUIENTE &gt;" size="0.15" color="#F1EBD9" touchable="false"/>
+    </group>
+    <group x="-7.5" z="5.5" ry="0.6">
+      <!-- La puerta trae su propio vano y navega sola: la terraza le delega
+           navigate_world y cielos.js le escribe el destino, que depende del
+           ?volver= con el que se entro. El rotulo lo sigue poniendo esta escena:
+           el padre puede pintar encima del include. -->
+      <include id="puerta_atrio" src="./puerta.hsml" resources="navigate_world"
+               props='{"id":"atlas_atras","titulo":"El atrio","sub":"volver a las salas","roca":"#65727A","color":"#253744"}'/>
+      <text y="1.55" z="0.09" value="VOLVER" size="0.19" color="#F1EBD9" touchable="false"/>
+    </group>
+    <script src="./componentes/cielo.js"/>
+    <script src="./cielos.js"/>
+  </space>
+</hsml>

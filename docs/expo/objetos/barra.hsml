@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Barra de progreso. Se llena hasta la fracción que le mandan, continua o en
+  bloques, con el porcentaje al lado. Tocarla la prueba.
+
+  Bloque de panel de salida: recibe `valor` (con fraccion de 0 a 1, o con
+  valor entre min y max).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.3 × 0.08 × 0.03 m.
+
+    <include id="barra" src="https://njs58923.github.io/luna-demos/expo/objetos/barra.hsml"
+             props='{"segmentos":10,"titulo":"CARGA"}'/>
+
+  Props: min, max, segmentos (0 = continua), color, titulo, lleno (color al llegar a 1).
+  Mensajes: valor {fraccion} o {valor}.
+-->
+<hsml>
+  <head><name>Barra de progreso</name></head>
+  <space resources="read_pose_stream">
+    <box id="placa" z="0.01" sx="0.3" sy="0.08" sz="0.02" color="#22252E" border-radius="0.012"/>
+    <box id="fondo" x="-0.02" y="-0.005" z="0.021" sx="0.22" sy="0.028" sz="0.002" color="#101216" border-radius="0.004"/>
+    <group id="relleno" x="-0.02" y="-0.005" z="0.0225"/>
+    <text id="porcentaje" x="0.118" y="-0.005" z="0.021" value="0%" size="0.016" color="#FFD166"/>
+    <text id="titulo" x="-0.02" y="0.024" z="0.021" value="" size="0.011" color="#C8CCD8"/>
+    <box id="toque" z="0.03" sx="0.3" sy="0.08" sz="0.02" color="transparent" material-alpha="blend"/>
+    <script src="./barra.js"/>
+  </space>
+</hsml>

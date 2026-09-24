@@ -1,0 +1,4 @@
+*.log
+volcar.out
+volcado.json
+node_modules/

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Globo terráqueo. Tocarlo le da un empujón y gira sobre su eje inclinado,
+  cada vez más despacio. En VR se lo agarra y se lo hace girar con la mano.
+  Los continentes son manchas aproximadas; el eje está inclinado 23.4°.
+
+  De mesa: apoya en y=0. Mide 0.34 × 0.5 × 0.34 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/globo.hsml"
+             resources="read_pose_stream" props='{"mar":"#1E6091","tierra":"#76C893"}'/>
+
+  Props: mar, tierra, pie (colores).
+  Eventos: gira {velocidad}.
+  Mensajes: girar {velocidad}.
+-->
+<hsml>
+  <head><name>Globo terráqueo</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="pie" y="0.015" sx="0.18" sy="0.03" sz="0.18" color="#6B4A30"/>
+    <cylinder y="0.07" sx="0.02" sy="0.1" sz="0.02" color="#C9A45C"/>
+    <group id="inclinacion" y="0.28" rz="0.408">
+      <group id="meridiano"/>
+      <group id="tierra">
+        <sphere id="mar" sx="0.3" sy="0.3" sz="0.3" color="#1E6091"/>
+        <group id="continentes"/>
+      </group>
+    </group>
+    <posezone id="zona" y="0.28" sx="0.6" sy="0.6" sz="0.6" visible="false"/>
+    <sphere id="toque" y="0.28" sx="0.32" sy="0.32" sz="0.32" color="transparent" material-alpha="blend"/>
+    <script src="./globo.js"/>
+  </space>
+</hsml>

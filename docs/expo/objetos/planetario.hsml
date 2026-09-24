@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Planetario de bronce. El Sol en el medio y los planetas de Mercurio a
+  Saturno en sus brazos, cada uno en la posición que tiene hoy alrededor del
+  Sol (vista desde el norte, con el punto vernal hacia +X). La Luna gira
+  alrededor de la Tierra. Tocar el Sol hace correr el tiempo (un año cada diez
+  segundos) y volver a tocarlo lo trae de vuelta a hoy; tocar un planeta
+  muestra su nombre.
+
+  De mesa: apoya en y=0. Mide 0.8 × 0.42 × 0.8 m (con los brazos).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/planetario.hsml" events="planeta,fecha"/>
+
+  Props: dias (días por segundo al correr, 1 a 3650).
+  Eventos: planeta {nombre, grados} al tocarlo; fecha {iso} cada vez que
+  cambia de día mientras corre.
+  Mensajes: hoy, correr {dias}.
+-->
+<hsml>
+  <head><name>Planetario</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.015" sx="0.3" sy="0.03" sz="0.3" color="#3B2A1A"/>
+    <cylinder y="0.034" sx="0.26" sy="0.008" sz="0.26" color="#B08D57"/>
+    <cylinder y="0.15" sx="0.018" sy="0.22" sz="0.018" color="#B08D57"/>
+    <sphere id="sol" y="0.3" sx="0.09" sy="0.09" sz="0.09" color="#FFC300" material-unlit="true"/>
+    <group id="brazos"/>
+    <text id="fecha" y="0.02" z="0.151" value="" size="0.018" color="#F4E3B2"/>
+    <text id="nombre" y="0.43" value="" size="0.03" color="#FFFFFF"/>
+    <script src="./planetario.js"/>
+  </space>
+</hsml>

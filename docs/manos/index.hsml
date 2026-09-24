@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_manipulador - no editar a mano -->
+<hsml>
+  <head><name>El taller de las manos</name></head>
+  <space resources="navigate_self,navigate_world,spawn,skybox,read_camera_pose,desktop_camera_control,vr_locomotion">
+    <spawn id="entrada" default="true" x="0" y="0" z="3.2" ry="0"/>
+
+    <!-- El campo: cielo y escenografía de server_noche, por URL. -->
+    <include id="cielo" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=amanecer"/>
+    <cylinder y="-0.07" sx="180" sy="0.1" sz="180" color="#5E7A45" touchable="false"/>
+    <cylinder y="0.012" sx="10.3" sy="0.024" sz="10.3" color="#3E2C20" touchable="false"/>
+    <box y="0.03" z="-4.85" sx="2.431" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-4.55" sx="4.146" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-4.25" sx="5.268" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-3.95" sx="6.131" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-3.65" sx="6.834" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-3.35" sx="7.424" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-3.05" sx="7.924" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-2.75" sx="8.352" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-2.45" sx="8.717" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-2.15" sx="9.028" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-1.85" sx="9.29" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-1.55" sx="9.507" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-1.25" sx="9.682" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-0.95" sx="9.818" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-0.65" sx="9.915" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="-0.35" sx="9.975" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="-0.05" sx="9.999" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="0.25" sx="9.987" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="0.55" sx="9.939" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="0.85" sx="9.854" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="1.15" sx="9.732" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="1.45" sx="9.57" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="1.75" sx="9.367" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="2.05" sx="9.121" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="2.35" sx="8.827" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="2.65" sx="8.48" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="2.95" sx="8.074" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="3.25" sx="7.599" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="3.55" sx="7.042" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="3.85" sx="6.38" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="4.15" sx="5.578" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box y="0.03" z="4.45" sx="4.56" sy="0.02" sz="0.282" color="#9A7452" touchable="false"/>
+    <box y="0.03" z="4.75" sx="3.122" sy="0.02" sz="0.282" color="#8A6546" touchable="false"/>
+    <box x="0" y="0.035" z="5" ry="0" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="0.868" y="0.035" z="4.924" ry="0.175" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="1.71" y="0.035" z="4.698" ry="0.349" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="2.5" y="0.035" z="4.33" ry="0.524" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="3.214" y="0.035" z="3.83" ry="0.698" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="3.83" y="0.035" z="3.214" ry="0.873" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="4.33" y="0.035" z="2.5" ry="1.047" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="4.698" y="0.035" z="1.71" ry="1.222" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="4.924" y="0.035" z="0.868" ry="1.396" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="5" y="0.035" z="0" ry="1.571" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="4.924" y="0.035" z="-0.868" ry="1.745" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="4.698" y="0.035" z="-1.71" ry="1.92" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="4.33" y="0.035" z="-2.5" ry="2.094" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="3.83" y="0.035" z="-3.214" ry="2.269" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="3.214" y="0.035" z="-3.83" ry="2.443" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="2.5" y="0.035" z="-4.33" ry="2.618" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="1.71" y="0.035" z="-4.698" ry="2.793" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="0.868" y="0.035" z="-4.924" ry="2.967" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="0" y="0.035" z="-5" ry="3.142" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-0.868" y="0.035" z="-4.924" ry="3.316" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-1.71" y="0.035" z="-4.698" ry="3.491" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-2.5" y="0.035" z="-4.33" ry="3.665" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-3.214" y="0.035" z="-3.83" ry="3.84" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-3.83" y="0.035" z="-3.214" ry="4.014" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-4.33" y="0.035" z="-2.5" ry="4.189" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-4.698" y="0.035" z="-1.71" ry="4.363" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-4.924" y="0.035" z="-0.868" ry="4.538" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-5" y="0.035" z="0" ry="4.712" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-4.924" y="0.035" z="0.868" ry="4.887" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-4.698" y="0.035" z="1.71" ry="5.061" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-4.33" y="0.035" z="2.5" ry="5.236" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-3.83" y="0.035" z="3.214" ry="5.411" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-3.214" y="0.035" z="3.83" ry="5.585" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-2.5" y="0.035" z="4.33" ry="5.76" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-1.71" y="0.035" z="4.698" ry="5.934" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <box x="-0.868" y="0.035" z="4.924" ry="6.109" sx="0.893" sy="0.07" sz="0.16" color="#5E4331" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="2.062" z="5.528" ry="1.928" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="2.828" z="5.178" ry="2.071" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="3.536" z="4.723" ry="2.213" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="4.172" z="4.172" ry="2.356" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="4.723" z="3.536" ry="2.499" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.178" z="2.828" ry="2.642" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.528" z="2.062" ry="2.785" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.765" z="1.254" ry="2.927" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.885" z="0.421" ry="3.07" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.885" z="-0.421" ry="3.213" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.765" z="-1.254" ry="3.356" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.528" z="-2.062" ry="3.499" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="5.178" z="-2.828" ry="3.641" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="4.723" z="-3.536" ry="3.784" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="4.172" z="-4.172" ry="3.927" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="3.536" z="-4.723" ry="4.07" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="2.828" z="-5.178" ry="4.213" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="2.062" z="-5.528" ry="4.355" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="1.254" z="-5.765" ry="4.498" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="0.421" z="-5.885" ry="4.641" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-0.421" z="-5.885" ry="4.784" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-1.254" z="-5.765" ry="4.927" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-2.062" z="-5.528" ry="5.069" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-2.828" z="-5.178" ry="5.212" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-3.536" z="-4.723" ry="5.355" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-4.172" z="-4.172" ry="5.498" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-4.723" z="-3.536" ry="5.641" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.178" z="-2.828" ry="5.783" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.528" z="-2.062" ry="5.926" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.765" z="-1.254" ry="6.069" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.885" z="-0.421" ry="6.212" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.885" z="0.421" ry="6.355" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.765" z="1.254" ry="6.497" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.528" z="2.062" ry="6.64" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-5.178" z="2.828" ry="6.783" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-4.723" z="3.536" ry="6.926" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-4.172" z="4.172" ry="7.069" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-3.536" z="4.723" ry="7.211" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-2.828" z="5.178" ry="7.354" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/fence.glb" x="-2.062" z="5.528" ry="7.497" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/antorcha.glb" x="-2.188" z="5.479" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/antorcha.glb" x="2.188" z="5.479" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/antorcha.glb" x="5.9" z="0" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/antorcha.glb" x="2.95" z="-5.11" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/antorcha.glb" x="-2.95" z="-5.11" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/aventura/antorcha.glb" x="-5.9" z="0" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="-7.989" z="-0.84" ry="5.973" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_11.glb" x="4.003" z="7.842" ry="0.99" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_purple_05.glb" x="-1.346" z="-6.485" ry="2.045" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="5.415" z="4.004" ry="6.215" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="-6.731" z="3.588" ry="1.404" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="-7.646" z="-2.923" ry="6.194" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="-3.14" z="7.548" ry="5.909" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="6.882" z="3.473" ry="4.544" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="5.618" z="-4.115" ry="0.5" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="-7.29" z="-3.703" ry="0.655" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="-7.803" z="3.512" ry="1.5" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="-7.348" z="-1.578" ry="0.701" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="4.572" z="-4.969" ry="3.07" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="2.117" z="-6.692" ry="6.035" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="-7.28" z="-3.358" ry="4.647" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="4.203" z="5.84" ry="0.128" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_15.glb" x="-7.395" z="-3.107" ry="5.627" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="6.642" z="4.046" ry="4.386" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_15.glb" x="5.025" z="6.042" ry="5.897" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_purple_05.glb" x="8.363" z="-2.48" ry="1.645" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="8.161" z="-1.479" ry="0.781" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="7.464" z="-2.987" ry="2.37" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_purple_05.glb" x="-5.673" z="-5.951" ry="3.365" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="-2.201" z="-7.378" ry="5.717" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_11.glb" x="-7.191" z="-2.619" ry="0.77" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="3.909" z="-5.4" ry="2.916" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="-7.355" z="1.45" ry="3.693" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_11.glb" x="4.974" z="-7.136" ry="4.495" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="-7.243" z="0.623" ry="3.281" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="5.58" z="-6.8" ry="1.479" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_15.glb" x="-6.591" z="4.193" ry="2.345" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="4.755" z="-5.783" ry="2.558" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="-3.789" z="6.415" ry="0.955" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="6.881" z="-3.108" ry="5.91" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="4.024" z="7.099" ry="1.577" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_11.glb" x="6.66" z="-2.969" ry="0.812" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="6.139" z="-5.978" ry="1.116" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="-8.767" z="-0.161" ry="3.706" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_purple_05.glb" x="-8.37" z="3.381" ry="1.348" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="-2.233" z="7.257" ry="6.246" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="-6.917" z="5.073" ry="4.846" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="-6.942" z="-2.639" ry="0.52" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="7.492" z="-1.721" ry="5.793" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_15.glb" x="3.433" z="7.861" ry="3.088" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_orange_09.glb" x="8.489" z="1.102" ry="4.245" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="3.727" z="-7.028" ry="2.237" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/mushroom_fantasy_purple_05.glb" x="-2.363" z="6.319" ry="2.856" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="-6.524" z="5.36" ry="0.617" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_11.glb" x="-7.598" z="1.483" ry="1.184" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/sunflower_04.glb" x="5.868" z="6.492" ry="0.117" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/daffodil_03.glb" x="-8.481" z="-0.651" ry="1.459" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/hyacinth_04.glb" x="-5.213" z="4.997" ry="2.885" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/grass_15.glb" x="-3.623" z="6.164" ry="5.374" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_09.glb" x="15.358" z="-8.759" ry="1.184" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_11.glb" x="-2.994" z="-17.275" ry="0.117" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_pile_forest_moss_05.glb" x="-14.814" z="6.962" ry="0.064" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_pile_forest_moss_10.glb" x="9.937" z="11.909" ry="1.459" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_09.glb" x="-12.501" z="-2.626" ry="2.885" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_11.glb" x="3.302" z="14.156" ry="5.374" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_pile_forest_moss_05.glb" x="-7.633" z="8.048" ry="2.1" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_pile_forest_moss_10.glb" x="-11.651" z="-10.264" ry="5.95" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_09.glb" x="13.582" z="3.351" ry="1.575" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_11.glb" x="-13.5" z="-6.885" ry="2.862" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_pile_forest_moss_05.glb" x="-2.742" z="13.26" ry="6.024" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_pile_forest_moss_10.glb" x="-9.014" z="-13.891" ry="5.102" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_09.glb" x="13.819" z="-4.69" ry="5.315" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/rock_moss_grown_11.glb" x="-15.977" z="2.16" ry="1.761" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="-17.437" z="15.997" ry="2.986" sx="1.11" sy="1.11" sz="1.11" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="5.201" z="22.542" ry="1.69" sx="0.952" sy="0.952" sz="0.952" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="0.718" z="17.683" ry="5.954" sx="0.972" sy="0.972" sz="0.972" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="22.205" z="3.816" ry="4.253" sx="0.887" sy="0.887" sz="0.887" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="-3.179" z="16.39" ry="3.521" sx="1.004" sy="1.004" sz="1.004" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="14.881" z="10.671" ry="0.462" sx="1.044" sy="1.044" sz="1.044" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="21.091" z="-6.978" ry="2.557" sx="1.061" sy="1.061" sz="1.061" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-18.387" z="0.359" ry="4.775" sx="1.012" sy="1.012" sz="1.012" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="-29.478" z="-4.135" ry="1.033" sx="1.223" sy="1.223" sz="1.223" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="-15.178" z="10.07" ry="1.121" sx="0.912" sy="0.912" sz="0.912" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="16.464" z="18.609" ry="4.457" sx="0.913" sy="0.913" sz="0.913" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-20.668" z="-9.288" ry="0.57" sx="1.217" sy="1.217" sz="1.217" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="16.514" z="20.687" ry="0.315" sx="0.938" sy="0.938" sz="0.938" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="19.481" z="6.67" ry="2.868" sx="1.009" sy="1.009" sz="1.009" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="-14.254" z="-4.393" ry="1.815" sx="1.119" sy="1.119" sz="1.119" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-3.901" z="-28.749" ry="4.923" sx="0.808" sy="0.808" sz="0.808" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="16.607" z="18.452" ry="0.103" sx="1.167" sy="1.167" sz="1.167" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="-21.77" z="8.096" ry="0.793" sx="0.845" sy="0.845" sz="0.845" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="-24.842" z="8.017" ry="0.163" sx="1.218" sy="1.218" sz="1.218" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="5.145" z="23.234" ry="0.719" sx="1.246" sy="1.246" sz="1.246" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="-18.035" z="-1.796" ry="6.133" sx="0.805" sy="0.805" sz="0.805" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="-1.032" z="19.162" ry="6.208" sx="1.125" sy="1.125" sz="1.125" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="-9.826" z="22.029" ry="1.133" sx="1.279" sy="1.279" sz="1.279" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-2.507" z="21.246" ry="0.996" sx="1.259" sy="1.259" sz="1.259" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="-6.391" z="21.018" ry="3.057" sx="0.939" sy="0.939" sz="0.939" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="-4.497" z="19.37" ry="6.257" sx="1.059" sy="1.059" sz="1.059" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="-14.542" z="-4.241" ry="4.915" sx="1.245" sy="1.245" sz="1.245" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-6.229" z="19.051" ry="4.962" sx="1.169" sy="1.169" sz="1.169" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="-20.475" z="-13.504" ry="4.859" sx="0.914" sy="0.914" sz="0.914" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="-12.048" z="17.944" ry="1.191" sx="1.101" sy="1.101" sz="1.101" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="14.194" z="-7.766" ry="2.545" sx="1.01" sy="1.01" sz="1.01" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="3.093" z="14.564" ry="4.606" sx="1.059" sy="1.059" sz="1.059" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="6.486" z="22.842" ry="1.444" sx="1.198" sy="1.198" sz="1.198" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_10.glb" x="-3.11" z="26.009" ry="5.379" sx="0.907" sy="0.907" sz="0.907" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="11.468" z="-11.115" ry="3.461" sx="1.28" sy="1.28" sz="1.28" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-18.418" z="3.231" ry="5.632" sx="0.861" sy="0.861" sz="0.861" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/tree_02.glb" x="12.492" z="18.822" ry="2.319" sx="1.109" sy="1.109" sz="1.109" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_05.glb" x="10.296" z="14.308" ry="1.804" sx="0.915" sy="0.915" sz="0.915" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/birch_tree_06.glb" x="-17.291" z="9.814" ry="3.542" sx="0.979" sy="0.979" sz="0.979" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="7.562" y="-0.4" z="66.185" ry="1.693" sx="1.205" sy="1.205" sz="1.205" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_01.glb" x="48.631" y="-0.4" z="41.598" ry="6.161" sx="1.446" sy="1.446" sz="1.446" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="67.604" y="-0.4" z="-6.051" ry="4.825" sx="1.585" sy="1.585" sz="1.585" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_01.glb" x="43.468" y="-0.4" z="-53.224" ry="1.347" sx="1.521" sy="1.521" sz="1.521" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="11.566" y="-0.4" z="-73.428" ry="3.298" sx="1.131" sy="1.131" sz="1.131" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_01.glb" x="-39.858" y="-0.4" z="-59.589" ry="0.609" sx="1.531" sy="1.531" sz="1.531" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="-74.002" y="-0.4" z="-16.496" ry="4.952" sx="1.657" sy="1.657" sz="1.657" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_01.glb" x="-61.157" y="-0.4" z="12.721" ry="3.33" sx="1.628" sy="1.628" sz="1.628" touchable="false"/>
+    <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="-32.079" y="-0.4" z="54.065" ry="2.339" sx="1.498" sy="1.498" sz="1.498" touchable="false"/>
+
+    <text x="0" y="4.75" z="-3.2" value="El taller de las manos" size="0.3" color="#FFFFFF"/>
+    <text x="0" y="4.42" z="-3.2" value="dos escenas para los mandos de VR" size="0.1" color="#C8CCD8"/>
+
+    <!-- Las escenas, lado a lado. Cada puerta con una muestra de lo que hay
+         detrás: el robot de verdad —el mismo documento, vivo— y una diana. -->
+    <group x="-2.6" y="0" z="-2.2" ry="0.449">
+      <include id="a_manipular" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/manipular.hsml","id":"a_manipular","titulo":"El manipulador","sub":"mover, girar y escalar","roca":"#5E4331","color":"#1E3A5A"}'/>
+    </group>
+    <group x="2.6" y="0" z="-2.2" ry="-0.449">
+      <include id="a_arco" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/arco.hsml","id":"a_arco","titulo":"El arco","sub":"tirar al blanco","roca":"#5E4331","color":"#5A2A1E"}'/>
+    </group>
+
+    <cylinder x="-4.6" y="0.35" z="-0.9" sx="0.44" sy="0.7" sz="0.44" color="#1C1C26" touchable="false"/>
+    <group x="-4.6" y="0.7" z="-0.9" ry="0.843">
+      <include id="muestra" src="https://njs58923.github.io/luna-demos/manos/muestra.hsml"/>
+    </group>
+
+    <group x="4.6" y="1.1" z="-0.9" ry="-0.843">
+      <cylinder rx="1.5708" sx="1.0" sy="0.1" sz="1.0" color="#C9A86A" touchable="false"/>
+      <cylinder z="0.052" rx="1.5708" sx="0.9" sy="0.004" sz="0.9" color="#F4F4F4" touchable="false"/>
+      <cylinder z="0.056" rx="1.5708" sx="0.72" sy="0.004" sz="0.72" color="#1C1C1C" touchable="false"/>
+      <cylinder z="0.06" rx="1.5708" sx="0.54" sy="0.004" sz="0.54" color="#0A84FF" touchable="false"/>
+      <cylinder z="0.064" rx="1.5708" sx="0.36" sy="0.004" sz="0.36" color="#FF3B30" touchable="false"/>
+      <cylinder z="0.068" rx="1.5708" sx="0.18" sy="0.004" sz="0.18" color="#FFD60A" touchable="false"/>
+      <box x="-0.3" y="-0.55" z="-0.08" rz="-0.18" sx="0.05" sy="1.25" sz="0.05" color="#6B4A30" touchable="false"/>
+      <box x="0.3" y="-0.55" z="-0.08" rz="0.18" sx="0.05" sy="1.25" sz="0.05" color="#6B4A30" touchable="false"/>
+    </group>
+
+    <!-- A espaldas, en la abertura del cerco: el puente, todo el taller. -->
+    <group x="0" y="0" z="6.4" ry="3.142">
+      <include id="a_puente" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/index.hsml","id":"a_puente","titulo":"El puente","sub":"todo el taller","roca":"#5E4331","color":"#22303E"}'/>
+    </group>
+  </space>
+</hsml>

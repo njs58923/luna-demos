@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Aro de básquet. Con el mouse, tocar la pelota la tira al aro (entra más o
+  menos dos de cada tres). En VR se la agarra con el grip y se la tira. La
+  pelota rebota en el tablero y en el aro, y vuelve sola a su lugar.
+
+  De piso: apoya en y=0; el tablero mira a +Z y la pelota espera 1.6 m
+  adelante. Mide 1.0 × 2.7 × 2.0 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/aro.hsml"
+             resources="read_pose_stream" events="tiro" props='{"clave":"patio"}'/>
+
+  Props: altura (del aro, m), punteria (0..1, para los tiros con el mouse),
+  clave (guarda el récord de seguidas).
+  Eventos: tiro {entro, seguidas}.
+  Mensajes: tirar.
+-->
+<hsml>
+  <head><name>Aro de básquet</name></head>
+  <space resources="read_pose_stream">
+    <box y="0.02" z="-0.35" sx="0.6" sy="0.04" sz="0.6" color="#2A2A2A"/>
+    <cylinder id="poste" y="1.2" z="-0.35" sx="0.08" sy="2.4" sz="0.08" color="#3A3A3A"/>
+    <box y="2.3" z="-0.2" sx="0.08" sy="0.08" sz="0.3" color="#3A3A3A"/>
+    <group id="tablero" y="2.3" z="-0.04">
+      <box sx="0.9" sy="0.6" sz="0.03" color="#F4F4F4"/>
+      <box y="-0.1" z="0.016" sx="0.3" sy="0.2" sz="0.002" color="#C8102E"/>
+      <box y="-0.1" z="0.017" sx="0.26" sy="0.16" sz="0.002" color="#F4F4F4"/>
+      <text id="marcador" y="0.2" z="0.017" value="" size="0.05" color="#1C1C1C"/>
+    </group>
+    <group id="aro" y="2.1" z="0.2"/>
+    <group id="red" y="2.1" z="0.2"/>
+    <group id="pelota">
+      <sphere id="cuero" sx="0.24" sy="0.24" sz="0.24" color="#E06A1B"/>
+      <box sx="0.245" sy="0.006" sz="0.006" color="#2A1A0A"/>
+      <box sx="0.006" sy="0.245" sz="0.006" color="#2A1A0A"/>
+    </group>
+    <sphere id="toque" sx="0.3" sy="0.3" sz="0.3" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="1.2" z="1.2" sx="2.5" sy="2.6" sz="3.2" visible="false"/>
+    <script src="./aro.js"/>
+  </space>
+</hsml>

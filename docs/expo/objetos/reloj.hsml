@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Reloj de pared. Marca la hora de verdad; tocarlo muestra la hora y la fecha
+  en números por unos segundos.
+
+  De pared: el origen es el clavo. La esfera está centrada en y=0 y se despega
+  hacia +Z, que es desde donde se mira.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/reloj.hsml"
+             props='{"marco":"#3A2A1E","utc":-3,"ciudad":"Buenos Aires"}'/>
+
+  Props: marco, esfera, agujas (colores), segundero (bool), utc (horas; sin
+  utc usa la hora local), ciudad (texto bajo el 12), clave.
+  Eventos: hora {h, m, s} una vez por minuto.
+-->
+<hsml>
+  <head><name>Reloj de pared</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="marco" z="0.025" rx="1.5707963" sx="0.44" sy="0.05" sz="0.44" color="#2E2A26"/>
+    <cylinder id="esfera" z="0.052" rx="1.5707963" sx="0.39" sy="0.006" sz="0.39" color="#F4F1EA"/>
+    <group id="marcas"/>
+    <text id="ciudad" y="0.075" z="0.057" value="" size="0.022" color="#6A6258"/>
+    <group id="aguja_h" z="0.06"/>
+    <group id="aguja_m" z="0.064"/>
+    <group id="aguja_s" z="0.068"/>
+    <sphere id="eje" z="0.07" sx="0.018" sy="0.018" sz="0.012" color="#C8102E"/>
+    <!-- La lectura digital, escondida hasta el toque. -->
+    <group id="digital" y="-0.29" z="0.03" visible="false">
+      <box sx="0.24" sy="0.075" sz="0.012" color="#1C1C26" border-radius="0.012"/>
+      <text id="digital_hora" y="0.01" z="0.008" value="" size="0.034" color="#FFD60A"/>
+      <text id="digital_fecha" y="-0.022" z="0.008" value="" size="0.016" color="#C8CCD8"/>
+    </group>
+    <!-- El blanco táctil: la esfera entera, invisible. -->
+    <plane id="toque" z="0.075" sx="0.44" sy="0.44" color="transparent" material-alpha="blend"/>
+    <script src="./reloj.js"/>
+  </space>
+</hsml>

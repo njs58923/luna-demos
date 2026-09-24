@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cofre. Tocarlo abre la tapa y adentro brillan monedas y piedras; otro toque
+  lo cierra. Recuerda si quedó abierto.
+
+  De piso: apoya en y=0, el frente mira a +Z. Mide 0.7 × 0.5 × 0.45 m cerrado
+  (la tapa abierta sube a 0.85 m).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cofre.hsml"
+             events="cambio" props='{"madera":"#6B3F22","clave":"sotano"}'/>
+
+  Props: madera, herrajes (colores), clave.
+  Eventos: cambio {abierto}.
+  Mensajes: abrir, cerrar.
+-->
+<hsml>
+  <head><name>Cofre</name></head>
+  <space resources="read_pose_stream">
+    <group id="caja">
+      <box class="madera" y="0.02" sx="0.7" sy="0.04" sz="0.45" color="#6B3F22"/>
+      <box class="madera" y="0.18" z="0.215" sx="0.7" sy="0.32" sz="0.02" color="#6B3F22"/>
+      <box class="madera" y="0.18" z="-0.215" sx="0.7" sy="0.32" sz="0.02" color="#6B3F22"/>
+      <box class="madera" x="0.34" y="0.18" sx="0.02" sy="0.32" sz="0.45" color="#6B3F22"/>
+      <box class="madera" x="-0.34" y="0.18" sx="0.02" sy="0.32" sz="0.45" color="#6B3F22"/>
+      <box class="herraje" x="-0.25" y="0.18" z="0.228" sx="0.04" sy="0.32" sz="0.006" color="#8A7A55"/>
+      <box class="herraje" x="0.25" y="0.18" z="0.228" sx="0.04" sy="0.32" sz="0.006" color="#8A7A55"/>
+      <box class="herraje" y="0.3" z="0.23" sx="0.08" sy="0.07" sz="0.012" color="#C9A45C"/>
+      <group id="tesoro" y="0.04"/>
+    </group>
+    <!-- La tapa: bisagra atrás arriba; el lomo curvo es una escalera de cajas -->
+    <group id="bisagra" y="0.34" z="-0.225">
+      <group id="tapa"/>
+    </group>
+    <sphere id="brillo" y="0.3" sx="0.6" sy="0.25" sz="0.4" color="#FFD60A22" material-alpha="blend" material-unlit="true" visible="false"/>
+    <box id="toque" manos="false" y="0.25" sx="0.72" sy="0.5" sz="0.47" color="transparent" material-alpha="blend"/>
+    <script src="./cofre.js"/>
+  </space>
+</hsml>

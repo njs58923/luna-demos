@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pecera. Peces que nadan solos entre algas y burbujas; tocarla les tira
+  comida y suben a buscarla.
+
+  De mesa: apoya en y=0. Mide 0.6 × 0.42 × 0.32 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/pecera.hsml" events="comida"
+             props='{"peces":6}'/>
+
+  Props: peces (1 a 10), agua (color).
+  Eventos: comida {} cada vez que se les tira.
+  Mensajes: comida.
+-->
+<hsml>
+  <head><name>Pecera</name></head>
+  <space resources="read_pose_stream">
+    <box y="0.015" sx="0.6" sy="0.03" sz="0.32" color="#2A2A2A"/>
+    <box y="0.41" sx="0.6" sy="0.02" sz="0.32" color="#2A2A2A"/>
+    <box y="0.04" sx="0.56" sy="0.02" sz="0.28" color="#D9C9A3"/>
+    <group id="fondo" y="0.05"/>
+    <group id="peces" y="0.05"/>
+    <group id="burbujas" y="0.05"/>
+    <group id="comida" y="0.05"/>
+    <box id="agua" y="0.21" sx="0.58" sy="0.36" sz="0.3" color="#4FC3F740" material-alpha="blend"/>
+    <box id="toque" y="0.21" sx="0.6" sy="0.4" sz="0.32" color="transparent" material-alpha="blend"/>
+    <script src="./pecera.js"/>
+  </space>
+</hsml>

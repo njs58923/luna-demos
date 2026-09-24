@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Armario de dos puertas. Cada puerta se abre con un toque, sobre su bisagra;
+  adentro hay ropa colgada y un estante. Recuerda qué quedó abierto.
+
+  De piso: apoya en y=0, el frente mira a +Z. Mide 1.0 × 1.9 × 0.56 m
+  (las puertas abiertas salen 0.5 m hacia adelante).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/armario.hsml"
+             events="cambio" props='{"madera":"#A47148","clave":"pieza"}'/>
+
+  Props: madera, tirador (colores), clave.
+  Eventos: cambio {puerta: "izquierda" | "derecha", abierta}.
+  Mensajes: abrir {puerta}, cerrar {puerta}.
+-->
+<hsml>
+  <head><name>Armario</name></head>
+  <space resources="read_pose_stream">
+    <group id="mueble"/>
+    <group id="adentro"/>
+    <group id="bisagra_izq" x="-0.49" y="0.97" z="0.27"/>
+    <group id="bisagra_der" x="0.49" y="0.97" z="0.27"/>
+    <script src="./armario.js"/>
+  </space>
+</hsml>

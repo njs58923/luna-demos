@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La cueva</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante. Frente al puente y al lago, de espaldas al portal. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="10" ry="0"/>
+
+    <group id="fondo">
+      <plane z="-90" sx="180" sy="180" color="#04060A" touchable="false"/>
+      <plane z="90" sx="180" sy="180" color="#04060A" touchable="false"/>
+      <plane x="-90" ry="1.5707963" sx="180" sy="180" color="#04060A" touchable="false"/>
+      <plane x="90" ry="1.5707963" sx="180" sy="180" color="#04060A" touchable="false"/>
+    </group>
+
+    <!-- Piso, techo y paredes. El techo es un plano —doble cara— y el piso
+         también; las paredes no pueden ser un cilindro. -->
+    <plane y="0" rx="1.5707963" sx="62.4" sy="62.4" color="#22242C" touchable="false"/>
+    <plane y="14" rx="1.5707963" sx="62.4" sy="62.4" color="#2A2C36" touchable="false"/>
+      <box x="0" y="7" z="24.2" ry="0" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="7.325" y="7" z="24.947" ry="0.286" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="15.03" y="7" z="23.387" ry="0.571" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="18.289" y="7" z="15.848" ry="0.857" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="23.65" y="7" z="10.801" ry="1.142" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="27.517" y="7" z="3.956" ry="1.428" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="23.954" y="7" z="-3.444" ry="1.714" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="23.65" y="7" z="-10.801" ry="1.999" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="21.01" y="7" z="-18.205" ry="2.285" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="13.084" y="7" z="-20.358" ry="2.57" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="7.325" y="7" z="-24.947" ry="2.856" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="0" y="7" z="-27.8" ry="3.142" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="-6.818" y="7" z="-23.22" ry="3.427" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="-14.057" y="7" z="-21.873" ry="3.713" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="-21.01" y="7" z="-18.205" ry="3.998" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="-22.013" y="7" z="-10.053" ry="4.284" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="-25.735" y="7" z="-3.7" ry="4.57" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="-27.517" y="7" z="3.956" ry="4.855" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="-22.013" y="7" z="10.053" ry="5.141" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="-19.649" y="7" z="17.026" ry="5.426" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+      <box x="-15.03" y="7" z="23.387" ry="5.712" sx="10.426" sy="20" sz="3.4" color="#22242C" touchable="false"/>
+      <box x="-6.818" y="7" z="23.22" ry="5.998" sx="10.426" sy="20" sz="3.4" color="#2A2C36" touchable="false"/>
+
+    <!-- El lago del fondo de la cueva. -->
+    <cylinder x="8" y="0.06" z="-6" sx="19" sy="0.12" sz="15" color="#0E1E2C" touchable="false"/>
+    <cylinder x="8" y="0.03" z="-6" sx="21" sy="0.12" sz="17" color="#16293A" touchable="false"/>
+
+    <!-- El puente: tablones y dos cuerdas. Cruza el lago y es lo que hace que
+         la cueva se recorra en vez de mirarse. -->
+    <group id="puente" x="8" y="0" z="-6" ry="0.5">
+      <box y="0.5" z="-10" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.445" z="-9" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.392" z="-8" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.341" z="-7" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.294" z="-6" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.253" z="-5" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.217" z="-4" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.188" z="-3" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.167" z="-2" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.154" z="-1" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.15" z="0" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.154" z="1" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.167" z="2" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.188" z="3" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.217" z="4" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.253" z="5" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.294" z="6" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.341" z="7" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.392" z="8" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.445" z="9" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box y="0.5" z="10" sx="1.7" sy="0.09" sz="0.7" color="#3A2E22" touchable="false"/>
+      <box x="-0.85" y="1.1" sx="0.06" sy="0.06" sz="21" color="#4A3A28" touchable="false"/>
+      <box x="0.85" y="1.1" sx="0.06" sy="0.06" sz="21" color="#4A3A28" touchable="false"/>
+    </group>
+
+    <group id="rocas">
+      <group x="0" y="14" z="4">
+        <cylinder y="-0.267" sx="0.36" sy="0.533" sz="0.36" color="#2A2C36" touchable="false"/>
+        <cylinder y="-0.8" sx="0.252" sy="0.533" sz="0.252" color="#343846" touchable="false"/>
+        <cylinder y="-1.333" sx="0.126" sy="0.533" sz="0.126" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="2.014" y="0" z="4.935">
+        <cylinder y="0.364" sx="0.496" sy="0.728" sz="0.496" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.093" sx="0.347" sy="0.728" sz="0.347" color="#343846" touchable="false"/>
+        <cylinder y="1.821" sx="0.174" sy="0.728" sz="0.174" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="4.66" y="14" z="4.758">
+        <cylinder y="-0.462" sx="0.632" sy="0.923" sz="0.632" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.385" sx="0.442" sy="0.923" sz="0.442" color="#343846" touchable="false"/>
+        <cylinder y="-2.308" sx="0.221" sy="0.923" sz="0.221" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="7.333" y="0" z="3.173">
+        <cylinder y="0.559" sx="0.768" sy="1.118" sz="0.768" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.678" sx="0.538" sy="1.118" sz="0.538" color="#343846" touchable="false"/>
+        <cylinder y="2.796" sx="0.269" sy="1.118" sz="0.269" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="9.318" y="14" z="0.195">
+        <cylinder y="-0.657" sx="0.904" sy="1.313" sz="0.904" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.97" sx="0.633" sy="1.313" sz="0.633" color="#343846" touchable="false"/>
+        <cylinder y="-3.283" sx="0.316" sy="1.313" sz="0.316" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="8.733" y="14" z="-8.201">
+        <cylinder y="-0.852" sx="0.376" sy="1.703" sz="0.376" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.555" sx="0.263" sy="1.703" sz="0.263" color="#343846" touchable="false"/>
+        <cylinder y="-4.258" sx="0.132" sy="1.703" sz="0.132" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="0.613" y="14" z="-14.627">
+        <cylinder y="-0.297" sx="0.648" sy="0.593" sz="0.648" color="#2A2C36" touchable="false"/>
+        <cylinder y="-0.89" sx="0.454" sy="0.593" sz="0.454" color="#343846" touchable="false"/>
+        <cylinder y="-1.483" sx="0.227" sy="0.593" sz="0.227" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-5.41" y="0" z="-15.026">
+        <cylinder y="0.394" sx="0.784" sy="0.788" sz="0.784" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.183" sx="0.549" sy="0.788" sz="0.549" color="#343846" touchable="false"/>
+        <cylinder y="1.971" sx="0.274" sy="0.788" sz="0.274" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-11.576" y="14" z="-12.856">
+        <cylinder y="-0.492" sx="0.92" sy="0.983" sz="0.92" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.475" sx="0.644" sy="0.983" sz="0.644" color="#343846" touchable="false"/>
+        <cylinder y="-2.458" sx="0.322" sy="0.983" sz="0.322" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-16.773" y="0" z="-8.108">
+        <cylinder y="0.589" sx="1.056" sy="1.178" sz="1.056" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.768" sx="0.739" sy="1.178" sz="0.739" color="#343846" touchable="false"/>
+        <cylinder y="2.946" sx="0.37" sy="1.178" sz="0.37" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-19.921" y="14" z="-1.253">
+        <cylinder y="-0.687" sx="0.392" sy="1.373" sz="0.392" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.06" sx="0.274" sy="1.373" sz="0.274" color="#343846" touchable="false"/>
+        <cylinder y="-3.433" sx="0.137" sy="1.373" sz="0.137" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-20.178" y="0" z="6.791">
+        <cylinder y="0.784" sx="0.528" sy="1.568" sz="0.528" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.353" sx="0.37" sy="1.568" sz="0.37" color="#343846" touchable="false"/>
+        <cylinder y="3.921" sx="0.185" sy="1.568" sz="0.185" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-17.123" y="14" z="14.78">
+        <cylinder y="-0.882" sx="0.664" sy="1.763" sz="0.664" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.645" sx="0.465" sy="1.763" sz="0.465" color="#343846" touchable="false"/>
+        <cylinder y="-4.408" sx="0.232" sy="1.763" sz="0.232" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-2.247" y="0" z="4.41">
+        <cylinder y="0.979" sx="0.8" sy="1.958" sz="0.8" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.938" sx="0.56" sy="1.958" sz="0.56" color="#343846" touchable="false"/>
+        <cylinder y="4.896" sx="0.28" sy="1.958" sz="0.28" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-0.525" y="14" z="6.258">
+        <cylinder y="-0.327" sx="0.936" sy="0.653" sz="0.936" color="#2A2C36" touchable="false"/>
+        <cylinder y="-0.98" sx="0.655" sy="0.653" sz="0.655" color="#343846" touchable="false"/>
+        <cylinder y="-1.633" sx="0.328" sy="0.653" sz="0.328" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="2.276" y="0" z="7.262">
+        <cylinder y="0.424" sx="1.072" sy="0.848" sz="1.072" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.272" sx="0.75" sy="0.848" sz="0.75" color="#343846" touchable="false"/>
+        <cylinder y="2.121" sx="0.375" sy="0.848" sz="0.375" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="5.699" y="14" z="6.888">
+        <cylinder y="-0.522" sx="0.408" sy="1.043" sz="0.408" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.565" sx="0.286" sy="1.043" sz="0.286" color="#343846" touchable="false"/>
+        <cylinder y="-2.608" sx="0.143" sy="1.043" sz="0.143" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="9.051" y="0" z="4.853">
+        <cylinder y="0.619" sx="0.544" sy="1.238" sz="0.544" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.857" sx="0.381" sy="1.238" sz="0.381" color="#343846" touchable="false"/>
+        <cylinder y="3.096" sx="0.19" sy="1.238" sz="0.19" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="11.536" y="14" z="1.213">
+        <cylinder y="-0.717" sx="0.68" sy="1.433" sz="0.68" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.15" sx="0.476" sy="1.433" sz="0.476" color="#343846" touchable="false"/>
+        <cylinder y="-3.583" sx="0.238" sy="1.433" sz="0.238" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="11.175" y="14" z="-8.858">
+        <cylinder y="-0.912" sx="0.952" sy="1.823" sz="0.952" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.735" sx="0.666" sy="1.823" sz="0.666" color="#343846" touchable="false"/>
+        <cylinder y="-4.558" sx="0.333" sy="1.823" sz="0.333" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="2.121" y="14" z="-16.787">
+        <cylinder y="-0.357" sx="0.424" sy="0.713" sz="0.424" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.07" sx="0.297" sy="0.713" sz="0.297" color="#343846" touchable="false"/>
+        <cylinder y="-1.783" sx="0.148" sy="0.713" sz="0.148" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-4.723" y="0" z="-17.628">
+        <cylinder y="0.454" sx="0.56" sy="0.908" sz="0.56" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.363" sx="0.392" sy="0.908" sz="0.392" color="#343846" touchable="false"/>
+        <cylinder y="2.271" sx="0.196" sy="0.908" sz="0.196" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-11.838" y="14" z="-15.596">
+        <cylinder y="-0.552" sx="0.696" sy="1.103" sz="0.696" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.655" sx="0.487" sy="1.103" sz="0.487" color="#343846" touchable="false"/>
+        <cylinder y="-2.758" sx="0.244" sy="1.103" sz="0.244" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-17.998" y="0" z="-10.644">
+        <cylinder y="0.649" sx="0.832" sy="1.298" sz="0.832" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.948" sx="0.582" sy="1.298" sz="0.582" color="#343846" touchable="false"/>
+        <cylinder y="3.246" sx="0.291" sy="1.298" sz="0.291" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-22.001" y="14" z="-3.249">
+        <cylinder y="-0.747" sx="0.968" sy="1.493" sz="0.968" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.24" sx="0.678" sy="1.493" sz="0.678" color="#343846" touchable="false"/>
+        <cylinder y="-3.733" sx="0.339" sy="1.493" sz="0.339" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-4.438" y="0" z="1.09">
+        <cylinder y="0.844" sx="1.104" sy="1.688" sz="1.104" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.532" sx="0.773" sy="1.688" sz="0.773" color="#343846" touchable="false"/>
+        <cylinder y="4.221" sx="0.386" sy="1.688" sz="0.386" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-4.773" y="14" z="3.468">
+        <cylinder y="-0.942" sx="0.44" sy="1.883" sz="0.44" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.825" sx="0.308" sy="1.883" sz="0.308" color="#343846" touchable="false"/>
+        <cylinder y="-4.708" sx="0.154" sy="1.883" sz="0.154" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-3.81" y="0" z="6.145">
+        <cylinder y="0.289" sx="0.576" sy="0.578" sz="0.576" color="#2A2C36" touchable="false"/>
+        <cylinder y="0.868" sx="0.403" sy="0.578" sz="0.403" color="#343846" touchable="false"/>
+        <cylinder y="1.446" sx="0.202" sy="0.578" sz="0.202" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-1.428" y="14" z="8.44">
+        <cylinder y="-0.387" sx="0.712" sy="0.773" sz="0.712" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.16" sx="0.498" sy="0.773" sz="0.498" color="#343846" touchable="false"/>
+        <cylinder y="-1.933" sx="0.249" sy="0.773" sz="0.249" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="2.157" y="0" z="9.652">
+        <cylinder y="0.484" sx="0.848" sy="0.968" sz="0.848" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.453" sx="0.594" sy="0.968" sz="0.594" color="#343846" touchable="false"/>
+        <cylinder y="2.421" sx="0.297" sy="0.968" sz="0.297" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="6.403" y="14" z="9.213">
+        <cylinder y="-0.582" sx="0.984" sy="1.163" sz="0.984" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.745" sx="0.689" sy="1.163" sz="0.689" color="#343846" touchable="false"/>
+        <cylinder y="-2.908" sx="0.344" sy="1.163" sz="0.344" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="10.525" y="0" z="6.835">
+        <cylinder y="0.679" sx="1.12" sy="1.358" sz="1.12" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.038" sx="0.784" sy="1.358" sz="0.784" color="#343846" touchable="false"/>
+        <cylinder y="3.396" sx="0.392" sy="1.358" sz="0.392" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="13.634" y="14" z="2.601">
+        <cylinder y="-0.777" sx="0.456" sy="1.553" sz="0.456" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.33" sx="0.319" sy="1.553" sz="0.319" color="#343846" touchable="false"/>
+        <cylinder y="-3.883" sx="0.16" sy="1.553" sz="0.16" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="13.777" y="14" z="-9.153">
+        <cylinder y="-0.972" sx="0.728" sy="1.943" sz="0.728" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.915" sx="0.51" sy="1.943" sz="0.51" color="#343846" touchable="false"/>
+        <cylinder y="-4.858" sx="0.255" sy="1.943" sz="0.255" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="10.044" y="0" z="-14.78">
+        <cylinder y="0.319" sx="0.864" sy="0.638" sz="0.864" color="#2A2C36" touchable="false"/>
+        <cylinder y="0.958" sx="0.605" sy="0.638" sz="0.605" color="#343846" touchable="false"/>
+        <cylinder y="1.596" sx="0.302" sy="0.638" sz="0.302" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="3.992" y="14" z="-18.78">
+        <cylinder y="-0.417" sx="1" sy="0.833" sz="1" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.25" sx="0.7" sy="0.833" sz="0.7" color="#343846" touchable="false"/>
+        <cylinder y="-2.083" sx="0.35" sy="0.833" sz="0.35" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-3.636" y="0" z="-20.206">
+        <cylinder y="0.514" sx="1.136" sy="1.028" sz="1.136" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.542" sx="0.795" sy="1.028" sz="0.795" color="#343846" touchable="false"/>
+        <cylinder y="2.571" sx="0.398" sy="1.028" sz="0.398" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-11.713" y="14" z="-18.457">
+        <cylinder y="-0.612" sx="0.472" sy="1.223" sz="0.472" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.835" sx="0.33" sy="1.223" sz="0.33" color="#343846" touchable="false"/>
+        <cylinder y="-3.058" sx="0.165" sy="1.223" sz="0.165" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-3.415" y="0" z="-2.427">
+        <cylinder y="0.709" sx="0.608" sy="1.418" sz="0.608" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.127" sx="0.426" sy="1.418" sz="0.426" color="#343846" touchable="false"/>
+        <cylinder y="3.546" sx="0.213" sy="1.418" sz="0.213" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-5.374" y="14" z="-1.26">
+        <cylinder y="-0.807" sx="0.744" sy="1.613" sz="0.744" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.42" sx="0.521" sy="1.613" sz="0.521" color="#343846" touchable="false"/>
+        <cylinder y="-4.033" sx="0.26" sy="1.613" sz="0.26" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-6.766" y="0" z="1.072">
+        <cylinder y="0.904" sx="0.88" sy="1.808" sz="0.88" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.712" sx="0.616" sy="1.808" sz="0.616" color="#343846" touchable="false"/>
+        <cylinder y="4.521" sx="0.308" sy="1.808" sz="0.308" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-6.997" y="14" z="4.237">
+        <cylinder y="-1.002" sx="1.016" sy="2.003" sz="1.016" color="#2A2C36" touchable="false"/>
+        <cylinder y="-3.005" sx="0.711" sy="2.003" sz="0.711" color="#343846" touchable="false"/>
+        <cylinder y="-5.008" sx="0.356" sy="2.003" sz="0.356" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-5.67" y="0" z="7.635">
+        <cylinder y="0.349" sx="1.152" sy="0.698" sz="1.152" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.048" sx="0.806" sy="0.698" sz="0.806" color="#343846" touchable="false"/>
+        <cylinder y="1.746" sx="0.403" sy="0.698" sz="0.403" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-2.696" y="14" z="10.499">
+        <cylinder y="-0.447" sx="0.488" sy="0.893" sz="0.488" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.34" sx="0.342" sy="0.893" sz="0.342" color="#343846" touchable="false"/>
+        <cylinder y="-2.233" sx="0.171" sy="0.893" sz="0.171" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="1.652" y="0" z="12.057">
+        <cylinder y="0.544" sx="0.624" sy="1.088" sz="0.624" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.633" sx="0.437" sy="1.088" sz="0.437" color="#343846" touchable="false"/>
+        <cylinder y="2.721" sx="0.218" sy="1.088" sz="0.218" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="6.75" y="14" z="11.691">
+        <cylinder y="-0.642" sx="0.76" sy="1.283" sz="0.76" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.925" sx="0.532" sy="1.283" sz="0.532" color="#343846" touchable="false"/>
+        <cylinder y="-3.208" sx="0.266" sy="1.283" sz="0.266" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="11.718" y="0" z="9.089">
+        <cylinder y="0.739" sx="0.896" sy="1.478" sz="0.896" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.218" sx="0.627" sy="1.478" sz="0.627" color="#343846" touchable="false"/>
+        <cylinder y="3.696" sx="0.314" sy="1.478" sz="0.314" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="15.565" y="14" z="4.346">
+        <cylinder y="-0.837" sx="1.032" sy="1.673" sz="1.032" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.51" sx="0.722" sy="1.673" sz="0.722" color="#343846" touchable="false"/>
+        <cylinder y="-4.183" sx="0.361" sy="1.673" sz="0.361" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="17.374" y="0" z="-2.01">
+        <cylinder y="0.934" sx="0.368" sy="1.868" sz="0.368" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.803" sx="0.258" sy="1.868" sz="0.258" color="#343846" touchable="false"/>
+        <cylinder y="4.671" sx="0.129" sy="1.868" sz="0.129" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="16.492" y="14" z="-9.067">
+        <cylinder y="-0.282" sx="0.504" sy="0.563" sz="0.504" color="#2A2C36" touchable="false"/>
+        <cylinder y="-0.845" sx="0.353" sy="0.563" sz="0.353" color="#343846" touchable="false"/>
+        <cylinder y="-1.408" sx="0.176" sy="0.563" sz="0.176" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="12.681" y="0" z="-15.659">
+        <cylinder y="0.379" sx="0.64" sy="0.758" sz="0.64" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.137" sx="0.448" sy="0.758" sz="0.448" color="#343846" touchable="false"/>
+        <cylinder y="1.896" sx="0.224" sy="0.758" sz="0.224" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="6.208" y="14" z="-20.563">
+        <cylinder y="-0.477" sx="0.776" sy="0.953" sz="0.776" color="#2A2C36" touchable="false"/>
+        <cylinder y="-1.43" sx="0.543" sy="0.953" sz="0.543" color="#343846" touchable="false"/>
+        <cylinder y="-2.383" sx="0.272" sy="0.953" sz="0.272" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-2.147" y="0" z="-22.709">
+        <cylinder y="0.574" sx="0.912" sy="1.148" sz="0.912" color="#2A2C36" touchable="false"/>
+        <cylinder y="1.723" sx="0.638" sy="1.148" sz="0.638" color="#343846" touchable="false"/>
+        <cylinder y="2.871" sx="0.319" sy="1.148" sz="0.319" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-2.381" y="14" z="-4.555">
+        <cylinder y="-0.672" sx="1.048" sy="1.343" sz="1.048" color="#2A2C36" touchable="false"/>
+        <cylinder y="-2.015" sx="0.734" sy="1.343" sz="0.734" color="#343846" touchable="false"/>
+        <cylinder y="-3.358" sx="0.367" sy="1.343" sz="0.367" color="#2A2C36" touchable="false"/>
+      </group>
+      <group x="-4.942" y="0" z="-4.176">
+        <cylinder y="0.769" sx="0.384" sy="1.538" sz="0.384" color="#2A2C36" touchable="false"/>
+        <cylinder y="2.308" sx="0.269" sy="1.538" sz="0.269" color="#343846" touchable="false"/>
+        <cylinder y="3.846" sx="0.134" sy="1.538" sz="0.134" color="#2A2C36" touchable="false"/>
+      </group>
+    </group>
+
+    <group id="cristales">
+      <group x="0" y="13.8" z="3">
+        <cylinder id="cr_0_0" y="-0.117" sx="0.24" sy="0.233" sz="0.24" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_0_1" y="-0.35" sx="0.168" sy="0.233" sz="0.168" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_0_2" y="-0.583" sx="0.084" sy="0.233" sz="0.084" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_0" y="0.06" sx="0.6" sy="0.05" sz="0.6" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="1.455" y="0.2" z="5.107">
+        <cylinder id="cr_1_0" y="0.177" sx="0.341" sy="0.354" sz="0.341" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_1_1" y="0.53" sx="0.239" sy="0.354" sz="0.239" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_1_2" y="0.884" sx="0.119" sy="0.354" sz="0.119" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_1" y="-0.06" sx="0.853" sy="0.05" sz="0.853" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="4.015" y="0.2" z="6.476">
+        <cylinder id="cr_2_0" y="0.237" sx="0.442" sy="0.474" sz="0.442" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_2_1" y="0.711" sx="0.31" sy="0.474" sz="0.31" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_2_2" y="1.185" sx="0.155" sy="0.474" sz="0.155" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_2" y="-0.06" sx="1.106" sy="0.05" sz="1.106" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="7.345" y="13.8" z="6.683">
+        <cylinder id="cr_3_0" y="-0.297" sx="0.544" sy="0.594" sz="0.544" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_3_1" y="-0.891" sx="0.381" sy="0.594" sz="0.381" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_3_2" y="-1.486" sx="0.19" sy="0.594" sz="0.19" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_3" y="0.06" sx="1.359" sy="0.05" sz="1.359" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="10.964" y="0.2" z="5.442">
+        <cylinder id="cr_4_0" y="0.357" sx="0.645" sy="0.715" sz="0.645" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_4_1" y="1.072" sx="0.451" sy="0.715" sz="0.451" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_4_2" y="1.787" sx="0.226" sy="0.715" sz="0.226" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_4" y="-0.06" sx="1.612" sy="0.05" sz="1.612" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="14.306" y="0.2" z="2.652">
+        <cylinder id="cr_5_0" y="0.417" sx="0.306" sy="0.835" sz="0.306" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_5_1" y="1.252" sx="0.214" sy="0.835" sz="0.214" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_5_2" y="2.087" sx="0.107" sy="0.835" sz="0.107" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_5" y="-0.06" sx="0.765" sy="0.05" sz="0.765" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="16.785" y="13.8" z="-1.587">
+        <cylinder id="cr_6_0" y="-0.161" sx="0.407" sy="0.322" sz="0.407" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_6_1" y="-0.483" sx="0.285" sy="0.322" sz="0.285" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_6_2" y="-0.805" sx="0.143" sy="0.322" sz="0.143" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_6" y="0.06" sx="1.018" sy="0.05" sz="1.018" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="17.109" y="0.2" z="-12.987">
+        <cylinder id="cr_7_0" y="0.281" sx="0.61" sy="0.563" sz="0.61" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_7_1" y="0.844" sx="0.427" sy="0.563" sz="0.427" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_7_2" y="1.407" sx="0.213" sy="0.563" sz="0.213" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_7" y="-0.06" sx="1.524" sy="0.05" sz="1.524" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="14.284" y="13.8" z="-19.024">
+        <cylinder id="cr_8_0" y="-0.341" sx="0.271" sy="0.683" sz="0.271" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_8_1" y="-1.024" sx="0.19" sy="0.683" sz="0.19" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_8_2" y="-1.707" sx="0.095" sy="0.683" sz="0.095" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_8" y="0.06" sx="0.677" sy="0.05" sz="0.677" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-1.821" y="13.8" z="-9.548">
+        <cylinder id="cr_9_0" y="-0.205" sx="0.574" sy="0.411" sz="0.574" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_9_1" y="-0.616" sx="0.402" sy="0.411" sz="0.402" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_9_2" y="-1.027" sx="0.201" sy="0.411" sz="0.201" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_9" y="0.06" sx="1.436" sy="0.05" sz="1.436" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-5.405" y="0.2" z="-10.747">
+        <cylinder id="cr_10_0" y="0.266" sx="0.676" sy="0.531" sz="0.676" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_10_1" y="0.796" sx="0.473" sy="0.531" sz="0.473" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_10_2" y="1.327" sx="0.236" sy="0.531" sz="0.236" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_10" y="-0.06" sx="1.689" sy="0.05" sz="1.689" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-9.706" y="0.2" z="-10.556">
+        <cylinder id="cr_11_0" y="0.326" sx="0.337" sy="0.651" sz="0.337" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_11_1" y="0.977" sx="0.236" sy="0.651" sz="0.236" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_11_2" y="1.628" sx="0.118" sy="0.651" sz="0.118" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_11" y="-0.06" sx="0.842" sy="0.05" sz="0.842" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-14.196" y="13.8" z="-8.7">
+        <cylinder id="cr_12_0" y="-0.386" sx="0.438" sy="0.772" sz="0.438" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_12_1" y="-1.157" sx="0.307" sy="0.772" sz="0.307" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_12_2" y="-1.929" sx="0.153" sy="0.772" sz="0.153" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_12" y="0.06" sx="1.095" sy="0.05" sz="1.095" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-18.262" y="0.2" z="-5.099">
+        <cylinder id="cr_13_0" y="0.129" sx="0.539" sy="0.259" sz="0.539" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_13_1" y="0.388" sx="0.377" sy="0.259" sz="0.377" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_13_2" y="0.647" sx="0.189" sy="0.259" sz="0.189" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_13" y="-0.06" sx="1.348" sy="0.05" sz="1.348" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-21.27" y="0.2" z="0.111">
+        <cylinder id="cr_14_0" y="0.19" sx="0.64" sy="0.379" sz="0.64" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_14_1" y="0.569" sx="0.448" sy="0.379" sz="0.448" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_14_2" y="0.948" sx="0.224" sy="0.379" sz="0.224" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_14" y="-0.06" sx="1.601" sy="0.05" sz="1.601" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-22.644" y="13.8" z="6.579">
+        <cylinder id="cr_15_0" y="-0.25" sx="0.302" sy="0.499" sz="0.302" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_15_1" y="-0.749" sx="0.211" sy="0.499" sz="0.211" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_15_2" y="-1.248" sx="0.106" sy="0.499" sz="0.106" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_15" y="0.06" sx="0.754" sy="0.05" sz="0.754" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.142" y="0.2" z="2.599">
+        <cylinder id="cr_16_0" y="0.31" sx="0.403" sy="0.62" sz="0.403" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_16_1" y="0.929" sx="0.282" sy="0.62" sz="0.282" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_16_2" y="1.549" sx="0.141" sy="0.62" sz="0.141" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_16" y="-0.06" sx="1.007" sy="0.05" sz="1.007" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.818" y="0.2" z="5.351">
+        <cylinder id="cr_17_0" y="0.37" sx="0.504" sy="0.74" sz="0.504" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_17_1" y="1.11" sx="0.353" sy="0.74" sz="0.353" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_17_2" y="1.85" sx="0.176" sy="0.74" sz="0.176" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_17" y="-0.06" sx="1.26" sy="0.05" sz="1.26" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.184" y="13.8" z="8.54">
+        <cylinder id="cr_18_0" y="-0.43" sx="0.605" sy="0.86" sz="0.605" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_18_1" y="-1.29" sx="0.424" sy="0.86" sz="0.424" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_18_2" y="-2.151" sx="0.212" sy="0.86" sz="0.212" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_18" y="0.06" sx="1.513" sy="0.05" sz="1.513" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-2.093" y="0.2" z="11.633">
+        <cylinder id="cr_19_0" y="0.174" sx="0.266" sy="0.347" sz="0.266" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_19_1" y="0.521" sx="0.186" sy="0.347" sz="0.186" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_19_2" y="0.868" sx="0.093" sy="0.347" sz="0.093" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_19" y="-0.06" sx="0.666" sy="0.05" sz="0.666" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="1.403" y="0.2" z="14.06">
+        <cylinder id="cr_20_0" y="0.234" sx="0.368" sy="0.468" sz="0.368" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_20_1" y="0.702" sx="0.257" sy="0.468" sz="0.257" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_20_2" y="1.169" sx="0.129" sy="0.468" sz="0.129" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_20" y="-0.06" sx="0.919" sy="0.05" sz="0.919" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="6.052" y="13.8" z="15.286">
+        <cylinder id="cr_21_0" y="-0.294" sx="0.469" sy="0.588" sz="0.469" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_21_1" y="-0.882" sx="0.328" sy="0.588" sz="0.328" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_21_2" y="-1.47" sx="0.164" sy="0.588" sz="0.164" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_21" y="0.06" sx="1.172" sy="0.05" sz="1.172" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="11.414" y="0.2" z="14.875">
+        <cylinder id="cr_22_0" y="0.354" sx="0.57" sy="0.708" sz="0.57" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_22_1" y="1.063" sx="0.399" sy="0.708" sz="0.399" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_22_2" y="1.771" sx="0.2" sy="0.708" sz="0.2" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_22" y="-0.06" sx="1.425" sy="0.05" sz="1.425" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="16.907" y="0.2" z="12.556">
+        <cylinder id="cr_23_0" y="0.414" sx="0.671" sy="0.829" sz="0.671" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_23_1" y="1.243" sx="0.47" sy="0.829" sz="0.47" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_23_2" y="2.072" sx="0.235" sy="0.829" sz="0.235" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_23" y="-0.06" sx="1.678" sy="0.05" sz="1.678" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="21.861" y="13.8" z="8.261">
+        <cylinder id="cr_24_0" y="-0.158" sx="0.332" sy="0.316" sz="0.332" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_24_1" y="-0.473" sx="0.233" sy="0.316" sz="0.233" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_24_2" y="-0.789" sx="0.116" sy="0.316" sz="0.116" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_24" y="0.06" sx="0.831" sy="0.05" sz="0.831" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="8.286" y="13.8" z="-4.222">
+        <cylinder id="cr_25_0" y="-0.338" sx="0.636" sy="0.677" sz="0.636" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_25_1" y="-1.015" sx="0.445" sy="0.677" sz="0.445" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_25_2" y="-1.692" sx="0.223" sy="0.677" sz="0.223" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_25" y="0.06" sx="1.59" sy="0.05" sz="1.59" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="4.283" y="13.8" z="-15.655">
+        <cylinder id="cr_26_0" y="-0.202" sx="0.5" sy="0.404" sz="0.5" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_26_1" y="-0.607" sx="0.35" sy="0.404" sz="0.35" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_26_2" y="-1.011" sx="0.175" sy="0.404" sz="0.175" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_26" y="0.06" sx="1.249" sy="0.05" sz="1.249" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-0.194" y="0.2" z="-18.539">
+        <cylinder id="cr_27_0" y="0.262" sx="0.601" sy="0.525" sz="0.601" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_27_1" y="0.787" sx="0.421" sy="0.525" sz="0.421" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_27_2" y="1.312" sx="0.21" sy="0.525" sz="0.21" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_27" y="-0.06" sx="1.502" sy="0.05" sz="1.502" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-5.922" y="0.2" z="-19.991">
+        <cylinder id="cr_28_0" y="0.322" sx="0.262" sy="0.645" sz="0.262" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_28_1" y="0.967" sx="0.183" sy="0.645" sz="0.183" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_28_2" y="1.612" sx="0.092" sy="0.645" sz="0.092" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_28" y="-0.06" sx="0.655" sy="0.05" sz="0.655" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-12.41" y="13.8" z="-19.555">
+        <cylinder id="cr_29_0" y="-0.383" sx="0.363" sy="0.765" sz="0.363" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_29_1" y="-1.148" sx="0.254" sy="0.765" sz="0.254" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_29_2" y="-1.913" sx="0.127" sy="0.765" sz="0.127" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_29" y="0.06" sx="0.908" sy="0.05" sz="0.908" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-3.337" y="0.2" z="-2.974">
+        <cylinder id="cr_30_0" y="0.126" sx="0.464" sy="0.252" sz="0.464" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_30_1" y="0.378" sx="0.325" sy="0.252" sz="0.325" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_30_2" y="0.631" sx="0.163" sy="0.252" sz="0.163" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_30" y="-0.06" sx="1.161" sy="0.05" sz="1.161" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-6.104" y="0.2" z="-2.951">
+        <cylinder id="cr_31_0" y="0.186" sx="0.566" sy="0.373" sz="0.566" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_31_1" y="0.559" sx="0.396" sy="0.373" sz="0.396" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_31_2" y="0.932" sx="0.198" sy="0.373" sz="0.198" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_31" y="-0.06" sx="1.414" sy="0.05" sz="1.414" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-8.955" y="13.8" z="-1.563">
+        <cylinder id="cr_32_0" y="-0.246" sx="0.667" sy="0.493" sz="0.667" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_32_1" y="-0.739" sx="0.467" sy="0.493" sz="0.467" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_32_2" y="-1.232" sx="0.233" sy="0.493" sz="0.233" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_32" y="0.06" sx="1.667" sy="0.05" sz="1.667" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-11.338" y="0.2" z="1.192">
+        <cylinder id="cr_33_0" y="0.307" sx="0.328" sy="0.613" sz="0.328" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_33_1" y="0.92" sx="0.23" sy="0.613" sz="0.23" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_33_2" y="1.533" sx="0.115" sy="0.613" sz="0.115" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_33" y="-0.06" sx="0.82" sy="0.05" sz="0.82" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-12.721" y="0.2" z="5.114">
+        <cylinder id="cr_34_0" y="0.367" sx="0.429" sy="0.734" sz="0.429" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_34_1" y="1.1" sx="0.3" sy="0.734" sz="0.3" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_34_2" y="1.834" sx="0.15" sy="0.734" sz="0.15" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_34" y="-0.06" sx="1.073" sy="0.05" sz="1.073" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-12.658" y="13.8" z="9.819">
+        <cylinder id="cr_35_0" y="-0.427" sx="0.53" sy="0.854" sz="0.53" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_35_1" y="-1.281" sx="0.371" sy="0.854" sz="0.371" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_35_2" y="-2.135" sx="0.186" sy="0.854" sz="0.186" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_35" y="0.06" sx="1.326" sy="0.05" sz="1.326" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-10.852" y="0.2" z="14.773">
+        <cylinder id="cr_36_0" y="0.17" sx="0.632" sy="0.341" sz="0.632" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_36_1" y="0.511" sx="0.442" sy="0.341" sz="0.442" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_36_2" y="0.852" sx="0.221" sy="0.341" sz="0.221" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_36" y="-0.06" sx="1.579" sy="0.05" sz="1.579" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-7.195" y="0.2" z="19.346">
+        <cylinder id="cr_37_0" y="0.231" sx="0.293" sy="0.461" sz="0.293" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_37_1" y="0.692" sx="0.205" sy="0.461" sz="0.205" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_37_2" y="1.153" sx="0.102" sy="0.461" sz="0.102" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_37" y="-0.06" sx="0.732" sy="0.05" sz="0.732" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-1.801" y="13.8" z="22.879">
+        <cylinder id="cr_38_0" y="-0.291" sx="0.394" sy="0.582" sz="0.394" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_38_1" y="-0.872" sx="0.276" sy="0.582" sz="0.276" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_38_2" y="-1.454" sx="0.138" sy="0.582" sz="0.138" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_38" y="0.06" sx="0.985" sy="0.05" sz="0.985" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="0.842" y="0.2" z="4.176">
+        <cylinder id="cr_39_0" y="0.351" sx="0.495" sy="0.702" sz="0.495" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_39_1" y="1.053" sx="0.347" sy="0.702" sz="0.347" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_39_2" y="1.755" sx="0.173" sy="0.702" sz="0.173" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_39" y="-0.06" sx="1.238" sy="0.05" sz="1.238" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="3.013" y="0.2" z="5.838">
+        <cylinder id="cr_40_0" y="0.411" sx="0.596" sy="0.822" sz="0.596" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_40_1" y="1.233" sx="0.417" sy="0.822" sz="0.417" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_40_2" y="2.056" sx="0.209" sy="0.822" sz="0.209" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_40" y="-0.06" sx="1.491" sy="0.05" sz="1.491" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="6.079" y="13.8" z="6.473">
+        <cylinder id="cr_41_0" y="-0.155" sx="0.258" sy="0.309" sz="0.258" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_41_1" y="-0.464" sx="0.18" sy="0.309" sz="0.18" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_41_2" y="-0.773" sx="0.09" sy="0.309" sz="0.09" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_41" y="0.06" sx="0.644" sy="0.05" sz="0.644" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="9.602" y="0.2" z="5.747">
+        <cylinder id="cr_42_0" y="0.215" sx="0.359" sy="0.43" sz="0.359" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_42_1" y="0.644" sx="0.251" sy="0.43" sz="0.251" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_42_2" y="1.074" sx="0.126" sy="0.43" sz="0.126" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_42" y="-0.06" sx="0.897" sy="0.05" sz="0.897" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="13.04" y="0.2" z="3.494">
+        <cylinder id="cr_43_0" y="0.275" sx="0.46" sy="0.55" sz="0.46" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_43_1" y="0.825" sx="0.322" sy="0.55" sz="0.322" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_43_2" y="1.375" sx="0.161" sy="0.55" sz="0.161" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_43" y="-0.06" sx="1.15" sy="0.05" sz="1.15" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="15.808" y="13.8" z="-0.248">
+        <cylinder id="cr_44_0" y="-0.335" sx="0.561" sy="0.67" sz="0.561" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_44_1" y="-1.006" sx="0.393" sy="0.67" sz="0.393" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_44_2" y="-1.676" sx="0.196" sy="0.67" sz="0.196" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_44" y="0.06" sx="1.403" sy="0.05" sz="1.403" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="17.192" y="0.2" z="-11.037">
+        <cylinder id="cr_45_0" y="0.139" sx="0.324" sy="0.278" sz="0.324" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_45_1" y="0.416" sx="0.227" sy="0.278" sz="0.227" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_45_2" y="0.694" sx="0.113" sy="0.278" sz="0.113" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_45" y="-0.06" sx="0.809" sy="0.05" sz="0.809" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="15.038" y="13.8" z="-17.058">
+        <cylinder id="cr_46_0" y="-0.199" sx="0.425" sy="0.398" sz="0.425" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_46_1" y="-0.597" sx="0.297" sy="0.398" sz="0.297" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_46_2" y="-0.995" sx="0.149" sy="0.398" sz="0.149" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_46" y="0.06" sx="1.062" sy="0.05" sz="1.062" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-0.951" y="13.8" z="-8.618">
+        <cylinder id="cr_47_0" y="-0.38" sx="0.288" sy="0.759" sz="0.288" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_47_1" y="-1.139" sx="0.202" sy="0.759" sz="0.202" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_47_2" y="-1.898" sx="0.101" sy="0.759" sz="0.101" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_47" y="0.06" sx="0.721" sy="0.05" sz="0.721" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.149" y="0.2" z="-10.166">
+        <cylinder id="cr_48_0" y="0.123" sx="0.39" sy="0.246" sz="0.39" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_48_1" y="0.369" sx="0.273" sy="0.246" sz="0.273" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_48_2" y="0.615" sx="0.136" sy="0.246" sz="0.136" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_48" y="-0.06" sx="0.974" sy="0.05" sz="0.974" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-8.2" y="0.2" z="-10.458">
+        <cylinder id="cr_49_0" y="0.183" sx="0.491" sy="0.366" sz="0.491" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_49_1" y="0.549" sx="0.344" sy="0.366" sz="0.344" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_49_2" y="0.916" sx="0.172" sy="0.366" sz="0.172" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_49" y="-0.06" sx="1.227" sy="0.05" sz="1.227" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-12.621" y="13.8" z="-9.169">
+        <cylinder id="cr_50_0" y="-0.243" sx="0.592" sy="0.487" sz="0.592" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_50_1" y="-0.73" sx="0.414" sy="0.487" sz="0.414" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_50_2" y="-1.217" sx="0.207" sy="0.487" sz="0.207" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_50" y="0.06" sx="1.48" sy="0.05" sz="1.48" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-16.819" y="0.2" z="-6.155">
+        <cylinder id="cr_51_0" y="0.303" sx="0.253" sy="0.607" sz="0.253" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_51_1" y="0.91" sx="0.177" sy="0.607" sz="0.177" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_51_2" y="1.518" sx="0.089" sy="0.607" sz="0.089" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_51" y="-0.06" sx="0.633" sy="0.05" sz="0.633" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-20.166" y="0.2" z="-1.481">
+        <cylinder id="cr_52_0" y="0.364" sx="0.354" sy="0.727" sz="0.354" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_52_1" y="1.091" sx="0.248" sy="0.727" sz="0.248" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_52_2" y="1.818" sx="0.124" sy="0.727" sz="0.124" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_52" y="-0.06" sx="0.886" sy="0.05" sz="0.886" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-22.062" y="13.8" z="4.569">
+        <cylinder id="cr_53_0" y="-0.424" sx="0.456" sy="0.848" sz="0.456" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_53_1" y="-1.272" sx="0.319" sy="0.848" sz="0.319" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_53_2" y="-2.119" sx="0.159" sy="0.848" sz="0.159" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_53" y="0.06" sx="1.139" sy="0.05" sz="1.139" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-3.403" y="0.2" z="1.779">
+        <cylinder id="cr_54_0" y="0.167" sx="0.557" sy="0.335" sz="0.557" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_54_1" y="0.502" sx="0.39" sy="0.335" sz="0.39" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_54_2" y="0.837" sx="0.195" sy="0.335" sz="0.195" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_54" y="-0.06" sx="1.392" sy="0.05" sz="1.392" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.461" y="0.2" z="4.233">
+        <cylinder id="cr_55_0" y="0.227" sx="0.658" sy="0.455" sz="0.658" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_55_1" y="0.682" sx="0.461" sy="0.455" sz="0.461" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_55_2" y="1.137" sx="0.23" sy="0.455" sz="0.23" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_55" y="-0.06" sx="1.645" sy="0.05" sz="1.645" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.306" y="13.8" z="7.282">
+        <cylinder id="cr_56_0" y="-0.288" sx="0.319" sy="0.575" sz="0.319" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_56_1" y="-0.863" sx="0.223" sy="0.575" sz="0.223" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_56_2" y="-1.438" sx="0.112" sy="0.575" sz="0.112" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_56" y="0.06" sx="0.798" sy="0.05" sz="0.798" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-2.733" y="0.2" z="10.417">
+        <cylinder id="cr_57_0" y="0.348" sx="0.42" sy="0.696" sz="0.42" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_57_1" y="1.043" sx="0.294" sy="0.696" sz="0.294" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_57_2" y="1.739" sx="0.147" sy="0.696" sz="0.147" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_57" y="-0.06" sx="1.051" sy="0.05" sz="1.051" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="0.274" y="0.2" z="13.077">
+        <cylinder id="cr_58_0" y="0.408" sx="0.522" sy="0.816" sz="0.522" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_58_1" y="1.224" sx="0.365" sy="0.816" sz="0.365" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_58_2" y="2.04" sx="0.183" sy="0.816" sz="0.183" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_58" y="-0.06" sx="1.304" sy="0.05" sz="1.304" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="4.525" y="13.8" z="14.71">
+        <cylinder id="cr_59_0" y="-0.151" sx="0.623" sy="0.303" sz="0.623" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_59_1" y="-0.454" sx="0.436" sy="0.303" sz="0.436" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_59_2" y="-0.757" sx="0.218" sy="0.303" sz="0.218" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_59" y="0.06" sx="1.557" sy="0.05" sz="1.557" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="9.64" y="0.2" z="14.844">
+        <cylinder id="cr_60_0" y="0.212" sx="0.284" sy="0.423" sz="0.284" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_60_1" y="0.635" sx="0.199" sy="0.423" sz="0.199" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_60_2" y="1.058" sx="0.099" sy="0.423" sz="0.099" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_60" y="-0.06" sx="0.71" sy="0.05" sz="0.71" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="15.079" y="0.2" z="13.154">
+        <cylinder id="cr_61_0" y="0.272" sx="0.385" sy="0.544" sz="0.385" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_61_1" y="0.815" sx="0.27" sy="0.544" sz="0.27" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_61_2" y="1.359" sx="0.135" sy="0.544" sz="0.135" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_61" y="-0.06" sx="0.963" sy="0.05" sz="0.963" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="20.196" y="13.8" z="9.503">
+        <cylinder id="cr_62_0" y="-0.332" sx="0.486" sy="0.664" sz="0.486" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_62_1" y="-0.996" sx="0.34" sy="0.664" sz="0.34" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_62_2" y="-1.66" sx="0.17" sy="0.664" sz="0.17" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_62" y="0.06" sx="1.216" sy="0.05" sz="1.216" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="7.622" y="13.8" z="-3.157">
+        <cylinder id="cr_63_0" y="-0.196" sx="0.35" sy="0.392" sz="0.35" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_63_1" y="-0.587" sx="0.245" sy="0.392" sz="0.245" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_63_2" y="-0.979" sx="0.122" sy="0.392" sz="0.122" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_63" y="0.06" sx="0.875" sy="0.05" sz="0.875" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="5.142" y="13.8" z="-14.283">
+        <cylinder id="cr_64_0" y="-0.376" sx="0.654" sy="0.753" sz="0.654" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_64_1" y="-1.129" sx="0.458" sy="0.753" sz="0.458" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_64_2" y="-1.882" sx="0.229" sy="0.753" sz="0.229" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_64" y="0.06" sx="1.634" sy="0.05" sz="1.634" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="1.19" y="0.2" z="-17.449">
+        <cylinder id="cr_65_0" y="0.12" sx="0.315" sy="0.24" sz="0.315" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_65_1" y="0.359" sx="0.22" sy="0.24" sz="0.22" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_65_2" y="0.599" sx="0.11" sy="0.24" sz="0.11" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_65" y="-0.06" sx="0.787" sy="0.05" sz="0.787" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.117" y="0.2" z="-19.367">
+        <cylinder id="cr_66_0" y="0.18" sx="0.416" sy="0.36" sz="0.416" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_66_1" y="0.54" sx="0.291" sy="0.36" sz="0.291" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_66_2" y="0.9" sx="0.146" sy="0.36" sz="0.146" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_66" y="-0.06" sx="1.04" sy="0.05" sz="1.04" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-10.346" y="13.8" z="-19.54">
+        <cylinder id="cr_67_0" y="-0.24" sx="0.517" sy="0.48" sz="0.517" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_67_1" y="-0.72" sx="0.362" sy="0.48" sz="0.362" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_67_2" y="-1.201" sx="0.181" sy="0.48" sz="0.181" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_67" y="0.06" sx="1.293" sy="0.05" sz="1.293" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-2.367" y="0.2" z="-2.468">
+        <cylinder id="cr_68_0" y="0.3" sx="0.618" sy="0.601" sz="0.618" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_68_1" y="0.901" sx="0.433" sy="0.601" sz="0.433" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_68_2" y="1.502" sx="0.216" sy="0.601" sz="0.216" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_68" y="-0.06" sx="1.546" sy="0.05" sz="1.546" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.947" y="0.2" z="-2.891">
+        <cylinder id="cr_69_0" y="0.36" sx="0.28" sy="0.721" sz="0.28" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_69_1" y="1.081" sx="0.196" sy="0.721" sz="0.196" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_69_2" y="1.802" sx="0.098" sy="0.721" sz="0.098" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_69" y="-0.06" sx="0.699" sy="0.05" sz="0.699" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-7.787" y="13.8" z="-1.999">
+        <cylinder id="cr_70_0" y="-0.421" sx="0.381" sy="0.841" sz="0.381" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_70_1" y="-1.262" sx="0.267" sy="0.841" sz="0.267" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_70_2" y="-2.103" sx="0.133" sy="0.841" sz="0.133" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_70" y="0.06" sx="0.952" sy="0.05" sz="0.952" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-10.346" y="0.2" z="0.271">
+        <cylinder id="cr_71_0" y="0.164" sx="0.482" sy="0.328" sz="0.482" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_71_1" y="0.492" sx="0.337" sy="0.328" sz="0.337" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_71_2" y="0.821" sx="0.169" sy="0.328" sz="0.169" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_71" y="-0.06" sx="1.205" sy="0.05" sz="1.205" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-12.081" y="0.2" z="3.786">
+        <cylinder id="cr_72_0" y="0.224" sx="0.583" sy="0.449" sz="0.583" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_72_1" y="0.673" sx="0.408" sy="0.449" sz="0.408" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_72_2" y="1.122" sx="0.204" sy="0.449" sz="0.204" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_72" y="-0.06" sx="1.458" sy="0.05" sz="1.458" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-12.512" y="13.8" z="8.219">
+        <cylinder id="cr_73_0" y="-0.284" sx="0.244" sy="0.569" sz="0.244" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_73_1" y="-0.853" sx="0.171" sy="0.569" sz="0.171" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_73_2" y="-1.423" sx="0.086" sy="0.569" sz="0.086" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_73" y="0.06" sx="0.611" sy="0.05" sz="0.611" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-11.291" y="0.2" z="13.081">
+        <cylinder id="cr_74_0" y="0.345" sx="0.346" sy="0.689" sz="0.346" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_74_1" y="1.034" sx="0.242" sy="0.689" sz="0.242" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_74_2" y="1.723" sx="0.121" sy="0.689" sz="0.121" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_74" y="-0.06" sx="0.864" sy="0.05" sz="0.864" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-8.248" y="0.2" z="17.769">
+        <cylinder id="cr_75_0" y="0.405" sx="0.447" sy="0.81" sz="0.447" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_75_1" y="1.214" sx="0.313" sy="0.81" sz="0.313" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_75_2" y="2.024" sx="0.156" sy="0.81" sz="0.156" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_75" y="-0.06" sx="1.117" sy="0.05" sz="1.117" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-3.426" y="13.8" z="21.63">
+        <cylinder id="cr_76_0" y="-0.148" sx="0.548" sy="0.297" sz="0.548" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_76_1" y="-0.445" sx="0.384" sy="0.297" sz="0.384" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_76_2" y="-0.742" sx="0.192" sy="0.297" sz="0.192" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_76" y="0.06" sx="1.37" sy="0.05" sz="1.37" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="0.386" y="0.2" z="3.187">
+        <cylinder id="cr_77_0" y="0.208" sx="0.649" sy="0.417" sz="0.649" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_77_1" y="0.625" sx="0.454" sy="0.417" sz="0.454" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_77_2" y="1.042" sx="0.227" sy="0.417" sz="0.227" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_77" y="-0.06" sx="1.623" sy="0.05" sz="1.623" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="2.139" y="0.2" z="5.089">
+        <cylinder id="cr_78_0" y="0.269" sx="0.31" sy="0.537" sz="0.31" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_78_1" y="0.806" sx="0.217" sy="0.537" sz="0.217" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_78_2" y="1.343" sx="0.109" sy="0.537" sz="0.109" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_78" y="-0.06" sx="0.776" sy="0.05" sz="0.776" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="4.896" y="13.8" z="6.111">
+        <cylinder id="cr_79_0" y="-0.329" sx="0.412" sy="0.658" sz="0.412" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_79_1" y="-0.986" sx="0.288" sy="0.658" sz="0.288" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_79_2" y="-1.644" sx="0.144" sy="0.658" sz="0.144" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_79" y="0.06" sx="1.029" sy="0.05" sz="1.029" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="8.265" y="0.2" z="5.874">
+        <cylinder id="cr_80_0" y="0.389" sx="0.513" sy="0.778" sz="0.513" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_80_1" y="1.167" sx="0.359" sy="0.778" sz="0.359" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_80_2" y="1.945" sx="0.179" sy="0.778" sz="0.179" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_80" y="-0.06" sx="1.282" sy="0.05" sz="1.282" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="11.736" y="0.2" z="4.156">
+        <cylinder id="cr_81_0" y="0.132" sx="0.614" sy="0.265" sz="0.614" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_81_1" y="0.397" sx="0.43" sy="0.265" sz="0.43" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_81_2" y="0.662" sx="0.215" sy="0.265" sz="0.215" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_81" y="-0.06" sx="1.535" sy="0.05" sz="1.535" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="14.731" y="13.8" z="0.927">
+        <cylinder id="cr_82_0" y="-0.193" sx="0.275" sy="0.385" sz="0.275" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_82_1" y="-0.578" sx="0.193" sy="0.385" sz="0.193" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_82_2" y="-0.963" sx="0.096" sy="0.385" sz="0.096" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_82" y="0.06" sx="0.688" sy="0.05" sz="0.688" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="15.576" y="13.8" z="-15.094">
+        <cylinder id="cr_83_0" y="-0.373" sx="0.579" sy="0.746" sz="0.579" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_83_1" y="-1.119" sx="0.405" sy="0.746" sz="0.405" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_83_2" y="-1.866" sx="0.203" sy="0.746" sz="0.203" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_83" y="0.06" sx="1.447" sy="0.05" sz="1.447" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-0.239" y="13.8" z="-7.616">
+        <cylinder id="cr_84_0" y="-0.237" sx="0.442" sy="0.474" sz="0.442" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_84_1" y="-0.711" sx="0.31" sy="0.474" sz="0.31" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_84_2" y="-1.185" sx="0.155" sy="0.474" sz="0.155" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_84" y="0.06" sx="1.106" sy="0.05" sz="1.106" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-3.019" y="0.2" z="-9.46">
+        <cylinder id="cr_85_0" y="0.297" sx="0.544" sy="0.594" sz="0.544" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_85_1" y="0.891" sx="0.381" sy="0.594" sz="0.381" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_85_2" y="1.486" sx="0.19" sy="0.594" sz="0.19" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_85" y="-0.06" sx="1.359" sy="0.05" sz="1.359" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-6.774" y="0.2" z="-10.195">
+        <cylinder id="cr_86_0" y="0.357" sx="0.645" sy="0.715" sz="0.645" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_86_1" y="1.072" sx="0.451" sy="0.715" sz="0.451" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_86_2" y="1.787" sx="0.226" sy="0.715" sz="0.226" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_86" y="-0.06" sx="1.612" sy="0.05" sz="1.612" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-11.064" y="13.8" z="-9.449">
+        <cylinder id="cr_87_0" y="-0.417" sx="0.306" sy="0.835" sz="0.306" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_87_1" y="-1.252" sx="0.214" sy="0.835" sz="0.214" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_87_2" y="-2.087" sx="0.107" sy="0.835" sz="0.107" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_87" y="0.06" sx="0.765" sy="0.05" sz="0.765" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-15.33" y="0.2" z="-7.018">
+        <cylinder id="cr_88_0" y="0.161" sx="0.407" sy="0.322" sz="0.407" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_88_1" y="0.483" sx="0.285" sy="0.322" sz="0.285" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_88_2" y="0.805" sx="0.143" sy="0.322" sz="0.143" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_88" y="-0.06" sx="1.018" sy="0.05" sz="1.018" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-18.949" y="0.2" z="-2.9">
+        <cylinder id="cr_89_0" y="0.221" sx="0.508" sy="0.442" sz="0.508" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_89_1" y="0.663" sx="0.356" sy="0.442" sz="0.356" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_89_2" y="1.106" sx="0.178" sy="0.442" sz="0.178" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_89" y="-0.06" sx="1.271" sy="0.05" sz="1.271" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-21.311" y="13.8" z="2.692">
+        <cylinder id="cr_90_0" y="-0.281" sx="0.61" sy="0.563" sz="0.61" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_90_1" y="-0.844" sx="0.427" sy="0.563" sz="0.427" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_90_2" y="-1.407" sx="0.213" sy="0.563" sz="0.213" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_90" y="0.06" sx="1.524" sy="0.05" sz="1.524" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-21.883" y="0.2" z="9.334">
+        <cylinder id="cr_91_0" y="0.341" sx="0.271" sy="0.683" sz="0.271" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_91_1" y="1.024" sx="0.19" sy="0.683" sz="0.19" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_91_2" y="1.707" sx="0.095" sy="0.683" sz="0.095" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_91" y="-0.06" sx="0.677" sy="0.05" sz="0.677" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-3.963" y="0.2" z="3.21">
+        <cylinder id="cr_92_0" y="0.402" sx="0.372" sy="0.803" sz="0.372" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_92_1" y="1.205" sx="0.26" sy="0.803" sz="0.26" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_92_2" y="2.008" sx="0.13" sy="0.803" sz="0.13" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_92" y="-0.06" sx="0.93" sy="0.05" sz="0.93" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-4.261" y="13.8" z="6.062">
+        <cylinder id="cr_93_0" y="-0.145" sx="0.473" sy="0.29" sz="0.473" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_93_1" y="-0.435" sx="0.331" sy="0.29" sz="0.331" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_93_2" y="-0.726" sx="0.166" sy="0.29" sz="0.166" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_93" y="0.06" sx="1.183" sy="0.05" sz="1.183" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-3.197" y="0.2" z="9.179">
+        <cylinder id="cr_94_0" y="0.205" sx="0.574" sy="0.411" sz="0.574" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_94_1" y="0.616" sx="0.402" sy="0.411" sz="0.402" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_94_2" y="1.027" sx="0.201" sy="0.411" sz="0.201" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_94" y="-0.06" sx="1.436" sy="0.05" sz="1.436" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="-0.692" y="0.2" z="12.01">
+        <cylinder id="cr_95_0" y="0.266" sx="0.676" sy="0.531" sz="0.676" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_95_1" y="0.796" sx="0.473" sy="0.531" sz="0.473" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_95_2" y="1.327" sx="0.236" sy="0.531" sz="0.236" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_95" y="-0.06" sx="1.689" sy="0.05" sz="1.689" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="3.128" y="13.8" z="13.995">
+        <cylinder id="cr_96_0" y="-0.326" sx="0.337" sy="0.651" sz="0.337" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_96_1" y="-0.977" sx="0.236" sy="0.651" sz="0.236" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_96_2" y="-1.628" sx="0.118" sy="0.651" sz="0.118" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_96" y="0.06" sx="0.842" sy="0.05" sz="0.842" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="7.945" y="0.2" z="14.632">
+        <cylinder id="cr_97_0" y="0.386" sx="0.438" sy="0.772" sz="0.438" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_97_1" y="1.157" sx="0.307" sy="0.772" sz="0.307" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_97_2" y="1.929" sx="0.153" sy="0.772" sz="0.153" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_97" y="-0.06" sx="1.095" sy="0.05" sz="1.095" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="13.266" y="0.2" z="13.546">
+        <cylinder id="cr_98_0" y="0.129" sx="0.539" sy="0.259" sz="0.539" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_98_1" y="0.388" sx="0.377" sy="0.259" sz="0.377" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_98_2" y="0.647" sx="0.189" sy="0.259" sz="0.189" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_98" y="-0.06" sx="1.348" sy="0.05" sz="1.348" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="18.476" y="13.8" z="10.538">
+        <cylinder id="cr_99_0" y="-0.19" sx="0.64" sy="0.379" sz="0.64" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_99_1" y="-0.569" sx="0.448" sy="0.379" sz="0.448" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_99_2" y="-0.948" sx="0.224" sy="0.379" sz="0.224" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_99" y="0.06" sx="1.601" sy="0.05" sz="1.601" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+      <group x="22.899" y="0.2" z="5.625">
+        <cylinder id="cr_100_0" y="0.25" sx="0.302" sy="0.499" sz="0.302" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_100_1" y="0.749" sx="0.211" sy="0.499" sz="0.211" color="#2E4A6E" touchable="false"/>
+        <cylinder id="cr_100_2" y="1.248" sx="0.106" sy="0.499" sz="0.106" color="#2E4A6E" touchable="false"/>
+        <!-- El blanco del toque no puede envolver al cristal: una caja opaca
+             alrededor lo taparía. Es una loseta al pie, como la placa de bronce
+             de la biblioteca. -->
+        <box id="toque_100" y="-0.06" sx="0.754" sy="0.05" sz="0.754" color="#2A2C36" touchable="true" border-radius="0.03"/>
+      </group>
+    </group>
+
+    <group x="0" y="0" z="14" ry="3.14159">
+      <cylinder x="-1.2" y="0.7" sx="0.1" sy="1.4" sz="0.1" color="#343846" touchable="false"/>
+      <cylinder x="1.2" y="0.7" sx="0.1" sy="1.4" sz="0.1" color="#343846" touchable="false"/>
+      <box y="1.66" sx="2.7" sy="0.84" sz="0.06" color="#0C1018" touchable="false" border-radius="0.05"/>
+      <text y="1.9" z="0.05" value="La cueva" size="0.15" color="#E6EEF8"/>
+      <text id="cv_estado" y="1.7" z="0.05" value="tocá un cristal" size="0.07" color="#8FA0B4"/>
+      <text id="cv_dato" y="1.56" z="0.05" value="120 cristales · la onda sale de donde tocás" size="0.055" color="#8FA0B4"/>
+    </group>
+
+    <group id="portal_vuelta" x="-7" y="0" z="13" ry="2.648">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#343846","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.CUEVA = {"base":"https://njs58923.github.io/luna-demos/noche","onda":["#2E4A6E","#3A7A9E","#4FBFC8","#7FE0B0","#D8E88A","#F0B060","#E0705A","#A85090","#5A4A8E"],"cristales":[{"x":0,"y":13.8,"z":3},{"x":1.45,"y":0.2,"z":5.11},{"x":4.02,"y":0.2,"z":6.48},{"x":7.34,"y":13.8,"z":6.68},{"x":10.96,"y":0.2,"z":5.44},{"x":14.31,"y":0.2,"z":2.65},{"x":16.79,"y":13.8,"z":-1.59},{"x":17.11,"y":0.2,"z":-12.99},{"x":14.28,"y":13.8,"z":-19.02},{"x":-1.82,"y":13.8,"z":-9.55},{"x":-5.41,"y":0.2,"z":-10.75},{"x":-9.71,"y":0.2,"z":-10.56},{"x":-14.2,"y":13.8,"z":-8.7},{"x":-18.26,"y":0.2,"z":-5.1},{"x":-21.27,"y":0.2,"z":0.11},{"x":-22.64,"y":13.8,"z":6.58},{"x":-4.14,"y":0.2,"z":2.6},{"x":-4.82,"y":0.2,"z":5.35},{"x":-4.18,"y":13.8,"z":8.54},{"x":-2.09,"y":0.2,"z":11.63},{"x":1.4,"y":0.2,"z":14.06},{"x":6.05,"y":13.8,"z":15.29},{"x":11.41,"y":0.2,"z":14.88},{"x":16.91,"y":0.2,"z":12.56},{"x":21.86,"y":13.8,"z":8.26},{"x":8.29,"y":13.8,"z":-4.22},{"x":4.28,"y":13.8,"z":-15.65},{"x":-0.19,"y":0.2,"z":-18.54},{"x":-5.92,"y":0.2,"z":-19.99},{"x":-12.41,"y":13.8,"z":-19.55},{"x":-3.34,"y":0.2,"z":-2.97},{"x":-6.1,"y":0.2,"z":-2.95},{"x":-8.95,"y":13.8,"z":-1.56},{"x":-11.34,"y":0.2,"z":1.19},{"x":-12.72,"y":0.2,"z":5.11},{"x":-12.66,"y":13.8,"z":9.82},{"x":-10.85,"y":0.2,"z":14.77},{"x":-7.19,"y":0.2,"z":19.35},{"x":-1.8,"y":13.8,"z":22.88},{"x":0.84,"y":0.2,"z":4.18},{"x":3.01,"y":0.2,"z":5.84},{"x":6.08,"y":13.8,"z":6.47},{"x":9.6,"y":0.2,"z":5.75},{"x":13.04,"y":0.2,"z":3.49},{"x":15.81,"y":13.8,"z":-0.25},{"x":17.19,"y":0.2,"z":-11.04},{"x":15.04,"y":13.8,"z":-17.06},{"x":-0.95,"y":13.8,"z":-8.62},{"x":-4.15,"y":0.2,"z":-10.17},{"x":-8.2,"y":0.2,"z":-10.46},{"x":-12.62,"y":13.8,"z":-9.17},{"x":-16.82,"y":0.2,"z":-6.15},{"x":-20.17,"y":0.2,"z":-1.48},{"x":-22.06,"y":13.8,"z":4.57},{"x":-3.4,"y":0.2,"z":1.78},{"x":-4.46,"y":0.2,"z":4.23},{"x":-4.31,"y":13.8,"z":7.28},{"x":-2.73,"y":0.2,"z":10.42},{"x":0.27,"y":0.2,"z":13.08},{"x":4.53,"y":13.8,"z":14.71},{"x":9.64,"y":0.2,"z":14.84},{"x":15.08,"y":0.2,"z":13.15},{"x":20.2,"y":13.8,"z":9.5},{"x":7.62,"y":13.8,"z":-3.16},{"x":5.14,"y":13.8,"z":-14.28},{"x":1.19,"y":0.2,"z":-17.45},{"x":-4.12,"y":0.2,"z":-19.37},{"x":-10.35,"y":13.8,"z":-19.54},{"x":-2.37,"y":0.2,"z":-2.47},{"x":-4.95,"y":0.2,"z":-2.89},{"x":-7.79,"y":13.8,"z":-2},{"x":-10.35,"y":0.2,"z":0.27},{"x":-12.08,"y":0.2,"z":3.79},{"x":-12.51,"y":13.8,"z":8.22},{"x":-11.29,"y":0.2,"z":13.08},{"x":-8.25,"y":0.2,"z":17.77},{"x":-3.43,"y":13.8,"z":21.63},{"x":0.39,"y":0.2,"z":3.19},{"x":2.14,"y":0.2,"z":5.09},{"x":4.9,"y":13.8,"z":6.11},{"x":8.27,"y":0.2,"z":5.87},{"x":11.74,"y":0.2,"z":4.16},{"x":14.73,"y":13.8,"z":0.93},{"x":15.58,"y":13.8,"z":-15.09},{"x":-0.24,"y":13.8,"z":-7.62},{"x":-3.02,"y":0.2,"z":-9.46},{"x":-6.77,"y":0.2,"z":-10.19},{"x":-11.06,"y":13.8,"z":-9.45},{"x":-15.33,"y":0.2,"z":-7.02},{"x":-18.95,"y":0.2,"z":-2.9},{"x":-21.31,"y":13.8,"z":2.69},{"x":-21.88,"y":0.2,"z":9.33},{"x":-3.96,"y":0.2,"z":3.21},{"x":-4.26,"y":13.8,"z":6.06},{"x":-3.2,"y":0.2,"z":9.18},{"x":-0.69,"y":0.2,"z":12.01},{"x":3.13,"y":13.8,"z":13.99},{"x":7.94,"y":0.2,"z":14.63},{"x":13.27,"y":0.2,"z":13.55},{"x":18.48,"y":13.8,"z":10.54},{"x":22.9,"y":0.2,"z":5.62}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/cueva.js"/>
+  </space>
+</hsml>

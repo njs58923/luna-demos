@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tablero de corcho. Tocar el corcho clava una tarjeta nueva ahí y toma el
+  teclado para escribirle; tocar una tarjeta la edita (dejarla vacía la
+  saca). Tocar la chinche de una tarjeta y después la de otra las une con un
+  hilo rojo (otra vez, lo corta). En VR las tarjetas se agarran con el grip y
+  se cambian de lugar. Todo se guarda (por `clave`).
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.84 × 0.64 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/corcho.hsml"
+             resources="read_pose_stream" events="cambio" props='{"clave":"plan"}'/>
+
+  Props: clave, madera (color del marco).
+  Eventos: cambio {cartas, hilos}.
+  Mensajes: limpiar.
+-->
+<hsml>
+  <head><name>Tablero de corcho</name></head>
+  <space resources="read_pose_stream">
+    <box id="marco" z="0.008" sx="0.84" sy="0.64" sz="0.016" color="#8B5A2B"/>
+    <box id="corcho" z="0.012" sx="0.8" sy="0.6" sz="0.012" color="#C8A27A"/>
+    <group id="hilos"/>
+    <group id="cartas"/>
+    <posezone id="zona" z="0.3" sx="1.2" sy="1" sz="0.6" visible="false"/>
+    <script src="./corcho.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_ui - no editar a mano -->
+<hsml>
+  <head><name>Atrio de interfaces</name></head>
+
+  <!-- navigate_self es de esta sala y de ninguna otra: las puertas avisan y
+       acá se navega, porque un include navega su propio marco. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,spawn,vr_locomotion,desktop_camera_control">
+    <spawn id="entrada" default="true" x="0" y="0" z="0" ry="0"/>
+
+    <group id="cielo">
+      <plane z="-40" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane z="40" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane x="-40" ry="1.5707963" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane x="40" ry="1.5707963" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane y="40" rx="1.5707963" sx="80" sy="80" color="#08080C" touchable="false"/>
+    </group>
+
+    <cylinder y="-0.05" sx="26" sy="0.1" sz="26" color="#12121A" touchable="false"/>
+    <box x="-6.4" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-9.4" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-5.6" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-8.6" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-4.8" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-7.8" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-4" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-7" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-3.2" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-6.2" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-2.4" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-5.4" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-1.6" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-4.6" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-0.8" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-3.8" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="0" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-3" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="0.8" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-2.2" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="1.6" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-1.4" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="2.4" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-0.6" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="3.2" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="0.2" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="4" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="1" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="4.8" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="1.8" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="5.6" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="2.6" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="6.4" y="0.004" z="-3" sx="0.01" sy="0.008" sz="14" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="3.4" sx="14" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+
+    <group x="-6.99" y="0" z="-2.718" ry="1.2">
+      <include id="puerta_galeria" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/galeria.hsml?volver=1","id":"galeria","titulo":"La galería","sub":"todos los controles a la vez","color":"#0A84FF","num":"01","roca":"#2A2A38"}'/>
+    </group>
+
+    <group x="-5.38" y="0" z="-5.225" ry="0.8">
+      <include id="puerta_panel" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/panel.hsml?volver=1","id":"panel","titulo":"El panel","sub":"enlaces de datos en vivo","color":"#30D158","num":"02","roca":"#2A2A38"}'/>
+    </group>
+
+    <group x="-2.921" y="0" z="-6.908" ry="0.4">
+      <include id="puerta_lista" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/lista.hsml?volver=1","id":"lista","titulo":"La lista","sub":"miles de filas, decenas de nodos","color":"#BF5AF2","num":"03","roca":"#2A2A38"}'/>
+    </group>
+
+    <group x="0" y="0" z="-7.5" ry="0">
+      <include id="puerta_demo" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/demo.hsml?volver=1","id":"demo","titulo":"La demostración","sub":"el árbol declarativo, desnudo","color":"#40E0D0","num":"04","roca":"#2A2A38"}'/>
+    </group>
+
+    <group x="2.921" y="0" z="-6.908" ry="-0.4">
+      <include id="puerta_ajustes" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/ajustes.hsml?volver=1","id":"ajustes","titulo":"Los ajustes","sub":"lo que se dibuja encima de todo","color":"#FFD60A","num":"05","roca":"#2A2A38"}'/>
+    </group>
+
+    <group x="5.38" y="0" z="-5.225" ry="-0.8">
+      <include id="puerta_estres" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/estres.hsml?volver=1","id":"estres","titulo":"El estrés","sub":"cuánto cuesta una pasada entera","color":"#FF9F0A","num":"06","roca":"#2A2A38"}'/>
+    </group>
+
+    <group x="6.99" y="0" z="-2.718" ry="-1.2">
+      <include id="puerta_banco" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/banco.hsml?volver=1","id":"banco","titulo":"El banco","sub":"el motor pelado, sin framework","color":"#FF3B30","num":"07","roca":"#2A2A38"}'/>
+    </group>
+
+    <model id="ui_malla" material-unlit="true"/>
+    <group id="ui_nodos"/>
+
+    <script>
+      globalThis.UI_CFG = {"base":"https://njs58923.github.io/luna-demos/ui","distancia":1.6,"C":{"fondo":"#08080C","piso":"#12121A","reja":"#2A2A3A","superficie":"#1C1C26","superficieAlta":"#2A2A38","borde":"#5A5A70","texto":"#FFFFFF","textoTenue":"#A8A8BC","azul":"#0A84FF","rojo":"#FF3B30","verde":"#30D158","amarillo":"#FFD60A","violeta":"#BF5AF2","naranja":"#FF9F0A","cian":"#40E0D0"}};
+      globalThis.APP = {"escenas":[{"ruta":"galeria","titulo":"La galería","sub":"todos los controles a la vez","color":"#0A84FF","muestra":"TabControl, RadioButton, ToggleSwitch, Image"},{"ruta":"panel","titulo":"El panel","sub":"enlaces de datos en vivo","color":"#30D158","muestra":"Binding, Format, Slider, ProgressBar"},{"ruta":"lista","titulo":"La lista","sub":"miles de filas, decenas de nodos","color":"#BF5AF2","muestra":"ItemsControl, ScrollViewer, DockPanel"},{"ruta":"demo","titulo":"La demostración","sub":"el árbol declarativo, desnudo","color":"#40E0D0","muestra":"StackPanel, Grid, Border, TextBlock"},{"ruta":"ajustes","titulo":"Los ajustes","sub":"lo que se dibuja encima de todo","color":"#FFD60A","muestra":"ComboBox, ToolTip y un modal, sobre superponer()"},{"ruta":"estres","titulo":"El estrés","sub":"cuánto cuesta una pasada entera","color":"#FF9F0A","muestra":"layout completo por cuadro, con ?filas="},{"ruta":"banco","titulo":"El banco","sub":"el motor pelado, sin framework","color":"#FF3B30","muestra":"triángulos, textos y blancos que aguanta la malla"}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/ui/pagina__app-atrio.js"/>
+  </space>
+</hsml>

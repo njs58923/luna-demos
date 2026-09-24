@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cajonera. Cada cajón se abre y se cierra con un toque, y adentro hay cosas.
+  Recuerda qué cajones quedaron abiertos.
+
+  De piso: apoya en y=0, el frente mira a +Z. Mide 0.8 × 0.92 × 0.5 m
+  (cerrada; un cajón abierto sale 0.36 m hacia adelante).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cajonera.hsml"
+             events="cambio" props='{"madera":"#8B5A3C","cajones":4,"clave":"dormitorio"}'/>
+
+  Props: madera, tirador (colores), cajones (2 a 5), clave.
+  Eventos: cambio {cajon, abierto}.
+  Mensajes: abrir {cajon}, cerrar {cajon}, cerrar_todo.
+-->
+<hsml>
+  <head><name>Cajonera</name></head>
+  <space resources="read_pose_stream">
+    <group id="mueble"/>
+    <group id="cajones"/>
+    <script src="./cajonera.js"/>
+  </space>
+</hsml>

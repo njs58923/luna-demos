@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Palanca. Gira sobre un eje horizontal, de arriba (0) a abajo (1). En modo
+  "dos" queda en el tope más cercano, en "retorno" vuelve arriba al soltarla
+  y en "libre" queda donde se la deja. En VR se agarra la bocha y se tira;
+  en escritorio, un clic la pasa al otro tope (en retorno, baja, se sostiene
+  y sube sola).
+
+  Bloque de panel: emite `valor` y el lado al llegar a un tope.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.12 × 0.26 × 0.2 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/palanca.hsml"
+             resources="audio,read_pose_stream" events="valor,lado"
+             props='{"modo":"dos","color":"#D62828"}'/>
+
+  Props: modo ("dos" | "retorno" | "libre"), inicial (0..1), color, etiqueta, clave.
+  Eventos: valor {valor, fraccion}, lado {lado: "arriba" | "abajo"}.
+  Mensajes: poner {fraccion}.
+-->
+<hsml>
+  <head><name>Palanca</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.12" sy="0.26" sz="0.02" color="#22252E" border-radius="0.015"/>
+    <box y="0" z="0.024" sx="0.04" sy="0.19" sz="0.008" color="#101216" border-radius="0.006"/>
+    <text y="0.105" z="0.021" value="0" size="0.014" color="#8E9CB4"/>
+    <text y="-0.105" z="0.021" value="1" size="0.014" color="#8E9CB4"/>
+    <group id="eje" z="0.03">
+      <cylinder rz="1.5708" sx="0.03" sy="0.05" sz="0.03" color="#3A3F4B"/>
+      <cylinder y="0" z="0.06" rx="1.5708" sx="0.012" sy="0.12" sz="0.012" color="#B0B0B0"/>
+      <sphere id="bocha" z="0.125" sx="0.04" sy="0.04" sz="0.04" color="#D62828"/>
+      <sphere id="toque" manos="false" z="0.12" sx="0.07" sy="0.07" sz="0.07" color="transparent" material-alpha="blend"/>
+    </group>
+    <text id="etiqueta" y="-0.122" x="0" z="0.021" value="" size="0.012" color="#C8CCD8"/>
+    <posezone id="zona" z="0.18" sx="0.5" sy="0.6" sz="0.45" visible="false"/>
+    <script src="./palanca.js"/>
+  </space>
+</hsml>

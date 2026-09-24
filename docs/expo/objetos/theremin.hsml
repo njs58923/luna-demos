@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Theremin. Se toca sin tocarlo: en VR, la mano cerca de la antena vertical
+  sube la nota y la mano sobre el aro de la izquierda baja el volumen. Sin
+  manos, la nota la da la distancia del visitante a la antena: acercate y
+  alejate. Tocar la perilla lo prende y lo apaga.
+
+  De mesa: apoya en y=0. Mide 0.6 × 0.5 × 0.25 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/theremin.hsml"
+             resources="audio,read_pose_stream,read_camera_pose" events="nota"/>
+
+  Props: escala ("libre" | "cromatica" | "pentatonica"), octavas (1 a 4),
+  grave (Hz de la nota más baja).
+  Eventos: prendido {si}, nota {frecuencia} (cuando cambia de nota).
+  Mensajes: prender, apagar.
+-->
+<hsml>
+  <head><name>Theremin</name></head>
+  <space resources="audio,read_pose_stream,read_camera_pose">
+    <box y="0.08" sx="0.42" sy="0.12" sz="0.2" color="#5E3A1F" border-radius="0.015"/>
+    <box y="0.08" z="0.101" sx="0.36" sy="0.08" sz="0.002" color="#3E2615"/>
+    <box y="0.01" sx="0.4" sy="0.02" sz="0.18" color="#3E2615"/>
+    <!-- La antena de la nota, a la derecha. -->
+    <cylinder id="antena" x="0.17" y="0.35" sx="0.008" sy="0.42" sz="0.008" color="#C0C0C0"/>
+    <cylinder id="marca" x="0.17" y="0.2" sx="0.018" sy="0.006" sz="0.018" color="#FFD166" material-unlit="true"/>
+    <!-- El aro del volumen, a la izquierda. -->
+    <group id="aro" x="-0.26" y="0.12">
+      <box x="0.04" sx="0.06" sy="0.008" sz="0.008" color="#C0C0C0"/>
+    </group>
+    <cylinder id="perilla" y="0.08" z="0.104" rx="1.5708" sx="0.03" sy="0.012" sz="0.03" color="#1C1C1C"/>
+    <sphere id="luz" x="0.1" y="0.1" z="0.103" sx="0.012" sy="0.012" sz="0.006" color="#330000" material-unlit="true"/>
+    <text id="nota" x="-0.08" y="0.085" z="0.103" value="" size="0.018" color="#FFD166"/>
+    <posezone id="zona" y="0.35" sx="1.4" sy="1" sz="1" visible="false"/>
+    <script src="./theremin.js"/>
+  </space>
+</hsml>

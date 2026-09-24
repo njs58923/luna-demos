@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Botón de mantener. Un botón grande con un aro de luces alrededor: mientras
+  se lo mantiene apretado el aro se va llenando; si se suelta antes, se vacía
+  de a poco. Lleno, completa (como cargar combustible en la nave). En VR se
+  lo mantiene empujado con el mando o con grip o gatillo encima; en
+  escritorio, un clic lo traba apretado y otro lo suelta.
+
+  Bloque de panel: emite `valor` (la carga) y `completo`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.22 × 0.24 × 0.05 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/mantener.hsml"
+             resources="audio,read_pose_stream" events="completo"
+             props='{"segundos":3,"etiqueta":"CARGAR"}'/>
+
+  Props: segundos (de vacío a lleno), color, etiqueta, repetir (vuelve a
+  empezar a los dos segundos de completar).
+  Eventos: valor {valor, fraccion}, completo {}.
+  Mensajes: reiniciar.
+-->
+<hsml>
+  <head><name>Botón de mantener</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.01" sx="0.22" sy="0.24" sz="0.02" color="#22252E" border-radius="0.02"/>
+    <group id="aro" y="0.01" z="0.021"/>
+    <cylinder y="0.01" z="0.023" rx="1.5708" sx="0.1" sy="0.006" sz="0.1" color="#3A3F4B"/>
+    <group id="movil" y="0.01" z="0.036">
+      <cylinder id="tapa" rx="1.5708" sx="0.085" sy="0.022" sz="0.085" color="#F77F00"/>
+    </group>
+    <text id="etiqueta" y="-0.1" z="0.021" value="" size="0.014" color="#C8CCD8"/>
+    <cylinder id="toque" manos="false" y="0.01" z="0.05" rx="1.5708" sx="0.1" sy="0.03" sz="0.1" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" z="0.15" sx="0.5" sy="0.5" sz="0.35" visible="false"/>
+    <script src="./mantener.js"/>
+  </space>
+</hsml>

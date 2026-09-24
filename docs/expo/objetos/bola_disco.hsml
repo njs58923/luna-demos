@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bola de espejos. Cuelga de un pie; prendida gira y tira puntos de colores
+  que barren el piso alrededor. Tocarla la prende o la apaga.
+
+  De piso: apoya en y=0. El pie mide 2 m; los puntos de luz caen en un círculo
+  de `alcance` metros de radio (2.5 por defecto).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/bola_disco.hsml"
+             events="cambio" props='{"alcance":3,"velocidad":0.5}'/>
+
+  Props: alcance (m), velocidad (vueltas por segundo), colores (true: puntos de
+  colores; false: blancos), encendida.
+  Eventos: cambio {encendida}.
+  Mensajes: encender, apagar.
+-->
+<hsml>
+  <head><name>Bola de espejos</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.02" sx="0.4" sy="0.04" sz="0.4" color="#1C1C1C"/>
+    <cylinder y="1.0" sx="0.03" sy="1.96" sz="0.03" color="#2A2A2A"/>
+    <box x="0.2" y="1.98" sx="0.42" sy="0.025" sz="0.025" color="#2A2A2A"/>
+    <cylinder x="0.4" y="1.93" sx="0.006" sy="0.1" sz="0.006" color="#8A8A8A"/>
+    <group id="bola" x="0.4" y="1.72">
+      <sphere id="nucleo" sx="0.3" sy="0.3" sz="0.3" color="#5A5A66"/>
+    </group>
+    <group id="puntos" x="0.4" y="0.01"/>
+    <sphere id="toque" x="0.4" y="1.72" sx="0.38" sy="0.38" sz="0.38" color="transparent" material-alpha="blend"/>
+    <script src="./bola_disco.js"/>
+  </space>
+</hsml>

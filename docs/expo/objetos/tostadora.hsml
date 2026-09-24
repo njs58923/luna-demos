@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tostadora. Bajar la palanca hunde las tostadas y enciende las resistencias;
+  a los `segundos`, saltan doradas con un "ding". La perilla elige cuán
+  tostadas.
+
+  De mesa: apoya en y=0. Mide 0.3 × 0.3 × 0.18 m (las tostadas saltan hasta 0.4).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/tostadora.hsml"
+             resources="audio" events="lista" props='{"color":"#C8102E","segundos":6}'/>
+
+  Props: color, segundos (de 2 a 60), punto (1 claras .. 3 quemadas).
+  Eventos: lista {punto}.
+  Mensajes: tostar.
+-->
+<hsml>
+  <head><name>Tostadora</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="cuerpo" y="0.1" sx="0.28" sy="0.2" sz="0.16" color="#C8102E" border-radius="0.04"/>
+    <box y="0.2" sx="0.26" sy="0.006" sz="0.14" color="#8A8A8A"/>
+    <box y="0.2" x="-0.05" sx="0.18" sy="0.008" sz="0.03" color="#1C1C1C"/>
+    <box y="0.2" x="-0.05" z="0.05" sx="0.18" sy="0.008" sz="0.03" color="#1C1C1C"/>
+    <box y="0.2" x="-0.05" z="-0.05" sx="0.18" sy="0.008" sz="0.03" color="#1C1C1C"/>
+    <group id="panes" x="-0.05"/>
+    <group id="brasas" x="-0.05" y="0.2"/>
+    <box id="ranura" x="0.145" y="0.12" sx="0.012" sy="0.12" sz="0.02" color="#1C1C1C"/>
+    <box id="palanca" x="0.16" y="0.17" sx="0.03" sy="0.018" sz="0.03" color="#2A2A2A"/>
+    <cylinder id="perilla" x="0.145" y="0.05" rz="1.5707963" sx="0.03" sy="0.012" sz="0.03" color="#2A2A2A"/>
+    <script src="./tostadora.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,209 @@
+[
+ {
+  "id": "birch_tree_05",
+  "original": "PP_Birch_Tree_05",
+  "caras": 1520,
+  "ancho": 4.218,
+  "fondo": 3.428,
+  "alto": 6.518,
+  "colores": 15
+ },
+ {
+  "id": "birch_tree_06",
+  "original": "PP_Birch_Tree_06",
+  "caras": 1890,
+  "ancho": 5.1,
+  "fondo": 4.343,
+  "alto": 7.756,
+  "colores": 16
+ },
+ {
+  "id": "daffodil_03",
+  "original": "PP_Daffodil_03",
+  "caras": 848,
+  "ancho": 0.327,
+  "fondo": 0.275,
+  "alto": 0.932,
+  "colores": 22
+ },
+ {
+  "id": "forest_mountain_moss_01",
+  "original": "PP_Forest_Mountain_Moss_01",
+  "caras": 1830,
+  "ancho": 22.957,
+  "fondo": 22.848,
+  "alto": 13.508,
+  "colores": 3
+ },
+ {
+  "id": "forest_mountain_moss_02",
+  "original": "PP_Forest_Mountain_Moss_02",
+  "caras": 1946,
+  "ancho": 20.138,
+  "fondo": 19.748,
+  "alto": 10.967,
+  "colores": 2
+ },
+ {
+  "id": "grass_11",
+  "original": "PP_Grass_11",
+  "caras": 440,
+  "ancho": 0.636,
+  "fondo": 0.519,
+  "alto": 0.632,
+  "colores": 4
+ },
+ {
+  "id": "grass_15",
+  "original": "PP_Grass_15",
+  "caras": 534,
+  "ancho": 0.563,
+  "fondo": 0.616,
+  "alto": 0.619,
+  "colores": 5
+ },
+ {
+  "id": "hyacinth_04",
+  "original": "PP_Hyacinth_04",
+  "caras": 1796,
+  "ancho": 0.352,
+  "fondo": 0.345,
+  "alto": 1.143,
+  "colores": 18
+ },
+ {
+  "id": "lake_ground_04",
+  "original": "PP_Lake_Ground_04",
+  "caras": 1786,
+  "ancho": 14.957,
+  "fondo": 14.44,
+  "alto": 1.918,
+  "colores": 3
+ },
+ {
+  "id": "meadow_07",
+  "original": "PP_Meadow_07",
+  "caras": 1419,
+  "ancho": 11.104,
+  "fondo": 11.264,
+  "alto": 1.088,
+  "colores": 4
+ },
+ {
+  "id": "meadow_08",
+  "original": "PP_Meadow_08",
+  "caras": 1785,
+  "ancho": 11.689,
+  "fondo": 11.998,
+  "alto": 1.109,
+  "colores": 5
+ },
+ {
+  "id": "meadow_path_05",
+  "original": "PP_Meadow_Path_05",
+  "caras": 515,
+  "ancho": 8.834,
+  "fondo": 8.731,
+  "alto": 1.182,
+  "colores": 4
+ },
+ {
+  "id": "mushroom_fantasy_orange_09",
+  "original": "PP_Mushroom_Fantasy_Orange_09",
+  "caras": 594,
+  "ancho": 0.374,
+  "fondo": 0.286,
+  "alto": 0.533,
+  "colores": 23
+ },
+ {
+  "id": "mushroom_fantasy_orange_10",
+  "original": "PP_Mushroom_Fantasy_Orange_10",
+  "caras": 660,
+  "ancho": 0.577,
+  "fondo": 0.373,
+  "alto": 0.792,
+  "colores": 21
+ },
+ {
+  "id": "mushroom_fantasy_purple_05",
+  "original": "PP_Mushroom_Fantasy_Purple_05",
+  "caras": 624,
+  "ancho": 0.458,
+  "fondo": 0.315,
+  "alto": 0.62,
+  "colores": 22
+ },
+ {
+  "id": "mushroom_fantasy_purple_08",
+  "original": "PP_Mushroom_Fantasy_Purple_08",
+  "caras": 416,
+  "ancho": 0.319,
+  "fondo": 0.329,
+  "alto": 0.659,
+  "colores": 22
+ },
+ {
+  "id": "rock_moss_grown_09",
+  "original": "PP_Rock_Moss_Grown_09",
+  "caras": 494,
+  "ancho": 1.306,
+  "fondo": 1.272,
+  "alto": 1.092,
+  "colores": 4
+ },
+ {
+  "id": "rock_moss_grown_11",
+  "original": "PP_Rock_Moss_Grown_11",
+  "caras": 376,
+  "ancho": 2.056,
+  "fondo": 1.798,
+  "alto": 1.009,
+  "colores": 3
+ },
+ {
+  "id": "rock_pile_forest_moss_05",
+  "original": "PP_Rock_Pile_Forest_Moss_05",
+  "caras": 576,
+  "ancho": 1.623,
+  "fondo": 1.458,
+  "alto": 1.84,
+  "colores": 3
+ },
+ {
+  "id": "rock_pile_forest_moss_10",
+  "original": "PP_Rock_Pile_Forest_Moss_10",
+  "caras": 528,
+  "ancho": 2.134,
+  "fondo": 1.992,
+  "alto": 1.458,
+  "colores": 3
+ },
+ {
+  "id": "sunflower_04",
+  "original": "PP_Sunflower_04",
+  "caras": 1554,
+  "ancho": 0.469,
+  "fondo": 0.554,
+  "alto": 0.888,
+  "colores": 48
+ },
+ {
+  "id": "tree_02",
+  "original": "PP_Tree_02",
+  "caras": 1704,
+  "ancho": 3.79,
+  "fondo": 4.119,
+  "alto": 6.827,
+  "colores": 8
+ },
+ {
+  "id": "tree_10",
+  "original": "PP_Tree_10",
+  "caras": 1576,
+  "ancho": 4.238,
+  "fondo": 4.197,
+  "alto": 7.119,
+  "colores": 8
+ }
+]

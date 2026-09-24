@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Reloj de arena. Tocarlo lo da vuelta, y la arena cae durante `duracion`
+  segundos. Un hilo de arena une las dos ampollas mientras corre.
+
+  De mesa: apoya en y=0. Mide 0.14 × 0.3 × 0.14 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/reloj_arena.hsml"
+             events="vuelta,fin" props='{"duracion":180,"arena":"#E9C46A"}'/>
+
+  Props: duracion (segundos), arena (color), madera (color).
+  Eventos: vuelta {duracion}, fin {} cuando termina de caer.
+  Mensajes: dar_vuelta.
+-->
+<hsml>
+  <head><name>Reloj de arena</name></head>
+  <space resources="read_pose_stream">
+    <group id="todo" y="0.15">
+      <!-- Tapas y columnas de madera -->
+      <cylinder class="madera" y="0.14" sx="0.14" sy="0.02" sz="0.14" color="#6B4A30"/>
+      <cylinder class="madera" y="-0.14" sx="0.14" sy="0.02" sz="0.14" color="#6B4A30"/>
+      <cylinder class="madera" x="0.055" sx="0.012" sy="0.27" sz="0.012" color="#6B4A30"/>
+      <cylinder class="madera" x="-0.0275" z="0.0476" sx="0.012" sy="0.27" sz="0.012" color="#6B4A30"/>
+      <cylinder class="madera" x="-0.0275" z="-0.0476" sx="0.012" sy="0.27" sz="0.012" color="#6B4A30"/>
+      <!-- La arena: una pila arriba, una pila abajo y el hilo -->
+      <group id="arriba" y="0.01"/>
+      <group id="abajo" y="-0.125"/>
+      <cylinder id="hilo" sx="0.003" sy="0.12" sz="0.003" y="-0.06" color="#E9C46A" visible="false"/>
+      <!-- El vidrio: dos ampollas y el cuello, translúcidos -->
+      <sphere y="0.065" sx="0.09" sy="0.12" sz="0.09" color="#DCEFF580" material-alpha="blend"/>
+      <sphere y="-0.065" sx="0.09" sy="0.12" sz="0.09" color="#DCEFF580" material-alpha="blend"/>
+      <cylinder sx="0.012" sy="0.03" sz="0.012" color="#DCEFF580" material-alpha="blend"/>
+    </group>
+    <box id="toque" y="0.15" sx="0.16" sy="0.32" sz="0.16" color="transparent" material-alpha="blend"/>
+    <script src="./reloj_arena.js"/>
+  </space>
+</hsml>

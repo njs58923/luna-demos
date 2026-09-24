@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pieza interactiva: molino de viento.
+     Animación mecánica, sin partículas: las aspas giran y la cabeza busca la
+     dirección del viento con ráfagas. Todo declarado acá; el script sólo mueve
+     dos nodos por frame.
+     Las aspas son <plane> (double-sided), así que giran y se ven de los dos
+     lados con un solo plano cada una. -->
+<hsml>
+  <head>
+    <name>Molino</name>
+  </head>
+
+  <space>
+    <group id="molino">
+      <!-- Base y torre -->
+      <cylinder y="0.09" sx="0.62" sy="0.18" sz="0.62" color="#6E6659"/>
+      <cylinder y="0.95" sx="0.4" sy="1.72" sz="0.4" color="#B9AE97"/>
+      <cylinder y="1.5" sx="0.43" sy="0.1" sz="0.43" color="#8A8071"/>
+      <box y="0.62" z="-0.2" sx="0.18" sy="0.34" sz="0.05" color="#5A4632"/>
+
+      <!-- Cabeza orientable: la mueve el script siguiendo el viento -->
+      <group id="cabeza" y="1.9">
+        <box sx="0.44" sy="0.4" sz="0.56" color="#7A4A3A"/>
+        <box y="0.24" sx="0.48" sy="0.1" sz="0.6" color="#5F3A2D"/>
+
+        <!-- Timón de cola: lo que en un molino real orienta la cabeza -->
+        <box z="0.42" sx="0.05" sy="0.06" sz="0.3" color="#5A4632"/>
+        <plane z="0.6" ry="1.5707963" sx="0.34" sy="0.26" color="#D9CDB2"/>
+
+        <!-- Aspas: cuatro palas alrededor del eje. El grupo entero gira en z. -->
+        <group id="aspas" z="-0.34">
+          <cylinder rx="1.5707963" sx="0.1" sy="0.14" sz="0.1" color="#4A3B2A"/>
+          <plane y="0.5" sx="0.14" sy="0.86" color="#E8DFC8"/>
+          <plane y="-0.5" sx="0.14" sy="0.86" color="#E8DFC8"/>
+          <plane x="0.5" rz="1.5707963" sx="0.14" sy="0.86" color="#DCD1B6"/>
+          <plane x="-0.5" rz="1.5707963" sx="0.14" sy="0.86" color="#DCD1B6"/>
+        </group>
+      </group>
+    </group>
+
+    <script>
+      globalThis.CONFIG = {"vel":0.6,"rumbo":-0.6,"rafagas":0.8,"fase":0};
+    </script>
+    <script src="molino.js"/>
+  </space>
+</hsml>

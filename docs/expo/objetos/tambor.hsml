@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tambor con platillo. El parche suena grave y el platillo largo; los dos se
+  tocan con el puntero, y en VR con las manos, pegando de arriba.
+
+  De piso: apoya en y=0. Mide 0.8 × 1.0 × 0.5 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/tambor.hsml"
+             resources="audio,read_pose_stream" events="golpe"
+             props='{"aro":"#C8102E"}'/>
+
+  Props: aro (color del cuerpo), afinacion (-6..6 semitonos).
+  Eventos: golpe {pieza: "parche" | "platillo", fuerza}.
+  Mensajes: golpe {pieza}.
+-->
+<hsml>
+  <head><name>Tambor y platillo</name></head>
+  <space resources="audio,read_pose_stream">
+    <!-- El tambor, sobre tres patas -->
+    <group id="tambor" x="-0.12" y="0.52">
+      <cylinder id="cuerpo" sx="0.36" sy="0.16" sz="0.36" color="#C8102E"/>
+      <cylinder y="0.078" sx="0.37" sy="0.012" sz="0.37" color="#C0C0C0"/>
+      <cylinder y="-0.078" sx="0.37" sy="0.012" sz="0.37" color="#C0C0C0"/>
+      <cylinder id="parche" y="0.086" sx="0.34" sy="0.004" sz="0.34" color="#F4F1EA"/>
+    </group>
+    <group id="patas_tambor" x="-0.12"/>
+    <!-- El platillo, sobre su pie -->
+    <cylinder x="0.25" y="0.4" sx="0.02" sy="0.8" sz="0.02" color="#8A8A8A"/>
+    <cylinder x="0.25" y="0.02" sx="0.3" sy="0.02" sz="0.3" color="#3A3A3A"/>
+    <group id="platillo" x="0.25" y="0.82" rx="0.12">
+      <cylinder sx="0.4" sy="0.006" sz="0.4" color="#D4AF37"/>
+      <cylinder y="0.006" sx="0.08" sy="0.012" sz="0.08" color="#C9A032"/>
+    </group>
+    <!-- Dos palillos apoyados en el tambor -->
+    <group x="-0.12" y="0.61">
+      <cylinder x="0.03" z="0.05" rz="1.5707963" ry="0.3" sx="0.012" sy="0.38" sz="0.012" color="#E9D8A6"/>
+      <cylinder x="-0.03" z="0.07" rz="1.5707963" ry="-0.2" sx="0.012" sy="0.38" sz="0.012" color="#E9D8A6"/>
+    </group>
+    <posezone id="zona" y="0.7" sx="1.0" sy="0.6" sz="0.6" visible="false"/>
+    <cylinder id="toque_parche" x="-0.12" y="0.62" sx="0.38" sy="0.06" sz="0.38" color="transparent" material-alpha="blend"/>
+    <cylinder id="toque_platillo" x="0.25" y="0.83" sx="0.42" sy="0.05" sz="0.42" color="transparent" material-alpha="blend"/>
+    <script src="./tambor.js"/>
+  </space>
+</hsml>

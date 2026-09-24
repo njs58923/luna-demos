@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Brújula. La aguja apunta al "norte" del mundo donde la pongan (por
+  convención, su -Z), aunque se la gire o se la lleve con un manipulador: se
+  fija dónde quedó en el mundo. Si se mueve, la aguja oscila hasta asentarse.
+  Tocarla le da un golpecito.
+
+  De mesa: apoya en y=0. Mide 0.14 × 0.04 × 0.14 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/brujula.hsml" props='{"norte":0}'/>
+
+  Props: norte (grados: dónde está el norte del mundo, 0 = hacia -Z), caja (color).
+  Eventos: rumbo {grados} al asentarse.
+-->
+<hsml>
+  <head><name>Brújula</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="caja" y="0.015" sx="0.14" sy="0.03" sz="0.14" color="#8B6B3E"/>
+    <cylinder y="0.031" sx="0.12" sy="0.002" sz="0.12" color="#F4EBD0"/>
+    <group id="rosa" y="0.033"/>
+    <group id="aguja" y="0.036"/>
+    <sphere y="0.036" sx="0.012" sy="0.008" sz="0.012" color="#C9A45C"/>
+    <cylinder y="0.042" sx="0.13" sy="0.002" sz="0.13" color="#E0F2FF30" material-alpha="blend"/>
+    <cylinder id="toque" y="0.03" sx="0.15" sy="0.06" sz="0.15" color="transparent" material-alpha="blend"/>
+    <script src="./brujula.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El dominó</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=aurora"/>
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="-5.466" y="0" z="12.614" ry="-0.409"/>
+    <group id="cielo">
+    </group>
+
+    <!-- La mesa: un disco grande y otro apenas más chico encima, que es lo que
+         le da canto y evita que se lea como un plano infinito. -->
+    <cylinder y="-0.36" sx="52" sy="0.6" sz="52" color="#2A3140" touchable="false"/>
+    <cylinder y="-0.03" sx="50" sy="0.08" sz="50" color="#171C24" touchable="false"/>
+    <cylinder y="-0.02" sx="26" sy="0.06" sz="26" color="#1E242E" touchable="false"/>
+
+    <group id="cadena">
+      <group id="f_0" x="2.2" y="0" z="0" ry="0.226">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e85c4a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_1" x="2.249" y="0" z="0.312" ry="0.081">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e85d4a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_2" x="2.254" y="0" z="0.623" ry="-0.057">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e85f49" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_3" x="2.214" y="0" z="0.94" ry="-0.195">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e86049" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_4" x="2.13" y="0" z="1.257" ry="-0.332">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e86249" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_5" x="2.006" y="0" z="1.555" ry="-0.463">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96348" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_6" x="1.848" y="0" z="1.828" ry="-0.588">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96448" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_7" x="1.653" y="0" z="2.085" ry="-0.713">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96648" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_8" x="1.435" y="0" z="2.31" ry="-0.832">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96747" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_9" x="1.186" y="0" z="2.513" ry="-0.95">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96947" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_10" x="0.91" y="0" z="2.687" ry="-1.069">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96a46" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_11" x="0.624" y="0" z="2.825" ry="-1.181">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96b46" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_12" x="0.319" y="0" z="2.931" ry="-1.293">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e96d46" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_13" x="0.016" y="0" z="3.002" ry="-1.4">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea6e45" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_14" x="-0.299" y="0" z="3.04" ry="-1.506">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7045" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_15" x="-0.621" y="0" z="3.045" ry="-1.612">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7145" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_16" x="-0.947" y="0" z="3.015" ry="-1.718">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7244" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_17" x="-1.256" y="0" z="2.954" ry="-1.817">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7444" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_18" x="-1.561" y="0" z="2.862" ry="-1.917">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7544" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_19" x="-1.86" y="0" z="2.738" ry="-2.017">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7743" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_20" x="-2.133" y="0" z="2.592" ry="-2.111">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7843" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_21" x="-2.411" y="0" z="2.407" ry="-2.211">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ea7a43" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_22" x="-2.657" y="0" z="2.206" ry="-2.304">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb7b42" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_23" x="-2.887" y="0" z="1.98" ry="-2.398">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb7c42" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_24" x="-3.085" y="0" z="1.746" ry="-2.486">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb7e42" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_25" x="-3.275" y="0" z="1.476" ry="-2.58">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb7f41" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_26" x="-3.431" y="0" z="1.203" ry="-2.667">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb8141" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_27" x="-3.564" y="0" z="0.915" ry="-2.755">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb8241" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_28" x="-3.673" y="0" z="0.613" ry="-2.843">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb8340" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_29" x="-3.756" y="0" z="0.298" ry="-2.93">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eb8540" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_30" x="-3.809" y="0" z="-0.004" ry="-3.012">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec863f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_31" x="-3.839" y="0" z="-0.335" ry="-3.099">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec883f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_32" x="-3.84" y="0" z="-0.649" ry="3.102">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec893f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_33" x="-3.815" y="0" z="-0.964" ry="3.02">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec8a3e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_34" x="-3.765" y="0" z="-1.281" ry="2.939">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec8c3e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_35" x="-3.688" y="0" z="-1.595" ry="2.857">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec8d3e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_36" x="-3.584" y="0" z="-1.905" ry="2.776">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec8f3f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_37" x="-3.465" y="0" z="-2.187" ry="2.7">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec903f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_38" x="-3.311" y="0" z="-2.482" ry="2.619">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec923f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_39" x="-3.146" y="0" z="-2.747" ry="2.543">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec9340" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_40" x="-2.959" y="0" z="-3.001" ry="2.467">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec9540" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_41" x="-2.752" y="0" z="-3.242" ry="2.392">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec9640" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_42" x="-2.526" y="0" z="-3.469" ry="2.316">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ec9841" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_43" x="-2.28" y="0" z="-3.68" ry="2.24">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ed9941" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_44" x="-2.017" y="0" z="-3.873" ry="2.165">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ed9a41" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_45" x="-1.76" y="0" z="-4.035" ry="2.095">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ed9c42" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_46" x="-1.468" y="0" z="-4.191" ry="2.02">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ed9d42" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_47" x="-1.185" y="0" z="-4.316" ry="1.95">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ed9f43" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_48" x="-0.868" y="0" z="-4.43" ry="1.874">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda043" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_49" x="-0.566" y="0" z="-4.514" ry="1.805">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda243" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_50" x="-0.256" y="0" z="-4.577" ry="1.735">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda344" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_51" x="0.06" y="0" z="-4.619" ry="1.665">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda544" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_52" x="0.38" y="0" z="-4.639" ry="1.596">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda644" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_53" x="0.704" y="0" z="-4.637" ry="1.526">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda845" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_54" x="1.029" y="0" z="-4.612" ry="1.456">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eda945" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_55" x="1.326" y="0" z="-4.569" ry="1.393">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#edab45" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_56" x="1.649" y="0" z="-4.5" ry="1.323">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#edac46" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_57" x="1.969" y="0" z="-4.408" ry="1.253">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#edad46" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_58" x="2.258" y="0" z="-4.304" ry="1.19">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#edaf46" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_59" x="2.542" y="0" z="-4.181" ry="1.126">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#edb047" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_60" x="2.844" y="0" z="-4.025" ry="1.056">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eeb247" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_61" x="3.112" y="0" z="-3.863" ry="0.993">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eeb347" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_62" x="3.371" y="0" z="-3.683" ry="0.929">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eeb548" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_63" x="3.62" y="0" z="-3.485" ry="0.865">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eeb648" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_64" x="3.857" y="0" z="-3.271" ry="0.801">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eeb848" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_65" x="4.081" y="0" z="-3.041" ry="0.738">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eeb949" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_66" x="4.292" y="0" z="-2.795" ry="0.674">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eebb49" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_67" x="4.488" y="0" z="-2.535" ry="0.61">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eebc4a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_68" x="4.668" y="0" z="-2.261" ry="0.547">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eebe4a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_69" x="4.817" y="0" z="-2.001" ry="0.489">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ecbe4a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_70" x="4.964" y="0" z="-1.704" ry="0.425">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#eabf4b" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_71" x="5.082" y="0" z="-1.424" ry="0.367">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e7bf4c" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_72" x="5.193" y="0" z="-1.108" ry="0.303">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e4c04c" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_73" x="5.277" y="0" z="-0.813" ry="0.246">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#e2c04d" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_74" x="5.35" y="0" z="-0.481" ry="0.182">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#dfc14e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_75" x="5.398" y="0" z="-0.175" ry="0.124">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ddc14e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_76" x="5.428" y="0" z="0.135" ry="0.066">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#dac14f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_77" x="5.441" y="0" z="0.449" ry="0.008">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#d8c250" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_78" x="5.434" y="0" z="0.795" ry="-0.055">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#d5c250" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_79" x="5.408" y="0" z="1.112" ry="-0.113">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#d2c351" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_80" x="5.364" y="0" z="1.427" ry="-0.171">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#d0c352" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_81" x="5.301" y="0" z="1.741" ry="-0.229">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#cdc452" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_82" x="5.22" y="0" z="2.053" ry="-0.287">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#cbc453" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_83" x="5.12" y="0" z="2.361" ry="-0.344">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#c8c453" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_84" x="5.015" y="0" z="2.635" ry="-0.396">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#c5c554" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_85" x="4.881" y="0" z="2.933" ry="-0.454">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#c3c555" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_86" x="4.729" y="0" z="3.224" ry="-0.512">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#c0c655" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_87" x="4.56" y="0" z="3.508" ry="-0.57">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#bec656" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_88" x="4.393" y="0" z="3.756" ry="-0.622">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#bbc757" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_89" x="4.192" y="0" z="4.022" ry="-0.68">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#b9c757" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_90" x="3.997" y="0" z="4.252" ry="-0.732">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#b6c858" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_91" x="3.765" y="0" z="4.496" ry="-0.789">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#b3c859" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_92" x="3.544" y="0" z="4.706" ry="-0.841">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#b1c859" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_93" x="3.285" y="0" z="4.926" ry="-0.899">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#aec95a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_94" x="3.04" y="0" z="5.111" ry="-0.951">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#acc95b" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_95" x="2.785" y="0" z="5.285" ry="-1.003">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a9ca5b" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_96" x="2.489" y="0" z="5.462" ry="-1.061">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a7ca5c" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_97" x="2.214" y="0" z="5.608" ry="-1.113">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a4cb5d" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_98" x="1.93" y="0" z="5.74" ry="-1.165">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a1cb5d" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_99" x="1.639" y="0" z="5.857" ry="-1.217">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#9fcb5e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_100" x="1.34" y="0" z="5.96" ry="-1.269">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#9ccc5e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_101" x="1.035" y="0" z="6.047" ry="-1.321">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#9acc5f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_102" x="0.69" y="0" z="6.126" ry="-1.379">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#97cd60" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_103" x="0.375" y="0" z="6.179" ry="-1.431">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#95cd61" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_104" x="0.091" y="0" z="6.214" ry="-1.477">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#93cc63" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_105" x="-0.23" y="0" z="6.236" ry="-1.529">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#90cc65" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_106" x="-0.554" y="0" z="6.243" ry="-1.581">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8ecb67" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_107" x="-0.879" y="0" z="6.232" ry="-1.633">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8ccb69" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_108" x="-1.204" y="0" z="6.204" ry="-1.685">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8acb6a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_109" x="-1.529" y="0" z="6.159" ry="-1.737">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#88ca6c" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_110" x="-1.817" y="0" z="6.105" ry="-1.783">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#86ca6e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_111" x="-2.138" y="0" z="6.028" ry="-1.835">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#83c970" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_112" x="-2.456" y="0" z="5.934" ry="-1.887">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#81c972" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_113" x="-2.771" y="0" z="5.824" ry="-1.939">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7fc874" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_114" x="-3.046" y="0" z="5.711" ry="-1.985">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7dc876" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_115" x="-3.35" y="0" z="5.569" ry="-2.037">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7bc778" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_116" x="-3.615" y="0" z="5.429" ry="-2.083">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#79c779" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_117" x="-3.906" y="0" z="5.257" ry="-2.135">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#76c77b" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_118" x="-4.158" y="0" z="5.09" ry="-2.181">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#74c67d" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_119" x="-4.433" y="0" z="4.888" ry="-2.233">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#72c67f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_120" x="-4.669" y="0" z="4.697" ry="-2.279">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#70c581" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_121" x="-4.896" y="0" z="4.494" ry="-2.325">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6ec583" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_122" x="-5.142" y="0" z="4.252" ry="-2.377">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6cc485" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_123" x="-5.351" y="0" z="4.026" ry="-2.423">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#69c487" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_124" x="-5.549" y="0" z="3.789" ry="-2.469">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#67c488" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_125" x="-5.76" y="0" z="3.512" ry="-2.521">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#65c38a" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_126" x="-5.935" y="0" z="3.255" ry="-2.567">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#63c38c" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_127" x="-6.099" y="0" z="2.99" ry="-2.613">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#61c28e" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_128" x="-6.252" y="0" z="2.716" ry="-2.66">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5fc290" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_129" x="-6.391" y="0" z="2.435" ry="-2.706">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5cc192" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_130" x="-6.534" y="0" z="2.11" ry="-2.758">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5ac194" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_131" x="-6.646" y="0" z="1.815" ry="-2.804">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#58c096" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_132" x="-6.745" y="0" z="1.513" ry="-2.85">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#56c097" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_133" x="-6.831" y="0" z="1.206" ry="-2.896">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#54c099" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_134" x="-6.902" y="0" z="0.895" ry="-2.942">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#52bf9b" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_135" x="-6.96" y="0" z="0.579" ry="-2.988">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4fbf9d" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_136" x="-7.002" y="0" z="0.26" ry="-3.034">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4dbe9f" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_137" x="-7.03" y="0" z="-0.061" ry="-3.08">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4cbea1" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_138" x="-7.044" y="0" z="-0.385" ry="-3.127">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4cbda2" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_139" x="-7.043" y="0" z="-0.669" ry="3.116">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4cbca4" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_140" x="-7.028" y="0" z="-0.995" ry="3.07">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4cbba5" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_141" x="-6.998" y="0" z="-1.32" ry="3.024">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bbaa7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_142" x="-6.953" y="0" z="-1.645" ry="2.978">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb9a9" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_143" x="-6.893" y="0" z="-1.969" ry="2.932">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb8aa" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_144" x="-6.828" y="0" z="-2.251" ry="2.891">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb7ac" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_145" x="-6.739" y="0" z="-2.57" ry="2.845">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb6ad" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_146" x="-6.636" y="0" z="-2.885" ry="2.799">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb5af" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_147" x="-6.518" y="0" z="-3.197" ry="2.753">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb4b0" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_148" x="-6.402" y="0" z="-3.466" ry="2.713">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb3b2" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_149" x="-6.257" y="0" z="-3.768" ry="2.667">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4bb2b4" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_150" x="-6.118" y="0" z="-4.027" ry="2.626">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4ab1b5" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_151" x="-5.945" y="0" z="-4.317" ry="2.58">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4ab0b7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_152" x="-5.76" y="0" z="-4.6" ry="2.534">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4ab0b8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_153" x="-5.586" y="0" z="-4.841" ry="2.494">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4aafba" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_154" x="-5.375" y="0" z="-5.108" ry="2.448">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4aaebc" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_155" x="-5.18" y="0" z="-5.335" ry="2.407">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4aadbd" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_156" x="-4.945" y="0" z="-5.584" ry="2.361">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4aacbf" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_157" x="-4.73" y="0" z="-5.794" ry="2.321">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4aabc0" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_158" x="-4.506" y="0" z="-5.996" ry="2.281">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49aac2" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_159" x="-4.24" y="0" z="-6.215" ry="2.235">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a9c3" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_160" x="-3.998" y="0" z="-6.398" ry="2.194">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a8c5" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_161" x="-3.712" y="0" z="-6.595" ry="2.148">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a7c7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_162" x="-3.454" y="0" z="-6.757" ry="2.108">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a6c8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_163" x="-3.188" y="0" z="-6.909" ry="2.067">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a5ca" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_164" x="-2.877" y="0" z="-7.07" ry="2.021">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a4cb" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_165" x="-2.598" y="0" z="-7.199" ry="1.981">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a3cd" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_166" x="-2.313" y="0" z="-7.317" ry="1.941">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#49a2cf" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_167" x="-2.023" y="0" z="-7.424" ry="1.9">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#48a1d0" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_168" x="-1.685" y="0" z="-7.531" ry="1.854">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#48a1d2" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_169" x="-1.386" y="0" z="-7.613" ry="1.814">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#48a0d3" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_170" x="-1.082" y="0" z="-7.683" ry="1.774">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#489fd5" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_171" x="-0.775" y="0" z="-7.741" ry="1.733">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#489ed6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_172" x="-0.465" y="0" z="-7.786" ry="1.693">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#499cd6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_173" x="-0.152" y="0" z="-7.819" ry="1.653">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4b9bd6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_174" x="0.207" y="0" z="-7.841" ry="1.607">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4c9ad6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_175" x="0.523" y="0" z="-7.847" ry="1.566">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4d99d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_176" x="0.84" y="0" z="-7.84" ry="1.526">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4e97d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_177" x="1.157" y="0" z="-7.821" ry="1.486">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#4f96d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_178" x="1.474" y="0" z="-7.788" ry="1.445">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5095d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_179" x="1.79" y="0" z="-7.743" ry="1.405">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5194d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_180" x="2.104" y="0" z="-7.684" ry="1.365">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5293d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_181" x="2.417" y="0" z="-7.613" ry="1.325">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5391d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_182" x="2.728" y="0" z="-7.53" ry="1.284">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5590d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_183" x="3.036" y="0" z="-7.433" ry="1.244">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#568fd7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_184" x="3.34" y="0" z="-7.324" ry="1.204">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#578ed7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_185" x="3.64" y="0" z="-7.202" ry="1.163">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#588cd7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_186" x="3.895" y="0" z="-7.088" ry="1.129">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#598bd7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_187" x="4.186" y="0" z="-6.944" ry="1.088">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5a8ad7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_188" x="4.473" y="0" z="-6.787" ry="1.048">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5b89d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_189" x="4.754" y="0" z="-6.619" ry="1.008">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5c88d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_190" x="5.028" y="0" z="-6.439" ry="0.968">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5d86d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_191" x="5.296" y="0" z="-6.248" ry="0.927">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#5f85d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_192" x="5.52" y="0" z="-6.075" ry="0.893">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6084d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_193" x="5.773" y="0" z="-5.863" ry="0.852">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6183d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_194" x="6.019" y="0" z="-5.641" ry="0.812">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6281d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_195" x="6.256" y="0" z="-5.408" ry="0.772">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6380d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_196" x="6.452" y="0" z="-5.201" ry="0.737">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#647fd7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_197" x="6.672" y="0" z="-4.95" ry="0.697">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#657ed8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_198" x="6.882" y="0" z="-4.69" ry="0.657">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#667cd8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_199" x="7.083" y="0" z="-4.421" ry="0.616">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#677bd8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_200" x="7.246" y="0" z="-4.183" ry="0.582">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#697ad8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_201" x="7.426" y="0" z="-3.899" ry="0.542">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6a79d8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_202" x="7.572" y="0" z="-3.649" ry="0.507">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6b78d8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_203" x="7.731" y="0" z="-3.35" ry="0.467">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6c76d8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_204" x="7.878" y="0" z="-3.044" ry="0.426">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6d75d8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_205" x="7.995" y="0" z="-2.777" ry="0.392">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#6e74d8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_206" x="8.12" y="0" z="-2.46" ry="0.352">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7073d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_207" x="8.216" y="0" z="-2.184" ry="0.317">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7273d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_208" x="8.318" y="0" z="-1.857" ry="0.277">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7473d7" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_209" x="8.394" y="0" z="-1.573" ry="0.242">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7672d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_210" x="8.471" y="0" z="-1.238" ry="0.202">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7872d6" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_211" x="8.526" y="0" z="-0.948" ry="0.167">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7a71d5" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_212" x="8.577" y="0" z="-0.606" ry="0.127">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7c71d5" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_213" x="8.611" y="0" z="-0.311" ry="0.093">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#7e70d4" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_214" x="8.637" y="0" z="0.034" ry="0.052">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8070d4" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_215" x="8.648" y="0" z="0.332" ry="0.018">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#826fd3" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_216" x="8.648" y="0" z="0.681" ry="-0.022">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#846fd3" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_217" x="8.637" y="0" z="0.98" ry="-0.057">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#856ed2" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_218" x="8.611" y="0" z="1.329" ry="-0.097">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#876ed2" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_219" x="8.578" y="0" z="1.627" ry="-0.132">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#896dd1" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_220" x="8.534" y="0" z="1.925" ry="-0.166">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8b6dd1" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_221" x="8.47" y="0" z="2.272" ry="-0.207">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8d6cd0" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_222" x="8.403" y="0" z="2.567" ry="-0.241">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#8f6cd0" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_223" x="8.327" y="0" z="2.86" ry="-0.276">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#916bcf" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_224" x="8.224" y="0" z="3.199" ry="-0.316">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#936bcf" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_225" x="8.126" y="0" z="3.487" ry="-0.35">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#956bcf" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_226" x="8.017" y="0" z="3.772" ry="-0.385">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#976ace" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_227" x="7.877" y="0" z="4.101" ry="-0.425">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#996ace" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_228" x="7.747" y="0" z="4.378" ry="-0.46">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#9b69cd" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_229" x="7.607" y="0" z="4.651" ry="-0.494">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#9d69cd" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_230" x="7.457" y="0" z="4.92" ry="-0.529">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#9f68cc" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_231" x="7.27" y="0" z="5.227" ry="-0.569">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a168cc" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_232" x="7.1" y="0" z="5.485" ry="-0.604">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a267cb" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_233" x="6.921" y="0" z="5.737" ry="-0.638">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a467cb" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_234" x="6.732" y="0" z="5.983" ry="-0.673">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a666ca" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_235" x="6.535" y="0" z="6.223" ry="-0.707">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#a866ca" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_236" x="6.295" y="0" z="6.495" ry="-0.747">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#aa65c9" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_237" x="6.079" y="0" z="6.721" ry="-0.782">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ac65c9" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_238" x="5.856" y="0" z="6.94" ry="-0.816">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#ae64c8" touchable="false" border-radius="0.02"/>
+      </group>
+      <group id="f_239" x="5.624" y="0" z="7.151" ry="-0.851">
+        <box y="0.31" sx="0.34" sy="0.62" sz="0.075" color="#b064c8" touchable="false" border-radius="0.02"/>
+      </group>
+    </group>
+
+    <!-- El empujador: la única cosa tocable de la escena. Va justo detrás de la
+         primera ficha, del color del botón de reinicio, para que se entienda
+         que las dos cosas son la misma familia. -->
+    <group id="mano" x="2.2" y="0" z="0" ry="0.226">
+      <box id="empujar" y="0.42" z="-0.5" sx="0.7" sy="0.84" sz="0.16" color="#8A3B33" touchable="true" border-radius="0.06"/>
+      <text y="0.95" z="-0.42" value="empujar" size="0.11" color="#E4ECF5"/>
+    </group>
+
+    <!-- Cartel del final del recorrido, arriba de la rampa. -->
+    <group x="5.624" y="0" z="7.151" ry="2.291">
+      <cylinder y="0.6" sx="0.08" sy="1.2" sz="0.08" color="#2A2F38" touchable="false"/>
+      <box y="1.42" sx="1.5" sy="0.44" sz="0.05" color="#0E141C" touchable="false" border-radius="0.04"/>
+      <text y="1.5" z="0.04" value="fin" size="0.11" color="#E4ECF5"/>
+      <text id="d_fin" y="1.34" z="0.04" value="" size="0.06" color="#8FA2B6"/>
+    </group>
+
+    <group id="panel" x="0" y="0" z="15.5" ry="3.14159">
+      <cylinder x="-1.3" y="0.7" sx="0.1" sy="1.4" sz="0.1" color="#2A2F38" touchable="false"/>
+      <cylinder x="1.3" y="0.7" sx="0.1" sy="1.4" sz="0.1" color="#2A2F38" touchable="false"/>
+      <box y="1.68" sx="2.9" sy="0.92" sz="0.06" color="#0E141C" touchable="false" border-radius="0.06"/>
+      <text id="d_titulo" y="1.96" z="0.05" value="El dominó" size="0.15" color="#E4ECF5"/>
+      <text id="d_estado" y="1.76" z="0.05" value="240 fichas en pie" size="0.08" color="#8FA2B6"/>
+      <text id="d_ayuda" y="1.62" z="0.05" value="tocá el empujador rojo del principio" size="0.065" color="#8FA2B6"/>
+      <box id="levantar" y="1.36" z="0.05" sx="1.3" sy="0.24" sz="0.05" color="#8A3B33" touchable="true" border-radius="0.04"/>
+      <text y="1.365" z="0.09" value="levantar todo" size="0.075" color="#E4ECF5"/>
+    </group>
+
+    <group id="portal_vuelta" x="-6.5" y="0" z="15" ry="2.733">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#4A3A32","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.DOMINO = {"base":"https://njs58923.github.io/luna-demos/noche","auto":false,"fichas":240,"puestos":[{"x":2.2,"y":0,"z":0,"g":0.226},{"x":2.249,"y":0,"z":0.312,"g":0.081},{"x":2.254,"y":0,"z":0.623,"g":-0.057},{"x":2.214,"y":0,"z":0.94,"g":-0.195},{"x":2.13,"y":0,"z":1.257,"g":-0.332},{"x":2.006,"y":0,"z":1.555,"g":-0.463},{"x":1.848,"y":0,"z":1.828,"g":-0.588},{"x":1.653,"y":0,"z":2.085,"g":-0.713},{"x":1.435,"y":0,"z":2.31,"g":-0.832},{"x":1.186,"y":0,"z":2.513,"g":-0.95},{"x":0.91,"y":0,"z":2.687,"g":-1.069},{"x":0.624,"y":0,"z":2.825,"g":-1.181},{"x":0.319,"y":0,"z":2.931,"g":-1.293},{"x":0.016,"y":0,"z":3.002,"g":-1.4},{"x":-0.299,"y":0,"z":3.04,"g":-1.506},{"x":-0.621,"y":0,"z":3.045,"g":-1.612},{"x":-0.947,"y":0,"z":3.015,"g":-1.718},{"x":-1.256,"y":0,"z":2.954,"g":-1.817},{"x":-1.561,"y":0,"z":2.862,"g":-1.917},{"x":-1.86,"y":0,"z":2.738,"g":-2.017},{"x":-2.133,"y":0,"z":2.592,"g":-2.111},{"x":-2.411,"y":0,"z":2.407,"g":-2.211},{"x":-2.657,"y":0,"z":2.206,"g":-2.304},{"x":-2.887,"y":0,"z":1.98,"g":-2.398},{"x":-3.085,"y":0,"z":1.746,"g":-2.486},{"x":-3.275,"y":0,"z":1.476,"g":-2.58},{"x":-3.431,"y":0,"z":1.203,"g":-2.667},{"x":-3.564,"y":0,"z":0.915,"g":-2.755},{"x":-3.673,"y":0,"z":0.613,"g":-2.843},{"x":-3.756,"y":0,"z":0.298,"g":-2.93},{"x":-3.809,"y":0,"z":-0.004,"g":-3.012},{"x":-3.839,"y":0,"z":-0.335,"g":-3.099},{"x":-3.84,"y":0,"z":-0.649,"g":3.102},{"x":-3.815,"y":0,"z":-0.964,"g":3.02},{"x":-3.765,"y":0,"z":-1.281,"g":2.939},{"x":-3.688,"y":0,"z":-1.595,"g":2.857},{"x":-3.584,"y":0,"z":-1.905,"g":2.776},{"x":-3.465,"y":0,"z":-2.187,"g":2.7},{"x":-3.311,"y":0,"z":-2.482,"g":2.619},{"x":-3.146,"y":0,"z":-2.747,"g":2.543},{"x":-2.959,"y":0,"z":-3.001,"g":2.467},{"x":-2.752,"y":0,"z":-3.242,"g":2.392},{"x":-2.526,"y":0,"z":-3.469,"g":2.316},{"x":-2.28,"y":0,"z":-3.68,"g":2.24},{"x":-2.017,"y":0,"z":-3.873,"g":2.165},{"x":-1.76,"y":0,"z":-4.035,"g":2.095},{"x":-1.468,"y":0,"z":-4.191,"g":2.02},{"x":-1.185,"y":0,"z":-4.316,"g":1.95},{"x":-0.868,"y":0,"z":-4.43,"g":1.874},{"x":-0.566,"y":0,"z":-4.514,"g":1.805},{"x":-0.256,"y":0,"z":-4.577,"g":1.735},{"x":0.06,"y":0,"z":-4.619,"g":1.665},{"x":0.38,"y":0,"z":-4.639,"g":1.596},{"x":0.704,"y":0,"z":-4.637,"g":1.526},{"x":1.029,"y":0,"z":-4.612,"g":1.456},{"x":1.326,"y":0,"z":-4.569,"g":1.393},{"x":1.649,"y":0,"z":-4.5,"g":1.323},{"x":1.969,"y":0,"z":-4.408,"g":1.253},{"x":2.258,"y":0,"z":-4.304,"g":1.19},{"x":2.542,"y":0,"z":-4.181,"g":1.126},{"x":2.844,"y":0,"z":-4.025,"g":1.056},{"x":3.112,"y":0,"z":-3.863,"g":0.993},{"x":3.371,"y":0,"z":-3.683,"g":0.929},{"x":3.62,"y":0,"z":-3.485,"g":0.865},{"x":3.857,"y":0,"z":-3.271,"g":0.801},{"x":4.081,"y":0,"z":-3.041,"g":0.738},{"x":4.292,"y":0,"z":-2.795,"g":0.674},{"x":4.488,"y":0,"z":-2.535,"g":0.61},{"x":4.668,"y":0,"z":-2.261,"g":0.547},{"x":4.817,"y":0,"z":-2.001,"g":0.489},{"x":4.964,"y":0,"z":-1.704,"g":0.425},{"x":5.082,"y":0,"z":-1.424,"g":0.367},{"x":5.193,"y":0,"z":-1.108,"g":0.303},{"x":5.277,"y":0,"z":-0.813,"g":0.246},{"x":5.35,"y":0,"z":-0.481,"g":0.182},{"x":5.398,"y":0,"z":-0.175,"g":0.124},{"x":5.428,"y":0,"z":0.135,"g":0.066},{"x":5.441,"y":0,"z":0.449,"g":0.008},{"x":5.434,"y":0,"z":0.795,"g":-0.055},{"x":5.408,"y":0,"z":1.112,"g":-0.113},{"x":5.364,"y":0,"z":1.427,"g":-0.171},{"x":5.301,"y":0,"z":1.741,"g":-0.229},{"x":5.22,"y":0,"z":2.053,"g":-0.287},{"x":5.12,"y":0,"z":2.361,"g":-0.344},{"x":5.015,"y":0,"z":2.635,"g":-0.396},{"x":4.881,"y":0,"z":2.933,"g":-0.454},{"x":4.729,"y":0,"z":3.224,"g":-0.512},{"x":4.56,"y":0,"z":3.508,"g":-0.57},{"x":4.393,"y":0,"z":3.756,"g":-0.622},{"x":4.192,"y":0,"z":4.022,"g":-0.68},{"x":3.997,"y":0,"z":4.252,"g":-0.732},{"x":3.765,"y":0,"z":4.496,"g":-0.789},{"x":3.544,"y":0,"z":4.706,"g":-0.841},{"x":3.285,"y":0,"z":4.926,"g":-0.899},{"x":3.04,"y":0,"z":5.111,"g":-0.951},{"x":2.785,"y":0,"z":5.285,"g":-1.003},{"x":2.489,"y":0,"z":5.462,"g":-1.061},{"x":2.214,"y":0,"z":5.608,"g":-1.113},{"x":1.93,"y":0,"z":5.74,"g":-1.165},{"x":1.639,"y":0,"z":5.857,"g":-1.217},{"x":1.34,"y":0,"z":5.96,"g":-1.269},{"x":1.035,"y":0,"z":6.047,"g":-1.321},{"x":0.69,"y":0,"z":6.126,"g":-1.379},{"x":0.375,"y":0,"z":6.179,"g":-1.431},{"x":0.091,"y":0,"z":6.214,"g":-1.477},{"x":-0.23,"y":0,"z":6.236,"g":-1.529},{"x":-0.554,"y":0,"z":6.243,"g":-1.581},{"x":-0.879,"y":0,"z":6.232,"g":-1.633},{"x":-1.204,"y":0,"z":6.204,"g":-1.685},{"x":-1.529,"y":0,"z":6.159,"g":-1.737},{"x":-1.817,"y":0,"z":6.105,"g":-1.783},{"x":-2.138,"y":0,"z":6.028,"g":-1.835},{"x":-2.456,"y":0,"z":5.934,"g":-1.887},{"x":-2.771,"y":0,"z":5.824,"g":-1.939},{"x":-3.046,"y":0,"z":5.711,"g":-1.985},{"x":-3.35,"y":0,"z":5.569,"g":-2.037},{"x":-3.615,"y":0,"z":5.429,"g":-2.083},{"x":-3.906,"y":0,"z":5.257,"g":-2.135},{"x":-4.158,"y":0,"z":5.09,"g":-2.181},{"x":-4.433,"y":0,"z":4.888,"g":-2.233},{"x":-4.669,"y":0,"z":4.697,"g":-2.279},{"x":-4.896,"y":0,"z":4.494,"g":-2.325},{"x":-5.142,"y":0,"z":4.252,"g":-2.377},{"x":-5.351,"y":0,"z":4.026,"g":-2.423},{"x":-5.549,"y":0,"z":3.789,"g":-2.469},{"x":-5.76,"y":0,"z":3.512,"g":-2.521},{"x":-5.935,"y":0,"z":3.255,"g":-2.567},{"x":-6.099,"y":0,"z":2.99,"g":-2.613},{"x":-6.252,"y":0,"z":2.716,"g":-2.66},{"x":-6.391,"y":0,"z":2.435,"g":-2.706},{"x":-6.534,"y":0,"z":2.11,"g":-2.758},{"x":-6.646,"y":0,"z":1.815,"g":-2.804},{"x":-6.745,"y":0,"z":1.513,"g":-2.85},{"x":-6.831,"y":0,"z":1.206,"g":-2.896},{"x":-6.902,"y":0,"z":0.895,"g":-2.942},{"x":-6.96,"y":0,"z":0.579,"g":-2.988},{"x":-7.002,"y":0,"z":0.26,"g":-3.034},{"x":-7.03,"y":0,"z":-0.061,"g":-3.08},{"x":-7.044,"y":0,"z":-0.385,"g":-3.127},{"x":-7.043,"y":0,"z":-0.669,"g":3.116},{"x":-7.028,"y":0,"z":-0.995,"g":3.07},{"x":-6.998,"y":0,"z":-1.32,"g":3.024},{"x":-6.953,"y":0,"z":-1.645,"g":2.978},{"x":-6.893,"y":0,"z":-1.969,"g":2.932},{"x":-6.828,"y":0,"z":-2.251,"g":2.891},{"x":-6.739,"y":0,"z":-2.57,"g":2.845},{"x":-6.636,"y":0,"z":-2.885,"g":2.799},{"x":-6.518,"y":0,"z":-3.197,"g":2.753},{"x":-6.402,"y":0,"z":-3.466,"g":2.713},{"x":-6.257,"y":0,"z":-3.768,"g":2.667},{"x":-6.118,"y":0,"z":-4.027,"g":2.626},{"x":-5.945,"y":0,"z":-4.317,"g":2.58},{"x":-5.76,"y":0,"z":-4.6,"g":2.534},{"x":-5.586,"y":0,"z":-4.841,"g":2.494},{"x":-5.375,"y":0,"z":-5.108,"g":2.448},{"x":-5.18,"y":0,"z":-5.335,"g":2.407},{"x":-4.945,"y":0,"z":-5.584,"g":2.361},{"x":-4.73,"y":0,"z":-5.794,"g":2.321},{"x":-4.506,"y":0,"z":-5.996,"g":2.281},{"x":-4.24,"y":0,"z":-6.215,"g":2.235},{"x":-3.998,"y":0,"z":-6.398,"g":2.194},{"x":-3.712,"y":0,"z":-6.595,"g":2.148},{"x":-3.454,"y":0,"z":-6.757,"g":2.108},{"x":-3.188,"y":0,"z":-6.909,"g":2.067},{"x":-2.877,"y":0,"z":-7.07,"g":2.021},{"x":-2.598,"y":0,"z":-7.199,"g":1.981},{"x":-2.313,"y":0,"z":-7.317,"g":1.941},{"x":-2.023,"y":0,"z":-7.424,"g":1.9},{"x":-1.685,"y":0,"z":-7.531,"g":1.854},{"x":-1.386,"y":0,"z":-7.613,"g":1.814},{"x":-1.082,"y":0,"z":-7.683,"g":1.774},{"x":-0.775,"y":0,"z":-7.741,"g":1.733},{"x":-0.465,"y":0,"z":-7.786,"g":1.693},{"x":-0.152,"y":0,"z":-7.819,"g":1.653},{"x":0.207,"y":0,"z":-7.841,"g":1.607},{"x":0.523,"y":0,"z":-7.847,"g":1.566},{"x":0.84,"y":0,"z":-7.84,"g":1.526},{"x":1.157,"y":0,"z":-7.821,"g":1.486},{"x":1.474,"y":0,"z":-7.788,"g":1.445},{"x":1.79,"y":0,"z":-7.743,"g":1.405},{"x":2.104,"y":0,"z":-7.684,"g":1.365},{"x":2.417,"y":0,"z":-7.613,"g":1.325},{"x":2.728,"y":0,"z":-7.53,"g":1.284},{"x":3.036,"y":0,"z":-7.433,"g":1.244},{"x":3.34,"y":0,"z":-7.324,"g":1.204},{"x":3.64,"y":0,"z":-7.202,"g":1.163},{"x":3.895,"y":0,"z":-7.088,"g":1.129},{"x":4.186,"y":0,"z":-6.944,"g":1.088},{"x":4.473,"y":0,"z":-6.787,"g":1.048},{"x":4.754,"y":0,"z":-6.619,"g":1.008},{"x":5.028,"y":0,"z":-6.439,"g":0.968},{"x":5.296,"y":0,"z":-6.248,"g":0.927},{"x":5.52,"y":0,"z":-6.075,"g":0.893},{"x":5.773,"y":0,"z":-5.863,"g":0.852},{"x":6.019,"y":0,"z":-5.641,"g":0.812},{"x":6.256,"y":0,"z":-5.408,"g":0.772},{"x":6.452,"y":0,"z":-5.201,"g":0.737},{"x":6.672,"y":0,"z":-4.95,"g":0.697},{"x":6.882,"y":0,"z":-4.69,"g":0.657},{"x":7.083,"y":0,"z":-4.421,"g":0.616},{"x":7.246,"y":0,"z":-4.183,"g":0.582},{"x":7.426,"y":0,"z":-3.899,"g":0.542},{"x":7.572,"y":0,"z":-3.649,"g":0.507},{"x":7.731,"y":0,"z":-3.35,"g":0.467},{"x":7.878,"y":0,"z":-3.044,"g":0.426},{"x":7.995,"y":0,"z":-2.777,"g":0.392},{"x":8.12,"y":0,"z":-2.46,"g":0.352},{"x":8.216,"y":0,"z":-2.184,"g":0.317},{"x":8.318,"y":0,"z":-1.857,"g":0.277},{"x":8.394,"y":0,"z":-1.573,"g":0.242},{"x":8.471,"y":0,"z":-1.238,"g":0.202},{"x":8.526,"y":0,"z":-0.948,"g":0.167},{"x":8.577,"y":0,"z":-0.606,"g":0.127},{"x":8.611,"y":0,"z":-0.311,"g":0.093},{"x":8.637,"y":0,"z":0.034,"g":0.052},{"x":8.648,"y":0,"z":0.332,"g":0.018},{"x":8.648,"y":0,"z":0.681,"g":-0.022},{"x":8.637,"y":0,"z":0.98,"g":-0.057},{"x":8.611,"y":0,"z":1.329,"g":-0.097},{"x":8.578,"y":0,"z":1.627,"g":-0.132},{"x":8.534,"y":0,"z":1.925,"g":-0.166},{"x":8.47,"y":0,"z":2.272,"g":-0.207},{"x":8.403,"y":0,"z":2.567,"g":-0.241},{"x":8.327,"y":0,"z":2.86,"g":-0.276},{"x":8.224,"y":0,"z":3.199,"g":-0.316},{"x":8.126,"y":0,"z":3.487,"g":-0.35},{"x":8.017,"y":0,"z":3.772,"g":-0.385},{"x":7.877,"y":0,"z":4.101,"g":-0.425},{"x":7.747,"y":0,"z":4.378,"g":-0.46},{"x":7.607,"y":0,"z":4.651,"g":-0.494},{"x":7.457,"y":0,"z":4.92,"g":-0.529},{"x":7.27,"y":0,"z":5.227,"g":-0.569},{"x":7.1,"y":0,"z":5.485,"g":-0.604},{"x":6.921,"y":0,"z":5.737,"g":-0.638},{"x":6.732,"y":0,"z":5.983,"g":-0.673},{"x":6.535,"y":0,"z":6.223,"g":-0.707},{"x":6.295,"y":0,"z":6.495,"g":-0.747},{"x":6.079,"y":0,"z":6.721,"g":-0.782},{"x":5.856,"y":0,"z":6.94,"g":-0.816},{"x":5.624,"y":0,"z":7.151,"g":-0.851}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/domino.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_ui - no editar a mano -->
+<hsml>
+  <head><name>Ajustes</name></head>
+
+  <space resources="navigate_self,navigate_world,read_camera_pose,spawn,vr_locomotion,desktop_camera_control">
+    <spawn id="entrada" default="true" x="0" y="0" z="0" ry="0"/>
+
+    <group id="cielo">
+      <plane z="-40" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane z="40" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane x="-40" ry="1.5707963" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane x="40" ry="1.5707963" sx="80" sy="80" color="#08080C" touchable="false"/>
+      <plane y="40" rx="1.5707963" sx="80" sy="80" color="#08080C" touchable="false"/>
+    </group>
+
+    <cylinder y="-0.05" sx="14" sy="0.1" sz="14" color="#12121A" touchable="false"/>
+    <box x="-3" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-5" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-2.4" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-4.4" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-1.7999999999999998" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-3.8" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-1.2" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-3.2" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="-0.6" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-2.6" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="0" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-2" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="0.6" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-1.4" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="1.2" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-0.8" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="1.7999999999999998" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="-0.20000000000000018" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="2.4" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="0.3999999999999999" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+    <box x="3" y="0.004" z="-2" sx="0.01" sy="0.008" sz="6" color="#2A2A3A" touchable="false"/>
+    <box y="0.004" z="1" sx="6" sy="0.008" sz="0.01" color="#2A2A3A" touchable="false"/>
+
+    <group x="2.6" y="0" z="2.2" ry="-2.273">
+      <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/ui/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/index.hsml","id":"atrio","titulo":"Al atrio","sub":"volver a las salas","color":"#2A2A38","roca":"#5A5A70"}'/>
+    </group>
+
+    <!-- La malla de la interfaz: todo lo que se dibuja y no se toca. -->
+    <!-- material-unlit es la diferencia entre una interfaz y una pared
+         pintada: sin esto el material estandar ilumina la malla y los colores
+         llegan apagados y dependientes de donde este parado el visitante. Una
+         interfaz quiere el color que se le pidio, no el que le toque. -->
+    <model id="ui_malla" material-unlit="true"/>
+    <!-- Y el contenedor de lo que no puede ser malla: textos y blancos. -->
+    <group id="ui_nodos"/>
+
+    <script>
+      globalThis.UI_CFG = {"base":"https://njs58923.github.io/luna-demos/ui","distancia":1.6,"C":{"fondo":"#08080C","piso":"#12121A","reja":"#2A2A3A","superficie":"#1C1C26","superficieAlta":"#2A2A38","borde":"#5A5A70","texto":"#FFFFFF","textoTenue":"#A8A8BC","azul":"#0A84FF","rojo":"#FF3B30","verde":"#30D158","amarillo":"#FFD60A","violeta":"#BF5AF2","naranja":"#FF9F0A","cian":"#40E0D0"}};
+      globalThis.APP = {};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/ui/pagina__app-ajustes.js"/>
+  </space>
+</hsml>

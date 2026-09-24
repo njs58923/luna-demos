@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El planetario</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="6.6" ry="0"/>
+    <group id="cielo">
+    </group>
+
+    <!-- Las estrellas y las órbitas: dos mallas dinámicas, un nodo cada una.
+         Las órbitas son ocho anillos finos; como nodos serían ocho cilindros
+         aplastados que no se pueden hacer finos de verdad. -->
+    <model id="estrellas"/>
+    <model id="orbitas" y="1.32"/>
+
+    <!-- La peana. El disco de abajo es el botón de las órbitas. -->
+    <group id="aparato">
+      <cylinder id="peana" y="0.06" sx="13" sy="0.12" sz="13" color="#3B3226" touchable="true"/>
+      <cylinder y="0.14" sx="12.6" sy="0.05" sz="12.6" color="#4E4231" touchable="false"/>
+      <cylinder y="0.7" sx="0.34" sy="1.3" sz="0.34" color="#5A4A33" touchable="false"/>
+      <cylinder y="1.3" sx="0.6" sy="0.07" sz="0.6" color="#4E4231" touchable="false"/>
+
+      <!-- El Sol es el botón de la velocidad. -->
+      <sphere id="sol" y="1.32" sx="0.7" sy="0.7" sz="0.7" color="#FFD98A" touchable="true"/>
+      <!-- El halo va como corona plana y no como esfera concéntrica: una esfera
+           más grande alrededor del Sol no lo rodea, lo tapa. Sin transparencia
+           no hay halo volumétrico posible; lo que sí se puede es un disco. -->
+      <cylinder y="1.32" sx="1.5" sy="0.004" sz="1.5" color="#8A6A2E" touchable="false"/>
+
+      <group id="orbita_mercurio" y="1.32" rx="0.122">
+        <group id="brazo_mercurio">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="0.575" sx="1.15" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_mercurio" x="1.15" sx="0.15" sy="0.15" sz="0.15" color="#9A8E82" touchable="true"/>
+
+
+        </group>
+      </group>
+      <group id="orbita_venus" y="1.32" rx="0.059">
+        <group id="brazo_venus">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="0.8" sx="1.6" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_venus" x="1.6" sx="0.23" sy="0.23" sz="0.23" color="#D8B27A" touchable="true"/>
+
+
+        </group>
+      </group>
+      <group id="orbita_tierra" y="1.32" rx="0">
+        <group id="brazo_tierra">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="1.05" sx="2.1" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_tierra" x="2.1" sx="0.24" sy="0.24" sz="0.24" color="#4C86B8" touchable="true"/>
+
+          <group id="luna_tierra" x="2.1">
+            <sphere x="0.312" sx="0.066" sy="0.066" sz="0.066" color="#C9CDD2" touchable="false"/>
+          </group>
+        </group>
+      </group>
+      <group id="orbita_marte" y="1.32" rx="0.033">
+        <group id="brazo_marte">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="1.325" sx="2.65" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_marte" x="2.65" sx="0.18" sy="0.18" sz="0.18" color="#B4573A" touchable="true"/>
+
+          <group id="luna_marte" x="2.65">
+            <sphere x="0.234" sx="0.05" sy="0.05" sz="0.05" color="#C9CDD2" touchable="false"/>
+          </group>
+        </group>
+      </group>
+      <group id="orbita_jupiter" y="1.32" rx="0.023">
+        <group id="brazo_jupiter">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="1.75" sx="3.5" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_jupiter" x="3.5" sx="0.6" sy="0.6" sz="0.6" color="#C9A177" touchable="true"/>
+
+          <group id="luna_jupiter" x="3.5">
+            <sphere x="0.78" sx="0.165" sy="0.165" sz="0.165" color="#C9CDD2" touchable="false"/>
+          </group>
+        </group>
+      </group>
+      <group id="orbita_saturno" y="1.32" rx="0.044">
+        <group id="brazo_saturno">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="2.175" sx="4.35" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_saturno" x="4.35" sx="0.52" sy="0.52" sz="0.52" color="#D8C48C" touchable="true"/>
+          <cylinder x="4.35" rz="0.32" sx="1.196" sy="0.008" sz="1.196" color="#B8A472" touchable="false"/>
+          <group id="luna_saturno" x="4.35">
+            <sphere x="0.676" sx="0.143" sy="0.143" sz="0.143" color="#C9CDD2" touchable="false"/>
+          </group>
+        </group>
+      </group>
+      <group id="orbita_urano" y="1.32" rx="0.014">
+        <group id="brazo_urano">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="2.55" sx="5.1" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_urano" x="5.1" sx="0.36" sy="0.36" sz="0.36" color="#8FC6C9" touchable="true"/>
+
+          <group id="luna_urano" x="5.1">
+            <sphere x="0.468" sx="0.099" sy="0.099" sz="0.099" color="#C9CDD2" touchable="false"/>
+          </group>
+        </group>
+      </group>
+      <group id="orbita_neptuno" y="1.32" rx="0.031">
+        <group id="brazo_neptuno">
+          <!-- El brazo: una caja fina del centro al planeta. Va corrida medio
+               largo porque la caja se dibuja centrada en su origen. -->
+          <box x="2.9" sx="5.8" sy="0.012" sz="0.012" color="#6B5940" touchable="false"/>
+          <sphere id="pl_neptuno" x="5.8" sx="0.35" sy="0.35" sz="0.35" color="#4A6FBF" touchable="true"/>
+
+          <group id="luna_neptuno" x="5.8">
+            <sphere x="0.455" sx="0.096" sy="0.096" sz="0.096" color="#C9CDD2" touchable="false"/>
+          </group>
+        </group>
+      </group>
+    </group>
+
+    <!-- El panel: un cartel que el script reescribe con setAttribute. Va
+         inclinado hacia el visitante, a la altura de la vista. -->
+    <group id="panel" x="8.4" y="0" z="2.03" ry="-1.15">
+      <cylinder y="0.55" sx="0.1" sy="1.1" sz="0.1" color="#5A4A33" touchable="false"/>
+      <box y="1.42" sx="2.5" sy="1.15" sz="0.06" color="#0E141F" touchable="false" border-radius="0.07"/>
+      <text id="p_nombre" y="1.82" z="0.05" value="El planetario" size="0.16" color="#E9EFF7"/>
+      <text id="p_dato1" y="1.6" z="0.05" value="tocá un planeta" size="0.075" color="#93A3B5"/>
+      <text id="p_dato2" y="1.46" z="0.05" value="tocá el Sol para cambiar la velocidad" size="0.075" color="#93A3B5"/>
+      <text id="p_dato3" y="1.32" z="0.05" value="tocá la peana para las órbitas" size="0.075" color="#93A3B5"/>
+      <text id="p_nota" y="1.12" z="0.05" value="" size="0.062" color="#FFD98A"/>
+    </group>
+
+    <!-- Reloj: los días que lleva corridos la simulación. -->
+    <group x="-8.2" y="0" z="1.74" ry="1.2">
+      <cylinder y="0.5" sx="0.08" sy="1" sz="0.08" color="#5A4A33" touchable="false"/>
+      <box y="1.16" sx="1.5" sy="0.44" sz="0.05" color="#0E141F" touchable="false" border-radius="0.05"/>
+      <text id="p_reloj" y="1.24" z="0.04" value="día 0" size="0.1" color="#E9EFF7"/>
+      <text id="p_vel" y="1.08" z="0.04" value="velocidad 1x" size="0.062" color="#93A3B5"/>
+    </group>
+
+    <group id="portal_vuelta" x="0" y="0" z="9.2" ry="3.14159">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_planetario","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#4A4438","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.PLANETARIO = {"base":"https://njs58923.github.io/luna-demos/noche","estrellas":700,"planetas":[{"id":"mercurio","nombre":"Mercurio","orbita":1.15,"bola":0.075,"color":"#9A8E82","periodo":88,"diametro":4879,"lunas":0,"nota":"sin atmósfera; 430 °C de día, -180 de noche"},{"id":"venus","nombre":"Venus","orbita":1.6,"bola":0.115,"color":"#D8B27A","periodo":225,"diametro":12104,"lunas":0,"nota":"gira al revés y más lento de lo que tarda en dar la vuelta"},{"id":"tierra","nombre":"Tierra","orbita":2.1,"bola":0.12,"color":"#4C86B8","periodo":365,"diametro":12742,"lunas":1,"nota":"el único con agua líquida en la superficie"},{"id":"marte","nombre":"Marte","orbita":2.65,"bola":0.09,"color":"#B4573A","periodo":687,"diametro":6779,"lunas":2,"nota":"tiene el volcán más alto del sistema: 21 km"},{"id":"jupiter","nombre":"Júpiter","orbita":3.5,"bola":0.3,"color":"#C9A177","periodo":4333,"diametro":139820,"lunas":95,"nota":"pesa dos veces y media todos los demás juntos"},{"id":"saturno","nombre":"Saturno","orbita":4.35,"bola":0.26,"color":"#D8C48C","periodo":10759,"diametro":116460,"lunas":146,"nota":"sus anillos tienen 10 m de espesor y 280 000 km de ancho"},{"id":"urano","nombre":"Urano","orbita":5.1,"bola":0.18,"color":"#8FC6C9","periodo":30687,"diametro":50724,"lunas":28,"nota":"gira acostado: su eje apunta casi al Sol"},{"id":"neptuno","nombre":"Neptuno","orbita":5.8,"bola":0.175,"color":"#4A6FBF","periodo":60190,"diametro":49244,"lunas":16,"nota":"vientos de 2 000 km/h, los más rápidos que se conocen"}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/planetario.js"/>
+  </space>
+</hsml>

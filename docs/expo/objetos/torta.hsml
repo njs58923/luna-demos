@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Torta de cumpleaños. Las velitas arden; tocar cada una la sopla (en VR,
+  acercando la mano rápido). Con todas apagadas suena el "Cumpleaños feliz" y
+  se vuelven a prender solas.
+
+  De mesa: apoya en y=0. Mide 0.34 × 0.3 × 0.34 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/torta.hsml"
+             resources="audio,read_pose_stream" events="deseo"
+             props='{"velas":5,"nombre":"Ana"}'/>
+
+  Props: velas (1 a 12), nombre (en el cartelito), baño (color del glaseado).
+  Eventos: vela {quedan}, deseo {} con todas apagadas.
+  Mensajes: prender.
+-->
+<hsml>
+  <head><name>Torta de cumpleaños</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder y="0.008" sx="0.36" sy="0.016" sz="0.36" color="#E8E8E8"/>
+    <cylinder id="bizcocho" y="0.07" sx="0.3" sy="0.11" sz="0.3" color="#8B5A2B"/>
+    <cylinder id="relleno" y="0.07" sx="0.302" sy="0.012" sz="0.302" color="#E63946"/>
+    <cylinder id="bano" y="0.13" sx="0.31" sy="0.02" sz="0.31" color="#FFC8DD"/>
+    <group id="gotas" y="0.12"/>
+    <group id="velas" y="0.14"/>
+    <text id="nombre" y="0.075" z="0.152" value="" size="0.024" color="#FFFFFF"/>
+    <posezone id="zona" y="0.25" sx="0.5" sy="0.3" sz="0.5" visible="false"/>
+    <script src="./torta.js"/>
+  </space>
+</hsml>

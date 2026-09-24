@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Calculadora. Veinte teclas y un visor, como una de escritorio: suma, resta,
+  multiplica, divide, porcentaje y cambio de signo.
+
+  De mesa: apoya en y=0, inclinada hacia quien la mira (+Z). Mide
+  0.2 × 0.08 × 0.28 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/calculadora.hsml"
+             resources="audio" events="resultado" props='{"color":"#2B2D42"}'/>
+
+  Props: color (del cuerpo), sonido (bool).
+  Eventos: resultado {valor} cada vez que se aprieta =.
+  Mensajes: teclas {teclas: "12+30="} (aprieta esas teclas en orden).
+-->
+<hsml>
+  <head><name>Calculadora</name></head>
+  <space resources="audio,read_pose_stream">
+    <group id="cuerpo" y="0.035" rx="-0.28">
+      <box id="carcasa" sx="0.2" sy="0.024" sz="0.28" color="#2B2D42" border-radius="0.01"/>
+      <box y="0.013" z="-0.085" sx="0.17" sy="0.004" sz="0.07" color="#8D9A7A"/>
+      <text id="visor" x="0.075" y="0.016" z="-0.085" rx="-1.5707963" value="0" size="0.03" color="#1C2416"/>
+      <text id="memoria" x="-0.07" y="0.016" z="-0.107" rx="-1.5707963" value="" size="0.012" color="#1C2416"/>
+      <group id="teclas" y="0.013" z="0.03"/>
+    </group>
+    <box y="0.012" z="-0.1" sx="0.18" sy="0.024" sz="0.03" color="#1C1C26"/>
+    <script src="./calculadora.js"/>
+  </space>
+</hsml>

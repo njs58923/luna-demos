@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Metrónomo. Una pirámide con un péndulo que va y viene al tempo, y un tic en
+  cada pulso (más fuerte en el primero del compás). Tocar la pirámide lo
+  larga o lo para; los botones cambian el tempo de a 5.
+
+  De mesa: apoya en y=0, mira a +Z. Mide 0.16 × 0.28 × 0.12 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/metronomo.hsml"
+             resources="audio" events="cambio" props='{"bpm":90,"compas":3}'/>
+
+  Props: bpm (30 a 240), compas (1 a 12), madera (color), clave.
+  Eventos: cambio {bpm, andando}.
+  Mensajes: largar, parar, bpm {bpm}.
+-->
+<hsml>
+  <head><name>Metrónomo</name></head>
+  <space resources="audio,read_pose_stream">
+    <group id="piramide">
+      <box class="madera" y="0.015" sx="0.16" sy="0.03" sz="0.12" color="#7A4A2A"/>
+      <box class="madera" y="0.07" sx="0.13" sy="0.08" sz="0.1" color="#7A4A2A"/>
+      <box class="madera" y="0.15" sx="0.1" sy="0.08" sz="0.08" color="#7A4A2A"/>
+      <box class="madera" y="0.22" sx="0.07" sy="0.06" sz="0.06" color="#7A4A2A"/>
+      <box class="madera" y="0.26" sx="0.04" sy="0.02" sz="0.04" color="#7A4A2A"/>
+    </group>
+    <box y="0.14" z="0.05" sx="0.05" sy="0.2" sz="0.004" color="#E9DCC9"/>
+    <group id="pendulo" y="0.05" z="0.056">
+      <box y="0.1" sx="0.005" sy="0.2" sz="0.004" color="#C9A45C"/>
+      <box id="pesa" y="0.14" sx="0.022" sy="0.018" sz="0.01" color="#C9A45C"/>
+    </group>
+    <group y="0.045" z="0.062">
+      <box id="menos" x="-0.04" sx="0.025" sy="0.02" sz="0.01" color="#2A2A2A"/>
+      <box id="mas" x="0.04" sx="0.025" sy="0.02" sz="0.01" color="#2A2A2A"/>
+      <text x="-0.04" z="0.006" value="-" size="0.016" color="#FFFFFF"/>
+      <text x="0.04" z="0.006" value="+" size="0.016" color="#FFFFFF"/>
+      <text id="lectura" z="0.006" value="" size="0.013" color="#FFFFFF"/>
+    </group>
+    <box id="toque" y="0.17" z="0.02" sx="0.12" sy="0.2" sz="0.1" color="transparent" material-alpha="blend"/>
+    <script src="./metronomo.js"/>
+  </space>
+</hsml>

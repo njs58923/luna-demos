@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pizarra blanca. En VR se dibuja con la mano: acercarla a la superficie y
+  apretar el gatillo. Con el mouse, cada toque une un punto con el anterior
+  (si fue hace menos de dos segundos). Los fibrones de la bandeja cambian el
+  color; el borrador, tocado dos veces, la limpia. Lo dibujado queda.
+
+  De pared: el origen es el centro de la pizarra, que mira a +Z. Mide
+  1.24 × 0.92 × 0.1 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/pizarra.hsml"
+             resources="read_pose_stream" events="trazo"
+             props='{"clave":"oficina"}'/>
+
+  Props: marco (color), clave.
+  Eventos: trazo {puntos, color} al terminar cada trazo.
+  Mensajes: borrar.
+-->
+<hsml>
+  <head><name>Pizarra</name></head>
+  <space resources="read_pose_stream">
+    <box id="marco" z="0.01" sx="1.24" sy="0.84" sz="0.02" color="#B0B7BF"/>
+    <box id="superficie" z="0.021" sx="1.2" sy="0.8" sz="0.002" color="#FAFBFC"/>
+    <group id="trazos" z="0.023"/>
+    <!-- La bandeja y lo que hay en ella -->
+    <box y="-0.43" z="0.05" sx="1.1" sy="0.02" sz="0.08" color="#B0B7BF"/>
+    <group id="bandeja" y="-0.41" z="0.05"/>
+    <plane id="lienzo" z="0.03" sx="1.2" sy="0.8" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" z="0.1" sx="1.3" sy="0.9" sz="0.2" visible="false"/>
+    <text id="ayuda" y="0.43" z="0.022" value="" size="0.022" color="#6A7580"/>
+    <script src="./pizarra.js"/>
+  </space>
+</hsml>

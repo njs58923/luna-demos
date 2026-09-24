@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lámpara de lava. Burbujas de cera que suben calentadas desde abajo, se
+  enfrían arriba y bajan, deformándose al moverse. Tocarla la prende o la
+  apaga; apagada, la cera se junta en el fondo.
+
+  De mesa: apoya en y=0. Mide 0.16 × 0.46 × 0.16 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/lava.hsml" events="cambio"
+             props='{"cera":"#FF4D6D","liquido":"#3A0CA3"}'/>
+
+  Props: cera, liquido, metal (colores), encendida.
+  Eventos: cambio {encendida}.
+  Mensajes: encender, apagar.
+-->
+<hsml>
+  <head><name>Lámpara de lava</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="base_b" y="0.04" sx="0.15" sy="0.08" sz="0.15" color="#B8C0C8"/>
+    <cylinder id="base_a" y="0.1" sx="0.11" sy="0.04" sz="0.11" color="#B8C0C8"/>
+    <cylinder id="tapa" y="0.44" sx="0.07" sy="0.04" sz="0.07" color="#B8C0C8"/>
+    <cylinder id="liquido" y="0.27" sx="0.1" sy="0.3" sz="0.1" color="#3A0CA3C0" material-alpha="blend" material-unlit="true"/>
+    <group id="burbujas" y="0.12"/>
+    <box id="toque" y="0.23" sx="0.16" sy="0.46" sz="0.16" color="transparent" material-alpha="blend"/>
+    <script src="./lava.js"/>
+  </space>
+</hsml>

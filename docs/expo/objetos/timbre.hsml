@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Timbre de puerta. Una placa con un botón iluminado: al apretarlo suena
+  "din-don" (o una campanilla, o un zumbador) y el botón parpadea.
+
+  De pared: el origen es el centro de la placa, que mira a +Z. Mide
+  0.1 × 0.16 × 0.03 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/timbre.hsml"
+             resources="audio" events="timbre" props='{"sonido":"dindon","nombre":"Depto 3"}'/>
+
+  Props: sonido ("dindon" | "campanilla" | "zumbador"), nombre (la etiqueta),
+  placa (color).
+  Eventos: timbre {veces} (cuántas veces sonó).
+  Mensajes: tocar.
+-->
+<hsml>
+  <head><name>Timbre</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" z="0.006" sx="0.1" sy="0.16" sz="0.012" color="#C9A45C" border-radius="0.012"/>
+    <box y="0.045" z="0.013" sx="0.075" sy="0.03" sz="0.002" color="#F4F1EA"/>
+    <text id="nombre" y="0.045" z="0.0145" value="" size="0.012" color="#1C1C1C"/>
+    <cylinder z="0.014" y="-0.02" rx="1.5707963" sx="0.05" sy="0.006" sz="0.05" color="#8A7340"/>
+    <cylinder id="boton" z="0.02" y="-0.02" rx="1.5707963" sx="0.034" sy="0.01" sz="0.034" color="#FFE7A0" material-unlit="true"/>
+    <script src="./timbre.js"/>
+  </space>
+</hsml>

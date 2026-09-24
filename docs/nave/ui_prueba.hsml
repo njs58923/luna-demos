@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Banco de pruebas del framework de interfaz del motor, tal cual el ejemplo de
+  guides/framework-ui.md. Sirve para separar "la UI no anda" de "la UI no anda
+  como la monté yo".
+-->
+<hsml>
+  <head><name>Prueba de UI</name></head>
+  <space resources="navigate_self,spawn,read_camera_pose,desktop_camera_control,vr_locomotion">
+    <spawn id="entrada" default="true" x="0" y="0" z="0" ry="0"/>
+    <plane y="0" rx="-1.5707963" sx="20" sy="20" color="#12161C" touchable="false"/>
+
+    <!-- Los contenedores adentro de un grupo girado: es como los monta la
+         nave (una consola por pared) y es lo que hay que descartar. -->
+    <group id="caja" x="0" y="0" z="-2" ry="0.6">
+      <box y="1.6" sx="1.4" sy="1.1" sz="0.08" color="#070B12" touchable="false"/>
+      <model id="ui_malla" material-unlit="true"/>
+      <group id="ui_nodos"/>
+    </group>
+
+    <script>
+      globalThis.UI_CFG = { base: "luna://", distancia: 1.6, C: { texto: "#FFFFFF" } };
+    </script>
+    <script src="luna://internal/ui.js"/>
+    <script src="./ui_prueba.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Despertador digital. Números de siete segmentos, y una alarma que suena.
+
+  De mesa: apoya en y=0, la pantalla mira a +Z. Mide 0.24 × 0.13 × 0.1 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/despertador.hsml"
+             resources="audio" events="alarma"
+             props='{"alarma":"07:30","activa":true,"clave":"mesita"}'/>
+
+  Botones: el grande de arriba apaga la alarma cuando suena (si no, muestra la
+  hora de la alarma); H+ y M+ la corren; ON prende o apaga la alarma. La hora
+  de la alarma y si está activa se guardan.
+
+  Props: color, digitos (color de los números), alarma ("HH:MM"), activa,
+  utc (horas; sin utc, la hora local), clave.
+  Eventos: alarma {hora} cuando empieza a sonar.
+  Mensajes: apagar.
+-->
+<hsml>
+  <head><name>Despertador</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="cuerpo" y="0.065" sx="0.24" sy="0.13" sz="0.1" color="#E63946" border-radius="0.02"/>
+    <box id="pantalla" y="0.065" z="0.05" sx="0.2" sy="0.085" sz="0.004" color="#101418" border-radius="0.006"/>
+    <group id="numeros" y="0.065" z="0.0535"/>
+    <sphere id="led" x="0.088" y="0.03" z="0.053" sx="0.008" sy="0.008" sz="0.004" color="#3A3A3A"/>
+    <!-- Botones de arriba -->
+    <box id="b_apagar" y="0.137" sx="0.1" sy="0.018" sz="0.05" color="#F1FAEE" border-radius="0.006"/>
+    <box id="b_hora" x="-0.095" y="0.133" z="-0.02" sx="0.03" sy="0.01" sz="0.025" color="#1D3557"/>
+    <box id="b_minuto" x="-0.06" y="0.133" z="-0.02" sx="0.03" sy="0.01" sz="0.025" color="#1D3557"/>
+    <box id="b_activa" x="0.08" y="0.133" z="-0.02" sx="0.035" sy="0.01" sz="0.025" color="#457B9D"/>
+    <text x="-0.095" y="0.148" z="-0.02" rx="-1.5707963" value="H+" size="0.012" color="#FFFFFF"/>
+    <text x="-0.06" y="0.148" z="-0.02" rx="-1.5707963" value="M+" size="0.012" color="#FFFFFF"/>
+    <text x="0.08" y="0.148" z="-0.02" rx="-1.5707963" value="ON" size="0.012" color="#FFFFFF"/>
+    <!-- Patitas -->
+    <box x="-0.09" y="0.004" z="0.03" sx="0.03" sy="0.008" sz="0.03" color="#1C1C1C"/>
+    <box x="0.09" y="0.004" z="0.03" sx="0.03" sy="0.008" sz="0.03" color="#1C1C1C"/>
+    <text id="leyenda" y="0.012" z="0.051" value="" size="0.009" color="#F1FAEE"/>
+    <script src="./despertador.js"/>
+  </space>
+</hsml>

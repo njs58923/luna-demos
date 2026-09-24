@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La biblioteca</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante: junto a la pared de entrada, sobre el pasillo: la mesa, las estanterías y el ventanal de frente. Desde el portal se veía el canto de un cuerpo de estantes. -->
+    <spawn id="entrada" default="true" x="-1.6" y="0" z="7" ry="-0.144"/>
+    <!-- La sala. Un interior no necesita skybox: necesita seis paredes, y las
+         seis se ven desde adentro, así que van como planos (doble cara) y no
+         como cilindros o cajas. -->
+    <group id="sala">
+      <plane y="0" rx="1.5707963" sx="22" sy="15" color="#241811" touchable="false"/>
+      <plane y="6.4" rx="1.5707963" sx="22" sy="15" color="#150F0A" touchable="false"/>
+      <plane z="-7.5" sx="22" sy="12.8" color="#2A2018" touchable="false"/>
+      <plane z="7.5" sx="22" sy="12.8" color="#2A2018" touchable="false"/>
+      <plane x="-11" ry="1.5707963" sx="15" sy="12.8" color="#2A2018" touchable="false"/>
+      <plane x="11" ry="1.5707963" sx="15" sy="12.8" color="#2A2018" touchable="false"/>
+
+      <!-- Zócalo y cornisa: dos tiras que le dan altura a la pared. -->
+      <box y="0.14" z="-7.44" sx="22" sy="0.28" sz="0.12" color="#191009" touchable="false"/>
+      <box y="6.2" z="-7.42" sx="22" sy="0.16" sz="0.16" color="#332619" touchable="false"/>
+
+      <!-- Vigas del techo, cada dos metros y medio. -->
+      <box y="6.220000000000001" z="-5" sx="22" sy="0.3" sz="0.34" color="#1E140C" touchable="false"/>
+      <box y="6.220000000000001" z="-2.5" sx="22" sy="0.3" sz="0.34" color="#1E140C" touchable="false"/>
+      <box y="6.220000000000001" z="0" sx="22" sy="0.3" sz="0.34" color="#1E140C" touchable="false"/>
+      <box y="6.220000000000001" z="2.5" sx="22" sy="0.3" sz="0.34" color="#1E140C" touchable="false"/>
+      <box y="6.220000000000001" z="5" sx="22" sy="0.3" sz="0.34" color="#1E140C" touchable="false"/>
+
+      <!-- El ventanal del fondo: la única fuente de luz "de afuera" de la
+           escena, y lo único que da hora. -->
+      <box y="3.2" z="-7.45" sx="3.6" sy="2.6" sz="0.06" color="#1A2436" touchable="false"/>
+      <box y="3.2" z="-7.41" sx="0.1" sy="2.6" sz="0.04" color="#1E140C" touchable="false"/>
+      <box y="3.2" z="-7.41" sx="3.6" sy="0.08" sz="0.04" color="#1E140C" touchable="false"/>
+
+      <!-- Alfombra del pasillo central. -->
+      <plane y="0.012" rx="1.5707963" sx="4.4" sy="12" color="#3A1D1B" touchable="false"/>
+      <plane y="0.016" rx="1.5707963" sx="3.6" sy="11.2" color="#4A2622" touchable="false"/>
+    </group>
+
+      <group x="-10.4" y="0" z="-4.6" ry="1.571">
+        <model id="est_0"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_0" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="10.4" y="0" z="-4.6" ry="-1.571">
+        <model id="est_1"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_1" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="-10.4" y="0" z="0" ry="1.571">
+        <model id="est_2"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_2" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="10.4" y="0" z="0" ry="-1.571">
+        <model id="est_3"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_3" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="-10.4" y="0" z="4.6" ry="1.571">
+        <model id="est_4"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_4" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="10.4" y="0" z="4.6" ry="-1.571">
+        <model id="est_5"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_5" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="-6.2" y="0" z="-7.1" ry="0">
+        <model id="est_6"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_6" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="6.2" y="0" z="-7.1" ry="0">
+        <model id="est_7"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_7" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="-3.4" y="0" z="-2.2" ry="1.571">
+        <model id="est_8"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_8" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="3.4" y="0" z="-2.2" ry="-1.571">
+        <model id="est_9"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_9" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="-3.4" y="0" z="3" ry="1.571">
+        <model id="est_10"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_10" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+      <group x="3.4" y="0" z="3" ry="-1.571">
+        <model id="est_11"/>
+        <!-- La chapita del toque. Sin un nodo propio no hay dónde tocar: una
+             malla dinámica es UNA entidad y el puntero no distingue partes.
+             El primer intento fue una placa del tamaño de la estantería, a un
+             centímetro de los lomos — y tapó los seis mil libros. Una chapita
+             de biblioteca hace el mismo trabajo y además se entiende. -->
+        <box id="marca_11" y="0.42" z="0.37" sx="0.86" sy="0.15" sz="0.02" color="#8A6A2E" touchable="true" border-radius="0.02"/>
+      </group>
+
+    <!-- Las motas de polvo: un nodo, malla dinámica, lo único que se mueve. -->
+    <model id="polvo"/>
+
+    <!-- Mesa de lectura, con su libro abierto y dos sillas. -->
+    <group id="mesa" x="0" y="0" z="4.4">
+      <box y="0.74" sx="2.6" sy="0.08" sz="1.2" color="#2E1E12" touchable="false" border-radius="0.03"/>
+      <box x="-1.15" y="0.37" sx="0.12" sy="0.74" sz="0.12" color="#241609" touchable="false"/>
+      <box x="1.15" y="0.37" sx="0.12" sy="0.74" sz="0.12" color="#241609" touchable="false"/>
+      <box x="-1.15" y="0.37" z="0.45" sx="0.12" sy="0.74" sz="0.12" color="#241609" touchable="false"/>
+      <box x="1.15" y="0.37" z="0.45" sx="0.12" sy="0.74" sz="0.12" color="#241609" touchable="false"/>
+      <box x="-0.16" y="0.8" rz="-0.09" sx="0.42" sy="0.03" sz="0.3" color="#D9CFB6" touchable="false"/>
+      <box x="0.16" y="0.8" rz="0.09" sx="0.42" sy="0.03" sz="0.3" color="#E4DBC4" touchable="false"/>
+      <box y="0.79" sx="0.05" sy="0.05" sz="0.31" color="#4A2A18" touchable="false"/>
+      <cylinder x="0.95" y="0.86" sx="0.2" sy="0.16" sz="0.2" color="#8A6A2E" touchable="false"/>
+      <cylinder x="0.95" y="0.95" sx="0.16" sy="0.03" sz="0.16" color="#FFCE8A" touchable="false"/>
+    </group>
+
+      <group x="-6.4" z="-1.5">
+        <cylinder y="5.5" sx="0.05" sy="1.6" sz="0.05" color="#1E140C" touchable="false"/>
+        <cylinder y="4.66" sx="0.72" sy="0.26" sz="0.72" color="#8A6A2E" touchable="false"/>
+        <cylinder id="luz_0" y="4.52" sx="0.6" sy="0.05" sz="0.6" color="#FFCE8A" touchable="false"/>
+      </group>
+      <group x="0" z="-1.5">
+        <cylinder y="5.5" sx="0.05" sy="1.6" sz="0.05" color="#1E140C" touchable="false"/>
+        <cylinder y="4.66" sx="0.72" sy="0.26" sz="0.72" color="#8A6A2E" touchable="false"/>
+        <cylinder id="luz_1" y="4.52" sx="0.6" sy="0.05" sz="0.6" color="#FFCE8A" touchable="false"/>
+      </group>
+      <group x="6.4" z="-1.5">
+        <cylinder y="5.5" sx="0.05" sy="1.6" sz="0.05" color="#1E140C" touchable="false"/>
+        <cylinder y="4.66" sx="0.72" sy="0.26" sz="0.72" color="#8A6A2E" touchable="false"/>
+        <cylinder id="luz_2" y="4.52" sx="0.6" sy="0.05" sz="0.6" color="#FFCE8A" touchable="false"/>
+      </group>
+      <group x="-6.4" z="4.5">
+        <cylinder y="5.5" sx="0.05" sy="1.6" sz="0.05" color="#1E140C" touchable="false"/>
+        <cylinder y="4.66" sx="0.72" sy="0.26" sz="0.72" color="#8A6A2E" touchable="false"/>
+        <cylinder id="luz_3" y="4.52" sx="0.6" sy="0.05" sz="0.6" color="#FFCE8A" touchable="false"/>
+      </group>
+      <group x="0" z="4.5">
+        <cylinder y="5.5" sx="0.05" sy="1.6" sz="0.05" color="#1E140C" touchable="false"/>
+        <cylinder y="4.66" sx="0.72" sy="0.26" sz="0.72" color="#8A6A2E" touchable="false"/>
+        <cylinder id="luz_4" y="4.52" sx="0.6" sy="0.05" sz="0.6" color="#FFCE8A" touchable="false"/>
+      </group>
+      <group x="6.4" z="4.5">
+        <cylinder y="5.5" sx="0.05" sy="1.6" sz="0.05" color="#1E140C" touchable="false"/>
+        <cylinder y="4.66" sx="0.72" sy="0.26" sz="0.72" color="#8A6A2E" touchable="false"/>
+        <cylinder id="luz_5" y="4.52" sx="0.6" sy="0.05" sz="0.6" color="#FFCE8A" touchable="false"/>
+      </group>
+
+    <!-- El atril: el panel que se llena al tocar una estantería. -->
+    <group id="atril" x="0" y="0" z="6.6" ry="3.14159">
+      <box y="0.98" rx="0.35" sx="2.7" sy="1.0" sz="0.07" color="#120C07" touchable="false" border-radius="0.05"/>
+      <cylinder x="-1.05" y="0.45" sx="0.09" sy="0.9" sz="0.09" color="#1E140C" touchable="false"/>
+      <cylinder x="1.05" y="0.45" sx="0.09" sy="0.9" sz="0.09" color="#1E140C" touchable="false"/>
+      <text id="b_titulo" y="1.24" z="0.16" value="La biblioteca" size="0.105" color="#F0E3CC"/>
+      <text id="b_autor" y="1.08" z="0.11" value="tocá una estantería" size="0.075" color="#B49B75"/>
+      <text id="b_pie" y="0.95" z="0.065" value="" size="0.062" color="#8A6A2E"/>
+      <text id="b_donde" y="0.84" z="0.03" value="" size="0.055" color="#B49B75"/>
+    </group>
+
+    <group id="portal_vuelta" x="-8.4" y="0" z="6.6" ry="2.237">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_biblioteca","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#5A4632","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.BIBLIOTECA = {"base":"https://njs58923.github.io/luna-demos/noche","polvo":500,"estantes":[{"x":-10.4,"z":-4.6,"ry":1.5707963,"ancho":4.3,"alto":4.6,"baldas":7},{"x":10.4,"z":-4.6,"ry":-1.5707963,"ancho":4.3,"alto":4.6,"baldas":7},{"x":-10.4,"z":0,"ry":1.5707963,"ancho":4.3,"alto":4.6,"baldas":7},{"x":10.4,"z":0,"ry":-1.5707963,"ancho":4.3,"alto":4.6,"baldas":7},{"x":-10.4,"z":4.6,"ry":1.5707963,"ancho":4.3,"alto":4.6,"baldas":7},{"x":10.4,"z":4.6,"ry":-1.5707963,"ancho":4.3,"alto":4.6,"baldas":7},{"x":-6.2,"z":-7.1,"ry":0,"ancho":5.2,"alto":4.6,"baldas":7},{"x":6.2,"z":-7.1,"ry":0,"ancho":5.2,"alto":4.6,"baldas":7},{"x":-3.4,"z":-2.2,"ry":1.5707963,"ancho":4,"alto":3.4,"baldas":5},{"x":3.4,"z":-2.2,"ry":-1.5707963,"ancho":4,"alto":3.4,"baldas":5},{"x":-3.4,"z":3,"ry":1.5707963,"ancho":4,"alto":3.4,"baldas":5},{"x":3.4,"z":3,"ry":-1.5707963,"ancho":4,"alto":3.4,"baldas":5}]};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/biblioteca.js"/>
+  </space>
+</hsml>

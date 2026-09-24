@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Perilla. Se gira en el sentido del reloj para subir, de tope a tope en tres
+  cuartos de vuelta, con o sin muescas. En VR se la agarra (grip o gatillo) y
+  se gira la muñeca; en escritorio, un clic en el borde la lleva a ese punto y
+  un clic en el centro la sube una muesca.
+
+  Bloque de panel: emite `valor` al cambiar y acepta `poner`.
+
+  De pared: el origen es el punto de la pared; mira a +Z. Mide 0.16 × 0.18 × 0.06 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/perilla.hsml"
+             resources="audio,read_pose_stream" events="valor"
+             props='{"min":0,"max":10,"pasos":10,"etiqueta":"VOLUMEN"}'/>
+
+  Props: min, max, pasos (muescas; 0 = continua), inicial, decimales, color,
+  etiqueta, clave (guarda la posición).
+  Eventos: valor {valor, fraccion}.
+  Mensajes: poner {valor} o {fraccion}.
+-->
+<hsml>
+  <head><name>Perilla</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="placa" y="0.0" z="0.01" sx="0.16" sy="0.18" sz="0.02" color="#22252E" border-radius="0.015"/>
+    <group id="escala" y="0.01" z="0.021"/>
+    <group id="perilla" y="0.01" z="0.021"/>
+    <text id="lectura" y="-0.062" z="0.021" value="" size="0.02" color="#FFD166"/>
+    <text id="etiqueta" y="0.075" z="0.021" value="" size="0.014" color="#C8CCD8"/>
+    <cylinder id="toque" manos="false" y="0.01" z="0.05" rx="1.5708" sx="0.13" sy="0.03" sz="0.13" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.01" z="0.15" sx="0.4" sy="0.4" sz="0.35" visible="false"/>
+    <script src="./perilla.js"/>
+  </space>
+</hsml>

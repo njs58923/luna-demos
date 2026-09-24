@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Teléfono de disco. Levantá el tubo (tocándolo): da tono. Marcá tocando los
+  agujeros del disco: el disco gira hasta el tope y vuelve contando pulsos.
+  Si el número está en la agenda, suena un par de veces y te lleva a ese
+  mundo; si no, da ocupado. Tocar el tubo de nuevo cuelga. Con el mensaje
+  `sonar` suena el timbre; levantar el tubo atiende.
+
+  De mesa: apoya en y=0. Mide 0.24 × 0.16 × 0.22 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/telefono.hsml"
+             resources="audio,navigate_world" events="llamada"
+             props='{"agenda":{"100":"https://njs58923.github.io/luna-demos/expo/calle.hsml"}}'/>
+
+  Props: agenda ({número: URL}), color.
+  Eventos: marcado {numero}, llamada {numero, url} (url vacía si no existe),
+  atendio {}.
+  Mensajes: sonar, colgar.
+-->
+<hsml>
+  <head><name>Teléfono de disco</name></head>
+  <space resources="audio,navigate_world,read_pose_stream">
+    <box id="cuerpo" y="0.045" sx="0.22" sy="0.09" sz="0.2" color="#1C1C1C" border-radius="0.03"/>
+    <box y="0.095" z="-0.055" sx="0.19" sy="0.03" sz="0.085" color="#1C1C1C" border-radius="0.015"/>
+    <!-- La horquilla. -->
+    <box x="-0.075" y="0.118" z="-0.065" sx="0.02" sy="0.02" sz="0.03" color="#2B2B2B"/>
+    <box x="0.075" y="0.118" z="-0.065" sx="0.02" sy="0.02" sz="0.03" color="#2B2B2B"/>
+    <!-- El disco, arriba y un poco inclinado hacia quien mira. -->
+    <group id="frente" y="0.115" z="0.04" rx="0.35">
+      <cylinder y="0.002" sx="0.13" sy="0.004" sz="0.13" color="#F1FAEE"/>
+      <group id="numeros"/>
+      <group id="disco" y="0.006"/>
+      <cylinder y="0.009" sx="0.03" sy="0.004" sz="0.03" color="#E63946"/>
+      <box id="tope" x="0.036" y="0.012" z="0.06" ry="0.52" sx="0.004" sy="0.01" sz="0.018" color="#B0B0B0"/>
+    </group>
+    <group id="tubo" y="0.14" z="-0.065">
+      <cylinder rz="1.5708" sx="0.026" sy="0.15" sz="0.026" color="#1C1C1C"/>
+      <cylinder x="-0.078" y="-0.008" sx="0.05" sy="0.03" sz="0.05" color="#1C1C1C"/>
+      <cylinder x="0.078" y="-0.008" sx="0.05" sy="0.03" sz="0.05" color="#1C1C1C"/>
+      <box id="toque_tubo" sx="0.22" sy="0.06" sz="0.07" color="transparent" material-alpha="blend"/>
+    </group>
+    <group id="cable"/>
+    <box y="0.02" z="0.101" sx="0.1" sy="0.022" sz="0.002" color="#F4E3B2"/>
+    <text id="numero" y="0.02" z="0.103" value="" size="0.011" color="#1C1C1C"/>
+    <script src="./telefono.js"/>
+  </space>
+</hsml>

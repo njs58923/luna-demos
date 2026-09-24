@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pelota. Tocarla la patea, alejándola del punto tocado; rebota, rueda y
+  frena. En VR se la agarra con el grip y se la tira. No se escapa: rebota
+  contra un borde invisible de `radio` metros alrededor de donde está.
+
+  De piso: apoya en y=0. La pelota mide 0.22 m; el área de juego es un
+  círculo de `radio` metros (2 por defecto).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/pelota.hsml"
+             resources="read_pose_stream" events="patada"
+             props='{"color":"#FFFFFF","manchas":"#1C1C1C","radio":3}'/>
+
+  Props: color, manchas, radio (m), rebote (0..1).
+  Eventos: patada {fuerza}.
+  Mensajes: patear {x, z} (dirección), volver (al centro).
+-->
+<hsml>
+  <head><name>Pelota</name></head>
+  <space resources="read_pose_stream">
+    <group id="pelota" y="0.11">
+      <group id="giro">
+        <sphere id="cuero" sx="0.22" sy="0.22" sz="0.22" color="#FFFFFF"/>
+      </group>
+    </group>
+    <plane id="sombra" y="0.002" rx="-1.5707963" sx="0.2" sy="0.2" border-radius="0.5" color="#00000040" material-alpha="blend"/>
+    <posezone id="zona" y="1" sx="5" sy="2.2" sz="5" visible="false"/>
+    <sphere id="toque" y="0.11" sx="0.26" sy="0.26" sz="0.26" color="transparent" material-alpha="blend"/>
+    <script src="./pelota.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>El patio</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante. Va en el **hueco entre dos columnas**, no en
+         el eje: con la columnata en anillo, el eje siempre tiene una columna
+         enfrente y lo primero que se ve es un poste a dos metros. Medio paso de
+         separacion angular resuelve el encuadre entero.
+
+         Ojo con el ry, que costo dos corridas medirlo: el spawn mira hacia
+         **-Z** y su forward es (-sin ry, 0, -cos ry). Para mirar al origen desde
+         (x, z) va **atan2(x, z)** — que aca, por estar el punto sobre el radio,
+         se simplifica al angulo mismo. NO es el atan2(-x, -z) que usan los arcos
+         y los paneles de todo el servidor: eso orienta un objeto cuyo
+         **contenido** mira a su +Z local, y da justo lo contrario. -->
+    <spawn id="entrada" default="true" x="1.384" y="0" z="10.509" ry="0.131"/>
+
+    <group id="cielo">
+      <group ry="0">
+        <plane z="-90" y="30" sx="198.00000000000003" sy="70" color="#1E2A3E" touchable="false"/>
+        <plane z="-89" y="4" sx="198.00000000000003" sy="14" color="#2E3A50" touchable="false"/>
+      </group>
+      <group ry="1.571">
+        <plane z="-90" y="30" sx="198.00000000000003" sy="70" color="#1E2A3E" touchable="false"/>
+        <plane z="-89" y="4" sx="198.00000000000003" sy="14" color="#2E3A50" touchable="false"/>
+      </group>
+      <group ry="3.142">
+        <plane z="-90" y="30" sx="198.00000000000003" sy="70" color="#1E2A3E" touchable="false"/>
+        <plane z="-89" y="4" sx="198.00000000000003" sy="14" color="#2E3A50" touchable="false"/>
+      </group>
+      <group ry="4.712">
+        <plane z="-90" y="30" sx="198.00000000000003" sy="70" color="#1E2A3E" touchable="false"/>
+        <plane z="-89" y="4" sx="198.00000000000003" sy="14" color="#2E3A50" touchable="false"/>
+      </group>
+      <plane y="90" rx="1.5707963" sx="198.00000000000003" sy="198.00000000000003" color="#1E2A3E" touchable="false"/>
+    </group>
+
+    <plane y="0" rx="1.5707963" sx="90" sy="90" color="#6A6252" touchable="false"/>
+    <cylinder y="0.005" sx="21" sy="0.01" sz="21" color="#736A58" touchable="false"/>
+
+    <!-- El estanque del centro. Es lo que hace que la sombra tenga contra qué
+         medirse: sin nada en el medio, un anillo de columnas es un anillo. -->
+    <cylinder y="0.02" sx="4.6" sy="0.04" sz="4.6" color="#7A705C" touchable="false"/>
+    <cylinder y="0.05" sx="4.0" sy="0.04" sz="4.0" color="#2E4A54" touchable="false"/>
+
+    <!-- Las sombras van **antes** que las columnas en el documento: son losas de
+         un centímetro sobre el piso y no hay z-fighting, pero el orden ayuda a
+         leer el archivo — primero lo que está en el suelo. -->
+    <group id="sombras">
+      <box id="sombra_0" x="0" y="0.015" z="9" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_1" x="2.329" y="0.015" z="8.693" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_2" x="4.5" y="0.015" z="7.794" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_3" x="6.364" y="0.015" z="6.364" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_4" x="7.794" y="0.015" z="4.5" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_5" x="8.693" y="0.015" z="2.329" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_6" x="9" y="0.015" z="0" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_7" x="8.693" y="0.015" z="-2.329" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_8" x="7.794" y="0.015" z="-4.5" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_9" x="6.364" y="0.015" z="-6.364" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_10" x="4.5" y="0.015" z="-7.794" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_11" x="2.329" y="0.015" z="-8.693" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_12" x="0" y="0.015" z="-9" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_13" x="-2.329" y="0.015" z="-8.693" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_14" x="-4.5" y="0.015" z="-7.794" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_15" x="-6.364" y="0.015" z="-6.364" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_16" x="-7.794" y="0.015" z="-4.5" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_17" x="-8.693" y="0.015" z="-2.329" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_18" x="-9" y="0.015" z="0" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_19" x="-8.693" y="0.015" z="2.329" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_20" x="-7.794" y="0.015" z="4.5" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_21" x="-6.364" y="0.015" z="6.364" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_22" x="-4.5" y="0.015" z="7.794" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+      <box id="sombra_23" x="-2.329" y="0.015" z="8.693" sx="0.52" sy="0.01" sz="1" color="#2A2822" touchable="false"/>
+    </group>
+
+    <group id="columnas">
+      <group x="0" y="0" z="9">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_0_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_0_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_0_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_0_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="2.329" y="0" z="8.693">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_1_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_1_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_1_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_1_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="4.5" y="0" z="7.794">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_2_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_2_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_2_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_2_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="6.364" y="0" z="6.364">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_3_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_3_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_3_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_3_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="7.794" y="0" z="4.5">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_4_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_4_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_4_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_4_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="8.693" y="0" z="2.329">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_5_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_5_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_5_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_5_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="9" y="0" z="0">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_6_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_6_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_6_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_6_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="8.693" y="0" z="-2.329">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_7_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_7_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_7_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_7_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="7.794" y="0" z="-4.5">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_8_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_8_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_8_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_8_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="6.364" y="0" z="-6.364">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_9_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_9_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_9_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_9_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="4.5" y="0" z="-7.794">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_10_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_10_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_10_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_10_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="2.329" y="0" z="-8.693">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_11_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_11_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_11_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_11_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="0" y="0" z="-9">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_12_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_12_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_12_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_12_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-2.329" y="0" z="-8.693">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_13_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_13_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_13_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_13_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-4.5" y="0" z="-7.794">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_14_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_14_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_14_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_14_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-6.364" y="0" z="-6.364">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_15_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_15_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_15_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_15_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-7.794" y="0" z="-4.5">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_16_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_16_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_16_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_16_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-8.693" y="0" z="-2.329">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_17_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_17_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_17_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_17_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-9" y="0" z="0">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_18_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_18_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_18_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_18_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-8.693" y="0" z="2.329">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_19_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_19_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_19_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_19_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-7.794" y="0" z="4.5">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_20_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_20_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_20_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_20_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-6.364" y="0" z="6.364">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_21_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_21_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_21_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_21_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-4.5" y="0" z="7.794">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_22_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_22_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_22_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_22_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+      <group x="-2.329" y="0" z="8.693">
+        <box y="0.09" sx="0.78" sy="0.18" sz="0.78" color="#7A705C" touchable="false"/>
+        <box id="cara_23_px" x="0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_23_nx" x="-0.26" y="2.1" z="0" ry="1.5707963" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_23_pz" x="0" y="2.1" z="0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box id="cara_23_nz" x="0" y="2.1" z="-0.26" ry="0" sx="0.52" sy="4.2" sz="0.02" color="#7A705C" touchable="false"/>
+        <box y="4.32" sx="0.832" sy="0.24" sz="0.832" color="#7A705C" touchable="false"/>
+      </group>
+    </group>
+
+    <!-- El sol: un disco lejano que el script mueve. No ilumina nada, es un
+         cartel que dice de dónde viene la luz que el script está calculando. -->
+    <group id="sol" x="0" y="40" z="0">
+      <cylinder rx="1.5707963" sx="4.0" sy="0.1" sz="4.0" color="#FFE8B0" touchable="false"/>
+    </group>
+
+    <group id="panel" x="0" y="0" z="12.4" ry="3.14159">
+      <cylinder x="-1.8" y="0.95" sx="0.1" sy="1.9" sz="0.1" color="#7A705C" touchable="false"/>
+      <cylinder x="1.8" y="0.95" sx="0.1" sy="1.9" sz="0.1" color="#7A705C" touchable="false"/>
+      <box y="2.1" sx="3.9" sy="1.0" sz="0.06" color="#14161A" touchable="false" border-radius="0.05"/>
+      <text y="2.42" z="0.05" value="El patio" size="0.15" color="#F4F0E4"/>
+      <text id="pa_estado" y="2.22" z="0.05" value="el motor no tiene luces: estas las calcula el script" size="0.06" color="#A89E88"/>
+      <text id="pa_dato" y="2.06" z="0.05" value="" size="0.052" color="#A89E88"/>
+      <text id="pa_dato2" y="1.93" z="0.05" value="" size="0.052" color="#A89E88"/>
+      <box id="pa_lento" x="-1.2" y="1.72" z="0.05" sx="1.1" sy="0.24" sz="0.05" color="#7A705C" touchable="true" border-radius="0.03"/>
+      <text x="-1.2" y="1.72" z="0.09" value="mas lento" size="0.055" color="#F4F0E4"/>
+      <box id="pa_rapido" x="0" y="1.72" z="0.05" sx="1.1" sy="0.24" sz="0.05" color="#7A705C" touchable="true" border-radius="0.03"/>
+      <text x="0" y="1.72" z="0.09" value="mas rapido" size="0.055" color="#F4F0E4"/>
+      <box id="pa_sombras" x="1.2" y="1.72" z="0.05" sx="1.1" sy="0.24" sz="0.05" color="#7A705C" touchable="true" border-radius="0.03"/>
+      <text x="1.2" y="1.72" z="0.09" value="sin sombras" size="0.055" color="#F4F0E4"/>
+    </group>
+
+    <group id="portal_vuelta" x="-10.2" y="0" z="10.2" ry="0.8">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_patio","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#7A705C","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.PATIO = {"base":"https://njs58923.github.io/luna-demos/noche","columnas":24,"alto":4.2,"grueso":0.52,"radio":9,"puestos":[{"x":0,"z":9},{"x":2.329,"z":8.693},{"x":4.5,"z":7.794},{"x":6.364,"z":6.364},{"x":7.794,"z":4.5},{"x":8.693,"z":2.329},{"x":9,"z":0},{"x":8.693,"z":-2.329},{"x":7.794,"z":-4.5},{"x":6.364,"z":-6.364},{"x":4.5,"z":-7.794},{"x":2.329,"z":-8.693},{"x":0,"z":-9},{"x":-2.329,"z":-8.693},{"x":-4.5,"z":-7.794},{"x":-6.364,"z":-6.364},{"x":-7.794,"z":-4.5},{"x":-8.693,"z":-2.329},{"x":-9,"z":0},{"x":-8.693,"z":2.329},{"x":-7.794,"z":4.5},{"x":-6.364,"z":6.364},{"x":-4.5,"z":7.794},{"x":-2.329,"z":8.693}],"caras":[{"id":"px","nx":1,"nz":0},{"id":"nx","nx":-1,"nz":0},{"id":"pz","nx":0,"nz":1},{"id":"nz","nx":0,"nz":-1}],"base_muro":"#7A705C","sombra":"#2A2822"};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/patio.js"/>
+  </space>
+</hsml>

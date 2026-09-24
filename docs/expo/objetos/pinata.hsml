@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Piñata. Cuelga de un soporte y se hamaca con cada golpe; al tercer golpe
+  (o los que diga `golpes`) revienta y caen caramelos que rebotan en el piso.
+  Un rato después aparece otra. En VR se le pega con la mano.
+
+  De piso: apoya en y=0 (el soporte). Mide 1.2 × 2.4 × 1.2 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/pinata.hsml"
+             resources="audio,read_pose_stream" events="golpe,rota"
+             props='{"golpes":5,"color":"#FF4FD8"}'/>
+
+  Props: golpes (hasta romperse), color.
+  Eventos: golpe {quedan}, rota {}.
+  Mensajes: nueva.
+-->
+<hsml>
+  <head><name>Piñata</name></head>
+  <space resources="audio,read_pose_stream">
+    <box x="-0.55" y="1.15" sx="0.06" sy="2.3" sz="0.06" color="#6B4A30"/>
+    <box x="0.55" y="1.15" sx="0.06" sy="2.3" sz="0.06" color="#6B4A30"/>
+    <box y="2.3" sx="1.2" sy="0.06" sz="0.06" color="#6B4A30"/>
+    <box x="-0.55" y="0.02" sx="0.3" sy="0.04" sz="0.4" color="#4A3322"/>
+    <box x="0.55" y="0.02" sx="0.3" sy="0.04" sz="0.4" color="#4A3322"/>
+    <group id="cuelga" y="2.27">
+      <cylinder y="-0.3" sx="0.008" sy="0.6" sz="0.008" color="#E9D8A6"/>
+      <group id="pinata" y="-0.75"/>
+    </group>
+    <group id="caramelos"/>
+    <posezone id="zona" y="1.4" sx="1.6" sy="1.6" sz="1.6" visible="false"/>
+    <sphere id="toque" y="1.5" sx="0.5" sy="0.5" sz="0.5" color="transparent" material-alpha="blend"/>
+    <script src="./pinata.js"/>
+  </space>
+</hsml>

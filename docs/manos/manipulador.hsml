@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  El manipulador: envuelve otro documento y deja moverlo, girarlo y escalarlo
+  con los mandos de VR. La pose queda en localStorage y vuelve al recargar.
+
+  Se monta así, SIN transformar el include ni ningún grupo que lo contenga:
+
+    <space resources="read_pose_stream,...">
+      <include src=".../manipulador.hsml" resources="read_pose_stream" props='{
+        "src": "./muestra.hsml",            documento a envolver
+        "propsMuestra": { ... },            props que se le pasan a ese documento
+        "clave": "robot",                   nombre del guardado en localStorage
+        "caja": { "sx":0.42, "sy":0.70, "sz":0.30, "cy":0.35 },
+        "pose": { "x":0, "y":1, "z":-1.2, "ry":0.5, "s":1 }
+      }'/>
+
+  Por qué sin transformar: las poses de los mandos llegan en coordenadas de
+  mundo, y un include no puede leer la transformación de quien lo aloja. El
+  manipulador es DUEÑO de la pose del objeto; si además se lo corre desde
+  afuera, la mano y el marco dejan de coincidir.
+
+  La caja va en coordenadas propias del documento envuelto: tamaño (sx,sy,sz) y
+  centro (cx,cy,cz). Desde afuera de un include no se pueden medir sus nodos,
+  así que la declara quien lo monta. El centro es además el pivote: se gira y se
+  escala alrededor de él.
+
+  Hacia afuera:
+    component.emit("pose", {p,q,s})     al soltar y al restaurar
+    include.send("restaurar")           vuelve a la pose de las props y borra
+                                        lo guardado
+-->
+<hsml>
+  <head><name>Manipulador</name></head>
+  <!-- read_pose_stream lo usa el marco. El resto no: se pide para poder
+       pasárselo al objeto envuelto (prop `recursos`), y rige la intersección
+       con lo que delegue quien monta el manipulador. -->
+  <space resources="read_pose_stream,audio,navigate_world,fetch_text">
+    <!-- Donde se escuchan los mandos. Sigue al objeto: un cubo de 6 m
+         centrado en él, así la mano nunca sale del volumen mientras lo lleva. -->
+    <posezone id="zona" x="0" y="0" z="0" sx="6" sy="6" sz="6" visible="false"/>
+
+    <!-- El objeto: pose completa, escala incluida. -->
+    <group id="objetivo">
+      <!-- corre el documento para que el centro de su caja caiga en el pivote -->
+      <group id="centrado"/>
+    </group>
+
+    <!-- El marco: misma posición y giro que el objeto, pero SIN escala, para
+         que las manijas midan lo mismo en un objeto chico y en uno grande.
+         Sus nodos los arma el script: dependen de la caja. -->
+    <group id="marco">
+      <group id="aristas"/>
+      <group id="manijas"/>
+    </group>
+
+    <!-- Lo que no gira con el objeto: la lectura arriba, el botón abajo.
+         Miran a +Z, que es donde nace el visitante. -->
+    <text id="lectura" x="0" y="0" z="0" value="" size="0.045" color="#FFD60A" visible="false"/>
+    <group id="pie">
+      <box id="restaurar" x="0" y="0" z="0" sx="0.26" sy="0.07" sz="0.02" color="#2A2A38" touchable="true"/>
+      <text x="0" y="0" z="0.012" value="RESTAURAR" size="0.032" color="#FFFFFF"/>
+    </group>
+
+    <script src="./manipulador.js"/>
+  </space>
+</hsml>

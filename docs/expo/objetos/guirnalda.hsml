@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Guirnalda de luces. Una tira de lamparitas colgando en curva; tocarla pasa
+  al patrón siguiente: fija, alternada, persecución, respiración, apagada.
+
+  De pared: el origen es el punto medio entre los dos clavos; la tira cuelga
+  hacia abajo en curva. Mide `largo` × 0.3 × 0.06 m (1.6 m por defecto).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/guirnalda.hsml"
+             events="patron" props='{"paleta":"calida","largo":2.4,"clave":"balcon"}'/>
+
+  Props: paleta ("navidad" | "calida" | "arcoiris" | "fria"), largo (metros,
+  0.6 a 4), luces (6 a 40), patron (el inicial), clave.
+  Eventos: patron {nombre}.
+  Mensajes: patron {nombre}.
+-->
+<hsml>
+  <head><name>Guirnalda de luces</name></head>
+  <space resources="read_pose_stream">
+    <group id="tira"/>
+    <script src="./guirnalda.js"/>
+  </space>
+</hsml>

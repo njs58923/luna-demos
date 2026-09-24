@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pieza interactiva: fogata.
+     Las llamas son planos cruzados (double-sided, así que se ven de todos
+     lados) que el script estira y encoge. Las chispas NO están acá: las crea
+     el JS con createElement y las recicla, que es lo que hace distinta a esta
+     pieza de la mariposa.
+     Sin permisos: sólo requestAnimationFrame y su propio DOM. -->
+<hsml>
+  <head>
+    <name>Fogata</name>
+  </head>
+
+  <space>
+    <group id="fogata">
+      <!-- Círculo de piedras -->
+      <box x="0.34" y="0.05" sx="0.17" sy="0.11" sz="0.14" color="#6E6A63"/>
+      <box x="0.17" y="0.05" z="0.29" ry="1.05" sx="0.15" sy="0.09" sz="0.13" color="#7A756C"/>
+      <box x="-0.17" y="0.05" z="0.29" ry="2.09" sx="0.16" sy="0.1" sz="0.14" color="#66625B"/>
+      <box x="-0.34" y="0.05" sx="0.15" sy="0.1" sz="0.13" color="#7A756C"/>
+      <box x="-0.17" y="0.05" z="-0.29" ry="1.05" sx="0.17" sy="0.09" sz="0.14" color="#6E6A63"/>
+      <box x="0.17" y="0.05" z="-0.29" ry="2.09" sx="0.15" sy="0.11" sz="0.13" color="#726D65"/>
+
+      <!-- Brasas: un disco bajo, debajo de las llamas -->
+      <cylinder y="0.035" sx="0.36" sy="0.05" sz="0.36" color="#8C3A16"/>
+
+      <!-- Leños cruzados sobre las brasas -->
+      <cylinder y="0.11" rx="1.5707963" rz="0.5" sx="0.065" sy="0.52" sz="0.065" color="#4A3524"/>
+      <cylinder y="0.11" rx="1.5707963" rz="-0.6" sx="0.06" sy="0.48" sz="0.06" color="#5A4230"/>
+      <cylinder y="0.17" rx="1.3" rz="1.4" sx="0.055" sy="0.44" sz="0.055" color="#42301F"/>
+      <cylinder y="0.15" rx="1.7" rz="2.3" sx="0.06" sy="0.46" sz="0.06" color="#523A28"/>
+
+      <!-- Llamas. Luna no tiene cono ni triángulo suelto, así que la silueta
+           se arma con planos apilados que se van angostando: tres por
+           dirección, dos direcciones cruzadas, más un núcleo elipsoidal.
+           El script les mueve escala y posición; el color queda fijo, del más
+           frío por fuera al más caliente por dentro. -->
+      <group id="llamas" y="0.15">
+        <sphere id="llama_n" y="0.17" sx="0.3" sy="0.36" sz="0.3" color="#EE8C22"/>
+        <plane id="llama_0" y="0.15" sx="0.36" sy="0.3" color="#D9591A"/>
+        <plane id="llama_1" y="0.39" sx="0.25" sy="0.26" color="#E87A1E"/>
+        <plane id="llama_2" y="0.58" sx="0.12" sy="0.2" color="#F6CE63"/>
+        <plane id="llama_3" y="0.13" ry="1.5707963" sx="0.3" sy="0.26" color="#D9591A"/>
+        <plane id="llama_4" y="0.35" ry="1.5707963" sx="0.2" sy="0.22" color="#E87A1E"/>
+        <plane id="llama_5" y="0.51" ry="1.5707963" sx="0.1" sy="0.17" color="#F6CE63"/>
+      </group>
+    </group>
+
+    <script>
+      globalThis.CONFIG = {"escala":1.25,"chispas":16,"viento":0.35};
+    </script>
+    <script src="fogata.js"/>
+  </space>
+</hsml>

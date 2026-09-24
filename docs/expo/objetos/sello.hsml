@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sello de goma. Tocar un punto de la hoja: el sello va a la almohadilla, se
+  entinta y deja su marca ahí, un poco torcida como a mano. En VR se lo toma
+  con el grip: apretarlo contra la almohadilla lo entinta (alcanza para tres)
+  y apretarlo contra la hoja sella. Las marcas se guardan (por `clave`);
+  tocar la goma de borrar limpia la hoja.
+
+  De mesa: apoya en y=0. Mide 0.4 × 0.12 × 0.26 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/sello.hsml"
+             resources="audio,read_pose_stream" events="sellado"
+             props='{"texto":"APROBADO","color":"#C1121F"}'/>
+
+  Props: texto (hasta 12 letras), color (de la tinta), clave.
+  Eventos: sellado {x, z} en la hoja.
+  Mensajes: limpiar.
+-->
+<hsml>
+  <head><name>Sello</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="hoja" x="0.06" y="0.001" sx="0.24" sy="0.002" sz="0.24" color="#FBF8EF"/>
+    <group id="marcas" y="0.0022"/>
+    <box x="-0.13" y="0.006" z="-0.04" sx="0.1" sy="0.012" sz="0.07" color="#2B2B2B" border-radius="0.004"/>
+    <box id="almohadilla" x="-0.13" y="0.0125" z="-0.04" sx="0.085" sy="0.002" sz="0.055" color="#5A0B12"/>
+    <box id="goma" x="-0.13" y="0.01" z="0.07" sx="0.06" sy="0.02" sz="0.03" color="#F28482" border-radius="0.004"/>
+    <group id="sello">
+      <box id="goma_sello" y="0.004" sx="0.05" sy="0.008" sz="0.03" color="#7B1E1E"/>
+      <box y="0.014" sx="0.056" sy="0.012" sz="0.036" color="#8B5A2B"/>
+      <cylinder y="0.04" sx="0.014" sy="0.04" sz="0.014" color="#8B5A2B"/>
+      <sphere y="0.066" sx="0.032" sy="0.03" sz="0.032" color="#2B2B2B"/>
+      <box id="agarrar" y="0.04" sx="0.07" sy="0.09" sz="0.06" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.2" sx="0.8" sy="0.5" sz="0.6" visible="false"/>
+    <script src="./sello.js"/>
+  </space>
+</hsml>

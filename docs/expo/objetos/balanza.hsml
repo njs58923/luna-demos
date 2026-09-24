@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Balanza de platillos. En el platillo derecho hay una caja con un peso
+  secreto (de 1 a 20); con las pesas de la bandeja (1, 2, 2, 5 y 10) hay que
+  equilibrarla. Tocar una pesa la pasa al platillo izquierdo o la devuelve; en
+  VR se toman con el grip y se sueltan sobre cualquiera de los dos platillos.
+  La cruz se inclina hacia el lado pesado; al quedar pareja dice cuánto pesa
+  la caja y trae otra.
+
+  De mesa: apoya en y=0. Mide 0.5 × 0.45 × 0.22 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/balanza.hsml"
+             resources="audio,read_pose_stream" events="equilibrio"/>
+
+  Props: ninguna obligatoria; semilla (para repetir la serie de cajas).
+  Eventos: pesada {izquierda, derecha} al mover una pesa; equilibrio {peso}.
+  Mensajes: nueva.
+-->
+<hsml>
+  <head><name>Balanza de platillos</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.015" sx="0.44" sy="0.03" sz="0.22" color="#3B2A1A" border-radius="0.01"/>
+    <cylinder y="0.19" sx="0.02" sy="0.32" sz="0.02" color="#B08D57"/>
+    <box y="0.34" z="-0.012" sx="0.1" sy="0.05" sz="0.004" color="#F4E3B2"/>
+    <box y="0.345" z="-0.009" sx="0.002" sy="0.02" sz="0.002" color="#3B2A1A"/>
+    <group id="cruz" y="0.36">
+      <box sx="0.4" sy="0.012" sz="0.012" color="#B08D57"/>
+      <cylinder rx="1.5708" sx="0.022" sy="0.03" sz="0.022" color="#8C6D3F"/>
+      <box y="-0.035" z="-0.004" sx="0.003" sy="0.06" sz="0.003" color="#D62828"/>
+      <sphere x="-0.2" sx="0.012" sy="0.012" sz="0.012" color="#8C6D3F"/>
+      <sphere x="0.2" sx="0.012" sy="0.012" sz="0.012" color="#8C6D3F"/>
+    </group>
+    <group id="plato_izq"><cylinder sx="0.13" sy="0.006" sz="0.13" color="#C9A96E"/></group>
+    <group id="plato_der"><cylinder sx="0.13" sy="0.006" sz="0.13" color="#C9A96E"/></group>
+    <group id="hilos"/>
+    <group id="pesas"/>
+    <group id="caja">
+      <box id="caja_cuerpo" y="0.03" sx="0.06" sy="0.06" sz="0.06" color="#7B2FF7" border-radius="0.006"/>
+      <text id="caja_texto" y="0.03" z="0.031" value="?" size="0.04" color="#FFFFFF"/>
+    </group>
+    <text id="cartel" y="0.46" value="" size="0.03" color="#FFFFFF"/>
+    <posezone id="zona" y="0.25" sx="0.8" sy="0.6" sz="0.6" visible="false"/>
+    <script src="./balanza.js"/>
+  </space>
+</hsml>

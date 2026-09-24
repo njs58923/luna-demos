@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cuatro en línea. Un tablero parado de siete columnas: se toca una columna y
+  la ficha cae hasta el fondo. Gana el que alinea cuatro. Con `maquina`, las
+  amarillas las juega el objeto.
+
+  De mesa: apoya en y=0, mira a +Z. Mide 0.5 × 0.5 × 0.16 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cuatro.hsml"
+             events="jugada,fin" props='{"maquina":true,"clave":"sala"}'/>
+
+  Props: maquina (bool), tablero (color), clave (guarda la partida).
+  Eventos: jugada {columna, ficha}, fin {ganador: "rojo" | "amarillo" | "empate"}.
+  Mensajes: nueva.
+-->
+<hsml>
+  <head><name>Cuatro en línea</name></head>
+  <space resources="read_pose_stream">
+    <box id="tablero" y="0.25" sx="0.46" sy="0.4" sz="0.02" color="#1565C0" border-radius="0.015"/>
+    <box y="0.006" sx="0.5" sy="0.012" sz="0.16" color="#0D47A1"/>
+    <box x="-0.235" y="0.14" sx="0.02" sy="0.26" sz="0.03" color="#0D47A1"/>
+    <box x="0.235" y="0.14" sx="0.02" sy="0.26" sz="0.03" color="#0D47A1"/>
+    <group id="huecos" y="0.25"/>
+    <group id="fichas" y="0.25"/>
+    <group id="toques" y="0.25"/>
+    <box id="nueva" x="0.2" y="0.03" z="0.06" sx="0.08" sy="0.025" sz="0.03" color="#FFD60A" border-radius="0.006"/>
+    <text x="0.2" y="0.03" z="0.076" value="NUEVA" size="0.014" color="#1C1C1C"/>
+    <text id="estado" y="0.49" value="" size="0.026" color="#FFFFFF"/>
+    <script src="./cuatro.js"/>
+  </space>
+</hsml>

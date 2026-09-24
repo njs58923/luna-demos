@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maceta. Una planta que crece si se la riega: tocarla la riega (cae agua de
+  una regadera), y cada riego la hace crecer hasta que florece. Si pasan días
+  sin agua se marchita un poco. El estado queda guardado.
+
+  De mesa: apoya en y=0. Mide 0.3 × 0.7 × 0.3 m ya crecida.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/maceta.hsml" events="riego"
+             props='{"flor":"#FF6B9A","maceta":"#C1652F","clave":"balcon"}'/>
+
+  Props: flor, maceta (colores), riegos (cuántos hacen falta para florecer),
+  clave.
+  Eventos: riego {etapa, riegos}.
+  Mensajes: regar.
+-->
+<hsml>
+  <head><name>Maceta</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="maceta" y="0.07" sx="0.2" sy="0.14" sz="0.2" color="#C1652F"/>
+    <cylinder id="borde" y="0.145" sx="0.22" sy="0.025" sz="0.22" color="#A9532A"/>
+    <cylinder y="0.15" sx="0.18" sy="0.012" sz="0.18" color="#4A3322"/>
+    <group id="planta" y="0.156"/>
+    <group id="regadera" x="0.2" y="0.45" visible="false">
+      <cylinder rz="0.5" sx="0.08" sy="0.1" sz="0.08" color="#3E8E7E"/>
+      <cylinder x="-0.07" y="-0.02" rz="1.2" sx="0.015" sy="0.12" sz="0.015" color="#3E8E7E"/>
+    </group>
+    <group id="gotas"/>
+    <box id="toque" y="0.3" sx="0.3" sy="0.6" sz="0.3" color="transparent" material-alpha="blend"/>
+    <script src="./maceta.js"/>
+  </space>
+</hsml>

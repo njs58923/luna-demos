@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hsml>
+  <head><name>Cielo procedural</name></head>
+  <!-- Centrado en el origen; delegar skybox. Astos y efectos son mallas unlit. -->
+  <space resources="skybox">
+    <skybox id="sky_background"/>
+    <model id="sky_celestial" material-unlit="true" material-alpha="mask" touchable="false"/>
+    <model id="sky_clouds" material-unlit="true" material-alpha="blend" touchable="false"/>
+    <model id="sky_aurora" material-unlit="true" material-alpha="blend" touchable="false"/>
+    <script src="./cielo.js"/>
+  </space>
+</hsml>
+

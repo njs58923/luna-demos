@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Moneda. Tocarla la tira al aire: sube girando y cae cara o cruz.
+
+  De mesa: apoya en y=0 sobre un platito. Mide 0.12 × 0.02 × 0.12 m, y al
+  tirarla sube hasta 0.35 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/moneda.hsml"
+             events="moneda" props='{"metal":"#C0C0C0"}'/>
+
+  Props: metal (color), cara, cruz (lo que dice cada lado).
+  Eventos: moneda {resultado: "cara" | "cruz"}.
+  Mensajes: tirar.
+-->
+<hsml>
+  <head><name>Moneda</name></head>
+  <space resources="read_pose_stream">
+    <cylinder y="0.003" sx="0.12" sy="0.006" sz="0.12" color="#3D2B1F"/>
+    <group id="salto" y="0.009">
+      <group id="moneda">
+        <cylinder id="disco" sx="0.06" sy="0.004" sz="0.06" color="#D4AF37"/>
+        <cylinder id="borde_a" y="0.0021" sx="0.05" sy="0.0005" sz="0.05" color="#B8962E"/>
+        <cylinder id="borde_b" y="-0.0021" sx="0.05" sy="0.0005" sz="0.05" color="#B8962E"/>
+        <text id="cara" y="0.0026" rx="-1.5707963" value="CARA" size="0.012" color="#5A4510"/>
+        <text id="cruz" y="-0.0026" rx="1.5707963" value="CRUZ" size="0.012" color="#5A4510"/>
+      </group>
+    </group>
+    <text id="resultado" y="0.2" value="" size="0.035" color="#FFFFFF" visible="false"/>
+    <box id="toque" y="0.03" sx="0.12" sy="0.06" sz="0.12" color="transparent" material-alpha="blend"/>
+    <script src="./moneda.js"/>
+  </space>
+</hsml>

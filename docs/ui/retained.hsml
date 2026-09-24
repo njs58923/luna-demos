@@ -1,0 +1,10 @@
+<hsml>
+  <head><name>UI retenida / volumen y recorte</name></head>
+  <space>
+    <spawn x="0" y="0" z="0"/>
+    <model id="ui_malla" material-unlit="true"/>
+    <group id="ui_nodos"/>
+    <script>globalThis.UI_CFG={distancia:1.6,C:{texto:'#FFFFFF'}};globalThis.APP={};</script>
+    <script src="/pagina__app-retained.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La sala de máquinas</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante: contra la pared, para ver la maquina entera: volante, cilindros, bielas y regulador. Desde el portal se veia de cerca la bancada. -->
+    <spawn id="entrada" default="true" x="-1" y="0" z="7.5" ry="-0.133"/>
+    <group id="sala">
+      <plane y="0" rx="1.5707963" sx="26" sy="20" color="#22242A" touchable="false"/>
+      <plane y="8" rx="1.5707963" sx="26" sy="20" color="#191B20" touchable="false"/>
+      <plane z="-10" sx="26" sy="16" color="#191B20" touchable="false"/>
+      <plane z="10" sx="26" sy="16" color="#191B20" touchable="false"/>
+      <plane x="-13" ry="1.5707963" sx="20" sy="16" color="#191B20" touchable="false"/>
+      <plane x="13" ry="1.5707963" sx="20" sy="16" color="#191B20" touchable="false"/>
+      <plane y="0.01" rx="1.5707963" sx="12" sy="7" color="#2A2D34" touchable="false"/>
+      <box x="-9" y="4" z="-9.7" sx="0.5" sy="8" sz="0.5" color="#41464F" touchable="false"/>
+      <box x="-4.5" y="4" z="-9.7" sx="0.5" sy="8" sz="0.5" color="#41464F" touchable="false"/>
+      <box x="4.5" y="4" z="-9.7" sx="0.5" sy="8" sz="0.5" color="#41464F" touchable="false"/>
+      <box x="9" y="4" z="-9.7" sx="0.5" sy="8" sz="0.5" color="#41464F" touchable="false"/>
+    </group>
+
+    <!-- La bancada: el bloque sobre el que va todo. -->
+    <box y="0.4" sx="8.37" sy="0.8" sz="2.2" color="#33373F" touchable="false"/>
+    <box y="0.85" sx="7.905" sy="0.16" sz="2.5" color="#41464F" touchable="false"/>
+
+      <group x="-2.325">
+        <box y="4.4" sx="0.86" sy="0.16" sz="0.86" color="#3E434C" touchable="false"/>
+        <box x="-0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box x="0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box z="-0.42" y="3.5" sx="0.8" sy="1.9" sz="0.1" color="#3E434C" touchable="false"/>
+      </group>
+      <group x="-0.775">
+        <box y="4.4" sx="0.86" sy="0.16" sz="0.86" color="#3E434C" touchable="false"/>
+        <box x="-0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box x="0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box z="-0.42" y="3.5" sx="0.8" sy="1.9" sz="0.1" color="#3E434C" touchable="false"/>
+      </group>
+      <group x="0.775">
+        <box y="4.4" sx="0.86" sy="0.16" sz="0.86" color="#3E434C" touchable="false"/>
+        <box x="-0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box x="0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box z="-0.42" y="3.5" sx="0.8" sy="1.9" sz="0.1" color="#3E434C" touchable="false"/>
+      </group>
+      <group x="2.325">
+        <box y="4.4" sx="0.86" sy="0.16" sz="0.86" color="#3E434C" touchable="false"/>
+        <box x="-0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box x="0.42" y="3.5" sx="0.1" sy="1.9" sz="0.8" color="#3E434C" touchable="false"/>
+        <box z="-0.42" y="3.5" sx="0.8" sy="1.9" sz="0.1" color="#3E434C" touchable="false"/>
+      </group>
+      <group id="piston_0">
+        <box sx="0.7" sy="0.42" sz="0.7" color="#C2C8D2" touchable="false" border-radius="0.06"/>
+        <box y="-0.3" sx="0.16" sy="0.2" sz="0.16" color="#A8AEB8" touchable="false"/>
+      </group>
+      <group id="biela_0">
+        <box sx="0.14" sy="2.35" sz="0.14" color="#A8AEB8" touchable="false" border-radius="0.05"/>
+      </group>
+      <group id="piston_1">
+        <box sx="0.7" sy="0.42" sz="0.7" color="#C2C8D2" touchable="false" border-radius="0.06"/>
+        <box y="-0.3" sx="0.16" sy="0.2" sz="0.16" color="#A8AEB8" touchable="false"/>
+      </group>
+      <group id="biela_1">
+        <box sx="0.14" sy="2.35" sz="0.14" color="#A8AEB8" touchable="false" border-radius="0.05"/>
+      </group>
+      <group id="piston_2">
+        <box sx="0.7" sy="0.42" sz="0.7" color="#C2C8D2" touchable="false" border-radius="0.06"/>
+        <box y="-0.3" sx="0.16" sy="0.2" sz="0.16" color="#A8AEB8" touchable="false"/>
+      </group>
+      <group id="biela_2">
+        <box sx="0.14" sy="2.35" sz="0.14" color="#A8AEB8" touchable="false" border-radius="0.05"/>
+      </group>
+      <group id="piston_3">
+        <box sx="0.7" sy="0.42" sz="0.7" color="#C2C8D2" touchable="false" border-radius="0.06"/>
+        <box y="-0.3" sx="0.16" sy="0.2" sz="0.16" color="#A8AEB8" touchable="false"/>
+      </group>
+      <group id="biela_3">
+        <box sx="0.14" sy="2.35" sz="0.14" color="#A8AEB8" touchable="false" border-radius="0.05"/>
+      </group>
+
+    <!-- El cigüeñal: un grupo que gira, con los codos adentro. Los codos giran
+         **con** el eje, así que su posición sale gratis; lo que no sale gratis
+         son las bielas, que van sueltas. -->
+    <group id="cigue" y="1.5">
+      <cylinder rz="1.5707963" sx="0.26" sy="8.06" sz="0.26" color="#8A8F98" touchable="false"/>
+      <group id="codos">
+        <group id="codo_0" x="-2.325">
+          <cylinder rz="1.5707963" sx="0.3" sy="0.34" sz="0.3" color="#8A8F98" touchable="false"/>
+        </group>
+        <group id="codo_1" x="-0.775">
+          <cylinder rz="1.5707963" sx="0.3" sy="0.34" sz="0.3" color="#8A8F98" touchable="false"/>
+        </group>
+        <group id="codo_2" x="0.775">
+          <cylinder rz="1.5707963" sx="0.3" sy="0.34" sz="0.3" color="#8A8F98" touchable="false"/>
+        </group>
+        <group id="codo_3" x="2.325">
+          <cylinder rz="1.5707963" sx="0.3" sy="0.34" sz="0.3" color="#8A8F98" touchable="false"/>
+        </group>
+      </group>
+    </group>
+
+    <!-- El volante, al costado del eje. -->
+    <group id="volante" x="-4.107" y="1.5">
+      <cylinder rz="1.5707963" sx="4.2" sy="0.22" sz="4.2" color="#6B4A2A" touchable="false"/>
+      <cylinder rz="1.5707963" sx="4.42" sy="0.16" sz="4.42" color="#8A6234" touchable="false"/>
+      <box rx="0" sx="0.24" sy="3.99" sz="0.16" color="#8A6234" touchable="false"/>
+      <box rx="0.628" sx="0.24" sy="3.99" sz="0.16" color="#8A6234" touchable="false"/>
+      <box rx="1.257" sx="0.24" sy="3.99" sz="0.16" color="#8A6234" touchable="false"/>
+      <box rx="1.885" sx="0.24" sy="3.99" sz="0.16" color="#8A6234" touchable="false"/>
+      <box rx="2.513" sx="0.24" sy="3.99" sz="0.16" color="#8A6234" touchable="false"/>
+    </group>
+
+    <!-- El regulador de bolas: sube y abre con la velocidad. Es la pieza que
+         explica sola para qué sirve una máquina que gira. -->
+    <group id="regulador" x="4.275" y="2.7">
+      <cylinder y="-0.9" sx="0.12" sy="1.8" sz="0.12" color="#8A8F98" touchable="false"/>
+      <group id="brazo_a">
+        <box x="0.5" y="-0.42" rz="-0.9" sx="0.08" sy="1.1" sz="0.08" color="#A8AEB8" touchable="false"/>
+        <sphere x="0.86" y="-0.72" sx="0.3" sy="0.3" sz="0.3" color="#B08A3E" touchable="false"/>
+      </group>
+      <group id="brazo_b">
+        <box x="-0.5" y="-0.42" rz="0.9" sx="0.08" sy="1.1" sz="0.08" color="#A8AEB8" touchable="false"/>
+        <sphere x="-0.86" y="-0.72" sx="0.3" sy="0.3" sz="0.3" color="#B08A3E" touchable="false"/>
+      </group>
+    </group>
+
+    <!-- La palanca de marcha y el panel. -->
+    <group id="consola" x="6.475" y="0" z="1.6" ry="-0.6">
+      <box y="0.5" sx="1.5" sy="1.0" sz="0.5" color="#33373F" touchable="false" border-radius="0.06"/>
+      <box id="palanca" y="1.28" rz="0.35" sx="0.12" sy="0.9" sz="0.12" color="#8A3B33" touchable="true" border-radius="0.05"/>
+      <sphere y="1.62" x="0.16" sx="0.2" sy="0.2" sz="0.2" color="#8A3B33" touchable="false"/>
+      <box y="1.9" sx="2.2" sy="0.8" sz="0.06" color="#101318" touchable="false" border-radius="0.05"/>
+      <text id="m_titulo" y="2.14" z="0.05" value="Sala de máquinas" size="0.12" color="#E8EDF4"/>
+      <text id="m_estado" y="1.96" z="0.05" value="parada" size="0.08" color="#95A0AE"/>
+      <text id="m_dato" y="1.82" z="0.05" value="tocá la palanca" size="0.065" color="#95A0AE"/>
+      <text id="m_vueltas" y="1.68" z="0.05" value="" size="0.06" color="#B08A3E"/>
+    </group>
+
+    <group id="portal_vuelta" x="-4.107" y="0" z="5.4" ry="3.14159">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_maquinas","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#3E4552","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.MAQUINAS = {"base":"https://njs58923.github.io/luna-demos/noche","M":{"manivela":0.62,"biela":2.35,"paso":1.55,"pistones":4,"eje":1.5,"volante":2.1},"x0":-2.325,"marcha":0};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/maquinas.js"/>
+  </space>
+</hsml>

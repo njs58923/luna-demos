@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Skeld — espectador</title>
+<style>
+  :root { color-scheme: dark; --fondo: #0B0E14; --panel: #121722; --borde: #232B3A; --texto: #D5DAE4; --tenue: #7E8AA0; --rojo: #E74C3C; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--texto); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--borde); }
+  header h1 { font-size: 15px; margin: 0 8px 0 0; font-weight: 600; letter-spacing: .02em; }
+  header .estado { color: var(--tenue); font-variant-numeric: tabular-nums; }
+  button, select { background: var(--panel); color: var(--texto); border: 1px solid var(--borde); border-radius: 6px; padding: 4px 10px; font: inherit; cursor: pointer; }
+  button:hover, select:hover { border-color: #3A4660; }
+  label { color: var(--tenue); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 0; min-height: calc(100vh - 50px); }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .mapa { padding: 12px; overflow: auto; }
+  canvas { display: block; width: 100%; height: auto; border-radius: 8px; background: #070A0F; cursor: crosshair; }
+  .ayuda { color: var(--tenue); font-size: 12.5px; margin: 8px 2px 0; }
+  aside { border-left: 1px solid var(--borde); display: flex; flex-direction: column; min-height: 0; }
+  aside h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tenue); margin: 14px 16px 6px; font-weight: 600; }
+  #gente { padding: 0 16px; display: grid; gap: 4px; }
+  #gente div { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+  #gente i { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+  #gente .muerto { opacity: .4; text-decoration: line-through; }
+  #gente small { color: var(--tenue); margin-left: auto; }
+  #bitacora { flex: 1; overflow-y: auto; padding: 0 16px 16px; font-size: 13px; }
+  #bitacora p { margin: 3px 0; }
+  #bitacora .t { color: var(--tenue); font-variant-numeric: tabular-nums; margin-right: 6px; }
+  #bitacora .muerte { color: #FF8A7A; }
+  #bitacora .reunion { color: #F1C40F; margin-top: 10px; }
+  #bitacora .dicho { padding-left: 12px; }
+  #bitacora .fin { color: #7CFF9A; font-weight: 600; margin-top: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>La Skeld — espectador</h1>
+  <span class="estado" id="reloj">—</span>
+  <button id="pausa">pausa</button>
+  <select id="velocidad" aria-label="velocidad">
+    <option value="1">1×</option><option value="2">2×</option><option value="4" selected>4×</option><option value="10">10×</option>
+  </select>
+  <button id="otra">otra partida</button>
+  <label><input type="checkbox" id="verImpostor"> mostrar al impostor</label>
+  <label><input type="checkbox" id="verVista"> mostrar la vista</label>
+</header>
+<main>
+  <section class="mapa">
+    <canvas id="lienzo" width="1400" height="640"></canvas>
+    <p class="ayuda">La misma simulación que corre adentro de la nave (navegacion.js y estado.js), leyendo el mismo documento. Hacé clic en el mapa para pararte ahí: los tripulantes te ven, y el impostor se cuida de vos si estás a menos de cinco metros.</p>
+  </section>
+  <aside>
+    <h2>Tripulación</h2>
+    <div id="gente"></div>
+    <h2>Lo que pasa</h2>
+    <div id="bitacora"></div>
+  </aside>
+</main>
+<script src="navegacion.js"></script>
+<script src="estado.js"></script>
+<script src="espectador.js"></script>
+</body>
+</html>

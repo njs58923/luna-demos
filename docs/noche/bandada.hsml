@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La bandada</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn">
+    <!-- Donde aparece el visitante. Mirando al lago y a la bandada, en el claro sin arboles. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="11" ry="0"/>
+
+    <!-- El cielo del crepúsculo: tres bandas, la de abajo más cálida. Un
+         degradé de verdad necesitaría color por vértice y una malla dinámica; a
+         esta distancia tres planos apilados hacen el mismo trabajo. -->
+    <group id="cielo">
+      <group ry="3.14159">
+        <plane z="-140" y="40" sx="336" sy="120" color="#141A2E" touchable="false"/>
+        <plane z="-139" y="12" sx="336" sy="26" color="#2E2A3E" touchable="false"/>
+        <plane z="-138" y="2.5" sx="336" sy="9" color="#4A3A44" touchable="false"/>
+      </group>
+      <group ry="0">
+        <plane z="-140" y="40" sx="336" sy="120" color="#141A2E" touchable="false"/>
+        <plane z="-139" y="12" sx="336" sy="26" color="#2E2A3E" touchable="false"/>
+        <plane z="-138" y="2.5" sx="336" sy="9" color="#4A3A44" touchable="false"/>
+      </group>
+      <group ry="-1.5707963">
+        <plane z="-140" y="40" sx="336" sy="120" color="#141A2E" touchable="false"/>
+        <plane z="-139" y="12" sx="336" sy="26" color="#2E2A3E" touchable="false"/>
+        <plane z="-138" y="2.5" sx="336" sy="9" color="#4A3A44" touchable="false"/>
+      </group>
+      <group ry="1.5707963">
+        <plane z="-140" y="40" sx="336" sy="120" color="#141A2E" touchable="false"/>
+        <plane z="-139" y="12" sx="336" sy="26" color="#2E2A3E" touchable="false"/>
+        <plane z="-138" y="2.5" sx="336" sy="9" color="#4A3A44" touchable="false"/>
+      </group>
+      <plane y="140" rx="1.5707963" sx="336" sy="336" color="#141A2E" touchable="false"/>
+    </group>
+
+    <plane y="0" rx="1.5707963" sx="308" sy="308" color="#1A1E22" touchable="false"/>
+    <cylinder x="0" y="0.05" z="-30" sx="60" sy="0.1" sz="44" color="#1E2838" touchable="false"/>
+    <cylinder x="0" y="0.08" z="-30" sx="57" sy="0.1" sz="41" color="#26314A" touchable="false"/>
+
+    <group id="juncos">
+      <box x="0" y="0.45" z="-8" rx="-0.15" sx="0.05" sy="0.9" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="6.944" y="0.653" z="-8.186" rx="-0.117" sx="0.05" sy="1.306" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="13.766" y="0.856" z="-9.556" rx="-0.084" sx="0.05" sy="1.712" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="20.09" y="1.059" z="-12.077" rx="-0.051" sx="0.05" sy="2.118" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="25.554" y="0.562" z="-15.652" rx="-0.018" sx="0.05" sy="1.124" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.83" y="0.765" z="-20.123" rx="0.015" sx="0.05" sy="1.53" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="32.647" y="0.968" z="-25.277" rx="0.048" sx="0.05" sy="1.936" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="33.802" y="0.471" z="-30.857" rx="0.081" sx="0.05" sy="0.942" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.124" y="0.674" z="-35.771" rx="0.114" sx="0.05" sy="1.348" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="27.053" y="0.877" z="-40.664" rx="0.147" sx="0.05" sy="1.754" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="23.448" y="1.08" z="-45.16" rx="-0.12" sx="0.05" sy="2.16" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="18.452" y="0.583" z="-48.998" rx="-0.087" sx="0.05" sy="1.166" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="12.287" y="0.786" z="-51.947" rx="-0.054" sx="0.05" sy="1.572" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="5.248" y="0.989" z="-53.816" rx="-0.021" sx="0.05" sy="1.978" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-2.31" y="0.492" z="-54.467" rx="0.012" sx="0.05" sy="0.984" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-9.994" y="0.695" z="-53.824" rx="0.045" sx="0.05" sy="1.39" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-15.278" y="0.898" z="-49.219" rx="0.078" sx="0.05" sy="1.796" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-21.211" y="1.101" z="-46.46" rx="0.111" sx="0.05" sy="2.202" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-26.213" y="0.604" z="-42.714" rx="0.144" sx="0.05" sy="1.208" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-29.98" y="0.807" z="-38.15" rx="-0.123" sx="0.05" sy="1.614" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-32.264" y="1.01" z="-32.989" rx="-0.09" sx="0.05" sy="2.02" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-32.888" y="0.513" z="-27.491" rx="-0.057" sx="0.05" sy="1.026" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-31.765" y="0.716" z="-21.943" rx="-0.024" sx="0.05" sy="1.432" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-28.898" y="0.919" z="-16.644" rx="0.009" sx="0.05" sy="1.838" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-21.434" y="1.122" z="-14.083" rx="0.042" sx="0.05" sy="2.244" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-16.224" y="0.625" z="-10.585" rx="0.075" sx="0.05" sy="1.25" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-9.952" y="0.828" z="-8.009" rx="0.108" sx="0.05" sy="1.656" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-2.924" y="1.031" z="-6.527" rx="0.141" sx="0.05" sy="2.062" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="4.504" y="0.534" z="-6.257" rx="-0.126" sx="0.05" sy="1.068" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="11.942" y="0.737" z="-7.256" rx="-0.093" sx="0.05" sy="1.474" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="18.987" y="0.94" z="-9.512" rx="-0.06" sx="0.05" sy="1.88" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="22.154" y="1.143" z="-15.029" rx="-0.027" sx="0.05" sy="2.286" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.69" y="0.646" z="-18.917" rx="0.006" sx="0.05" sy="1.292" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.951" y="0.849" z="-23.544" rx="0.039" sx="0.05" sy="1.698" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="31.713" y="1.052" z="-28.683" rx="0.072" sx="0.05" sy="2.104" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="31.829" y="0.555" z="-34.074" rx="0.105" sx="0.05" sy="1.11" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.235" y="0.758" z="-39.43" rx="0.138" sx="0.05" sy="1.516" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.961" y="0.961" z="-44.46" rx="-0.129" sx="0.05" sy="1.922" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="22.128" y="0.464" z="-48.88" rx="-0.096" sx="0.05" sy="0.928" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="14.007" y="0.667" z="-49.698" rx="-0.063" sx="0.05" sy="1.334" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="7.67" y="0.87" z="-51.905" rx="-0.03" sx="0.05" sy="1.74" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="0.69" y="1.073" z="-53.011" rx="0.003" sx="0.05" sy="2.146" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-6.574" y="0.576" z="-52.915" rx="0.036" sx="0.05" sy="1.152" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-13.736" y="0.779" z="-51.582" rx="0.069" sx="0.05" sy="1.558" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-20.404" y="0.982" z="-49.042" rx="0.102" sx="0.05" sy="1.964" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-26.199" y="0.485" z="-45.392" rx="0.135" sx="0.05" sy="0.97" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.777" y="0.688" z="-40.794" rx="-0.132" sx="0.05" sy="1.376" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-29.749" y="0.891" z="-34.805" rx="-0.099" sx="0.05" sy="1.782" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-31.006" y="1.094" z="-29.714" rx="-0.066" sx="0.05" sy="2.188" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.635" y="0.597" z="-24.457" rx="-0.033" sx="0.05" sy="1.194" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-28.601" y="0.8" z="-19.313" rx="0" sx="0.05" sy="1.6" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-24.957" y="1.003" z="-14.567" rx="0.033" sx="0.05" sy="2.006" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-19.846" y="0.506" z="-10.489" rx="0.066" sx="0.05" sy="1.012" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-13.496" y="0.709" z="-7.325" rx="0.099" sx="0.05" sy="1.418" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-5.451" y="0.912" z="-8.304" rx="0.132" sx="0.05" sy="1.824" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="1.443" y="1.115" z="-7.563" rx="-0.135" sx="0.05" sy="2.23" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="8.51" y="0.618" z="-8.006" rx="-0.102" sx="0.05" sy="1.236" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="15.369" y="0.821" z="-9.65" rx="-0.069" sx="0.05" sy="1.642" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="21.642" y="1.024" z="-12.448" rx="-0.036" sx="0.05" sy="2.048" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.965" y="0.527" z="-16.287" rx="-0.003" sx="0.05" sy="1.054" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="31.017" y="0.73" z="-20.994" rx="0.03" sx="0.05" sy="1.46" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="33.537" y="0.933" z="-26.342" rx="0.063" sx="0.05" sy="1.866" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.151" y="1.136" z="-31.81" rx="0.096" sx="0.05" sy="2.272" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.32" y="0.639" z="-36.912" rx="0.129" sx="0.05" sy="1.278" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.878" y="0.842" z="-41.825" rx="-0.138" sx="0.05" sy="1.684" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="22.901" y="1.045" z="-46.275" rx="-0.105" sx="0.05" sy="2.09" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="17.552" y="0.548" z="-50.003" rx="-0.072" sx="0.05" sy="1.096" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="11.075" y="0.751" z="-52.783" rx="-0.039" sx="0.05" sy="1.502" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="3.784" y="0.954" z="-54.43" rx="-0.006" sx="0.05" sy="1.908" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-3.952" y="0.457" z="-54.819" rx="0.027" sx="0.05" sy="0.914" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-10.304" y="0.66" z="-50.989" rx="0.06" sx="0.05" sy="1.32" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-16.838" y="0.863" z="-49.058" rx="0.093" sx="0.05" sy="1.726" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-22.698" y="1.066" z="-46.029" rx="0.126" sx="0.05" sy="2.132" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-27.542" y="0.569" z="-42.031" rx="-0.141" sx="0.05" sy="1.138" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-31.071" y="0.772" z="-37.245" rx="-0.108" sx="0.05" sy="1.544" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-33.048" y="0.975" z="-31.907" rx="-0.075" sx="0.05" sy="1.95" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-33.314" y="0.478" z="-26.288" rx="-0.042" sx="0.05" sy="0.956" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-27.897" y="0.681" z="-21.826" rx="-0.009" sx="0.05" sy="1.362" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-25.081" y="0.884" z="-17.16" rx="0.024" sx="0.05" sy="1.768" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-20.808" y="1.087" z="-13.017" rx="0.057" sx="0.05" sy="2.174" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-15.262" y="0.59" z="-9.642" rx="0.09" sx="0.05" sy="1.18" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-8.699" y="0.793" z="-7.245" rx="0.123" sx="0.05" sy="1.586" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-1.441" y="0.996" z="-5.99" rx="-0.144" sx="0.05" sy="1.992" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="6.14" y="0.499" z="-5.985" rx="-0.111" sx="0.05" sy="0.998" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="13.644" y="0.702" z="-7.271" rx="-0.078" sx="0.05" sy="1.404" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="18.139" y="0.905" z="-12.284" rx="-0.045" sx="0.05" sy="1.81" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="23.574" y="1.108" z="-15.514" rx="-0.012" sx="0.05" sy="2.216" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="27.935" y="0.611" z="-19.643" rx="0.021" sx="0.05" sy="1.222" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.945" y="0.814" z="-24.477" rx="0.054" sx="0.05" sy="1.628" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="32.393" y="1.017" z="-29.776" rx="0.087" sx="0.05" sy="2.034" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="32.147" y="0.52" z="-35.269" rx="0.12" sx="0.05" sy="1.04" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.163" y="0.723" z="-40.665" rx="-0.147" sx="0.05" sy="1.446" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.493" y="0.926" z="-45.665" rx="-0.114" sx="0.05" sy="1.852" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="18.694" y="1.129" z="-47.559" rx="-0.081" sx="0.05" sy="2.258" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="12.991" y="0.632" z="-50.58" rx="-0.048" sx="0.05" sy="1.264" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="6.382" y="0.835" z="-52.599" rx="-0.015" sx="0.05" sy="1.67" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-0.805" y="1.038" z="-53.471" rx="0.018" sx="0.05" sy="2.076" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-8.197" y="0.541" z="-53.11" rx="0.051" sx="0.05" sy="1.082" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-15.4" y="0.744" z="-51.493" rx="0.084" sx="0.05" sy="1.488" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-22.017" y="0.947" z="-48.665" rx="0.117" sx="0.05" sy="1.894" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-24.271" y="0.45" z="-42.931" rx="-0.15" sx="0.05" sy="0.9" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-28.147" y="0.653" z="-38.702" rx="-0.117" sx="0.05" sy="1.306" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.646" y="0.856" z="-33.85" rx="-0.084" sx="0.05" sy="1.712" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-31.582" y="1.059" z="-28.616" rx="-0.051" sx="0.05" sy="2.118" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.849" y="0.562" z="-23.273" rx="-0.018" sx="0.05" sy="1.124" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-28.43" y="0.765" z="-18.108" rx="0.015" sx="0.05" sy="1.53" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-24.4" y="0.968" z="-13.408" rx="0.048" sx="0.05" sy="1.936" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-18.923" y="0.471" z="-9.442" rx="0.081" sx="0.05" sy="0.942" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-10.752" y="0.674" z="-9.33" rx="0.114" sx="0.05" sy="1.348" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-4.136" y="0.877" z="-7.682" rx="0.147" sx="0.05" sy="1.754" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="2.942" y="1.08" z="-7.178" rx="-0.12" sx="0.05" sy="2.16" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="10.113" y="0.583" z="-7.886" rx="-0.087" sx="0.05" sy="1.166" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="16.99" y="0.786" z="-9.81" rx="-0.054" sx="0.05" sy="1.572" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="23.189" y="0.989" z="-12.887" rx="-0.021" sx="0.05" sy="1.978" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="28.35" y="0.492" z="-16.989" rx="0.012" sx="0.05" sy="0.984" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="32.157" y="0.695" z="-21.926" rx="0.045" sx="0.05" sy="1.39" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.183" y="0.898" z="-27.767" rx="0.078" sx="0.05" sy="1.796" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.626" y="1.101" z="-32.909" rx="0.111" sx="0.05" sy="2.202" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.434" y="0.604" z="-38.079" rx="0.144" sx="0.05" sy="1.208" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.613" y="0.807" z="-42.996" rx="-0.123" sx="0.05" sy="1.614" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="22.261" y="1.01" z="-47.384" rx="-0.09" sx="0.05" sy="2.02" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="16.563" y="0.513" z="-50.987" rx="-0.057" sx="0.05" sy="1.026" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="9.782" y="0.716" z="-53.582" rx="-0.024" sx="0.05" sy="1.432" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="2.252" y="0.919" z="-54.995" rx="0.009" sx="0.05" sy="1.838" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-4.961" y="1.122" z="-52.072" rx="0.042" sx="0.05" sy="2.244" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-11.882" y="0.625" z="-51.037" rx="0.075" sx="0.05" sy="1.25" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-18.411" y="0.828" z="-48.83" rx="0.108" sx="0.05" sy="1.656" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-24.177" y="1.031" z="-45.532" rx="0.141" sx="0.05" sy="2.062" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-28.84" y="0.534" z="-41.283" rx="-0.126" sx="0.05" sy="1.068" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-32.111" y="0.737" z="-36.283" rx="-0.093" sx="0.05" sy="1.474" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-33.763" y="0.94" z="-30.778" rx="-0.06" sx="0.05" sy="1.88" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-29.538" y="1.143" z="-25.656" rx="-0.027" sx="0.05" sy="2.286" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-27.915" y="0.646" z="-20.68" rx="0.006" sx="0.05" sy="1.292" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-24.727" y="0.849" z="-16.025" rx="0.039" sx="0.05" sy="1.698" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-20.093" y="1.052" z="-11.959" rx="0.072" sx="0.05" sy="2.104" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-14.214" y="0.555" z="-8.722" rx="0.105" sx="0.05" sy="1.11" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-7.369" y="0.758" z="-6.519" rx="0.138" sx="0.05" sy="1.516" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="0.105" y="0.961" z="-5.505" rx="-0.129" sx="0.05" sy="1.922" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="7.821" y="0.464" z="-5.775" rx="-0.096" sx="0.05" sy="0.928" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="13.498" y="0.667" z="-10.112" rx="-0.063" sx="0.05" sy="1.334" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="19.658" y="0.87" z="-12.574" rx="-0.03" sx="0.05" sy="1.74" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="24.98" y="1.073" z="-16.065" rx="0.003" sx="0.05" sy="2.146" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.144" y="0.576" z="-20.431" rx="0.036" sx="0.05" sy="1.152" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="31.883" y="0.779" z="-25.464" rx="0.069" sx="0.05" sy="1.558" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="33.001" y="0.982" z="-30.913" rx="0.102" sx="0.05" sy="1.964" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="32.38" y="0.485" z="-36.496" rx="0.135" sx="0.05" sy="0.97" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.999" y="0.688" z="-41.915" rx="-0.132" sx="0.05" sy="1.376" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="22.786" y="0.891" z="-44.825" rx="-0.099" sx="0.05" sy="1.782" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="17.909" y="1.094" z="-48.563" rx="-0.066" sx="0.05" sy="2.188" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="11.892" y="0.597" z="-51.433" rx="-0.033" sx="0.05" sy="1.194" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="5.022" y="0.8" z="-53.25" rx="0" sx="0.05" sy="1.6" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-2.357" y="1.003" z="-53.878" rx="0.033" sx="0.05" sy="2.006" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-9.859" y="0.506" z="-53.242" rx="0.066" sx="0.05" sy="1.012" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-17.083" y="0.709" z="-51.335" rx="0.099" sx="0.05" sy="1.418" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-20.731" y="0.912" z="-45.987" rx="0.132" sx="0.05" sy="1.824" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-25.601" y="1.115" z="-42.332" rx="-0.135" sx="0.05" sy="2.23" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-29.266" y="0.618" z="-37.879" rx="-0.102" sx="0.05" sy="1.236" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-31.484" y="0.821" z="-32.843" rx="-0.069" sx="0.05" sy="1.642" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-32.084" y="1.024" z="-27.477" rx="-0.036" sx="0.05" sy="2.048" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.977" y="0.527" z="-22.062" rx="-0.003" sx="0.05" sy="1.054" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-28.167" y="0.73" z="-16.892" rx="0.03" sx="0.05" sy="1.46" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-23.748" y="0.933" z="-12.253" rx="0.063" sx="0.05" sy="1.866" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-15.726" y="1.136" z="-11.048" rx="0.096" sx="0.05" sy="2.272" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-9.609" y="0.639" z="-8.542" rx="0.129" sx="0.05" sy="1.278" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-2.754" y="0.842" z="-7.103" rx="-0.138" sx="0.05" sy="1.684" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="4.493" y="1.045" z="-6.847" rx="-0.105" sx="0.05" sy="2.09" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="11.751" y="0.548" z="-7.829" rx="-0.072" sx="0.05" sy="1.096" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="18.624" y="0.751" z="-10.038" rx="-0.039" sx="0.05" sy="1.502" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="24.727" y="0.954" z="-13.395" rx="-0.006" sx="0.05" sy="1.908" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.703" y="0.457" z="-17.756" rx="0.027" sx="0.05" sy="0.914" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.212" y="0.66" z="-23.776" rx="0.06" sx="0.05" sy="1.32" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.922" y="0.863" z="-28.788" rx="0.093" sx="0.05" sy="1.726" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="31.026" y="1.066" z="-34.045" rx="0.126" sx="0.05" sy="2.132" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="29.461" y="0.569" z="-39.269" rx="-0.141" sx="0.05" sy="1.138" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.256" y="0.772" z="-44.175" rx="-0.108" sx="0.05" sy="1.544" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="21.529" y="0.975" z="-48.485" rx="-0.075" sx="0.05" sy="1.95" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="15.486" y="0.478" z="-51.946" rx="-0.042" sx="0.05" sy="0.956" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="7.38" y="0.681" z="-51.356" rx="-0.009" sx="0.05" sy="1.362" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="0.577" y="0.884" z="-52.427" rx="0.024" sx="0.05" sy="1.768" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-6.505" y="1.087" z="-52.328" rx="0.057" sx="0.05" sy="2.174" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-13.489" y="0.59" z="-51.021" rx="0.09" sx="0.05" sy="1.18" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-19.991" y="0.793" z="-48.536" rx="0.123" sx="0.05" sy="1.586" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-25.641" y="0.996" z="-44.967" rx="-0.144" sx="0.05" sy="1.992" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.102" y="0.499" z="-40.473" rx="-0.111" sx="0.05" sy="0.998" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-33.094" y="0.702" z="-35.265" rx="-0.078" sx="0.05" sy="1.404" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-30.206" y="0.905" z="-29.652" rx="-0.045" sx="0.05" sy="1.81" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-29.837" y="1.108" z="-24.528" rx="-0.012" sx="0.05" sy="2.216" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-27.846" y="0.611" z="-19.515" rx="0.021" sx="0.05" sy="1.222" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-24.282" y="0.814" z="-14.888" rx="0.054" sx="0.05" sy="1.628" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-19.287" y="1.017" z="-10.914" rx="0.087" sx="0.05" sy="2.034" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-13.082" y="0.52" z="-7.831" rx="0.12" sx="0.05" sy="1.04" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="-5.964" y="0.723" z="-5.836" rx="-0.147" sx="0.05" sy="1.446" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="1.71" y="0.926" z="-5.075" rx="-0.114" sx="0.05" sy="1.852" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="8.384" y="1.129" z="-8.588" rx="-0.081" sx="0.05" sy="2.258" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="15.068" y="0.632" z="-10.197" rx="-0.048" sx="0.05" sy="1.264" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="21.18" y="0.835" z="-12.931" rx="-0.015" sx="0.05" sy="1.67" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="26.366" y="1.038" z="-16.681" rx="0.018" sx="0.05" sy="2.076" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="30.313" y="0.541" z="-21.279" rx="0.051" sx="0.05" sy="1.082" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="32.763" y="0.744" z="-26.504" rx="0.084" sx="0.05" sy="1.488" sz="0.05" color="#22261E" touchable="false"/>
+      <box x="33.533" y="0.947" z="-32.091" rx="0.117" sx="0.05" sy="1.894" sz="0.05" color="#22261E" touchable="false"/>
+    </group>
+
+    <group id="arboles">
+      <group x="28.059" y="0" z="28.872">
+        <cylinder y="4.265" sx="0.44" sy="8.53" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="0.798" y="7.466" z="0.512" rx="0.378" rz="-0.589" sx="0.16" sy="2.708" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.565" y="7.549" z="-0.879" rx="-0.589" rz="-0.378" sx="0.16" sy="2.985" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.961" y="7.632" z="-0.617" rx="-0.378" rz="0.589" sx="0.16" sy="3.263" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.669" y="7.715" z="1.043" rx="0.589" rz="0.378" sx="0.16" sy="3.54" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="54.498" y="0" z="1.557">
+        <cylinder y="5.03" sx="0.44" sy="10.06" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="1.073" y="8.858" z="-0.491" rx="-0.291" rz="-0.637" sx="0.16" sy="3.37" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.538" y="8.956" z="-1.177" rx="-0.637" rz="0.291" sx="0.16" sy="3.697" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.281" y="9.054" z="0.586" rx="0.291" rz="0.637" sx="0.16" sy="4.024" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.634" y="9.152" z="1.385" rx="0.637" rz="-0.291" sx="0.16" sy="4.351" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="50.673" y="0" z="-46.507">
+        <cylinder y="5.795" sx="0.44" sy="11.59" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="0.202" y="10.266" z="-1.416" rx="-0.693" rz="-0.099" sx="0.16" sy="4.085" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.546" y="10.379" z="-0.22" rx="-0.099" rz="0.693" sx="0.16" sy="4.462" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.239" y="10.492" z="1.677" rx="0.693" rz="0.099" sx="0.16" sy="4.839" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.807" y="10.605" z="0.258" rx="0.099" rz="-0.693" sx="0.16" sy="5.215" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="-33.594" y="0" z="-38.77">
+        <cylinder y="7.325" sx="0.44" sy="14.65" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="-1.905" y="13.13" z="0.564" rx="0.199" rz="0.671" sx="0.16" sy="5.677" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.611" y="13.273" z="2.065" rx="0.671" rz="-0.199" sx="0.16" sy="6.153" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="2.225" y="13.416" z="-0.658" rx="-0.199" rz="-0.671" sx="0.16" sy="6.629" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.705" y="13.559" z="-2.385" rx="-0.671" rz="0.199" sx="0.16" sy="7.105" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="-65.32" y="0" z="-5.61">
+        <cylinder y="3.59" sx="0.44" sy="7.18" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="-0.284" y="6.473" z="0.977" rx="0.672" rz="0.196" sx="0.16" sy="2.908" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.056" y="6.543" z="0.307" rx="0.196" rz="-0.672" sx="0.16" sy="3.141" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.33" y="6.613" z="-1.134" rx="-0.672" rz="-0.196" sx="0.16" sy="3.375" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.212" y="6.683" z="-0.353" rx="-0.196" rz="0.672" sx="0.16" sy="3.608" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="-26.181" y="0" z="21.408">
+        <cylinder y="4.355" sx="0.44" sy="8.71" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="0.846" y="7.898" z="0.971" rx="0.528" rz="-0.46" sx="0.16" sy="3.68" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.046" y="7.983" z="-0.911" rx="-0.46" rz="-0.528" sx="0.16" sy="3.963" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.976" y="8.068" z="-1.12" rx="-0.528" rz="0.46" sx="0.16" sy="4.246" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.195" y="8.153" z="1.041" rx="0.46" rz="0.528" sx="0.16" sy="4.529" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="38.068" y="0" z="49.367">
+        <cylinder y="5.885" sx="0.44" sy="11.77" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="0.777" y="10.796" z="-1.717" rx="-0.638" rz="-0.288" sx="0.16" sy="5.385" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.839" y="10.911" z="-0.832" rx="-0.288" rz="0.638" sx="0.16" sy="5.767" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.887" y="11.026" z="1.961" rx="0.638" rz="0.288" sx="0.16" sy="6.15" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.145" y="10.258" z="0.518" rx="0.288" rz="-0.638" sx="0.16" sy="3.59" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="30.289" y="0" z="4.355">
+        <cylinder y="6.65" sx="0.44" sy="13.3" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="-1.203" y="12.269" z="-1.855" rx="-0.587" rz="0.381" sx="0.16" sy="6.317" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.982" y="12.399" z="1.285" rx="0.381" rz="0.587" sx="0.16" sy="6.75" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.368" y="12.529" z="2.109" rx="0.587" rz="-0.381" sx="0.16" sy="7.182" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.26" y="11.661" z="-0.817" rx="-0.381" rz="-0.587" sx="0.16" sy="4.289" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="36.293" y="0" z="-26.368">
+        <cylinder y="7.415" sx="0.44" sy="14.83" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="-2.556" y="13.759" z="0.011" rx="0.003" rz="0.7" sx="0.16" sy="7.304" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.012" y="13.903" z="2.725" rx="0.7" rz="-0.003" sx="0.16" sy="7.786" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.596" y="12.935" z="-0.007" rx="-0.003" rz="-0.7" sx="0.16" sy="4.56" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.008" y="13.08" z="-1.765" rx="-0.7" rz="0.003" sx="0.16" sy="5.042" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="10.081" y="0" z="-58.254">
+        <cylinder y="3.68" sx="0.44" sy="7.36" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="-0.705" y="6.867" z="1.109" rx="0.591" rz="0.376" sx="0.16" sy="3.754" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.179" y="6.939" z="0.75" rx="0.376" rz="-0.591" sx="0.16" sy="3.993" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.449" y="6.458" z="-0.706" rx="-0.591" rz="-0.376" sx="0.16" sy="2.392" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.777" y="6.53" z="-0.494" rx="-0.376" rz="0.591" sx="0.16" sy="2.631" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="-40.811" y="0" z="-8.269">
+        <cylinder y="5.21" sx="0.44" sy="10.42" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="1.969" y="9.831" z="0.272" rx="0.096" rz="-0.693" sx="0.16" sy="5.679" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.163" y="9.151" z="-1.183" rx="-0.693" rz="-0.096" sx="0.16" sy="3.413" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.301" y="9.253" z="-0.18" rx="-0.096" rz="0.693" sx="0.16" sy="3.751" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.196" y="9.355" z="1.418" rx="0.693" rz="0.096" sx="0.16" sy="4.09" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="-47.026" y="0" z="30.222">
+        <cylinder y="5.975" sx="0.44" sy="11.95" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="0.85" y="10.441" z="-0.993" rx="-0.532" rz="-0.455" sx="0.16" sy="3.734" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.096" y="10.558" z="-0.938" rx="-0.455" rz="0.532" sx="0.16" sy="4.123" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.027" y="10.674" z="1.199" rx="0.532" rz="0.455" sx="0.16" sy="4.511" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.303" y="10.791" z="1.115" rx="0.455" rz="-0.532" sx="0.16" sy="4.899" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="50.949" y="0" z="13.392">
+        <cylinder y="3.77" sx="0.44" sy="7.54" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="-0.723" y="6.707" z="0.636" rx="0.462" rz="0.526" sx="0.16" sy="2.752" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.693" y="6.78" z="0.788" rx="0.526" rz="-0.462" sx="0.16" sy="2.997" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="0.852" y="6.854" z="-0.749" rx="-0.462" rz="-0.526" sx="0.16" sy="3.242" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.806" y="6.927" z="-0.917" rx="-0.526" rz="0.462" sx="0.16" sy="3.487" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+      <group x="58.288" y="0" z="-32.917">
+        <cylinder y="4.535" sx="0.44" sy="9.07" sz="0.44" color="#181A1C" touchable="false"/>
+        <box x="0.182" y="8.115" z="1.201" rx="0.692" rz="-0.105" sx="0.16" sy="3.469" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="1.303" y="8.204" z="-0.197" rx="-0.105" rz="-0.692" sx="0.16" sy="3.764" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-0.213" y="8.292" z="-1.405" rx="-0.692" rz="0.105" sx="0.16" sy="4.059" sz="0.16" color="#181A1C" touchable="false"/>
+        <box x="-1.507" y="8.381" z="0.228" rx="0.105" rz="0.692" sx="0.16" sy="4.354" sz="0.16" color="#181A1C" touchable="false"/>
+      </group>
+    </group>
+
+    <!-- Los dos mandos, y son objetos del lugar y no botones flotando: el fuego
+         llama a la bandada, la campana la espanta. -->
+    <group id="fogata" x="-13" y="0" z="10">
+      <cylinder y="0.15" sx="2.6" sy="0.3" sz="2.6" color="#26282C" touchable="false"/>
+      <box x="0" y="0.5" z="0.5" rx="0.5" rz="0" sx="0.12" sy="1.1" sz="0.12" color="#181A1C" touchable="false"/>
+      <box x="0.476" y="0.5" z="0.155" rx="0.155" rz="-0.476" sx="0.12" sy="1.1" sz="0.12" color="#181A1C" touchable="false"/>
+      <box x="0.294" y="0.5" z="-0.405" rx="-0.405" rz="-0.294" sx="0.12" sy="1.1" sz="0.12" color="#181A1C" touchable="false"/>
+      <box x="-0.294" y="0.5" z="-0.405" rx="-0.405" rz="0.294" sx="0.12" sy="1.1" sz="0.12" color="#181A1C" touchable="false"/>
+      <box x="-0.476" y="0.5" z="0.155" rx="0.155" rz="0.476" sx="0.12" sy="1.1" sz="0.12" color="#181A1C" touchable="false"/>
+      <box id="fuego" y="0.85" sx="0.9" sy="1.0" sz="0.9" color="#F0C070" touchable="true"/>
+      <text y="2.1" z="0.6" value="la fogata" size="0.13" color="#EAF0F8"/>
+      <text y="1.92" z="0.6" value="tocá: la bandada baja a rondarla" size="0.055" color="#93A2B6"/>
+    </group>
+
+    <group id="campanario" x="13" y="0" z="10">
+      <cylinder x="-0.7" y="1.6" sx="0.18" sy="3.2" sz="0.18" color="#26282C" touchable="false"/>
+      <cylinder x="0.7" y="1.6" sx="0.18" sy="3.2" sz="0.18" color="#26282C" touchable="false"/>
+      <box y="3.25" sx="1.9" sy="0.16" sz="0.24" color="#26282C" touchable="false"/>
+      <box id="campana" y="2.75" sx="0.7" sy="0.8" sz="0.7" color="#E8D8C0" touchable="true" border-radius="0.2"/>
+      <text y="1.5" z="0.4" value="la campana" size="0.13" color="#EAF0F8"/>
+      <text y="1.32" z="0.4" value="tocá: se dispersan" size="0.055" color="#93A2B6"/>
+    </group>
+
+    <group id="panel" x="0" y="0" z="15" ry="3.14159">
+      <cylinder x="-1.5" y="0.9" sx="0.11" sy="1.8" sz="0.11" color="#26282C" touchable="false"/>
+      <cylinder x="1.5" y="0.9" sx="0.11" sy="1.8" sz="0.11" color="#26282C" touchable="false"/>
+      <box y="2.1" sx="3.4" sy="1.0" sz="0.06" color="#101420" touchable="false" border-radius="0.05"/>
+      <text y="2.4" z="0.05" value="La bandada" size="0.16" color="#EAF0F8"/>
+      <text id="bd_estado" y="2.18" z="0.05" value="tres reglas, ninguna trayectoria" size="0.07" color="#93A2B6"/>
+      <text id="bd_dato" y="2.02" z="0.05" value="140 aves" size="0.055" color="#93A2B6"/>
+      <text id="bd_dato2" y="1.88" z="0.05" value="" size="0.055" color="#93A2B6"/>
+    </group>
+
+    <group id="aves">
+      <group id="ave_0" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_0" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_0" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_1" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_1" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_1" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_2" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_2" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_2" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_3" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_3" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_3" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_4" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_4" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_4" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_5" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_5" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_5" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_6" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_6" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_6" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_7" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_7" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_7" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_8" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_8" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_8" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_9" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_9" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_9" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_10" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_10" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_10" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_11" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_11" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_11" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_12" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_12" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_12" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_13" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_13" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_13" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_14" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_14" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_14" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_15" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_15" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_15" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_16" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_16" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_16" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_17" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_17" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_17" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_18" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_18" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_18" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_19" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_19" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_19" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_20" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_20" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_20" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_21" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_21" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_21" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_22" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_22" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_22" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_23" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_23" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_23" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_24" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_24" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_24" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_25" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_25" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_25" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_26" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_26" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_26" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_27" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_27" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_27" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_28" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_28" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_28" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_29" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_29" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_29" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_30" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_30" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_30" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_31" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_31" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_31" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_32" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_32" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_32" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_33" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_33" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_33" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_34" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_34" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_34" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_35" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_35" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_35" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_36" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_36" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_36" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_37" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_37" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_37" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_38" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_38" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_38" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_39" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_39" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_39" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_40" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_40" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_40" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_41" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_41" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_41" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_42" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_42" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_42" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_43" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_43" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_43" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_44" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_44" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_44" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_45" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_45" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_45" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_46" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_46" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_46" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_47" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_47" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_47" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_48" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_48" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_48" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_49" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_49" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_49" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_50" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_50" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_50" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_51" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_51" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_51" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_52" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_52" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_52" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_53" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_53" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_53" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_54" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_54" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_54" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_55" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_55" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_55" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_56" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_56" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_56" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_57" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_57" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_57" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_58" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_58" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_58" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_59" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_59" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_59" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_60" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_60" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_60" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_61" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_61" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_61" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_62" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_62" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_62" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_63" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_63" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_63" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_64" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_64" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_64" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_65" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_65" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_65" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_66" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_66" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_66" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_67" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_67" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_67" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_68" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_68" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_68" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_69" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_69" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_69" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_70" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_70" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_70" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_71" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_71" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_71" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_72" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_72" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_72" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_73" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_73" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_73" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_74" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_74" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_74" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_75" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_75" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_75" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_76" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_76" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_76" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_77" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_77" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_77" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_78" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_78" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_78" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_79" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_79" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_79" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_80" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_80" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_80" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_81" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_81" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_81" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_82" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_82" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_82" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_83" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_83" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_83" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_84" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_84" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_84" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_85" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_85" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_85" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_86" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_86" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_86" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_87" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_87" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_87" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_88" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_88" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_88" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_89" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_89" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_89" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_90" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_90" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_90" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_91" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_91" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_91" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_92" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_92" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_92" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_93" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_93" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_93" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_94" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_94" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_94" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_95" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_95" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_95" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_96" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_96" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_96" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_97" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_97" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_97" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_98" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_98" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_98" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_99" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_99" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_99" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_100" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_100" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_100" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_101" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_101" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_101" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_102" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_102" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_102" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_103" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_103" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_103" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_104" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_104" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_104" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_105" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_105" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_105" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_106" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_106" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_106" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_107" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_107" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_107" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_108" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_108" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_108" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_109" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_109" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_109" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_110" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_110" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_110" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_111" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_111" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_111" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_112" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_112" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_112" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_113" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_113" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_113" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_114" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_114" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_114" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_115" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_115" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_115" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_116" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_116" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_116" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_117" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_117" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_117" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_118" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_118" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_118" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_119" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_119" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_119" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_120" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_120" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_120" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_121" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_121" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_121" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_122" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_122" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_122" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_123" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_123" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_123" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_124" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_124" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_124" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_125" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_125" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_125" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_126" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_126" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_126" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_127" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_127" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_127" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_128" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_128" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_128" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_129" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_129" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_129" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_130" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_130" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_130" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_131" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_131" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_131" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_132" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_132" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_132" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_133" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_133" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_133" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_134" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_134" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_134" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_135" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_135" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_135" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_136" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_136" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_136" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_137" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_137" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_137" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_138" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_138" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_138" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+      <group id="ave_139" x="0" y="20" z="0">
+        <box sx="0.5" sy="0.16" sz="0.16" color="#0E1014" touchable="false"/>
+        <box id="ala_i_139" x="-0.05" z="-0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+        <box id="ala_d_139" x="-0.05" z="0.34" sx="0.34" sy="0.05" sz="0.62" color="#0E1014" touchable="false"/>
+      </group>
+    </group>
+
+    <group id="portal_vuelta" x="-6" y="0" z="15" ry="2.761">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#2E3138","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.BANDADA = {"base":"https://njs58923.github.io/luna-demos/noche","aves":140,"fogata":{"x":-13,"y":4.5,"z":10},"campana":{"x":13,"y":2.75,"z":10}};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/bandada.js"/>
+  </space>
+</hsml>

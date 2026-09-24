@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Piano de dos octavas. Cada tecla suena al tocarla; en VR se tocan con los
+  dedos, bajando la mano sobre la tecla.
+
+  De mesa: apoya en y=0, el teclado mira a +Z (el pianista, parado en +Z).
+  Mide 0.84 × 0.14 × 0.3 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/piano.hsml"
+             resources="audio,read_pose_stream" events="nota"
+             props='{"octava":0,"timbre":"piano"}'/>
+
+  Props: octava (-2..2), timbre ("piano" | "organo" | "campana"), mueble (color).
+  Eventos: nota {tecla, nombre, frecuencia}.
+  Mensajes: tocar {tecla} (0 = Do grave, 24 = Do agudo).
+-->
+<hsml>
+  <head><name>Piano</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="mueble" y="0.035" z="-0.02" sx="0.84" sy="0.07" sz="0.3" color="#1C1C1C" border-radius="0.01"/>
+    <box id="atril" y="0.12" z="-0.14" rx="-0.25" sx="0.8" sy="0.1" sz="0.02" color="#1C1C1C"/>
+    <text id="marca" y="0.085" z="-0.1" rx="-0.9" value="LUNA" size="0.018" color="#C9A45C"/>
+    <group id="teclas" y="0.075" z="0.02"/>
+    <posezone id="zona" y="0.12" z="0.02" sx="0.9" sy="0.2" sz="0.3" visible="false"/>
+    <script src="./piano.js"/>
+  </space>
+</hsml>

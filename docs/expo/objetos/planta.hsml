@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Planta que crece. Recién plantada es un montoncito de tierra; si se la
+  riega, crece de verdad con el paso del tiempo (aunque no estés): brote,
+  planta, pimpollo, flor. La tierra se seca sola; seca no crece, y si pasa
+  mucho tiempo seca, se marchita. Tocar la regadera la riega; en VR se la
+  toma con el grip y se la inclina sobre la maceta. Se guarda (por `clave`).
+
+  De piso o de mesa: apoya en y=0. Mide 0.4 × 0.5 × 0.25 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/planta.hsml"
+             resources="read_pose_stream" events="etapa"
+             props='{"clave":"balcon","horas":96}'/>
+
+  Props: clave, horas (de semilla a flor, regada), seca (horas que dura un
+  riego), flor (color).
+  Eventos: riego {}, etapa {nombre, crecimiento}, marchita {}.
+  Mensajes: regar, replantar.
+-->
+<hsml>
+  <head><name>Planta que crece</name></head>
+  <space resources="read_pose_stream">
+    <cylinder id="maceta" y="0.07" sx="0.16" sy="0.14" sz="0.16" color="#C0663A"/>
+    <cylinder y="0.14" sx="0.175" sy="0.02" sz="0.175" color="#A8552E"/>
+    <cylinder id="tierra" y="0.143" sx="0.145" sy="0.01" sz="0.145" color="#A0826D"/>
+    <sphere id="monticulo" y="0.148" sx="0.04" sy="0.014" sz="0.04" color="#8B6B55"/>
+    <group id="planta" y="0.148"/>
+    <group x="0.055" y="0.148" z="0.03">
+      <box y="0.03" sx="0.004" sy="0.06" sz="0.004" color="#D9C29B"/>
+      <box y="0.06" z="0.003" sx="0.045" sy="0.02" sz="0.002" color="#FFFFFF"/>
+      <text id="cartelito" y="0.06" z="0.0045" value="" size="0.006" color="#1C1C1C"/>
+    </group>
+    <group id="regadera" x="-0.2" z="0.02">
+      <cylinder y="0.055" sx="0.08" sy="0.11" sz="0.08" color="#2A9D8F"/>
+      <cylinder x="0.06" y="0.08" rz="-1.0" sx="0.014" sy="0.1" sz="0.014" color="#2A9D8F"/>
+      <cylinder x="0.1" y="0.108" rz="-1.0" sx="0.03" sy="0.012" sz="0.03" color="#21867A"/>
+      <box x="-0.045" y="0.08" sx="0.012" sy="0.07" sz="0.012" color="#21867A"/>
+      <box y="0.125" sx="0.06" sy="0.012" sz="0.012" color="#21867A"/>
+      <box id="toque_regadera" y="0.07" sx="0.16" sy="0.15" sz="0.1" color="transparent" material-alpha="blend"/>
+    </group>
+    <group id="gotas"/>
+    <posezone id="zona" y="0.3" sx="0.9" sy="0.7" sz="0.7" visible="false"/>
+    <script src="./planta.js"/>
+  </space>
+</hsml>

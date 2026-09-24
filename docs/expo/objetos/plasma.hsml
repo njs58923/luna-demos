@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Esfera de plasma. Rayitos de colores van del centro al vidrio y se
+  retuercen solos. Donde se toca el vidrio se junta un rayo grueso y brillante,
+  como con el dedo en una de verdad; en VR alcanza con acercar la mano.
+
+  De mesa: apoya en y=0. Mide 0.24 × 0.34 × 0.24 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/plasma.hsml"
+             resources="audio,read_pose_stream" events="chispa"
+             props='{"color":"#FF6BD6"}'/>
+
+  Props: color (de los rayos), rayos (4 a 12), apagada (true/false).
+  Eventos: chispa {x, y, z} donde se juntó el rayo (coordenadas del objeto).
+  Mensajes: prender, apagar.
+-->
+<hsml>
+  <head><name>Esfera de plasma</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder y="0.03" sx="0.2" sy="0.06" sz="0.2" color="#1A1A22"/>
+    <cylinder y="0.07" sx="0.12" sy="0.03" sz="0.12" color="#2A2A36"/>
+    <cylinder id="interruptor" y="0.03" z="0.1" rx="1.5708" sx="0.02" sy="0.01" sz="0.02" color="#30D158"/>
+    <cylinder y="0.13" sx="0.012" sy="0.1" sz="0.012" color="#3A3A48"/>
+    <sphere id="nucleo" y="0.2" sx="0.035" sy="0.035" sz="0.035" color="#FFD6F5" material-unlit="true"/>
+    <group id="rayos"/>
+    <sphere id="vidrio" y="0.2" sx="0.24" sy="0.24" sz="0.24" color="#B8A8FF22" material-alpha="blend"/>
+    <posezone id="zona" y="0.2" sx="0.5" sy="0.5" sz="0.5" visible="false"/>
+    <script src="./plasma.js"/>
+  </space>
+</hsml>

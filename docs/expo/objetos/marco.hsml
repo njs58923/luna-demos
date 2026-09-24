@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Marco de fotos. Muestra imágenes de una lista; tocarlo pasa a la
+  siguiente, y si se le da `segundos` las pasa solo. Las imágenes pueden ser
+  de cualquier servidor (PNG o JPG); relativas, se buscan en el de la calle.
+
+  De pared: el origen es el clavo, el marco mira a +Z. Mide 0.66 × 0.52 × 0.04 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/marco.hsml" events="foto"
+             props='{"imagenes":["https://ejemplo.com/a.png","https://ejemplo.com/b.jpg"],"segundos":8}'/>
+
+  Props: imagenes (lista de URLs), segundos (0 = sólo al tocar), marco
+  (color), paspartu (color).
+  Eventos: foto {indice, src}.
+  Mensajes: siguiente, anterior.
+-->
+<hsml>
+  <head><name>Marco de fotos</name></head>
+  <space resources="read_pose_stream">
+    <box id="marco" z="0.012" sx="0.66" sy="0.52" sz="0.024" color="#3A2A1A" border-radius="0.01"/>
+    <box id="paspartu" z="0.025" sx="0.58" sy="0.44" sz="0.002" color="#F4F1EA"/>
+    <image id="foto" z="0.028" sx="0.5" sy="0.36" fit="contain" src=""/>
+    <text id="cargando" z="0.027" value="" size="0.02" color="#8A8A8A"/>
+    <group id="puntos" y="-0.235" z="0.026"/>
+    <plane id="toque" z="0.04" sx="0.66" sy="0.52" color="transparent" material-alpha="blend"/>
+    <script src="./marco.js"/>
+  </space>
+</hsml>

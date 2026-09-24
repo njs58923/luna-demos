@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cinta métrica. En VR se agarra la chapita de la punta con el grip y se
+  estira hacia cualquier lado: el visor dice cuánto mide, en centímetros y en
+  pulgadas. Queda trabada donde se la suelta; el botón rojo la recoge. Sin VR,
+  tocar la chapita la estira de a 20 cm.
+
+  De mesa: apoya en y=0. La caja mide 0.09 × 0.09 × 0.04 m; la cinta sale
+  por +X y llega a `largo` metros.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cinta.hsml"
+             resources="audio,read_pose_stream" events="medida"/>
+
+  Props: largo (máximo, 1 a 5 m), color (de la caja).
+  Eventos: medida {metros} al soltarla o estirarla.
+  Mensajes: recoger, estirar {metros}.
+-->
+<hsml>
+  <head><name>Cinta métrica</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="caja" y="0.045" sx="0.09" sy="0.09" sz="0.04" color="#F2C200" border-radius="0.012"/>
+    <box y="0.045" sx="0.06" sy="0.06" sz="0.042" color="#1C1C1C" border-radius="0.02"/>
+    <box x="0.046" y="0.012" sx="0.004" sy="0.01" sz="0.03" color="#1C1C1C"/>
+    <cylinder id="boton" y="0.092" x="-0.015" sx="0.022" sy="0.008" sz="0.022" color="#D62828"/>
+    <box y="0.06" z="0.0215" sx="0.056" sy="0.024" sz="0.002" color="#DDE8D0"/>
+    <text id="visor" y="0.064" z="0.0225" value="0.0 cm" size="0.011" color="#111111"/>
+    <text id="visor2" y="0.053" z="0.0225" value="0.00 in" size="0.007" color="#333333"/>
+    <group id="cinta"/>
+    <group id="gancho">
+      <box x="0.004" sx="0.008" sy="0.004" sz="0.03" color="#B08D57"/>
+      <box x="0.009" y="-0.006" sx="0.002" sy="0.014" sz="0.03" color="#B08D57"/>
+      <box id="agarrar" x="0.01" sx="0.06" sy="0.06" sz="0.06" color="transparent" material-alpha="blend"/>
+    </group>
+    <posezone id="zona" y="0.5" sx="4" sy="2.4" sz="4" visible="false"/>
+    <script src="./cinta.js"/>
+  </space>
+</hsml>

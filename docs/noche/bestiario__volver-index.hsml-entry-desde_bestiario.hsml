@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>Bestiario nocturno</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas y con
+       espacios queda un token que no matchea nada, en silencio. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+    <!-- La llegada. El bestiario fue la raiz del servidor hasta que el atrio
+         subio a la raiz; ahora es la sala 01 y se entra por la misma puerta
+         cualquier otra, asi que le corresponde decir donde empieza uno.
+         OJO con la convencion: el forward de un spawn es (-sin ry, 0, -cos ry),
+         asi que ry=0 mira hacia -Z, que es donde esta el abanico de pedestales.
+         El cartel de entrada queda a espaldas, como corresponde: está en
+         z=2.6, así que la llegada va por delante de él. En z=3.2 el visitante
+         nacía detrás del cartel, a 60 cm, y lo único que veía era su dorso. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="1.4" ry="0"/>
+    <group id="cielo">
+    </group>
+
+    <group id="isla">
+      <cylinder y="-0.18" sx="22" sy="0.36" sz="20" color="#2B3A2C" touchable="false"/>
+      <cylinder y="-0.60" sx="21.7" sy="0.50" sz="19.7" color="#2A3230" touchable="false"/>
+      <cylinder x="0.2" y="-1.2" sx="19.8" sy="0.75" sz="17.9" color="#232A29" touchable="false"/>
+      <cylinder x="0.5" y="-1.95" sx="16.8" sy="0.80" sz="15.2" color="#232A29" touchable="false"/>
+      <cylinder x="0.8" y="-2.7" sx="12.4" sy="0.80" sz="11.4" color="#2A3230" touchable="false"/>
+      <cylinder x="1.0" y="-3.35" sx="6.8" sy="0.60" sz="6.2" color="#232A29" touchable="false"/>
+      <!-- Las piedras del entorno de la home eran tres <box> sueltas. Se fueron:
+           al lado de las rocas generadas por código se veían como cajas. -->
+    </group>
+
+    <group id="sala">
+      <group id="pieza_escarabajo" x="-4.046" z="-1.457" ry="1.225">
+        <cylinder y="0.42" sx="0.62" sy="0.84" sz="0.62" color="#3E4744" touchable="false"/>
+        <cylinder y="0.86" sx="0.74" sy="0.08" sz="0.74" color="#4A544F" touchable="false"/>
+
+        <!-- La criatura cuelga de su propio grupo: el script hace flotar el
+             grupo, y la animación del .glb bate las alas por dentro. Son dos
+             movimientos independientes y conviene que sigan siéndolo. -->
+        <group id="vuelo_escarabajo" y="1.1">
+          <model id="modelo_escarabajo" src="https://njs58923.github.io/luna-demos/noche/models/escarabajo.glb" s="1.7"/>
+        </group>
+
+        <!-- El cartel va en la cara del pedestal que mira al centro, o sea
+             -z local, y grande: a dos metros y de noche, un texto de 3 cm no
+             se lee. El grupo ya está girado hacia el visitante. -->
+        <box y="0.56" z="0.30" sx="0.56" sy="0.26" sz="0.03" color="#1C2430" touchable="false"/>
+        <text y="0.605" z="0.34" value="Escarabajo" size="0.075" color="#C9D6E4"/>
+        <text y="0.515" z="0.34" value="élitros partidos y seis patas" size="0.036" color="#7E8C9C"/>
+      </group>
+
+      <group id="pieza_polilla" x="-2.473" z="-3.518" ry="0.613">
+        <cylinder y="0.42" sx="0.62" sy="0.84" sz="0.62" color="#3E4744" touchable="false"/>
+        <cylinder y="0.86" sx="0.74" sy="0.08" sz="0.74" color="#4A544F" touchable="false"/>
+
+        <!-- La criatura cuelga de su propio grupo: el script hace flotar el
+             grupo, y la animación del .glb bate las alas por dentro. Son dos
+             movimientos independientes y conviene que sigan siéndolo. -->
+        <group id="vuelo_polilla" y="1.28">
+          <model id="modelo_polilla" src="https://njs58923.github.io/luna-demos/noche/models/polilla.glb" s="1.6" animation-clip="0" animation-loop="true"/>
+        </group>
+
+        <!-- El cartel va en la cara del pedestal que mira al centro, o sea
+             -z local, y grande: a dos metros y de noche, un texto de 3 cm no
+             se lee. El grupo ya está girado hacia el visitante. -->
+        <box y="0.56" z="0.30" sx="0.56" sy="0.26" sz="0.03" color="#1C2430" touchable="false"/>
+        <text y="0.605" z="0.34" value="Polilla" size="0.075" color="#C9D6E4"/>
+        <text y="0.515" z="0.34" value="cuatro alas, aleteo de 24 cuadros" size="0.036" color="#7E8C9C"/>
+      </group>
+
+      <group id="pieza_luciernaga" x="0" z="-4.3" ry="0">
+        <cylinder y="0.42" sx="0.62" sy="0.84" sz="0.62" color="#3E4744" touchable="false"/>
+        <cylinder y="0.86" sx="0.74" sy="0.08" sz="0.74" color="#4A544F" touchable="false"/>
+
+        <!-- La criatura cuelga de su propio grupo: el script hace flotar el
+             grupo, y la animación del .glb bate las alas por dentro. Son dos
+             movimientos independientes y conviene que sigan siéndolo. -->
+        <group id="vuelo_luciernaga" y="1.26">
+          <model id="modelo_luciernaga" src="https://njs58923.github.io/luna-demos/noche/models/luciernaga.glb" s="2.2" animation-clip="0" animation-loop="true"/>
+        </group>
+
+        <!-- El cartel va en la cara del pedestal que mira al centro, o sea
+             -z local, y grande: a dos metros y de noche, un texto de 3 cm no
+             se lee. El grupo ya está girado hacia el visitante. -->
+        <box y="0.56" z="0.30" sx="0.56" sy="0.26" sz="0.03" color="#1C2430" touchable="false"/>
+        <text y="0.605" z="0.34" value="Luciérnaga" size="0.075" color="#C9D6E4"/>
+        <text y="0.515" z="0.34" value="el abdomen va emisivo" size="0.036" color="#7E8C9C"/>
+      </group>
+
+      <group id="pieza_murcielago" x="2.473" z="-3.518" ry="-0.613">
+        <cylinder y="0.42" sx="0.62" sy="0.84" sz="0.62" color="#3E4744" touchable="false"/>
+        <cylinder y="0.86" sx="0.74" sy="0.08" sz="0.74" color="#4A544F" touchable="false"/>
+
+        <!-- La criatura cuelga de su propio grupo: el script hace flotar el
+             grupo, y la animación del .glb bate las alas por dentro. Son dos
+             movimientos independientes y conviene que sigan siéndolo. -->
+        <group id="vuelo_murcielago" y="1.32">
+          <model id="modelo_murcielago" src="https://njs58923.github.io/luna-demos/noche/models/murcielago.glb" s="1.5" animation-clip="0" animation-loop="true"/>
+        </group>
+
+        <!-- El cartel va en la cara del pedestal que mira al centro, o sea
+             -z local, y grande: a dos metros y de noche, un texto de 3 cm no
+             se lee. El grupo ya está girado hacia el visitante. -->
+        <box y="0.56" z="0.30" sx="0.56" sy="0.26" sz="0.03" color="#1C2430" touchable="false"/>
+        <text y="0.605" z="0.34" value="Murciélago" size="0.075" color="#C9D6E4"/>
+        <text y="0.515" z="0.34" value="ala en dos tramos: brazo y membrana" size="0.036" color="#7E8C9C"/>
+      </group>
+
+      <group id="pieza_buho" x="4.046" z="-1.457" ry="-1.225">
+        <cylinder y="0.42" sx="0.62" sy="0.84" sz="0.62" color="#3E4744" touchable="false"/>
+        <cylinder y="0.86" sx="0.74" sy="0.08" sz="0.74" color="#4A544F" touchable="false"/>
+
+        <!-- La criatura cuelga de su propio grupo: el script hace flotar el
+             grupo, y la animación del .glb bate las alas por dentro. Son dos
+             movimientos independientes y conviene que sigan siéndolo. -->
+        <group id="vuelo_buho" y="1.16">
+          <model id="modelo_buho" src="https://njs58923.github.io/luna-demos/noche/models/buho.glb" s="1.3"/>
+        </group>
+
+        <!-- El cartel va en la cara del pedestal que mira al centro, o sea
+             -z local, y grande: a dos metros y de noche, un texto de 3 cm no
+             se lee. El grupo ya está girado hacia el visitante. -->
+        <box y="0.56" z="0.30" sx="0.56" sy="0.26" sz="0.03" color="#1C2430" touchable="false"/>
+        <text y="0.605" z="0.34" value="Búho" size="0.075" color="#C9D6E4"/>
+        <text y="0.515" z="0.34" value="cuerpo y cabeza casi fundidos" size="0.036" color="#7E8C9C"/>
+      </group>
+
+      <group id="farol_0" x="-4.332" z="-3.306">
+        <cylinder y="0.85" sx="0.09" sy="1.7" sz="0.09" color="#2A2622" touchable="false"/>
+        <box y="1.78" sx="0.26" sy="0.05" sz="0.26" color="#2A2622" touchable="false"/>
+        <box id="luz_0" y="1.62" sx="0.19" sy="0.24" sz="0.19" color="#FFD79A" touchable="false"/>
+        <box y="1.46" sx="0.24" sy="0.04" sz="0.24" color="#2A2622" touchable="false"/>
+      </group>
+      <group id="farol_1" x="-1.643" z="-5.196">
+        <cylinder y="0.85" sx="0.09" sy="1.7" sz="0.09" color="#2A2622" touchable="false"/>
+        <box y="1.78" sx="0.26" sy="0.05" sz="0.26" color="#2A2622" touchable="false"/>
+        <box id="luz_1" y="1.62" sx="0.19" sy="0.24" sz="0.19" color="#FFD79A" touchable="false"/>
+        <box y="1.46" sx="0.24" sy="0.04" sz="0.24" color="#2A2622" touchable="false"/>
+      </group>
+      <group id="farol_2" x="1.643" z="-5.196">
+        <cylinder y="0.85" sx="0.09" sy="1.7" sz="0.09" color="#2A2622" touchable="false"/>
+        <box y="1.78" sx="0.26" sy="0.05" sz="0.26" color="#2A2622" touchable="false"/>
+        <box id="luz_2" y="1.62" sx="0.19" sy="0.24" sz="0.19" color="#FFD79A" touchable="false"/>
+        <box y="1.46" sx="0.24" sy="0.04" sz="0.24" color="#2A2622" touchable="false"/>
+      </group>
+      <group id="farol_3" x="4.332" z="-3.306">
+        <cylinder y="0.85" sx="0.09" sy="1.7" sz="0.09" color="#2A2622" touchable="false"/>
+        <box y="1.78" sx="0.26" sy="0.05" sz="0.26" color="#2A2622" touchable="false"/>
+        <box id="luz_3" y="1.62" sx="0.19" sy="0.24" sz="0.19" color="#FFD79A" touchable="false"/>
+        <box y="1.46" sx="0.24" sy="0.04" sz="0.24" color="#2A2622" touchable="false"/>
+      </group>
+
+      <!-- El único portal que queda: al atrio.
+           Acá hubo quince arcos, uno por escena, y a los quince la isla era un
+           bosque de portales que se tapaban entre ellos. El índice se mudó a su
+           propia sala y el bestiario volvió a ser una escena. -->
+      <group id="portal" x="3.9" y="0" z="2.6" ry="-0.9">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_bestiario","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#7A6248","color":"#1C2430"}'/>
+      </group>
+
+      <!-- Cartel de entrada, a espaldas del visitante. -->
+      <group z="2.6" ry="3.14159">
+        <box y="1.5" sx="2.4" sy="0.52" sz="0.06" color="#1C2430" touchable="false" border-radius="0.06"/>
+        <text y="1.58" z="0.05" value="Bestiario nocturno" size="0.12" color="#C9D6E4"/>
+        <text y="1.42" z="0.05" value="5 criaturas — las aladas traen su aleteo en el .glb" size="0.045" color="#7E8C9C"/>
+        <cylinder x="-0.95" y="0.62" sx="0.07" sy="1.24" sz="0.07" color="#2A2622" touchable="false"/>
+        <cylinder x="0.95" y="0.62" sx="0.07" sy="1.24" sz="0.07" color="#2A2622" touchable="false"/>
+      </group>
+
+      <!-- La cabaña: ~130 tablas generadas uña por uña en una malla dinámica,
+           en UN nodo. Como nodos del DOM serían 130 entidades con sus 130
+           transformaciones y materiales. Ver public/cabania.js. -->
+      <model id="cabania" x="-6.4" y="0" z="1.6" ry="0.55"/>
+
+      <!-- Rocas y adoquinado, también generados por código. Un nodo cada uno;
+           como nodos del DOM serían ~180 entidades. Ver public/piedras.js. -->
+      <model id="rocas" y="0.02"/>
+      <model id="sendero" y="0.005"/>
+    </group>
+
+    <!-- El cielo estrellado lo arma el script con una malla dinámica: son
+         220 triángulos en un solo nodo, y titilan cambiando colores
+         sin tocar el DOM. -->
+    <model id="estrellas" y="0" />
+
+    <script>
+      globalThis.NOCHE = {"base":"https://njs58923.github.io/luna-demos/noche","estrellas":220,"bamboleo":true,"piezas":[{"id":"escarabajo","vuela":false},{"id":"polilla","vuela":true},{"id":"luciernaga","vuela":true},{"id":"murcielago","vuela":true},{"id":"buho","vuela":false}],"faroles":4};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/noche.js"/>
+    <script src="https://njs58923.github.io/luna-demos/noche/cabania.js"/>
+    <script src="https://njs58923.github.io/luna-demos/noche/piedras.js"/>
+  </space>
+</hsml>

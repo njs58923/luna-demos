@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Trompo. Tocarlo lo lanza: baila derecho, zumba, y a medida que pierde
+  velocidad se va inclinando y describiendo círculos hasta que cae de costado.
+  Al rato se para solo. En VR se lo lanza tirando rápido del piolín (la
+  manija que asoma): cuanto más fuerte, más dura.
+
+  De piso o de mesa: apoya en y=0. Mide 0.1 × 0.12 × 0.1 m; baila en unos
+  30 cm alrededor.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/trompo.hsml"
+             resources="audio,read_pose_stream" events="cae"/>
+
+  Props: colores (lista de tres, las franjas).
+  Eventos: lanzado {vueltas_por_segundo}, cae {segundos}.
+  Mensajes: lanzar {fuerza (0.3 a 1.5)}.
+-->
+<hsml>
+  <head><name>Trompo</name></head>
+  <space resources="audio,read_pose_stream">
+    <cylinder y="0.001" sx="0.34" sy="0.002" sz="0.34" color="#3A3A48" material-alpha="blend"/>
+    <group id="trompo">
+      <group id="giro">
+        <cylinder y="0.012" sx="0.006" sy="0.024" sz="0.006" color="#8C8C8C"/>
+        <cylinder class="f0" y="0.032" sx="0.05" sy="0.016" sz="0.05" color="#D62828"/>
+        <cylinder class="f1" y="0.05" sx="0.078" sy="0.02" sz="0.078" color="#F77F00"/>
+        <cylinder class="f2" y="0.068" sx="0.09" sy="0.016" sz="0.09" color="#FCBF49"/>
+        <cylinder class="f0" y="0.081" sx="0.07" sy="0.01" sz="0.07" color="#D62828"/>
+        <cylinder y="0.094" sx="0.014" sy="0.02" sz="0.014" color="#6B4A30"/>
+        <box y="0.068" z="0.045" sx="0.01" sy="0.017" sz="0.002" color="#FFFFFF"/>
+      </group>
+    </group>
+    <group id="piolin" x="0.08" y="0.02">
+      <cylinder y="0.012" sx="0.02" sy="0.024" sz="0.02" color="#A0522D"/>
+      <box id="agarrar" y="0.02" sx="0.06" sy="0.06" sz="0.06" color="transparent" material-alpha="blend"/>
+    </group>
+    <box id="toque" y="0.06" sx="0.12" sy="0.12" sz="0.12" color="transparent" material-alpha="blend"/>
+    <posezone id="zona" y="0.2" sx="1" sy="0.6" sz="1" visible="false"/>
+    <script src="./trompo.js"/>
+  </space>
+</hsml>

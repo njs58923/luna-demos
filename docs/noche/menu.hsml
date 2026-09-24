@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>Maqueta del menu VR</name></head>
+
+  <space resources="read_camera_pose,spawn,vr_locomotion,desktop_camera_control">
+    <!-- El visitante mira a -Z desde el origen, que es donde el shell asume que
+         esta la cabeza. El forward de un spawn es (-sin ry, 0, -cos ry): con
+         ry=0 se mira a -Z, que es hacia el panel. -->
+    <spawn id="entrada" default="true" x="0" y="0" z="0" ry="0"/>
+
+    <group id="cielo">
+      <plane z="-40" sx="80" sy="80" color="#0C0E13" touchable="false"/>
+      <plane z="40" sx="80" sy="80" color="#0C0E13" touchable="false"/>
+      <plane x="-40" ry="1.5707963" sx="80" sy="80" color="#0C0E13" touchable="false"/>
+      <plane x="40" ry="1.5707963" sx="80" sy="80" color="#0C0E13" touchable="false"/>
+      <plane y="40" rx="1.5707963" sx="80" sy="80" color="#0C0E13" touchable="false"/>
+    </group>
+
+    <cylinder y="-0.05" sx="16" sy="0.1" sz="16" color="#191C23" touchable="false"/>
+    <cylinder y="0.002" sx="7" sy="0.01" sz="7" color="#20242D" touchable="false"/>
+    <box x="-3.6" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-5.6" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="-3" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-5" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="-2.4" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-4.4" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="-1.8" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-3.8" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="-1.2" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-3.2" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="-0.6" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-2.6" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="0" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-2" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="0.6" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-1.4" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="1.2" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-0.8" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="1.8" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="-0.2" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="2.4" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="0.4" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="3" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="1" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+    <box x="3.6" y="0.005" z="-2" sx="0.012" sy="0.01" sz="6" color="#2A2F3A" touchable="false"/>
+    <box y="0.005" z="1.6" sx="7.2" sy="0.01" sz="0.012" color="#2A2F3A" touchable="false"/>
+
+    <!-- Los cuatro contenedores. Todo lo de adentro lo crea el script con
+         createElement, porque la cuenta del arco tiene que estar escrita una
+         sola vez y en un solo lugar: es lo que hay que portar al motor. -->
+    <group id="fijados"/>
+    <group id="panel"/>
+    <group id="barra"/>
+    <group id="controles"/>
+
+    <!-- Los fondos de las pastillas, en UNA malla.
+         Un <plane> es plano y las piezas van sobre un cilindro: en el panel la
+         flecha del arco llega a 12 cm sobre 1,27 m de ancho, asi que la placa se
+         queda atras justo donde los iconos se adelantan, y en la barra el plano
+         de la placa llegaba a cortar al item del extremo. Una malla que sigue el
+         arco no tiene ese problema y ademas deja acercar los iconos: quedan a 8
+         mm de su fondo, iguales de punta a punta. -->
+    <model id="fondos"/>
+
+    <script>
+      globalThis.MENU = {"base":"https://njs58923.github.io/luna-demos/noche","M":{"radio":1.6,"radioBarra":1.25,"icono":0.17,"esquina":0.22,"pasoX":0.24,"pasoY":0.3,"columnas":5,"filas":3,"yFijados":2,"yGrilla":1.38,"yBarra":0.76,"inclinacionBarra":-0.64,"dyEtiqueta":-0.122,"tamEtiqueta":0.028,"tamFijado":0.024,"iconoFijado":0.15,"pasoFijados":0.235,"altoBarra":0.115,"itemBarra":0.072,"pasoBarra":0.092,"huecoGrupo":0.09,"zPlaca":-0.006,"zIcono":0,"zGlifo":0.0025,"zTexto":0.005},"SALA":{"fondo":"#0C0E13","piso":"#191C23","pisoAlt":"#20242D","reja":"#2A2F3A"},"FIJADOS":[["Tienda","action/shopping_cart"],["Feed","action/list"],["Chats","communication/forum"],["Navegador","action/language"]],"APPS":[["Vídeo","av/movie"],["Archivos","file/folder"],["Social","social/people"],["Fotos","image/photo"],["Mensajes","communication/chat"],["Escritorio","hardware/desktop_windows"],["Aventura","maps/terrain"],["Ritmo","image/music_note"],["Cámara","image/camera_alt"],["Mapa","maps/map"],["Notas","action/description"],["Radio","av/radio"],["Taller","action/build"],["Sala","action/home"],["Ajustes","action/settings"]],"PALETA":["#E8912A","#4C9BE8","#C4459B","#5C6BE0","#3B82F6","#22B24C","#8B5CF6","#E0533F","#14B8A6","#EAB308"],"RIEL":["action/search","navigation/menu","navigation/apps"],"BARRA":{"persona":"social/people","wifi":"device/signal_wifi_4_bar","bateria":"device/battery_full","centro":["social/notifications","hardware/headset"],"accesos":["av/movie","action/shopping_cart","file/folder","image/music_note","av/games","action/settings"],"todas":"navigation/apps"},"ICONOS":"https://njs58923.github.io/luna-demos/noche/iconos"};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/menu.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Xilófono. Ocho láminas de colores: tocarlas las hace sonar. En VR también se
+  tocan con la mano, bajándola sobre la lámina como si fuera un palillo.
+
+  De mesa: apoya en y=0. Mide 0.62 × 0.1 × 0.4 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/xilofono.hsml"
+             resources="audio,read_pose_stream" events="nota"
+             props='{"escala":"pentatonica","octava":1}'/>
+
+  Necesita `audio` delegado para sonar; sin él se ve y se anima igual, mudo.
+  Con `read_pose_stream` se toca con las manos además de con el puntero.
+
+  Props: escala ("mayor" | "pentatonica" | "menor"), octava (-1..2), volumen
+  (0..1), madera (color del marco).
+  Eventos: nota {indice, frecuencia}.
+  Mensajes: tocar {indice}.
+-->
+<hsml>
+  <head><name>Xilófono</name></head>
+  <space resources="audio,read_pose_stream">
+    <group id="marco"/>
+    <group id="laminas"/>
+    <posezone id="zona" y="0.14" sx="0.8" sy="0.34" sz="0.5" visible="false"/>
+    <script src="./xilofono.js"/>
+  </space>
+</hsml>

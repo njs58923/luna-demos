@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_noche - no editar a mano -->
+<hsml>
+  <head><name>La feria</name></head>
+
+  <!-- Separadas por COMA: parse_resource_tokens hace split(',') a secas. -->
+  <space resources="navigate_self,navigate_world,read_camera_pose,vr_locomotion,desktop_camera_control,spawn,skybox">
+    <include id="entorno" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+    <!-- Donde aparece el visitante: delante del portal, de espaldas al arco y mirando al centro. Ver llegada() en escena.ts. -->
+    <spawn id="entrada" default="true" x="5.316" y="0" z="19.492" ry="0.266"/>
+    <group id="cielo">
+    </group>
+
+    <cylinder y="-0.1" sx="150" sy="0.2" sz="150" color="#1A1D24" touchable="false"/>
+    <cylinder y="0.005" sx="62" sy="0.02" sz="62" color="#22262E" touchable="false"/>
+
+    <!-- La vuelta al mundo. El eje va en un grupo aparte del soporte: el
+         soporte no gira y la rueda sí. -->
+    <group id="feria_rueda" x="-16" y="0" z="-6">
+      <box x="-3.4" y="6.5" rz="0.24" sx="0.5" sy="14" sz="0.5" color="#2E3440" touchable="false"/>
+      <box x="3.4" y="6.5" rz="-0.24" sx="0.5" sy="14" sz="0.5" color="#2E3440" touchable="false"/>
+      <box y="0.25" sx="9" sy="0.5" sz="3" color="#2E3440" touchable="false"/>
+      <group id="rueda" y="13">
+        <cylinder rx="1.5707963" sx="1.2" sy="1.4" sz="1.2" color="#3E4553" touchable="false"/>
+        <cylinder rx="1.5707963" sx="22" sy="0.1" sz="22" color="#2E3440" touchable="false"/>
+        <group id="brazo_0" rz="0">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_0" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#C8453E" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_1" rz="0.393">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_1" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#E0913A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_2" rz="0.785">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_2" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#E8C84A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_3" rz="1.178">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_3" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#4FA86A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_4" rz="1.571">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_4" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#3E7FC8" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_5" rz="1.963">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_5" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#8A5FC0" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_6" rz="2.356">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_6" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#C8453E" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_7" rz="2.749">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_7" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#E0913A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_8" rz="3.142">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_8" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#E8C84A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_9" rz="3.534">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_9" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#4FA86A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_10" rz="3.927">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_10" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#3E7FC8" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_11" rz="4.32">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_11" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#8A5FC0" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_12" rz="4.712">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_12" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#C8453E" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_13" rz="5.105">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_13" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#E0913A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_14" rz="5.498">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_14" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#E8C84A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+        <group id="brazo_15" rz="5.89">
+          <box y="5.5" sx="0.14" sy="11" sz="0.1" color="#3E4553" touchable="false"/>
+          <group id="gondola_15" y="11">
+            <box y="-0.5" sx="1.5" sy="0.9" sz="1.3" color="#4FA86A" touchable="false" border-radius="0.18"/>
+            <box y="-0.05" sx="1.6" sy="0.1" sz="1.4" color="#3E4553" touchable="false"/>
+            <box y="-1.0" sx="1.2" sy="0.1" sz="1.1" color="#2E3440" touchable="false"/>
+            <box y="0.12" sx="0.1" sy="0.34" sz="0.1" color="#2E3440" touchable="false"/>
+          </group>
+        </group>
+      </group>
+      <box id="boton_rueda" y="1.5" z="2.4" sx="1.2" sy="0.7" sz="0.1" color="#C8453E" touchable="true" border-radius="0.06"/>
+      <text y="1.5" z="2.47" value="rueda" size="0.13" color="#EDF2FA"/>
+    </group>
+
+    <!-- La calesita. -->
+    <group id="feria_calesita" x="13" y="0" z="-4">
+      <cylinder y="0.15" sx="12.4" sy="0.3" sz="12.4" color="#2E3440" touchable="false"/>
+      <group id="calesita">
+        <cylinder y="2.4" sx="0.6" sy="4.8" sz="0.6" color="#3E4553" touchable="false"/>
+        <cylinder y="4.1" sx="12" sy="0.12" sz="12" color="#3E4553" touchable="false"/>
+        <box x="0" y="4.6" z="2.95" ry="0" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#B8413A" touchable="false"/>
+        <box x="1.475" y="4.6" z="2.555" ry="0.524" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#E8E2D2" touchable="false"/>
+        <box x="2.555" y="4.6" z="1.475" ry="1.047" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#B8413A" touchable="false"/>
+        <box x="2.95" y="4.6" z="0" ry="1.571" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#E8E2D2" touchable="false"/>
+        <box x="2.555" y="4.6" z="-1.475" ry="2.094" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#B8413A" touchable="false"/>
+        <box x="1.475" y="4.6" z="-2.555" ry="2.618" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#E8E2D2" touchable="false"/>
+        <box x="0" y="4.6" z="-2.95" ry="3.142" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#B8413A" touchable="false"/>
+        <box x="-1.475" y="4.6" z="-2.555" ry="3.665" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#E8E2D2" touchable="false"/>
+        <box x="-2.555" y="4.6" z="-1.475" ry="4.189" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#B8413A" touchable="false"/>
+        <box x="-2.95" y="4.6" z="0" ry="4.712" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#E8E2D2" touchable="false"/>
+        <box x="-2.555" y="4.6" z="1.475" ry="5.236" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#B8413A" touchable="false"/>
+        <box x="-1.475" y="4.6" z="2.555" ry="5.76" rx="-0.24" sx="1.5" sy="0.08" sz="6" color="#E8E2D2" touchable="false"/>
+        <group id="caballo_0" x="0" z="4.6" ry="1.571">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_1" x="2.3" z="3.984" ry="2.094">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_2" x="3.984" z="2.3" ry="2.618">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_3" x="4.6" z="0" ry="3.142">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_4" x="3.984" z="-2.3" ry="3.665">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_5" x="2.3" z="-3.984" ry="4.189">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_6" x="0" z="-4.6" ry="4.712">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_7" x="-2.3" z="-3.984" ry="5.236">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_8" x="-3.984" z="-2.3" ry="5.76">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_9" x="-4.6" z="0" ry="6.283">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_10" x="-3.984" z="2.3" ry="6.807">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <group id="caballo_11" x="-2.3" z="3.984" ry="7.33">
+          <cylinder y="1.8" sx="0.09" sy="3.6" sz="0.09" color="#3E4553" touchable="false"/>
+          <box y="1.15" sx="0.42" sy="0.66" sz="1.35" color="#E8DCC8" touchable="false" border-radius="0.2"/>
+          <box y="1.62" z="0.52" rx="0.5" sx="0.3" sy="0.62" sz="0.42" color="#E8DCC8" touchable="false" border-radius="0.12"/>
+          <box y="1.5" z="-0.6" rx="-0.6" sx="0.16" sy="0.5" sz="0.16" color="#C88A5A" touchable="false"/>
+          <box x="0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box x="-0.16" y="0.62" z="-0.42" sx="0.12" sy="0.72" sz="0.12" color="#E8DCC8" touchable="false"/>
+          <box y="1.56" sx="0.5" sy="0.14" sz="0.6" color="#C88A5A" touchable="false" border-radius="0.06"/>
+        </group>
+        <sphere y="5.5" sx="0.7" sy="0.9" sz="0.7" color="#FFD98A" touchable="false"/>
+      </group>
+      <box id="boton_calesita" y="1.5" z="6.8" sx="1.2" sy="0.7" sz="0.1" color="#4FA86A" touchable="true" border-radius="0.06"/>
+      <text y="1.5" z="6.87" value="calesita" size="0.12" color="#EDF2FA"/>
+    </group>
+
+    <!-- Las sillas voladoras. -->
+    <group id="feria_sillas" x="0" y="0" z="14">
+      <cylinder y="4" sx="0.8" sy="8" sz="0.8" color="#2E3440" touchable="false"/>
+      <cylinder y="0.2" sx="4" sy="0.4" sz="4" color="#2E3440" touchable="false"/>
+      <group id="sillas" y="8">
+        <cylinder sx="7" sy="0.3" sz="7" color="#3E4553" touchable="false"/>
+        <cylinder y="0.5" sx="1.6" sy="0.7" sz="1.6" color="#FFD98A" touchable="false"/>
+        <group id="silla_0" ry="0">
+          <group id="cadena_0" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#C8453E" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#C8453E" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_1" ry="0.393">
+          <group id="cadena_1" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#E0913A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#E0913A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_2" ry="0.785">
+          <group id="cadena_2" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#E8C84A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#E8C84A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_3" ry="1.178">
+          <group id="cadena_3" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#4FA86A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#4FA86A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_4" ry="1.571">
+          <group id="cadena_4" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#3E7FC8" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#3E7FC8" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_5" ry="1.963">
+          <group id="cadena_5" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#8A5FC0" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#8A5FC0" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_6" ry="2.356">
+          <group id="cadena_6" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#C8453E" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#C8453E" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_7" ry="2.749">
+          <group id="cadena_7" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#E0913A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#E0913A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_8" ry="3.142">
+          <group id="cadena_8" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#E8C84A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#E8C84A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_9" ry="3.534">
+          <group id="cadena_9" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#4FA86A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#4FA86A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_10" ry="3.927">
+          <group id="cadena_10" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#3E7FC8" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#3E7FC8" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_11" ry="4.32">
+          <group id="cadena_11" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#8A5FC0" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#8A5FC0" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_12" ry="4.712">
+          <group id="cadena_12" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#C8453E" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#C8453E" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_13" ry="5.105">
+          <group id="cadena_13" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#E0913A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#E0913A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_14" ry="5.498">
+          <group id="cadena_14" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#E8C84A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#E8C84A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+        <group id="silla_15" ry="5.89">
+          <group id="cadena_15" z="3.2">
+            <box y="-1.4" sx="0.05" sy="2.8" sz="0.05" color="#3E4553" touchable="false"/>
+            <box y="-2.95" sx="0.62" sy="0.12" sz="0.56" color="#4FA86A" touchable="false" border-radius="0.08"/>
+            <box y="-2.62" z="-0.28" sx="0.62" sy="0.56" sz="0.1" color="#4FA86A" touchable="false" border-radius="0.08"/>
+          </group>
+        </group>
+      </group>
+      <box id="boton_sillas" y="1.5" z="4.6" sx="1.2" sy="0.7" sz="0.1" color="#3E7FC8" touchable="true" border-radius="0.06"/>
+      <text y="1.5" z="4.67" value="sillas" size="0.13" color="#EDF2FA"/>
+    </group>
+
+    <!-- Las guirnaldas: cuatro mástiles y los cables entre ellos. -->
+    <box x="-26" y="4.5" z="-20" sx="0.3" sy="9" sz="0.3" color="#2E3440" touchable="false"/>
+    <box x="26" y="4.5" z="-20" sx="0.3" sy="9" sz="0.3" color="#2E3440" touchable="false"/>
+    <box x="26" y="4.5" z="24" sx="0.3" sy="9" sz="0.3" color="#2E3440" touchable="false"/>
+    <box x="-26" y="4.5" z="24" sx="0.3" sy="9" sz="0.3" color="#2E3440" touchable="false"/>
+      <box x="-26" y="8.6" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-24" y="8.431" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-22" y="8.265" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-20" y="8.104" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-18" y="7.949" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-16" y="7.805" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-14" y="7.672" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-12" y="7.552" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-10" y="7.448" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-8" y="7.36" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-6" y="7.291" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-4" y="7.241" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-2" y="7.21" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="0" y="7.2" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="2" y="7.21" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="4" y="7.241" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="6" y="7.291" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="8" y="7.36" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="10" y="7.448" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="12" y="7.552" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="14" y="7.672" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="16" y="7.805" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="18" y="7.949" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="20" y="8.104" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="22" y="8.265" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="24" y="8.431" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="8.6" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="8.6" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="8.401" z="-18" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="8.206" z="-16" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="8.018" z="-14" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="7.843" z="-12" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="7.683" z="-10" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="7.542" z="-8" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="7.422" z="-6" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="7.327" z="-4" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="7.257" z="-2" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="7.214" z="0" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="7.2" z="2" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="7.214" z="4" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="7.257" z="6" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="7.327" z="8" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="7.422" z="10" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="7.542" z="12" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="7.683" z="14" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="7.843" z="16" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="8.018" z="18" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="8.206" z="20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="26" y="8.401" z="22" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="26" y="8.6" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="26" y="8.6" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="24" y="8.431" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="22" y="8.265" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="20" y="8.104" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="18" y="7.949" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="16" y="7.805" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="14" y="7.672" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="12" y="7.552" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="10" y="7.448" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="8" y="7.36" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="6" y="7.291" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="4" y="7.241" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="2" y="7.21" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="0" y="7.2" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-2" y="7.21" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-4" y="7.241" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-6" y="7.291" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-8" y="7.36" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-10" y="7.448" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-12" y="7.552" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-14" y="7.672" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-16" y="7.805" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-18" y="7.949" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-20" y="8.104" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-22" y="8.265" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-24" y="8.431" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="8.6" z="24" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="8.6" z="24" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="8.401" z="22" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="8.206" z="20" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="8.018" z="18" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="7.843" z="16" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="7.683" z="14" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="7.542" z="12" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="7.422" z="10" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="7.327" z="8" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="7.257" z="6" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="7.214" z="4" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="7.2" z="2" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="7.214" z="0" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="7.257" z="-2" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="7.327" z="-4" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="7.422" z="-6" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="7.542" z="-8" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="7.683" z="-10" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="7.843" z="-12" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="8.018" z="-14" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+      <box x="-26" y="8.206" z="-16" sx="0.12" sy="0.12" sz="0.12" color="#8ADCFF" touchable="false"/>
+      <box x="-26" y="8.401" z="-18" sx="0.12" sy="0.12" sz="0.12" color="#FFD98A" touchable="false"/>
+      <box x="-26" y="8.6" z="-20" sx="0.12" sy="0.12" sz="0.12" color="#FF9A6A" touchable="false"/>
+
+    <!-- La boletería, con el panel. -->
+    <group id="boleteria" x="-3" y="0" z="22" ry="3.14159">
+      <box y="1.2" sx="3.4" sy="2.4" sz="1.6" color="#2E3440" touchable="false" border-radius="0.1"/>
+      <box y="2.55" sx="3.9" sy="0.3" sz="2.1" color="#B8413A" touchable="false"/>
+      <box y="1.35" z="0.83" sx="2.4" sy="1.0" sz="0.06" color="#101520" touchable="false" border-radius="0.05"/>
+      <text id="f_titulo" y="1.66" z="0.88" value="La feria" size="0.15" color="#EDF2FA"/>
+      <text id="f_estado" y="1.44" z="0.88" value="tocá el cartel de cada juego" size="0.07" color="#93A2B6"/>
+      <text id="f_dato" y="1.28" z="0.88" value="" size="0.06" color="#FFD98A"/>
+      <box x="-1.6" y="2.8" sx="0.16" sy="0.5" sz="0.16" color="#FFD98A" touchable="false"/>
+      <box x="1.6" y="2.8" sx="0.16" sy="0.5" sz="0.16" color="#FFD98A" touchable="false"/>
+    </group>
+
+    <group id="portal_vuelta" x="6" y="0" z="22" ry="3.14159">
+        <!-- La misma puerta que las del atrio, y ahora entera de verdad: el vano
+             es suyo y navega sola con hiperspace.world.navigate. Esta escena
+             solo le delega navigate_world y le dice a donde lleva; el destino
+             lo completa el servidor con el ?volver= que mando el atrio. -->
+        <include id="puerta_atrio" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world"
+                 props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml#entry=desde_feria","id":"atrio","titulo":"Al atrio","sub":"tocá para volver","roca":"#3E3040","color":"#1C2430"}'/>
+      </group>
+
+    <script>
+      globalThis.FERIA = {"base":"https://njs58923.github.io/luna-demos/noche","rueda":{"radio":11,"gondolas":16,"eje":13},"calesita":{"radio":4.6,"caballos":12},"sillas":{"radio":3.2,"sillas":16,"eje":8}};
+    </script>
+    <script src="https://njs58923.github.io/luna-demos/noche/feria.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sartén con panqueque, sobre un anafe. Tocar la perilla prende el fuego y
+  el panqueque se va dorando de abajo. Tocar la sartén lo da vuelta con un
+  salto (a veces cae mal y queda torcido, a veces se pasa y vuela). En VR se
+  agarra el mango con el grip y un golpe de muñeca hacia arriba lo tira: si
+  la sartén está abajo cuando cae, lo atrapa.
+
+  De mesa: apoya en y=0. Mide 0.5 × 0.2 × 0.3 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/sarten.hsml"
+             resources="audio,read_pose_stream" events="vuelta,listo"/>
+
+  Eventos: vuelta {atrapado}, listo {punto} (0 crudo … 1 dorado … 2 quemado),
+  fuego {prendido}.
+  Mensajes: nuevo, fuego {prendido}.
+-->
+<hsml>
+  <head><name>Sartén con panqueque</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.02" sx="0.3" sy="0.04" sz="0.3" color="#D9D9D9" border-radius="0.01"/>
+    <cylinder y="0.042" sx="0.2" sy="0.004" sz="0.2" color="#2B2B2B"/>
+    <group id="fuego" y="0.045"/>
+    <cylinder id="perilla" x="0.12" y="0.03" z="0.152" rx="1.5708" sx="0.03" sy="0.012" sz="0.03" color="#1C1C1C"/>
+    <box x="0.12" y="0.037" z="0.159" sx="0.004" sy="0.014" sz="0.002" color="#FFFFFF"/>
+    <group id="sarten" y="0.06">
+      <cylinder y="0.004" sx="0.24" sy="0.008" sz="0.24" color="#3A3A3A"/>
+      <group id="borde"/>
+      <box x="0.21" y="0.03" rz="-0.12" sx="0.18" sy="0.016" sz="0.028" color="#5A3A22" border-radius="0.006"/>
+      <box id="toque" y="0.03" sx="0.26" sy="0.06" sz="0.26" color="transparent" material-alpha="blend"/>
+    </group>
+    <group id="panqueque">
+      <cylinder id="cara_a" y="0.002" sx="0.19" sy="0.004" sz="0.19" color="#F3D9A4"/>
+      <cylinder id="cara_b" y="-0.002" sx="0.19" sy="0.004" sz="0.19" color="#F3D9A4"/>
+    </group>
+    <group id="humo"/>
+    <posezone id="zona" y="0.3" sx="1" sy="0.8" sz="0.8" visible="false"/>
+    <script src="./sarten.js"/>
+  </space>
+</hsml>

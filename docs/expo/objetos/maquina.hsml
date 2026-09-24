@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Máquina de escribir. Tocarla toma el teclado: cada letra suena, se hunde
+  una tecla y el carro corre; al final del renglón suena la campanita y Enter
+  hace el retorno de carro. Tocar la hoja la arranca (y avisa lo que decía) y
+  pone una nueva. La hoja se guarda (por `clave`).
+
+  De mesa: apoya en y=0. Mide 0.4 × 0.4 × 0.28 m (con la hoja).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/maquina.hsml"
+             resources="audio" events="hoja" props='{"clave":"cartas"}'/>
+
+  Props: clave, color (del cuerpo), tinta.
+  Eventos: hoja {texto} al arrancarla.
+  Mensajes: escribir {texto} (la escribe letra por letra), nueva.
+-->
+<hsml>
+  <head><name>Máquina de escribir</name></head>
+  <space resources="audio,read_pose_stream">
+    <box id="cuerpo" y="0.04" z="0.01" sx="0.34" sy="0.08" sz="0.25" color="#1F3B2F" border-radius="0.02"/>
+    <box y="0.085" z="-0.07" sx="0.3" sy="0.05" sz="0.1" color="#1F3B2F" border-radius="0.015"/>
+    <cylinder y="0.09" z="-0.015" rx="1.5708" sx="0.12" sy="0.01" sz="0.06" color="#2B2B2B"/>
+    <group id="teclas"/>
+    <box id="espacio" y="0.07" z="0.125" rx="0.3" sx="0.16" sy="0.008" sz="0.016" color="#E8E4D8" border-radius="0.004"/>
+    <group id="carro" y="0.13" z="-0.07">
+      <cylinder rz="1.5708" sx="0.042" sy="0.34" sz="0.042" color="#151515"/>
+      <cylinder x="-0.18" rz="1.5708" sx="0.05" sy="0.02" sz="0.05" color="#2B2B2B"/>
+      <cylinder x="0.18" rz="1.5708" sx="0.05" sy="0.02" sz="0.05" color="#2B2B2B"/>
+      <group id="palanca" x="-0.19" y="0.02">
+        <box x="-0.02" y="0.01" rz="0.4" sx="0.05" sy="0.008" sz="0.008" color="#C0C0C0"/>
+        <box id="toque_palanca" x="-0.02" y="0.01" sx="0.07" sy="0.05" sz="0.05" color="transparent" material-alpha="blend"/>
+      </group>
+      <group id="hoja" y="0.021" rx="-0.2">
+        <box id="papel" sx="0.216" sy="0.03" sz="0.0012" color="#FBF8EF"/>
+        <group id="renglones"/>
+      </group>
+    </group>
+    <box y="0.152" z="-0.047" sx="0.006" sy="0.004" sz="0.004" color="#D62828"/>
+    <script src="./maquina.js"/>
+  </space>
+</hsml>

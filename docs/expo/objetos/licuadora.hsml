@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licuadora. Tocar una fruta del frutero la tira al vaso; los botones 1, 2 y 3
+  la prenden a esa velocidad (0 la apaga): los pedazos giran en remolino, se
+  achican y el licuado toma el color de la mezcla. Tocar el vaso con la
+  licuadora apagada sirve el licuado y lo deja vacío.
+
+  De mesa: apoya en y=0. Mide 0.45 × 0.42 × 0.25 m.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/licuadora.hsml"
+             resources="audio" events="licuado"/>
+
+  Eventos: licuado {color, frutas} al servir, velocidad {n}.
+  Mensajes: agregar {fruta: "banana"|"frutilla"|"kiwi"|"arandano"|"leche"},
+  velocidad {n}, servir.
+-->
+<hsml>
+  <head><name>Licuadora</name></head>
+  <space resources="audio,read_pose_stream">
+    <box y="0.045" sx="0.16" sy="0.09" sz="0.16" color="#E63946" border-radius="0.02"/>
+    <group id="botones" y="0.045" z="0.081"/>
+    <cylinder y="0.1" sx="0.12" sy="0.02" sz="0.12" color="#2B2B2B"/>
+    <group id="vaso" y="0.11">
+      <group id="cuchillas" y="0.012"/>
+      <cylinder id="licuado" y="0.012" sx="0.1" sy="0.001" sz="0.1" color="#FFFFFF" visible="false"/>
+      <group id="pedazos"/>
+      <cylinder id="vidrio" y="0.1" sx="0.11" sy="0.2" sz="0.11" color="#DDEEFF30" material-alpha="blend"/>
+      <cylinder y="0.203" sx="0.112" sy="0.012" sz="0.112" color="#2B2B2B"/>
+      <cylinder y="0.214" sx="0.03" sy="0.01" sz="0.03" color="#2B2B2B"/>
+      <box x="0.07" y="0.12" sx="0.02" sy="0.1" sz="0.02" color="#2B2B2B" border-radius="0.006"/>
+    </group>
+    <group id="frutero" x="0.16" z="0.02">
+      <cylinder y="0.02" sx="0.14" sy="0.04" sz="0.14" color="#8B5A2B"/>
+    </group>
+    <text id="cartel" y="0.39" value="" size="0.018" color="#FFFFFF"/>
+    <script src="./licuadora.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_nave - no editar a mano -->
+<hsml>
+  <head><name>La nave</name></head>
+
+  <!-- read_hmd_pose para que el panel siga la mirada; si no se concede, el
+       script cae a read_camera_pose y el panel sigue sólo la posición. -->
+  <space resources="navigate_self,navigate_world,spawn,skybox,read_camera_pose,read_hmd_pose,read_pose_stream,desktop_camera_control,vr_locomotion,audio">
+    <spawn id="entrada" default="true" x="43.35" y="0" z="11.05" ry="0"/>
+
+    <!-- El espacio de afuera: el cielo estrellado de server_noche. -->
+    <include id="cielo" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=noche"/>
+
+    <group id="nave">
+    <box id="casco" x="37.825" y="-0.425" z="17" sx="75.65" sy="0.85" sz="35.7" color="#12161C" touchable="false"/>
+    <box x="37.825" y="-0.935" z="17" sx="72.25" sy="0.34" sz="32.3" color="#0C1014" touchable="false"/>
+    <!-- Pisos: uno por rectángulo de la planta. -->
+    <plane id="piso_reactor" x="7.65" y="0" z="16.15" rx="-1.5707963" sx="10.2" sy="11.9" color="#2E1A1A" franja="#C0392B" nombre="Reactor" class="pintable" claro="#2E1A1A" oscuro="#0c070d" touchable="false"/>
+    <plane id="piso_motor_sup" x="18.7" y="0" z="6.8" rx="-1.5707963" sx="10.2" sy="8.5" color="#241E2E" franja="#8E7CC3" nombre="Motor superior" class="pintable" claro="#241E2E" oscuro="#090812" touchable="false"/>
+    <plane id="piso_motor_inf" x="18.7" y="0" z="27.2" rx="-1.5707963" sx="10.2" sy="8.5" color="#241E2E" franja="#8E7CC3" nombre="Motor inferior" class="pintable" claro="#241E2E" oscuro="#090812" touchable="false"/>
+    <plane id="piso_seguridad" x="19.55" y="0" z="17" rx="-1.5707963" sx="6.8" sy="5.1" color="#1B2430" franja="#4A90D9" nombre="Seguridad" class="pintable" claro="#1B2430" oscuro="#070912" touchable="false"/>
+    <plane id="piso_medica" x="30.6" y="0" z="11.475" rx="-1.5707963" sx="8.5" sy="7.65" color="#22303A" franja="#48C9B0" nombre="Enfermería" class="pintable" claro="#22303A" oscuro="#090c15" touchable="false"/>
+    <plane id="piso_electrica" x="30.6" y="0" z="22.525" rx="-1.5707963" sx="8.5" sy="4.25" color="#2A2718" franja="#F1C40F" nombre="Eléctrica" class="pintable" claro="#2A2718" oscuro="#0b0a0c" touchable="false"/>
+    <plane id="piso_cafeteria" x="43.35" y="0" z="7.65" rx="-1.5707963" sx="11.9" sy="11.9" color="#2B2A33" franja="#E67E22" nombre="Cafetería" class="pintable" claro="#2B2A33" oscuro="#0b0b13" touchable="false"/>
+    <plane id="piso_deposito" x="39.95" y="0" z="25.925" rx="-1.5707963" sx="8.5" sy="9.35" color="#26221C" franja="#BA8B4A" nombre="Depósito" class="pintable" claro="#26221C" oscuro="#0a090d" touchable="false"/>
+    <plane id="piso_admin" x="50.575" y="0" z="20.825" rx="-1.5707963" sx="7.65" sy="5.95" color="#2B2333" franja="#9B59B6" nombre="Administración" class="pintable" claro="#2B2333" oscuro="#0b0913" touchable="false"/>
+    <plane id="piso_armas" x="56.1" y="0" z="5.95" rx="-1.5707963" sx="8.5" sy="6.8" color="#2E2320" franja="#E74C3C" nombre="Armas" class="pintable" claro="#2E2320" oscuro="#0c090e" touchable="false"/>
+    <plane id="piso_o2" x="54.825" y="0" z="13.6" rx="-1.5707963" sx="5.95" sy="5.1" color="#1E2E26" franja="#2ECC71" nombre="O2" class="pintable" claro="#1E2E26" oscuro="#080c10" touchable="false"/>
+    <plane id="piso_navegacion" x="68.85" y="0" z="13.6" rx="-1.5707963" sx="8.5" sy="6.8" color="#1D2733" franja="#5DADE2" nombre="Navegación" class="pintable" claro="#1D2733" oscuro="#080a13" touchable="false"/>
+    <plane id="piso_escudos" x="64.6" y="0" z="27.2" rx="-1.5707963" sx="10.2" sy="6.8" color="#1F2B2E" franja="#1ABC9C" nombre="Escudos" class="pintable" claro="#1F2B2E" oscuro="#080b12" touchable="false"/>
+    <plane id="piso_comunicaciones" x="50.575" y="0" z="28.9" rx="-1.5707963" sx="7.65" sy="6.8" color="#262433" franja="#7F8C8D" nombre="Comunicaciones" class="pintable" claro="#262433" oscuro="#0a0913" touchable="false"/>
+    <plane id="piso_pasillo_0" x="15.3" y="-0.002" z="13.175" rx="-1.5707963" sx="5.1" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_1" x="16.575" y="-0.002" z="12.75" rx="-1.5707963" sx="2.55" sy="3.4" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_2" x="15.3" y="-0.002" z="19.125" rx="-1.5707963" sx="5.1" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_3" x="16.575" y="-0.002" z="21.675" rx="-1.5707963" sx="2.55" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_4" x="19.975" y="-0.002" z="12.75" rx="-1.5707963" sx="2.55" sy="3.4" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_5" x="19.975" y="-0.002" z="21.25" rx="-1.5707963" sx="2.55" sy="3.4" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_6" x="30.6" y="-0.002" z="5.525" rx="-1.5707963" sx="13.6" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_7" x="30.175" y="-0.002" z="7.225" rx="-1.5707963" sx="2.55" sy="0.85" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_8" x="29.75" y="-0.002" z="26.775" rx="-1.5707963" sx="11.9" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_9" x="30.175" y="-0.002" z="25.075" rx="-1.5707963" sx="2.55" sy="0.85" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_10" x="41.225" y="-0.002" z="17.425" rx="-1.5707963" sx="2.55" sy="7.65" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_11" x="48.025" y="-0.002" z="15.725" rx="-1.5707963" sx="2.55" sy="4.25" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_12" x="50.575" y="-0.002" z="5.525" rx="-1.5707963" sx="2.55" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_13" x="54.825" y="-0.002" z="10.2" rx="-1.5707963" sx="2.55" sy="1.7" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_14" x="61.2" y="-0.002" z="14.025" rx="-1.5707963" sx="6.8" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_15" x="63.75" y="-0.002" z="6.375" rx="-1.5707963" sx="6.8" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_16" x="65.875" y="-0.002" z="8.925" rx="-1.5707963" sx="2.55" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_17" x="65.875" y="-0.002" z="20.4" rx="-1.5707963" sx="2.55" sy="6.8" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_18" x="56.95" y="-0.002" z="27.625" rx="-1.5707963" sx="5.1" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_19" x="45.475" y="-0.002" z="28.475" rx="-1.5707963" sx="2.55" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <plane id="piso_pasillo_20" x="45.475" y="-0.002" z="20.825" rx="-1.5707963" sx="2.55" sy="2.55" color="#20242C" class="pintable" claro="#20242C" oscuro="#080911" touchable="false"/>
+    <box x="7.65" y="0.017" z="10.412" sx="10.2" sy="0.034" sz="0.425" color="#C0392B" class="pintable" claro="#C0392B" oscuro="#320f11" touchable="false"/>
+    <box x="7.65" y="0.017" z="21.887" sx="10.2" sy="0.034" sz="0.425" color="#C0392B" class="pintable" claro="#C0392B" oscuro="#320f11" touchable="false"/>
+    <box x="2.762" y="0.017" z="16.15" sx="0.425" sy="0.034" sz="11.05" color="#C0392B" class="pintable" claro="#C0392B" oscuro="#320f11" touchable="false"/>
+    <box x="12.537" y="0.017" z="16.15" sx="0.425" sy="0.034" sz="11.05" color="#C0392B" class="pintable" claro="#C0392B" oscuro="#320f11" touchable="false"/>
+    <box x="18.7" y="0.017" z="2.762" sx="10.2" sy="0.034" sz="0.425" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="18.7" y="0.017" z="10.838" sx="10.2" sy="0.034" sz="0.425" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="13.813" y="0.017" z="6.8" sx="0.425" sy="0.034" sz="7.65" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="23.587" y="0.017" z="6.8" sx="0.425" sy="0.034" sz="7.65" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="18.7" y="0.017" z="23.162" sx="10.2" sy="0.034" sz="0.425" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="18.7" y="0.017" z="31.238" sx="10.2" sy="0.034" sz="0.425" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="13.813" y="0.017" z="27.2" sx="0.425" sy="0.034" sz="7.65" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="23.587" y="0.017" z="27.2" sx="0.425" sy="0.034" sz="7.65" color="#8E7CC3" class="pintable" claro="#8E7CC3" oscuro="#252039" touchable="false"/>
+    <box x="19.55" y="0.017" z="14.662" sx="6.8" sy="0.034" sz="0.425" color="#4A90D9" class="pintable" claro="#4A90D9" oscuro="#13253e" touchable="false"/>
+    <box x="19.55" y="0.017" z="19.337" sx="6.8" sy="0.034" sz="0.425" color="#4A90D9" class="pintable" claro="#4A90D9" oscuro="#13253e" touchable="false"/>
+    <box x="16.363" y="0.017" z="17" sx="0.425" sy="0.034" sz="4.25" color="#4A90D9" class="pintable" claro="#4A90D9" oscuro="#13253e" touchable="false"/>
+    <box x="22.738" y="0.017" z="17" sx="0.425" sy="0.034" sz="4.25" color="#4A90D9" class="pintable" claro="#4A90D9" oscuro="#13253e" touchable="false"/>
+    <box x="30.6" y="0.017" z="7.862" sx="8.5" sy="0.034" sz="0.425" color="#48C9B0" class="pintable" claro="#48C9B0" oscuro="#133434" touchable="false"/>
+    <box x="30.6" y="0.017" z="15.088" sx="8.5" sy="0.034" sz="0.425" color="#48C9B0" class="pintable" claro="#48C9B0" oscuro="#133434" touchable="false"/>
+    <box x="26.563" y="0.017" z="11.475" sx="0.425" sy="0.034" sz="6.8" color="#48C9B0" class="pintable" claro="#48C9B0" oscuro="#133434" touchable="false"/>
+    <box x="34.637" y="0.017" z="11.475" sx="0.425" sy="0.034" sz="6.8" color="#48C9B0" class="pintable" claro="#48C9B0" oscuro="#133434" touchable="false"/>
+    <box x="30.6" y="0.017" z="20.613" sx="8.5" sy="0.034" sz="0.425" color="#F1C40F" class="pintable" claro="#F1C40F" oscuro="#3f330a" touchable="false"/>
+    <box x="30.6" y="0.017" z="24.438" sx="8.5" sy="0.034" sz="0.425" color="#F1C40F" class="pintable" claro="#F1C40F" oscuro="#3f330a" touchable="false"/>
+    <box x="26.563" y="0.017" z="22.525" sx="0.425" sy="0.034" sz="3.4" color="#F1C40F" class="pintable" claro="#F1C40F" oscuro="#3f330a" touchable="false"/>
+    <box x="34.637" y="0.017" z="22.525" sx="0.425" sy="0.034" sz="3.4" color="#F1C40F" class="pintable" claro="#F1C40F" oscuro="#3f330a" touchable="false"/>
+    <box x="43.35" y="0.017" z="1.912" sx="11.9" sy="0.034" sz="0.425" color="#E67E22" class="pintable" claro="#E67E22" oscuro="#3c210f" touchable="false"/>
+    <box x="43.35" y="0.017" z="13.387" sx="11.9" sy="0.034" sz="0.425" color="#E67E22" class="pintable" claro="#E67E22" oscuro="#3c210f" touchable="false"/>
+    <box x="37.612" y="0.017" z="7.65" sx="0.425" sy="0.034" sz="11.05" color="#E67E22" class="pintable" claro="#E67E22" oscuro="#3c210f" touchable="false"/>
+    <box x="49.087" y="0.017" z="7.65" sx="0.425" sy="0.034" sz="11.05" color="#E67E22" class="pintable" claro="#E67E22" oscuro="#3c210f" touchable="false"/>
+    <box x="39.95" y="0.017" z="21.462" sx="8.5" sy="0.034" sz="0.425" color="#BA8B4A" class="pintable" claro="#BA8B4A" oscuro="#302419" touchable="false"/>
+    <box x="39.95" y="0.017" z="30.387" sx="8.5" sy="0.034" sz="0.425" color="#BA8B4A" class="pintable" claro="#BA8B4A" oscuro="#302419" touchable="false"/>
+    <box x="35.913" y="0.017" z="25.925" sx="0.425" sy="0.034" sz="8.5" color="#BA8B4A" class="pintable" claro="#BA8B4A" oscuro="#302419" touchable="false"/>
+    <box x="43.987" y="0.017" z="25.925" sx="0.425" sy="0.034" sz="8.5" color="#BA8B4A" class="pintable" claro="#BA8B4A" oscuro="#302419" touchable="false"/>
+    <box x="50.575" y="0.017" z="18.063" sx="7.65" sy="0.034" sz="0.425" color="#9B59B6" class="pintable" claro="#9B59B6" oscuro="#281735" touchable="false"/>
+    <box x="50.575" y="0.017" z="23.587" sx="7.65" sy="0.034" sz="0.425" color="#9B59B6" class="pintable" claro="#9B59B6" oscuro="#281735" touchable="false"/>
+    <box x="46.962" y="0.017" z="20.825" sx="0.425" sy="0.034" sz="5.1" color="#9B59B6" class="pintable" claro="#9B59B6" oscuro="#281735" touchable="false"/>
+    <box x="54.188" y="0.017" z="20.825" sx="0.425" sy="0.034" sz="5.1" color="#9B59B6" class="pintable" claro="#9B59B6" oscuro="#281735" touchable="false"/>
+    <box x="56.1" y="0.017" z="2.762" sx="8.5" sy="0.034" sz="0.425" color="#E74C3C" class="pintable" claro="#E74C3C" oscuro="#3c1416" touchable="false"/>
+    <box x="56.1" y="0.017" z="9.137" sx="8.5" sy="0.034" sz="0.425" color="#E74C3C" class="pintable" claro="#E74C3C" oscuro="#3c1416" touchable="false"/>
+    <box x="52.063" y="0.017" z="5.95" sx="0.425" sy="0.034" sz="5.95" color="#E74C3C" class="pintable" claro="#E74C3C" oscuro="#3c1416" touchable="false"/>
+    <box x="60.137" y="0.017" z="5.95" sx="0.425" sy="0.034" sz="5.95" color="#E74C3C" class="pintable" claro="#E74C3C" oscuro="#3c1416" touchable="false"/>
+    <box x="54.825" y="0.017" z="11.262" sx="5.95" sy="0.034" sz="0.425" color="#2ECC71" class="pintable" claro="#2ECC71" oscuro="#0c3523" touchable="false"/>
+    <box x="54.825" y="0.017" z="15.938" sx="5.95" sy="0.034" sz="0.425" color="#2ECC71" class="pintable" claro="#2ECC71" oscuro="#0c3523" touchable="false"/>
+    <box x="52.063" y="0.017" z="13.6" sx="0.425" sy="0.034" sz="4.25" color="#2ECC71" class="pintable" claro="#2ECC71" oscuro="#0c3523" touchable="false"/>
+    <box x="57.587" y="0.017" z="13.6" sx="0.425" sy="0.034" sz="4.25" color="#2ECC71" class="pintable" claro="#2ECC71" oscuro="#0c3523" touchable="false"/>
+    <box x="68.85" y="0.017" z="10.412" sx="8.5" sy="0.034" sz="0.425" color="#5DADE2" class="pintable" claro="#5DADE2" oscuro="#182d41" touchable="false"/>
+    <box x="68.85" y="0.017" z="16.787" sx="8.5" sy="0.034" sz="0.425" color="#5DADE2" class="pintable" claro="#5DADE2" oscuro="#182d41" touchable="false"/>
+    <box x="64.813" y="0.017" z="13.6" sx="0.425" sy="0.034" sz="5.95" color="#5DADE2" class="pintable" claro="#5DADE2" oscuro="#182d41" touchable="false"/>
+    <box x="72.888" y="0.017" z="13.6" sx="0.425" sy="0.034" sz="5.95" color="#5DADE2" class="pintable" claro="#5DADE2" oscuro="#182d41" touchable="false"/>
+    <box x="64.6" y="0.017" z="24.012" sx="10.2" sy="0.034" sz="0.425" color="#1ABC9C" class="pintable" claro="#1ABC9C" oscuro="#07312f" touchable="false"/>
+    <box x="64.6" y="0.017" z="30.387" sx="10.2" sy="0.034" sz="0.425" color="#1ABC9C" class="pintable" claro="#1ABC9C" oscuro="#07312f" touchable="false"/>
+    <box x="59.712" y="0.017" z="27.2" sx="0.425" sy="0.034" sz="5.95" color="#1ABC9C" class="pintable" claro="#1ABC9C" oscuro="#07312f" touchable="false"/>
+    <box x="69.487" y="0.017" z="27.2" sx="0.425" sy="0.034" sz="5.95" color="#1ABC9C" class="pintable" claro="#1ABC9C" oscuro="#07312f" touchable="false"/>
+    <box x="50.575" y="0.017" z="25.712" sx="7.65" sy="0.034" sz="0.425" color="#7F8C8D" class="pintable" claro="#7F8C8D" oscuro="#21242b" touchable="false"/>
+    <box x="50.575" y="0.017" z="32.087" sx="7.65" sy="0.034" sz="0.425" color="#7F8C8D" class="pintable" claro="#7F8C8D" oscuro="#21242b" touchable="false"/>
+    <box x="46.962" y="0.017" z="28.9" sx="0.425" sy="0.034" sz="5.95" color="#7F8C8D" class="pintable" claro="#7F8C8D" oscuro="#21242b" touchable="false"/>
+    <box x="54.188" y="0.017" z="28.9" sx="0.425" sy="0.034" sz="5.95" color="#7F8C8D" class="pintable" claro="#7F8C8D" oscuro="#21242b" touchable="false"/>
+    <!-- Paredes: tiras juntadas del borde de la grilla. -->
+    <box id="pared_0" x="43.35" y="1.36" z="1.7" sx="11.9" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="43.35" y="2.618" z="1.7" sx="11.934" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_1" x="18.7" y="1.36" z="2.55" sx="10.2" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.7" y="2.618" z="2.55" sx="10.234" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_2" x="56.1" y="1.36" z="2.55" sx="8.5" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="56.1" y="2.618" z="2.55" sx="8.534" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_3" x="30.6" y="1.36" z="4.25" sx="13.6" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="30.6" y="2.618" z="4.25" sx="13.634" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_4" x="50.575" y="1.36" z="4.25" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="50.575" y="2.618" z="4.25" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_5" x="63.75" y="1.36" z="5.1" sx="6.8" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="63.75" y="2.618" z="5.1" sx="6.834" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_6" x="26.35" y="1.36" z="6.8" sx="5.1" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="26.35" y="2.618" z="6.8" sx="5.134" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_7" x="34.425" y="1.36" z="6.8" sx="5.95" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="34.425" y="2.618" z="6.8" sx="5.984" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_8" x="50.575" y="1.36" z="6.8" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="50.575" y="2.618" z="6.8" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_9" x="27.625" y="1.36" z="7.65" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="27.625" y="2.618" z="7.65" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_10" x="33.15" y="1.36" z="7.65" sx="3.4" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="33.15" y="2.618" z="7.65" sx="3.434" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_11" x="62.475" y="1.36" z="7.65" sx="4.25" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="62.475" y="2.618" z="7.65" sx="4.284" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_12" x="52.7" y="1.36" z="9.35" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="52.7" y="2.618" z="9.35" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_13" x="58.225" y="1.36" z="9.35" sx="4.25" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="58.225" y="2.618" z="9.35" sx="4.284" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_14" x="7.65" y="1.36" z="10.2" sx="10.2" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="7.65" y="2.618" z="10.2" sx="10.234" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_15" x="70.125" y="1.36" z="10.2" sx="5.95" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="70.125" y="2.618" z="10.2" sx="5.984" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_16" x="14.45" y="1.36" z="11.05" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="14.45" y="2.618" z="11.05" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_17" x="18.275" y="1.36" z="11.05" sx="0.85" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.275" y="2.618" z="11.05" sx="0.884" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_18" x="22.525" y="1.36" z="11.05" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="22.525" y="2.618" z="11.05" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_19" x="52.7" y="1.36" z="11.05" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="52.7" y="2.618" z="11.05" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_20" x="56.95" y="1.36" z="11.05" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="56.95" y="2.618" z="11.05" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_21" x="14.025" y="1.36" z="11.9" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="14.025" y="2.618" z="11.9" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_22" x="61.2" y="1.36" z="12.75" sx="6.8" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="61.2" y="2.618" z="12.75" sx="6.834" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_23" x="38.675" y="1.36" z="13.6" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="38.675" y="2.618" z="13.6" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_24" x="44.625" y="1.36" z="13.6" sx="4.25" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="44.625" y="2.618" z="13.6" sx="4.284" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_25" x="14.45" y="1.36" z="14.45" sx="3.4" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="14.45" y="2.618" z="14.45" sx="3.434" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_26" x="18.275" y="1.36" z="14.45" sx="0.85" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.275" y="2.618" z="14.45" sx="0.884" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_27" x="22.1" y="1.36" z="14.45" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="22.1" y="2.618" z="14.45" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_28" x="30.6" y="1.36" z="15.3" sx="8.5" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="30.6" y="2.618" z="15.3" sx="8.534" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_29" x="61.2" y="1.36" z="15.3" sx="6.8" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="61.2" y="2.618" z="15.3" sx="6.834" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_30" x="54.825" y="1.36" z="16.15" sx="5.95" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="54.825" y="2.618" z="16.15" sx="5.984" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_31" x="70.125" y="1.36" z="17" sx="5.95" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="70.125" y="2.618" z="17" sx="5.984" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_32" x="14.45" y="1.36" z="17.85" sx="3.4" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="14.45" y="2.618" z="17.85" sx="3.434" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_33" x="51.85" y="1.36" z="17.85" sx="5.1" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="51.85" y="2.618" z="17.85" sx="5.134" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_34" x="18.275" y="1.36" z="19.55" sx="0.85" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.275" y="2.618" z="19.55" sx="0.884" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_35" x="22.1" y="1.36" z="19.55" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="22.1" y="2.618" z="19.55" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_36" x="45.475" y="1.36" z="19.55" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="45.475" y="2.618" z="19.55" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_37" x="14.025" y="1.36" z="20.4" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="14.025" y="2.618" z="20.4" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_38" x="30.6" y="1.36" z="20.4" sx="8.5" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="30.6" y="2.618" z="20.4" sx="8.534" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_39" x="37.825" y="1.36" z="21.25" sx="4.25" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="37.825" y="2.618" z="21.25" sx="4.284" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_40" x="43.35" y="1.36" z="21.25" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="43.35" y="2.618" z="21.25" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_41" x="7.65" y="1.36" z="22.1" sx="10.2" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="7.65" y="2.618" z="22.1" sx="10.234" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_42" x="45.475" y="1.36" z="22.1" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="45.475" y="2.618" z="22.1" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_43" x="14.45" y="1.36" z="22.95" sx="1.7" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="14.45" y="2.618" z="22.95" sx="1.734" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_44" x="18.275" y="1.36" z="22.95" sx="0.85" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.275" y="2.618" z="22.95" sx="0.884" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_45" x="22.525" y="1.36" z="22.95" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="22.525" y="2.618" z="22.95" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_46" x="50.575" y="1.36" z="23.8" sx="7.65" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="50.575" y="2.618" z="23.8" sx="7.684" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_47" x="62.05" y="1.36" z="23.8" sx="5.1" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="62.05" y="2.618" z="23.8" sx="5.134" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_48" x="68.425" y="1.36" z="23.8" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="68.425" y="2.618" z="23.8" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_49" x="27.625" y="1.36" z="24.65" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="27.625" y="2.618" z="24.65" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_50" x="33.15" y="1.36" z="24.65" sx="3.4" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="33.15" y="2.618" z="24.65" sx="3.434" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_51" x="26.35" y="1.36" z="25.5" sx="5.1" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="26.35" y="2.618" z="25.5" sx="5.134" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_52" x="33.575" y="1.36" z="25.5" sx="4.25" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="33.575" y="2.618" z="25.5" sx="4.284" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_53" x="50.575" y="1.36" z="25.5" sx="7.65" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="50.575" y="2.618" z="25.5" sx="7.684" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_54" x="56.95" y="1.36" z="26.35" sx="5.1" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="56.95" y="2.618" z="26.35" sx="5.134" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_55" x="45.475" y="1.36" z="27.2" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="45.475" y="2.618" z="27.2" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_56" x="29.75" y="1.36" z="28.05" sx="11.9" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="29.75" y="2.618" z="28.05" sx="11.934" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_57" x="56.95" y="1.36" z="28.9" sx="5.1" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="56.95" y="2.618" z="28.9" sx="5.134" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_58" x="45.475" y="1.36" z="29.75" sx="2.55" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="45.475" y="2.618" z="29.75" sx="2.584" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_59" x="39.95" y="1.36" z="30.6" sx="8.5" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="39.95" y="2.618" z="30.6" sx="8.534" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_60" x="64.6" y="1.36" z="30.6" sx="10.2" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="64.6" y="2.618" z="30.6" sx="10.234" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_61" x="18.7" y="1.36" z="31.45" sx="10.2" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.7" y="2.618" z="31.45" sx="10.234" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_62" x="50.575" y="1.36" z="32.3" sx="7.65" sy="2.72" sz="0.289" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="50.575" y="2.618" z="32.3" sx="7.684" sy="0.204" sz="0.323" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_63" x="2.55" y="1.36" z="16.15" sx="0.289" sy="2.72" sz="11.9" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="2.55" y="2.618" z="16.15" sx="0.323" sy="0.204" sz="11.934" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_64" x="12.75" y="1.36" z="11.05" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="12.75" y="2.618" z="11.05" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_65" x="12.75" y="1.36" z="16.15" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="12.75" y="2.618" z="16.15" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_66" x="12.75" y="1.36" z="21.25" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="12.75" y="2.618" z="21.25" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_67" x="13.6" y="1.36" z="6.8" sx="0.289" sy="2.72" sz="8.5" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="13.6" y="2.618" z="6.8" sx="0.323" sy="0.204" sz="8.534" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_68" x="13.6" y="1.36" z="27.2" sx="0.289" sy="2.72" sz="8.5" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="13.6" y="2.618" z="27.2" sx="0.323" sy="0.204" sz="8.534" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_69" x="15.3" y="1.36" z="11.475" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="15.3" y="2.618" z="11.475" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_70" x="15.3" y="1.36" z="21.675" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="15.3" y="2.618" z="21.675" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_71" x="16.15" y="1.36" z="16.15" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="16.15" y="2.618" z="16.15" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_72" x="17.85" y="1.36" z="12.75" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="17.85" y="2.618" z="12.75" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_73" x="17.85" y="1.36" z="21.25" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="17.85" y="2.618" z="21.25" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_74" x="18.7" y="1.36" z="12.75" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.7" y="2.618" z="12.75" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_75" x="18.7" y="1.36" z="21.25" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="18.7" y="2.618" z="21.25" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_76" x="21.25" y="1.36" z="12.75" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="21.25" y="2.618" z="12.75" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_77" x="21.25" y="1.36" z="21.25" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="21.25" y="2.618" z="21.25" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_78" x="22.95" y="1.36" z="17" sx="0.289" sy="2.72" sz="5.1" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="22.95" y="2.618" z="17" sx="0.323" sy="0.204" sz="5.134" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_79" x="23.8" y="1.36" z="3.4" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="23.8" y="2.618" z="3.4" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_80" x="23.8" y="1.36" z="8.925" sx="0.289" sy="2.72" sz="4.25" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="23.8" y="2.618" z="8.925" sx="0.323" sy="0.204" sz="4.284" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_81" x="23.8" y="1.36" z="24.225" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="23.8" y="2.618" z="24.225" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_82" x="23.8" y="1.36" z="29.75" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="23.8" y="2.618" z="29.75" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_83" x="26.35" y="1.36" z="11.475" sx="0.289" sy="2.72" sz="7.65" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="26.35" y="2.618" z="11.475" sx="0.323" sy="0.204" sz="7.684" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_84" x="26.35" y="1.36" z="22.525" sx="0.289" sy="2.72" sz="4.25" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="26.35" y="2.618" z="22.525" sx="0.323" sy="0.204" sz="4.284" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_85" x="28.9" y="1.36" z="7.225" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="28.9" y="2.618" z="7.225" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_86" x="28.9" y="1.36" z="25.075" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="28.9" y="2.618" z="25.075" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_87" x="31.45" y="1.36" z="7.225" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="31.45" y="2.618" z="7.225" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_88" x="31.45" y="1.36" z="25.075" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="31.45" y="2.618" z="25.075" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_89" x="34.85" y="1.36" z="11.475" sx="0.289" sy="2.72" sz="7.65" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="34.85" y="2.618" z="11.475" sx="0.323" sy="0.204" sz="7.684" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_90" x="34.85" y="1.36" z="22.525" sx="0.289" sy="2.72" sz="4.25" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="34.85" y="2.618" z="22.525" sx="0.323" sy="0.204" sz="4.284" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_91" x="35.7" y="1.36" z="23.375" sx="0.289" sy="2.72" sz="4.25" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="35.7" y="2.618" z="23.375" sx="0.323" sy="0.204" sz="4.284" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_92" x="35.7" y="1.36" z="29.325" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="35.7" y="2.618" z="29.325" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_93" x="37.4" y="1.36" z="2.975" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="37.4" y="2.618" z="2.975" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_94" x="37.4" y="1.36" z="10.2" sx="0.289" sy="2.72" sz="6.8" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="37.4" y="2.618" z="10.2" sx="0.323" sy="0.204" sz="6.834" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_95" x="39.95" y="1.36" z="17.425" sx="0.289" sy="2.72" sz="7.65" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="39.95" y="2.618" z="17.425" sx="0.323" sy="0.204" sz="7.684" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_96" x="42.5" y="1.36" z="17.425" sx="0.289" sy="2.72" sz="7.65" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="42.5" y="2.618" z="17.425" sx="0.323" sy="0.204" sz="7.684" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_97" x="44.2" y="1.36" z="20.4" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="44.2" y="2.618" z="20.4" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_98" x="44.2" y="1.36" z="24.65" sx="0.289" sy="2.72" sz="5.1" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="44.2" y="2.618" z="24.65" sx="0.323" sy="0.204" sz="5.134" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_99" x="44.2" y="1.36" z="30.175" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="44.2" y="2.618" z="30.175" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_100" x="46.75" y="1.36" z="16.575" sx="0.289" sy="2.72" sz="5.95" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="46.75" y="2.618" z="16.575" sx="0.323" sy="0.204" sz="5.984" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_101" x="46.75" y="1.36" z="22.95" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="46.75" y="2.618" z="22.95" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_102" x="46.75" y="1.36" z="26.35" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="46.75" y="2.618" z="26.35" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_103" x="46.75" y="1.36" z="31.025" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="46.75" y="2.618" z="31.025" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_104" x="49.3" y="1.36" z="2.975" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="49.3" y="2.618" z="2.975" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_105" x="49.3" y="1.36" z="12.325" sx="0.289" sy="2.72" sz="11.05" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="49.3" y="2.618" z="12.325" sx="0.323" sy="0.204" sz="11.084" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_106" x="51.85" y="1.36" z="3.4" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="51.85" y="2.618" z="3.4" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_107" x="51.85" y="1.36" z="8.075" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="51.85" y="2.618" z="8.075" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_108" x="51.85" y="1.36" z="13.6" sx="0.289" sy="2.72" sz="5.1" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="51.85" y="2.618" z="13.6" sx="0.323" sy="0.204" sz="5.134" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_109" x="53.55" y="1.36" z="10.2" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="53.55" y="2.618" z="10.2" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_110" x="54.4" y="1.36" z="20.825" sx="0.289" sy="2.72" sz="5.95" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="54.4" y="2.618" z="20.825" sx="0.323" sy="0.204" sz="5.984" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_111" x="54.4" y="1.36" z="25.925" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="54.4" y="2.618" z="25.925" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_112" x="54.4" y="1.36" z="30.6" sx="0.289" sy="2.72" sz="3.4" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="54.4" y="2.618" z="30.6" sx="0.323" sy="0.204" sz="3.434" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_113" x="56.1" y="1.36" z="10.2" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="56.1" y="2.618" z="10.2" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_114" x="57.8" y="1.36" z="11.9" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="57.8" y="2.618" z="11.9" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_115" x="57.8" y="1.36" z="15.725" sx="0.289" sy="2.72" sz="0.85" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="57.8" y="2.618" z="15.725" sx="0.323" sy="0.204" sz="0.884" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_116" x="59.5" y="1.36" z="25.075" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="59.5" y="2.618" z="25.075" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_117" x="59.5" y="1.36" z="29.75" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="59.5" y="2.618" z="29.75" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_118" x="60.35" y="1.36" z="3.825" sx="0.289" sy="2.72" sz="2.55" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="60.35" y="2.618" z="3.825" sx="0.323" sy="0.204" sz="2.584" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_119" x="60.35" y="1.36" z="8.5" sx="0.289" sy="2.72" sz="1.7" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="60.35" y="2.618" z="8.5" sx="0.323" sy="0.204" sz="1.734" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_120" x="64.6" y="1.36" z="10.2" sx="0.289" sy="2.72" sz="5.1" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="64.6" y="2.618" z="10.2" sx="0.323" sy="0.204" sz="5.134" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_121" x="64.6" y="1.36" z="19.55" sx="0.289" sy="2.72" sz="8.5" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="64.6" y="2.618" z="19.55" sx="0.323" sy="0.204" sz="8.534" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_122" x="67.15" y="1.36" z="7.65" sx="0.289" sy="2.72" sz="5.1" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="67.15" y="2.618" z="7.65" sx="0.323" sy="0.204" sz="5.134" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_123" x="67.15" y="1.36" z="20.4" sx="0.289" sy="2.72" sz="6.8" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="67.15" y="2.618" z="20.4" sx="0.323" sy="0.204" sz="6.834" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_124" x="69.7" y="1.36" z="27.2" sx="0.289" sy="2.72" sz="6.8" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="69.7" y="2.618" z="27.2" sx="0.323" sy="0.204" sz="6.834" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <box id="pared_125" x="73.1" y="1.36" z="13.6" sx="0.289" sy="2.72" sz="6.8" color="#39414F" class="pintable" claro="#39414F" oscuro="#0f111b" touchable="false"/>
+    <box x="73.1" y="2.618" z="13.6" sx="0.323" sy="0.204" sz="6.834" color="#2A303B" class="pintable" claro="#2A303B" oscuro="#0b0c15" touchable="false"/>
+    <!-- Carteles de sala. -->
+    <text x="12.367" y="2.193" z="16.15" ry="-1.571" value="REACTOR" size="0.357" color="#C0392B"/>
+    <text x="18.7" y="2.193" z="10.668" ry="3.142" value="MOTOR SUPERIOR" size="0.357" color="#8E7CC3"/>
+    <text x="23.418" y="2.193" z="6.8" ry="-1.571" value="MOTOR SUPERIOR" size="0.357" color="#8E7CC3"/>
+    <text x="18.7" y="2.193" z="23.332" ry="0" value="MOTOR INFERIOR" size="0.357" color="#8E7CC3"/>
+    <text x="23.418" y="2.193" z="27.2" ry="-1.571" value="MOTOR INFERIOR" size="0.357" color="#8E7CC3"/>
+    <text x="19.55" y="2.193" z="14.832" ry="0" value="SEGURIDAD" size="0.357" color="#4A90D9"/>
+    <text x="30.6" y="2.193" z="8.032" ry="0" value="ENFERMERIA" size="0.357" color="#48C9B0"/>
+    <text x="34.467" y="2.193" z="11.475" ry="-1.571" value="ENFERMERIA" size="0.357" color="#48C9B0"/>
+    <text x="30.6" y="2.193" z="24.267" ry="3.142" value="ELECTRICA" size="0.357" color="#F1C40F"/>
+    <text x="34.467" y="2.193" z="22.525" ry="-1.571" value="ELECTRICA" size="0.357" color="#F1C40F"/>
+    <text x="43.35" y="2.193" z="13.218" ry="3.142" value="CAFETERIA" size="0.357" color="#E67E22"/>
+    <text x="37.782" y="2.193" z="7.65" ry="1.571" value="CAFETERIA" size="0.357" color="#E67E22"/>
+    <text x="39.95" y="2.193" z="21.633" ry="0" value="DEPOSITO" size="0.357" color="#BA8B4A"/>
+    <text x="43.817" y="2.193" z="25.925" ry="-1.571" value="DEPOSITO" size="0.357" color="#BA8B4A"/>
+    <text x="50.575" y="2.193" z="18.232" ry="0" value="ADMINISTRACION" size="0.357" color="#9B59B6"/>
+    <text x="47.133" y="2.193" z="20.825" ry="1.571" value="ADMINISTRACION" size="0.357" color="#9B59B6"/>
+    <text x="52.233" y="2.193" z="5.95" ry="1.571" value="ARMAS" size="0.357" color="#E74C3C"/>
+    <text x="56.1" y="2.193" z="8.968" ry="3.142" value="ARMAS" size="0.357" color="#E74C3C"/>
+    <text x="54.825" y="2.193" z="11.432" ry="0" value="O2" size="0.357" color="#2ECC71"/>
+    <text x="57.417" y="2.193" z="13.6" ry="-1.571" value="O2" size="0.357" color="#2ECC71"/>
+    <text x="64.983" y="2.193" z="13.6" ry="1.571" value="NAVEGACION" size="0.357" color="#5DADE2"/>
+    <text x="68.85" y="2.193" z="16.617" ry="3.142" value="NAVEGACION" size="0.357" color="#5DADE2"/>
+    <text x="64.6" y="2.193" z="24.182" ry="0" value="ESCUDOS" size="0.357" color="#1ABC9C"/>
+    <text x="59.883" y="2.193" z="27.2" ry="1.571" value="ESCUDOS" size="0.357" color="#1ABC9C"/>
+    <text x="50.575" y="2.193" z="25.883" ry="0" value="COMUNICACIONES" size="0.357" color="#7F8C8D"/>
+    <text x="54.017" y="2.193" z="28.9" ry="-1.571" value="COMUNICACIONES" size="0.357" color="#7F8C8D"/>
+    <!-- Marcos de puerta: uno por vano, calculados de la planta. -->
+    <model id="vano_0" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="12.75" y="0" z="13.175" ry="1.571" touchable="false"/>
+    <model id="vano_1" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="12.75" y="0" z="19.125" ry="1.571" touchable="false"/>
+    <model id="vano_2" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="16.575" y="0" z="11.05" ry="0" touchable="false"/>
+    <model id="vano_3" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="19.975" y="0" z="11.05" ry="0" touchable="false"/>
+    <model id="vano_4" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="23.8" y="0" z="5.525" ry="1.571" touchable="false"/>
+    <model id="vano_5" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="16.575" y="0" z="22.95" ry="0" touchable="false"/>
+    <model id="vano_6" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="19.975" y="0" z="22.95" ry="0" touchable="false"/>
+    <model id="vano_7" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="23.8" y="0" z="26.775" ry="1.571" touchable="false"/>
+    <model id="vano_8" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="17" y="0" z="14.45" ry="0" touchable="false"/>
+    <model id="vano_9" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="17" y="0" z="14.45" ry="0" touchable="false"/>
+    <model id="vano_10" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="19.975" y="0" z="14.45" ry="0" touchable="false"/>
+    <model id="vano_11" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="19.975" y="0" z="19.55" ry="0" touchable="false"/>
+    <model id="vano_12" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="30.175" y="0" z="7.65" ry="0" touchable="false"/>
+    <model id="vano_13" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="30.175" y="0" z="24.65" ry="0" touchable="false"/>
+    <model id="vano_14" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="37.4" y="0" z="5.525" ry="1.571" touchable="false"/>
+    <model id="vano_15" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="41.225" y="0" z="13.6" ry="0" touchable="false"/>
+    <model id="vano_16" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="48.025" y="0" z="13.6" ry="0" touchable="false"/>
+    <model id="vano_17" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="49.3" y="0" z="5.525" ry="1.571" touchable="false"/>
+    <model id="vano_18" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="35.7" y="0" z="26.775" ry="1.571" touchable="false"/>
+    <model id="vano_19" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="41.225" y="0" z="21.25" ry="0" touchable="false"/>
+    <model id="vano_20" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="44.2" y="0" z="28.475" ry="1.571" touchable="false"/>
+    <model id="vano_21" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="44.2" y="0" z="21.675" ry="1.571" touchable="false"/>
+    <model id="vano_22" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="48.025" y="0" z="17.85" ry="0" touchable="false"/>
+    <model id="vano_23" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="46.75" y="0" z="20.825" ry="1.571" touchable="false"/>
+    <model id="vano_24" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="51.85" y="0" z="5.525" ry="1.571" touchable="false"/>
+    <model id="vano_25" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="54.825" y="0" z="9.35" ry="0" touchable="false"/>
+    <model id="vano_26" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="60.35" y="0" z="6.375" ry="1.571" touchable="false"/>
+    <model id="vano_27" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="54.825" y="0" z="11.05" ry="0" touchable="false"/>
+    <model id="vano_28" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="57.8" y="0" z="14.025" ry="1.571" touchable="false"/>
+    <model id="vano_29" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="64.6" y="0" z="14.025" ry="1.571" touchable="false"/>
+    <model id="vano_30" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="65.875" y="0" z="10.2" ry="0" touchable="false"/>
+    <model id="vano_31" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="65.875" y="0" z="17" ry="0" touchable="false"/>
+    <model id="vano_32" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="65.875" y="0" z="23.8" ry="0" touchable="false"/>
+    <model id="vano_33" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="59.5" y="0" z="27.625" ry="1.571" touchable="false"/>
+    <model id="vano_34" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="54.4" y="0" z="27.625" ry="1.571" touchable="false"/>
+    <model id="vano_35" src="https://njs58923.github.io/luna-demos/nave/modelos/puerta_marco.glb?v=mudboip4" x="46.75" y="0" z="28.475" ry="1.571" touchable="false"/>
+    <!-- Muebles, puestos a mano sala por sala. Ver src/muebles.ts. -->
+    <model id="mueble_0_reactor_nucleo" src="https://njs58923.github.io/luna-demos/nave/modelos/reactor_nucleo.glb?v=mudboip4" x="7.65" y="0" z="16.15" ry="1.571" touchable="false"/>
+    <model id="mueble_1_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="5.1" y="2.1" z="10.71" ry="3.142" touchable="false"/>
+    <model id="mueble_2_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="10.2" y="2.1" z="10.71" ry="3.142" touchable="false"/>
+    <model id="mueble_3_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="5.1" y="2.1" z="21.59" ry="3.142" touchable="false"/>
+    <model id="mueble_4_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="10.2" y="2.1" z="21.59" ry="3.142" touchable="false"/>
+    <model id="mueble_5_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="3.57" y="0" z="11.39" ry="3.142" touchable="false"/>
+    <model id="mueble_6_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="4.165" y="0" z="12.07" ry="3.142" touchable="false"/>
+    <model id="mueble_7_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="7.65" y="2.6" z="12.75" ry="3.142" touchable="false"/>
+    <model id="mueble_8_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="7.65" y="2.6" z="19.55" ry="3.142" touchable="false"/>
+    <model id="mueble_9_motor" src="https://njs58923.github.io/luna-demos/nave/modelos/motor.glb?v=mudboip4" x="18.7" y="0" z="5.525" ry="3.142" touchable="false"/>
+    <model id="mueble_10_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="15.3" y="0" z="9.69" ry="3.142" touchable="false"/>
+    <model id="mueble_11_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="16.065" y="0" z="9.69" ry="3.142" touchable="false"/>
+    <model id="mueble_12_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="15.682" y="0.8" z="9.69" ry="3.142" touchable="false"/>
+    <model id="mueble_13_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="18.7" y="2.6" z="8.5" ry="3.142" touchable="false"/>
+    <model id="mueble_14_motor" src="https://njs58923.github.io/luna-demos/nave/modelos/motor.glb?v=mudboip4" x="18.7" y="0" z="28.475" ry="6.283" touchable="false"/>
+    <model id="mueble_15_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="15.64" y="0" z="24.31" ry="3.142" touchable="false"/>
+    <model id="mueble_16_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="16.32" y="0" z="24.82" ry="3.142" touchable="false"/>
+    <model id="mueble_17_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="18.7" y="2.6" z="25.5" ry="3.142" touchable="false"/>
+    <model id="mueble_18_consola_mesa" src="https://njs58923.github.io/luna-demos/nave/modelos/consola_mesa.glb?v=mudboip4" x="19.55" y="0" z="15.47" ry="3.142" touchable="false"/>
+    <model id="mueble_19_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="19.55" y="0" z="16.66" ry="6.283" touchable="false"/>
+    <model id="mueble_20_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="22.27" y="0" z="18.275" ry="1.571" touchable="false"/>
+    <model id="mueble_21_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="19.55" y="2.6" z="17" ry="3.142" touchable="false"/>
+    <model id="mueble_22_camilla" src="https://njs58923.github.io/luna-demos/nave/modelos/camilla.glb?v=mudboip4" x="28.22" y="0" z="9.775" ry="4.712" touchable="false"/>
+    <model id="mueble_23_camilla" src="https://njs58923.github.io/luna-demos/nave/modelos/camilla.glb?v=mudboip4" x="28.22" y="0" z="12.325" ry="4.712" touchable="false"/>
+    <model id="mueble_24_escaner" src="https://njs58923.github.io/luna-demos/nave/modelos/escaner.glb?v=mudboip4" x="32.81" y="0" z="9.775" ry="1.571" touchable="false"/>
+    <model id="mueble_25_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="30.6" y="0" z="7.99" ry="3.142" touchable="false"/>
+    <model id="mueble_26_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="30.6" y="2.6" z="10.2" ry="3.142" touchable="false"/>
+    <model id="mueble_27_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="30.6" y="2.6" z="13.6" ry="3.142" touchable="false"/>
+    <model id="mueble_28_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="33.49" y="0" z="23.63" ry="3.142" touchable="false"/>
+    <model id="mueble_29_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="34.17" y="0" z="23.63" ry="3.142" touchable="false"/>
+    <model id="mueble_30_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="32.64" y="0" z="21.25" ry="3.142" touchable="false"/>
+    <model id="mueble_31_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="30.6" y="2.2" z="20.74" ry="3.142" touchable="false"/>
+    <model id="mueble_32_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="30.6" y="2.6" z="22.525" ry="3.142" touchable="false"/>
+    <model id="mueble_33_mesa_cafeteria" src="https://njs58923.github.io/luna-demos/nave/modelos/mesa_cafeteria.glb?v=mudboip4" x="43.35" y="0" z="7.65" ry="3.142" touchable="false"/>
+    <model id="mueble_34_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="43.35" y="0" z="5.61" ry="3.142" touchable="false"/>
+    <model id="mueble_35_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="45.39" y="0" z="7.65" ry="1.571" touchable="false"/>
+    <model id="mueble_36_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="43.35" y="0" z="9.69" ry="6.283" touchable="false"/>
+    <model id="mueble_37_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="41.31" y="0" z="7.65" ry="4.712" touchable="false"/>
+    <model id="mueble_38_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="41.905" y="0" z="6.205" ry="3.927" touchable="false"/>
+    <model id="mueble_39_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="44.795" y="0" z="9.095" ry="0.786" touchable="false"/>
+    <model id="mueble_40_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="39.1" y="0" z="2.21" ry="3.142" touchable="false"/>
+    <model id="mueble_41_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="40.12" y="0" z="2.21" ry="3.142" touchable="false"/>
+    <model id="mueble_42_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="47.26" y="0" z="2.21" ry="3.142" touchable="false"/>
+    <model id="mueble_43_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="39.95" y="2.6" z="4.25" ry="3.142" touchable="false"/>
+    <model id="mueble_44_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="46.75" y="2.6" z="4.25" ry="3.142" touchable="false"/>
+    <model id="mueble_45_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="39.95" y="2.6" z="11.05" ry="3.142" touchable="false"/>
+    <model id="mueble_46_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="46.75" y="2.6" z="11.05" ry="3.142" touchable="false"/>
+    <model id="mueble_47_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="36.89" y="0" z="22.44" ry="3.142" touchable="false"/>
+    <model id="mueble_48_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="37.655" y="0" z="22.44" ry="3.142" touchable="false"/>
+    <model id="mueble_49_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="37.273" y="0.8" z="22.44" ry="3.142" touchable="false"/>
+    <model id="mueble_50_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="38.42" y="0" z="22.61" ry="3.542" touchable="false"/>
+    <model id="mueble_51_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="43.01" y="0" z="22.95" ry="3.142" touchable="false"/>
+    <model id="mueble_52_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="43.01" y="0" z="23.8" ry="3.142" touchable="false"/>
+    <model id="mueble_53_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="42.33" y="0" z="23.375" ry="3.142" touchable="false"/>
+    <model id="mueble_54_bidon" src="https://njs58923.github.io/luna-demos/nave/modelos/bidon.glb?v=mudboip4" x="37.06" y="0" z="26.01" ry="1.571" touchable="false"/>
+    <model id="mueble_55_bidon" src="https://njs58923.github.io/luna-demos/nave/modelos/bidon.glb?v=mudboip4" x="37.57" y="0" z="26.52" ry="3.942" touchable="false"/>
+    <model id="mueble_56_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="39.95" y="0" z="30.09" ry="6.283" touchable="false"/>
+    <model id="mueble_57_casillero" src="https://njs58923.github.io/luna-demos/nave/modelos/casillero.glb?v=mudboip4" x="40.97" y="0" z="30.09" ry="6.283" touchable="false"/>
+    <model id="mueble_58_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="39.95" y="2.6" z="23.8" ry="3.142" touchable="false"/>
+    <model id="mueble_59_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="39.95" y="2.6" z="28.05" ry="3.142" touchable="false"/>
+    <model id="mueble_60_consola_mesa" src="https://njs58923.github.io/luna-demos/nave/modelos/consola_mesa.glb?v=mudboip4" x="50.575" y="0" z="19.975" ry="6.283" touchable="false"/>
+    <model id="mueble_61_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="49.81" y="0" z="19.04" ry="3.142" touchable="false"/>
+    <model id="mueble_62_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="51.34" y="0" z="19.04" ry="3.142" touchable="false"/>
+    <model id="mueble_63_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="50.575" y="2.6" z="20.825" ry="3.142" touchable="false"/>
+    <model id="mueble_64_torreta" src="https://njs58923.github.io/luna-demos/nave/modelos/torreta.glb?v=mudboip4" x="56.1" y="0" z="4.25" ry="3.142" touchable="false"/>
+    <model id="mueble_65_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="53.04" y="0" z="8.16" ry="3.142" touchable="false"/>
+    <model id="mueble_66_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="56.1" y="2.6" z="6.8" ry="3.142" touchable="false"/>
+    <model id="mueble_67_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="56.44" y="0" z="11.9" ry="3.142" touchable="false"/>
+    <model id="mueble_68_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="56.44" y="0" z="12.75" ry="3.142" touchable="false"/>
+    <model id="mueble_69_barril" src="https://njs58923.github.io/luna-demos/nave/modelos/barril.glb?v=mudboip4" x="55.76" y="0" z="12.325" ry="3.142" touchable="false"/>
+    <model id="mueble_70_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="54.825" y="2.2" z="11.39" ry="3.142" touchable="false"/>
+    <model id="mueble_71_tuberia_codo" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_codo.glb?v=mudboip4" x="56.1" y="2.2" z="11.39" ry="3.142" touchable="false"/>
+    <model id="mueble_72_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="54.825" y="2.6" z="13.6" ry="3.142" touchable="false"/>
+    <model id="mueble_73_volante" src="https://njs58923.github.io/luna-demos/nave/modelos/volante.glb?v=mudboip4" x="71.4" y="0" z="13.6" ry="1.571" touchable="false"/>
+    <model id="mueble_74_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="70.04" y="0" z="13.6" ry="4.712" touchable="false"/>
+    <model id="mueble_75_consola_mesa" src="https://njs58923.github.io/luna-demos/nave/modelos/consola_mesa.glb?v=mudboip4" x="67.15" y="0" z="11.22" ry="3.142" touchable="false"/>
+    <model id="mueble_76_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="68.85" y="2.6" z="13.6" ry="3.142" touchable="false"/>
+    <model id="mueble_77_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="62.05" y="2.2" z="24.65" ry="3.142" touchable="false"/>
+    <model id="mueble_78_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="67.15" y="2.2" z="24.65" ry="3.142" touchable="false"/>
+    <model id="mueble_79_caja_carga" src="https://njs58923.github.io/luna-demos/nave/modelos/caja_carga.glb?v=mudboip4" x="60.69" y="0" z="29.24" ry="3.142" touchable="false"/>
+    <model id="mueble_80_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="64.6" y="2.6" z="27.2" ry="3.142" touchable="false"/>
+    <model id="mueble_81_antena" src="https://njs58923.github.io/luna-demos/nave/modelos/antena.glb?v=mudboip4" x="52.7" y="0" z="30.6" ry="6.283" touchable="false"/>
+    <model id="mueble_82_consola_mesa" src="https://njs58923.github.io/luna-demos/nave/modelos/consola_mesa.glb?v=mudboip4" x="48.45" y="0" z="26.35" ry="3.142" touchable="false"/>
+    <model id="mueble_83_silla" src="https://njs58923.github.io/luna-demos/nave/modelos/silla.glb?v=mudboip4" x="48.45" y="0" z="27.54" ry="6.283" touchable="false"/>
+    <model id="mueble_84_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="50.575" y="2.6" z="28.9" ry="3.142" touchable="false"/>
+    <model id="mueble_85_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="26.35" y="2.3" z="4.59" ry="3.142" touchable="false"/>
+    <model id="mueble_86_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="31.45" y="2.3" z="4.59" ry="3.142" touchable="false"/>
+    <model id="mueble_87_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="35.7" y="2.3" z="4.59" ry="3.142" touchable="false"/>
+    <model id="mueble_88_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="26.35" y="2.3" z="27.71" ry="3.142" touchable="false"/>
+    <model id="mueble_89_tuberia_recta" src="https://njs58923.github.io/luna-demos/nave/modelos/tuberia_recta.glb?v=mudboip4" x="32.3" y="2.3" z="27.71" ry="3.142" touchable="false"/>
+    <model id="mueble_90_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="30.6" y="2.6" z="5.525" ry="3.142" touchable="false"/>
+    <model id="mueble_91_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="29.75" y="2.6" z="26.775" ry="3.142" touchable="false"/>
+    <model id="mueble_92_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="41.225" y="2.6" z="17" ry="3.142" touchable="false"/>
+    <model id="mueble_93_luz_techo" class="lampara" src="https://njs58923.github.io/luna-demos/nave/modelos/luz_techo.glb?v=mudboip4" x="65.875" y="2.6" z="20.4" ry="3.142" touchable="false"/>
+    <!-- Consolas de tarea. Cada una se describe con sus atributos. -->
+    <group id="grupo_reactor_manifolds" x="2.7" y="1.3" z="13.6" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_reactor_manifolds" class="consola" juego="manifolds" titulo="DESBLOQUEAR COLECTORES" sala="reactor" pie="3.5,13.6" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_reactor_manifolds" class="cara" juego="manifolds" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_reactor_manifolds" y="0.32" z="0.02" value="DESBLOQUEAR COLECTORES" size="0.03" color="#C0392B"/>
+      <text id="mensaje_reactor_manifolds" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_reactor_manifolds" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_reactor_secuencia" x="2.7" y="1.3" z="18.7" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_reactor_secuencia" class="consola" juego="secuencia" titulo="ARRANCAR EL REACTOR" sala="reactor" pie="3.5,18.7" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_reactor_secuencia" class="cara" juego="secuencia" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_reactor_secuencia" y="0.32" z="0.02" value="ARRANCAR EL REACTOR" size="0.03" color="#C0392B"/>
+      <text id="mensaje_reactor_secuencia" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_reactor_secuencia" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_motor_sup_alinear" x="18.7" y="1.3" z="2.7" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_motor_sup_alinear" class="consola" juego="alinear" titulo="ALINEAR LA SALIDA" sala="motor_sup" pie="18.488,3.188" mira="2.731"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_motor_sup_alinear" class="cara" juego="alinear" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_motor_sup_alinear" y="0.32" z="0.02" value="ALINEAR LA SALIDA" size="0.03" color="#8E7CC3"/>
+      <text id="mensaje_motor_sup_alinear" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_motor_sup_alinear" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_motor_sup_combustible" x="22.1" y="1.3" z="2.7" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_motor_sup_combustible" class="consola" juego="llenar" titulo="CARGAR COMBUSTIBLE" sala="motor_sup" despues-de="deposito_bidon" pie="22.1,3.5" mira="3.142"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_motor_sup_combustible" class="cara" juego="llenar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_motor_sup_combustible" y="0.32" z="0.02" value="CARGAR COMBUSTIBLE" size="0.03" color="#8E7CC3"/>
+      <text id="mensaje_motor_sup_combustible" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_motor_sup_combustible" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_motor_inf_alinear" x="18.7" y="1.3" z="31.3" ry="3.142">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_motor_inf_alinear" class="consola" juego="alinear" titulo="ALINEAR LA SALIDA" sala="motor_inf" pie="18.488,30.813" mira="0.411"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_motor_inf_alinear" class="cara" juego="alinear" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_motor_inf_alinear" y="0.32" z="0.02" value="ALINEAR LA SALIDA" size="0.03" color="#8E7CC3"/>
+      <text id="mensaje_motor_inf_alinear" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_motor_inf_alinear" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_motor_inf_combustible" x="22.1" y="1.3" z="31.3" ry="3.142">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_motor_inf_combustible" class="consola" juego="llenar" titulo="CARGAR COMBUSTIBLE" sala="motor_inf" despues-de="deposito_bidon" pie="22.1,30.5" mira="0"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_motor_inf_combustible" class="cara" juego="llenar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_motor_inf_combustible" y="0.32" z="0.02" value="CARGAR COMBUSTIBLE" size="0.03" color="#8E7CC3"/>
+      <text id="mensaje_motor_inf_combustible" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_motor_inf_combustible" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_seguridad_cables" x="16.3" y="1.3" z="17" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_seguridad_cables" class="consola" juego="cables" titulo="ARREGLAR CABLES" sala="seguridad" pie="17.1,17" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_seguridad_cables" class="cara" juego="cables" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_seguridad_cables" y="0.32" z="0.02" value="ARREGLAR CABLES" size="0.03" color="#4A90D9"/>
+      <text id="mensaje_seguridad_cables" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_seguridad_cables" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_seguridad_descarga" x="19.55" y="1.3" z="14.6" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_seguridad_descarga" class="consola" juego="descargar" titulo="DESCARGAR DATOS" sala="seguridad" pie="19.762,14.662" mira="-1.857"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_seguridad_descarga" class="cara" juego="descargar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_seguridad_descarga" y="0.32" z="0.02" value="DESCARGAR DATOS" size="0.03" color="#4A90D9"/>
+      <text id="mensaje_seguridad_descarga" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_seguridad_descarga" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_medica_muestra" x="26.5" y="1.3" z="11.05" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_medica_muestra" class="consola" juego="muestra" titulo="ANALIZAR MUESTRA" sala="medica" pie="27.3,11.05" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_medica_muestra" class="cara" juego="muestra" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_medica_muestra" y="0.32" z="0.02" value="ANALIZAR MUESTRA" size="0.03" color="#48C9B0"/>
+      <text id="mensaje_medica_muestra" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_medica_muestra" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_medica_escaneo" x="34.7" y="1.3" z="12.75" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_medica_escaneo" class="consola" juego="escaneo" titulo="ESCANEO MEDICO" sala="medica" pie="33.9,12.75" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_medica_escaneo" class="cara" juego="escaneo" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_medica_escaneo" y="0.32" z="0.02" value="ESCANEO MEDICO" size="0.03" color="#48C9B0"/>
+      <text id="mensaje_medica_escaneo" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_medica_escaneo" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_electrica_cables" x="26.5" y="1.3" z="22.525" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_electrica_cables" class="consola" juego="cables" titulo="ARREGLAR CABLES" sala="electrica" pie="27.3,22.525" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_electrica_cables" class="cara" juego="cables" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_electrica_cables" y="0.32" z="0.02" value="ARREGLAR CABLES" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_electrica_cables" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_electrica_cables" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_electrica_calibrar" x="30.6" y="1.3" z="20.55" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_electrica_calibrar" class="consola" juego="calibrar" titulo="CALIBRAR DISTRIBUIDOR" sala="electrica" pie="30.6,21.35" mira="3.142"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_electrica_calibrar" class="cara" juego="calibrar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_electrica_calibrar" y="0.32" z="0.02" value="CALIBRAR DISTRIBUIDOR" size="0.03" color="#F1C40F"/>
+      <text id="mensaje_electrica_calibrar" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_electrica_calibrar" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_cafeteria_basura" x="49.15" y="1.3" z="7.65" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_cafeteria_basura" class="consola" juego="palanca" titulo="VACIAR LA BASURA" sala="cafeteria" pie="48.35,7.65" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_cafeteria_basura" class="cara" juego="palanca" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_cafeteria_basura" y="0.32" z="0.02" value="VACIAR LA BASURA" size="0.03" color="#E67E22"/>
+      <text id="mensaje_cafeteria_basura" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_cafeteria_basura" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_deposito_bidon" x="35.85" y="1.3" z="25.5" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_deposito_bidon" class="consola" juego="llenar" titulo="LLENAR EL BIDON" sala="deposito" pie="36.762,25.287" mira="-1.342"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_deposito_bidon" class="cara" juego="llenar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_deposito_bidon" y="0.32" z="0.02" value="LLENAR EL BIDON" size="0.03" color="#BA8B4A"/>
+      <text id="mensaje_deposito_bidon" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_deposito_bidon" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_deposito_basura" x="44.05" y="1.3" z="28.9" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_deposito_basura" class="consola" juego="palanca" titulo="VACIAR LA BASURA" sala="deposito" despues-de="cafeteria_basura" pie="43.25,28.9" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_deposito_basura" class="cara" juego="palanca" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_deposito_basura" y="0.32" z="0.02" value="VACIAR LA BASURA" size="0.03" color="#BA8B4A"/>
+      <text id="mensaje_deposito_basura" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_deposito_basura" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_admin_tarjeta" x="54.25" y="1.3" z="20.4" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_admin_tarjeta" class="consola" juego="tarjeta" titulo="PASAR LA TARJETA" sala="admin" pie="53.45,20.4" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_admin_tarjeta" class="cara" juego="tarjeta" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_admin_tarjeta" y="0.32" z="0.02" value="PASAR LA TARJETA" size="0.03" color="#9B59B6"/>
+      <text id="mensaje_admin_tarjeta" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_admin_tarjeta" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_admin_subida" x="50.15" y="1.3" z="23.65" ry="3.142">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_admin_subida" class="consola" juego="descargar" titulo="SUBIR DATOS" sala="admin" despues-de="seguridad_descarga" pie="50.15,22.85" mira="0"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_admin_subida" class="cara" juego="descargar" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_admin_subida" y="0.32" z="0.02" value="SUBIR DATOS" size="0.03" color="#9B59B6"/>
+      <text id="mensaje_admin_subida" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_admin_subida" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_armas_asteroides" x="60.2" y="1.3" z="5.95" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_armas_asteroides" class="consola" juego="asteroides" titulo="DESPEJAR ASTEROIDES" sala="armas" pie="59.4,5.95" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_armas_asteroides" class="cara" juego="asteroides" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_armas_asteroides" y="0.32" z="0.02" value="DESPEJAR ASTEROIDES" size="0.03" color="#E74C3C"/>
+      <text id="mensaje_armas_asteroides" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_armas_asteroides" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_o2_clave" x="52" y="1.3" z="13.6" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_o2_clave" class="consola" juego="clave" titulo="LLENAR LOS TANQUES" sala="o2" pie="52.8,13.6" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_o2_clave" class="cara" juego="clave" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_o2_clave" y="0.32" z="0.02" value="LLENAR LOS TANQUES" size="0.03" color="#2ECC71"/>
+      <text id="mensaje_o2_clave" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_o2_clave" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_navegacion_rumbo" x="72.95" y="1.3" z="11.9" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_navegacion_rumbo" class="consola" juego="rumbo" titulo="TRAZAR EL RUMBO" sala="navegacion" pie="72.15,11.9" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_navegacion_rumbo" class="cara" juego="rumbo" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_navegacion_rumbo" y="0.32" z="0.02" value="TRAZAR EL RUMBO" size="0.03" color="#5DADE2"/>
+      <text id="mensaje_navegacion_rumbo" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_navegacion_rumbo" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_navegacion_timon" x="72.95" y="1.3" z="15.3" ry="-1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_navegacion_timon" class="consola" juego="alinear" titulo="ESTABILIZAR EL TIMON" sala="navegacion" pie="72.15,15.3" mira="1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_navegacion_timon" class="cara" juego="alinear" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_navegacion_timon" y="0.32" z="0.02" value="ESTABILIZAR EL TIMON" size="0.03" color="#5DADE2"/>
+      <text id="mensaje_navegacion_timon" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_navegacion_timon" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_escudos_cebar" x="64.6" y="1.3" z="30.45" ry="3.142">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_escudos_cebar" class="consola" juego="escudos" titulo="CEBAR LOS ESCUDOS" sala="escudos" pie="64.6,29.65" mira="0"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_escudos_cebar" class="cara" juego="escudos" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_escudos_cebar" y="0.32" z="0.02" value="CEBAR LOS ESCUDOS" size="0.03" color="#1ABC9C"/>
+      <text id="mensaje_escudos_cebar" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_escudos_cebar" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_comunicaciones_cables" x="46.9" y="1.3" z="28.9" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_comunicaciones_cables" class="consola" juego="cables" titulo="ARREGLAR CABLES" sala="comunicaciones" pie="47.7,28.9" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_comunicaciones_cables" class="cara" juego="cables" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_comunicaciones_cables" y="0.32" z="0.02" value="ARREGLAR CABLES" size="0.03" color="#7F8C8D"/>
+      <text id="mensaje_comunicaciones_cables" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_comunicaciones_cables" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_admin_cables" x="46.9" y="1.3" z="20.4" ry="1.571">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <plane id="consola_admin_cables" class="consola" juego="cables" titulo="ARREGLAR CABLES" sala="admin" pie="47.7,20.4" mira="-1.571"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_admin_cables" class="cara" juego="cables" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="titulo_admin_cables" y="0.32" z="0.02" value="ARREGLAR CABLES" size="0.03" color="#9B59B6"/>
+      <text id="mensaje_admin_cables" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="luz_admin_cables" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <!-- Conductos: tocar uno lleva al siguiente de su anillo. -->
+    <group x="3.825" y="0" z="11.475">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_reactor" class="conducto" anillo="oeste" pie="4.462,11.262" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="14.62" y="0" z="10.03">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_motor_sup" class="conducto" anillo="oeste" pie="14.662,10.412" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="14.62" y="0" z="23.97">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_motor_inf" class="conducto" anillo="oeste" pie="14.62,23.97" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="27.37" y="0" z="8.67">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_medica" class="conducto" anillo="centro" pie="27.37,8.67" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="27.37" y="0" z="23.8">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_electrica" class="conducto" anillo="centro" pie="27.37,23.8" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="17.17" y="0" z="18.7">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_seguridad" class="conducto" anillo="centro" pie="17.17,18.7" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="38.42" y="0" z="12.58">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_cafeteria" class="conducto" anillo="este" pie="38.42,12.58" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="53.55" y="0" z="22.95">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_admin" class="conducto" anillo="este" pie="53.55,22.95" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="52.7" y="0" z="3.4">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_armas" class="conducto" anillo="este" pie="52.7,3.4" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="72.25" y="0" z="16.15">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_navegacion" class="conducto" anillo="norte" pie="72.25,16.15" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="60.35" y="0" z="29.75">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_escudos" class="conducto" anillo="norte" pie="60.35,29.75" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <group x="36.55" y="0" z="29.75">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/conducto_tapa.glb?v=mudboip4" touchable="false"/>
+      <cylinder id="conducto_deposito" class="conducto" anillo="norte" pie="36.55,29.75" y="0.14" sx="1.2" sy="0.02" sz="1.2" color="transparent" material-alpha="blend" touchable="true"/>
+    </group>
+    <!-- El botón de emergencia, en la mesa del centro de la cafetería. -->
+    <group id="mesa_emergencia" x="43.35" y="0" z="7.65" asientos="43.35,10.45;45.687,9.563;46.15,7.65;45.687,5.737;43.35,4.85;41.437,5.313;40.55,7.65;41.437,9.987">
+      <cylinder y="1.02" sx="1.1" sy="0.22" sz="1.1" color="#7F1D1D" touchable="false"/>
+      <cylinder id="boton_emergencia" class="emergencia" y="1.16" sx="0.9" sy="0.12" sz="0.9" color="#E74C3C" touchable="true"/>
+    </group>
+    <!-- La mesa del mapa, en administración. -->
+    <group id="grupo_mapa" x="50.575" y="1.28" z="19.975" rx="-1.5707963">
+      <model id="ui_malla_mapa" material-unlit="true" touchable="false"/>
+      <group id="ui_nodos_mapa"/>
+    </group>
+    <!-- Paneles de emergencia: los puntos donde se arregla un sabotaje. -->
+    <group id="grupo_luces" x="33.49" y="1.3" z="20.55" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.29" z="-0.01" sx="0.7" sy="0.03" sz="0.02" color="#E74C3C" touchable="false"/>
+      <plane id="sab_luces" class="sabotaje" arregla="luces" punto="luces"
+             juego="interruptores" titulo="INTERRUPTORES" sala="electrica" pie="33.49,21.35" mira="3.142"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_luces" class="cara" juego="interruptores" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="rotulo_luces" y="0.34" z="0.02" value="INTERRUPTORES" size="0.028" color="#E74C3C"/>
+      <text id="mensaje_luces" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="alarma_luces" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_reactor_norte" x="7.65" y="1.3" z="10.35" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.29" z="-0.01" sx="0.7" sy="0.03" sz="0.02" color="#E74C3C" touchable="false"/>
+      <plane id="sab_reactor_norte" class="sabotaje" arregla="reactor" punto="reactor_norte"
+             juego="mano" titulo="REACTOR NORTE" sala="reactor" pie="7.65,11.15" mira="3.142"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_reactor_norte" class="cara" juego="mano" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="rotulo_reactor_norte" y="0.34" z="0.02" value="REACTOR NORTE" size="0.028" color="#E74C3C"/>
+      <text id="mensaje_reactor_norte" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="alarma_reactor_norte" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_reactor_sur" x="7.65" y="1.3" z="21.95" ry="3.142">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.29" z="-0.01" sx="0.7" sy="0.03" sz="0.02" color="#E74C3C" touchable="false"/>
+      <plane id="sab_reactor_sur" class="sabotaje" arregla="reactor" punto="reactor_sur"
+             juego="mano" titulo="REACTOR SUR" sala="reactor" pie="7.65,21.15" mira="0"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_reactor_sur" class="cara" juego="mano" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="rotulo_reactor_sur" y="0.34" z="0.02" value="REACTOR SUR" size="0.028" color="#E74C3C"/>
+      <text id="mensaje_reactor_sur" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="alarma_reactor_sur" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_o2" x="54.825" y="1.3" z="16" ry="3.142">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.29" z="-0.01" sx="0.7" sy="0.03" sz="0.02" color="#E74C3C" touchable="false"/>
+      <plane id="sab_o2" class="sabotaje" arregla="o2" punto="o2"
+             juego="oxigeno" titulo="TANQUES DE O2" sala="o2" pie="54.825,15.2" mira="0"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_o2" class="cara" juego="oxigeno" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="rotulo_o2" y="0.34" z="0.02" value="TANQUES DE O2" size="0.028" color="#E74C3C"/>
+      <text id="mensaje_o2" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="alarma_o2" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_o2_admin" x="52.275" y="1.3" z="18" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.29" z="-0.01" sx="0.7" sy="0.03" sz="0.02" color="#E74C3C" touchable="false"/>
+      <plane id="sab_o2_admin" class="sabotaje" arregla="o2" punto="o2_admin"
+             juego="oxigeno" titulo="VALVULA DE O2" sala="admin" pie="52.275,18.8" mira="3.142"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_o2_admin" class="cara" juego="oxigeno" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="rotulo_o2_admin" y="0.34" z="0.02" value="VALVULA DE O2" size="0.028" color="#E74C3C"/>
+      <text id="mensaje_o2_admin" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="alarma_o2_admin" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <group id="grupo_comunicaciones" x="53.04" y="1.3" z="25.65" ry="0">
+      <model src="https://njs58923.github.io/luna-demos/nave/modelos/caja_tarea.glb?v=mudboip4" touchable="false"/>
+      <box y="0.29" z="-0.01" sx="0.7" sy="0.03" sz="0.02" color="#E74C3C" touchable="false"/>
+      <plane id="sab_comunicaciones" class="sabotaje" arregla="comunicaciones" punto="comunicaciones"
+             juego="sintonia" titulo="SINTONIA" sala="comunicaciones" pie="53.04,26.45" mira="3.142"
+             z="0.01" sx="0.58" sy="0.42" color="#070B12" touchable="true"/>
+      <group id="cara_comunicaciones" class="cara" juego="sintonia" base="https://njs58923.github.io/luna-demos/nave" version="mudboip4"/>
+      <text id="rotulo_comunicaciones" y="0.34" z="0.02" value="SINTONIA" size="0.028" color="#E74C3C"/>
+      <text id="mensaje_comunicaciones" y="-0.29" z="0.02" value="" size="0.022" color="#8E9CB4"/>
+      <sphere id="alarma_comunicaciones" x="0.28" y="0.23" z="0.03" sx="0.045" sy="0.045" sz="0.045" color="#3D4654" touchable="false"/>
+    </group>
+    <posezone id="zona" x="37.825" y="1.36" z="17" sx="79.05" sy="4.42" sz="39.1" visible="false"/>
+    <group id="navegacion" visible="false" cols="166" filas="72" x0="2.55" z0="1.7" celda="0.425"
+           piso="2a.s.3u.s.2a.o.w.s.6.k.1k.o.w.s.6.k.1k.o.w.s.6.k.1k.o.w.s.6.k.1k.32.1k.32.1k.3i.14.3i.14.3i.14.3i.14.o.c.6.e.s.6.10.14.o.c.6.e.s.6.10.14.o.6.k.6.s.6.k.a.6.14.o.6.k.6.s.6.k.a.6.14.o.6.k.6.s.6.k.a.6.14.o.6.k.6.s.6.k.a.6.14.o.6.k.6.s.a.6.k.6.14.o.6.k.6.s.a.6.k.6.e.o.2.o.6.k.6.s.a.6.k.18.2.o.6.k.6.s.a.6.k.18.6.6.2.6.c.k.6.s.6.e.g.18.6.6.2.6.c.k.6.s.6.e.g.1k.2.6.c.k.6.s.6.e.g.1k.2.6.c.k.6.s.6.e.g.1k.2.6.c.k.6.s.6.2e.2.6.c.k.6.s.6.2e.2.6.c.k.c.6.a.6.6.2e.2.6.c.k.c.6.a.6.6.22.8.g.8.k.c.6.a.6.6.22.8.g.8.k.c.6.a.6.6.22.8.g.14.6.a.6.6.e.g.18.8.g.14.6.a.6.6.e.g.18.8.g.14.6.a.6.10.18.8.g.14.6.a.6.10.18.8.g.14.6.a.6.10.6.e.o.8.g.14.6.a.6.10.6.e.1c.14.6.a.i.o.6.e.1c.14.6.a.i.o.6.e.1c.14.6.a.i.o.6.e.1c.14.6.a.i.o.6.e.10.2.6.18.6.4.o.o.6.e.10.2.6.18.6.4.o.o.6.e.o.6.6.2.6.c.k.c.6.4.o.o.6.e.o.6.6.2.6.c.k.c.6.4.o.o.6.e.o.6.6.2.6.c.k.2.18.o.6.e.o.6.6.2.6.c.k.2.18.o.6.18.6.2.6.c.k.2.k.6.i.o.6.18.6.2.6.c.k.2.k.6.i.o.6.14.o.6.k.2.k.6.i.o.6.14.o.6.k.2.k.6.i.o.6.14.o.6.k.2.k.10.o.y.o.6.k.2.k.10.o.y.o.c.6.a.k.10.o.y.o.c.6.a.k.10.o.y.20.6.i.c.o.y.20.6.i.c.o.y.20.6.1i.y.20.6.1i.y.3o.y.3o.y.o.s.28.y.o.s.28.y.o.s.18.c.o.y.o.s.18.c.o.y.o.s.k.6.i.c.o.y.o.s.k.6.i.c.o.y.o.1i.i.1y.o.1i.i.44.i.44.i.18"
+           libre="6x.1.6.d.4.2.3w.1.6.d.4.2.2c.m.y.q.8.i.1m.8.6.8.y.q.8.7.4.7.1m.8.6.8.y.q.8.7.4.7.1m.8.6.8.y.q.8.7.4.7.1m.8.6.2b.4.7.1m.8.6.1i.2.12.1m.8.6.1e.a.1e.16.8.6.1e.a.1e.16.8.6.8.e.4.g.8.a.8.8.y.16.8.6.8.e.4.g.8.a.8.8.y.16.8.6.8.e.1.j.7.c.7.8.i.c.4.16.m.e.1.j.7.c.7.b.f.c.4.16.m.8.7.4.7.8.8.a.8.b.f.c.4.16.m.8.b.6.1.8.8.a.8.b.f.c.4.16.1.5.g.f.4.6.1.8.8.a.8.c.4.m.4.16.1.5.g.f.4.6.1.8.8.a.8.c.4.m.4.16.1.5.g.f.4.6.1.8.c.2.c.c.4.m.4.16.m.f.4.6.1.8.q.c.4.m.4.j.j.8.4.4.4.e.b.6.1.8.q.c.4.m.2.6.a.5.j.8.4.4.4.e.i.8.q.c.4.m.2.6.a.6.i.8.4.4.4.l.b.8.q.8.7.4.1.i.2.6.a.2.1.3.i.8.4.4.4.l.b.8.q.8.7.4.1.i.i.2.1.3.u.4.4.l.b.8.q.8.7.4.1.i.i.2.y.4.4.l.b.8.q.8.7.4.1.i.d.4.1.2.y.4.4.e.i.e.4.c.4.8.8.3.t.7.1.2.y.4.4.e.i.e.4.c.4.8.14.7.1.2.m.a.2.4.4.e.i.e.4.c.4.8.17.4.1.2.7.8.7.a.2.4.4.e.i.e.4.c.4.8.1c.2.7.8.7.a.4.6.4.16.4.c.4.8.c.i.i.2.7.8.7.a.4.6.4.16.4.c.4.8.c.i.i.2.7.8.7.a.4.6.4.16.4.c.4.12.i.2.7.8.7.a.6.2.6.16.4.c.4.12.i.2.7.8.7.a.6.2.6.16.4.c.4.12.4.g.7.8.7.a.6.2.6.16.4.c.4.12.4.g.7.8.7.a.c.18.4.c.4.12.4.g.m.a.c.18.4.c.4.12.4.g.18.18.4.c.5.6.5.q.4.g.18.18.4.c.5.6.5.q.4.g.y.4.4.1a.4.c.5.6.5.q.4.g.y.4.4.1a.4.c.5.6.5.q.4.g.m.8.4.4.4.1a.4.6.b.6.5.q.4.g.m.8.4.4.4.1a.4.6.b.6.5.q.4.g.m.8.4.4.4.e.c.3.3.e.4.6.m.q.4.g.m.8.4.4.4.e.c.3.3.e.4.6.m.q.4.1a.4.4.4.e.c.3.3.b.b.8.g.q.4.1a.4.4.4.e.i.b.8.b.g.q.4.1a.4.4.4.e.i.b.6.d.g.q.4.1a.4.4.4.e.e.8.4.3.6.d.g.q.4.16.m.8.e.8.d.1j.4.16.2.3.h.8.e.8.d.1j.4.16.2.5.f.e.4.c.f.15.m.10.2.5.f.e.4.c.i.12.m.10.4.3.f.e.4.c.i.12.m.10.m.e.4.c.1.2.f.12.m.10.1h.3.e.e.a.e.m.10.8.6.14.3.d.e.a.e.m.10.8.6.15.1.e.e.1a.10.8.6.1k.8.2.2.1c.10.8.6.8.u.s.2.1c.10.8.6.8.u.26.10.8.6.8.u.16.h.j.10.8.6.8.u.16.h.j.10.8.6.8.u.7.6.5.8.a.n.j.10.8.6.8.u.7.6.5.8.a.k.m.10.8.6.8.1k.a.26.m.1k.a.4c.a.4c.a.61"/>
+
+    <!-- La tripulación: la mueve el reductor, el cliente la dibuja. -->
+    <model id="tripulante_0" class="tripulante" quien="azul" nombre="Azul" tinte="#4A90D9" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_azul.glb?v=mudboip4" pose-source="script" x="40.8" y="0" z="5.1" ry="6.283" touchable="true"/>
+    <model id="cuerpo_azul" class="cuerpo" quien="azul" nombre="Azul" visible="false" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_azul.glb?v=mudboip4" x="40.8" y="0.3" z="5.1" rx="-1.5707963" ry="6.283" touchable="true"/>
+    <model id="tripulante_1" class="tripulante" quien="verde" nombre="Verde" tinte="#2ECC71" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_verde.glb?v=mudboip4" pose-source="script" x="30.6" y="0" z="22.44" ry="1.571" touchable="true"/>
+    <model id="cuerpo_verde" class="cuerpo" quien="verde" nombre="Verde" visible="false" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_verde.glb?v=mudboip4" x="30.6" y="0.3" z="22.44" rx="-1.5707963" ry="1.571" touchable="true"/>
+    <model id="tripulante_2" class="tripulante" quien="amarillo" nombre="Amarillo" tinte="#F1C40F" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_amarillo.glb?v=mudboip4" pose-source="script" x="68" y="0" z="13.6" ry="4.712" touchable="true"/>
+    <model id="cuerpo_amarillo" class="cuerpo" quien="amarillo" nombre="Amarillo" visible="false" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_amarillo.glb?v=mudboip4" x="68" y="0.3" z="13.6" rx="-1.5707963" ry="4.712" touchable="true"/>
+    <model id="tripulante_3" class="tripulante" quien="rosa" nombre="Rosa" tinte="#E91E8C" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_rosa.glb?v=mudboip4" pose-source="script" x="39.1" y="0" z="25.5" ry="3.142" touchable="true"/>
+    <model id="cuerpo_rosa" class="cuerpo" quien="rosa" nombre="Rosa" visible="false" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_rosa.glb?v=mudboip4" x="39.1" y="0.3" z="25.5" rx="-1.5707963" ry="3.142" touchable="true"/>
+    <model id="tripulante_4" class="tripulante" quien="negro" nombre="Negro" tinte="#4E5A6B" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_negro.glb?v=mudboip4" pose-source="script" x="56.1" y="0" z="5.95" ry="4.712" touchable="true"/>
+    <model id="cuerpo_negro" class="cuerpo" quien="negro" nombre="Negro" visible="false" src="https://njs58923.github.io/luna-demos/nave/modelos/tripulante_negro.glb?v=mudboip4" x="56.1" y="0.3" z="5.95" rx="-1.5707963" ry="4.712" touchable="true"/>
+    </group>
+
+    <group id="hud" x="0" y="1.45" z="-1.5">
+      <model id="ui_malla_hud" material-unlit="true" touchable="false"/>
+      <group id="ui_nodos_hud"/>
+    </group>
+    <group id="grupo_reunion" x="0" y="1.4" z="-1.4">
+      <model id="ui_malla_reunion" material-unlit="true" touchable="false"/>
+      <group id="ui_nodos_reunion"/>
+    </group>
+    <plane id="velo" visible="false" x="0" y="1.6" z="-2.6" sx="60" sy="40"
+           color="#01040AC4" material-alpha="blend" touchable="false"/>
+
+    <!-- La configuración del framework de interfaz va en línea, sin src: un
+         script así se evalúa antes que cualquier externo, y ui.js lee UI_CFG al
+         cargarse. Al revés, la paleta llega tarde y sin avisar.
+
+         Ojo con nombrar etiquetas dentro de un comentario: el parser del motor
+         corta el comentario al ver la apertura y toma lo que sigue como
+         marcado. Este comentario tenía la palabra-etiqueta y rompía el script
+         de abajo con un SyntaxError que no decía nada. -->
+    <script>
+      globalThis.UI_CFG = {"base":"https://njs58923.github.io/luna-demos/nave","distancia":1.2,"C":{"texto":"#FFFFFF","tenue":"#8E9CB4","fondo":"#080C12"}};
+    </script>
+    <script src="luna://internal/ui.js"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/sonido.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/navegacion.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/estado.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/kit.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/juegos.js?v=mudboip4"/>
+    <script src="https://njs58923.github.io/luna-demos/nave/nave.js?v=mudboip4"/>
+  </space>
+</hsml>

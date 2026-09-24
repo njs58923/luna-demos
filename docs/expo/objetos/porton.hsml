@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Portón de garage de tablillas: tocarlo lo sube, tablilla por tablilla,
+  y lo guarda arriba; tocarlo de nuevo lo baja.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/porton.hsml" resources="read_pose_stream"
+             props='{"ancho":2.6,"color":"#3A5A78"}'/>
+
+  Props: ancho, alto, tablillas, color, marco, ventanitas, clave.
+  Eventos: cambio {abierto}. Mensajes: abrir, cerrar.
+-->
+<hsml>
+  <head><name>Portón</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <group id="tablillas"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./porton.js"/>
+  </space>
+</hsml>

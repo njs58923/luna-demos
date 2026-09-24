@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ventana de hojas batientes, con alféizar y postigos de tablillas. El
+  origen es el centro del vano; va en una pared. Tocarla abre o cierra todo.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/ventana.hsml" resources="read_pose_stream"
+             props='{"hojas":2,"postigos":true,"colorPostigos":"#8C2F39"}'/>
+
+  Props: ancho, alto, hojas, color, postigos, colorPostigos, alfeizar, clave.
+  Eventos: cambio {abierta}. Mensajes: abrir, cerrar.
+-->
+<hsml>
+  <head><name>Ventana</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./ventana.js"/>
+  </space>
+</hsml>

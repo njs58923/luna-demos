@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Un árbol hecho a partir de una semilla: frondoso, pino, palmera, abedul,
+  ciprés, cerezo en flor o sauce. La copa se mece con el viento. Tocarlo cambia
+  la especie.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/arbol.hsml" resources="read_pose_stream"
+             props='{"especie":"palmera","alto":6,"semilla":4}'/>
+
+  Props: especie, alto, semilla, hoja, tronco, viento (0 = quieto).
+  Eventos: cambio {especie}.
+-->
+<hsml>
+  <head><name>Árbol</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./arbol.js"/>
+  </space>
+</hsml>

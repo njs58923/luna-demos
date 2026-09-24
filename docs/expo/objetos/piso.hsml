@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Un tramo de piso: baldosas en damero, parquet, adoquines, pasto, deck o
+  granito. Apoya en y=0 y se extiende hacia atrás (z negativo) desde su borde de
+  adelante. Tocarlo cambia el dibujo.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/piso.hsml" resources="read_pose_stream"
+             props='{"patron":"adoquin","ancho":4,"largo":4}'/>
+
+  Props: ancho, largo, patron, color, color2, lado (baldosa), semilla.
+  Eventos: cambio {patron}.
+-->
+<hsml>
+  <head><name>Piso</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./piso.js"/>
+  </space>
+</hsml>

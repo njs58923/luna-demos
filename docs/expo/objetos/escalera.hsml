@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Escalera recta que sube hacia atrás (z negativo): de hormigón maciza, o de
+  madera o metal con zancas, con baranda. Tocarla cambia el material.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/escalera.hsml" resources="read_pose_stream"
+             props='{"alto":2.7,"escalones":15,"material":"hormigon"}'/>
+
+  Props: ancho, alto, escalones, huella, material (madera|hormigon|metal),
+  baranda, color. Eventos: cambio {material}.
+-->
+<hsml>
+  <head><name>Escalera</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./escalera.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Baranda de balaustres torneados, de barrotes, de vidrio o de cables.
+  Tocarla cambia el tipo.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/baranda.hsml" resources="read_pose_stream"
+             props='{"tipo":"vidrio","largo":4}'/>
+
+  Props: largo, alto, tipo (balaustres|barrotes|vidrio|cables), color.
+  Eventos: cambio {tipo}.
+-->
+<hsml>
+  <head><name>Baranda</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./baranda.js"/>
+  </space>
+</hsml>

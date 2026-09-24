@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Un arbusto de bollos de hojas; con `flores` florece. Tocarlo lo hace
+  florecer o le saca las flores.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/arbusto.hsml" resources="read_pose_stream"
+             props='{"flores":"#F4A7C0","semilla":3}'/>
+
+  Props: ancho, alto, color, flores, semilla. Eventos: cambio {flores}.
+-->
+<hsml>
+  <head><name>Arbusto</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./arbusto.js"/>
+  </space>
+</hsml>

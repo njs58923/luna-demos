@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Toldo de brazos articulados. Va en una pared: tocarlo lo extiende o lo
+  recoge, con la lona enrollándose en la barra.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/toldo.hsml" resources="read_pose_stream"
+             props='{"color":"#1D3557","color2":"#F1FAEE","ancho":4}' y="2.6"/>
+
+  Props: ancho, salida, color, color2, franjas, caida, faldon, clave.
+  Eventos: cambio {extendido}. Mensajes: extender, recoger.
+-->
+<hsml>
+  <head><name>Toldo</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./toldo.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Techo a dos aguas, a un agua, plano con parapeto y tanque, o mansarda con
+  buhardillas. Con `paredes` mayor que cero trae una casita abajo; en cero, el
+  origen es el alero. Tocarlo cambia el tipo.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/techo.hsml" resources="read_pose_stream"
+             props='{"tipo":"dos_aguas","ancho":6,"fondo":5,"paredes":0}' y="2.6"/>
+
+  Props: tipo, ancho, fondo, pendiente, alero, color, hastial, chimenea,
+  paredes (alto de la casita). Eventos: cambio {tipo}.
+-->
+<hsml>
+  <head><name>Techo</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./techo.js"/>
+  </space>
+</hsml>

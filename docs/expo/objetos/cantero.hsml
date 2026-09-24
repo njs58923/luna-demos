@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Un cantero de ladrillo con tierra y flores. Tocarlo lo vuelve a plantar.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/cantero.hsml" resources="read_pose_stream"
+             props='{"ancho":2,"flores":"#E63946,#FFFFFF"}'/>
+
+  Props: ancho, largo, flores ("#color,#color,…"), borde, semilla.
+  Eventos: cambio {semilla}.
+-->
+<hsml>
+  <head><name>Cantero</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./cantero.js"/>
+  </space>
+</hsml>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Puerta con marco y hoja que se abre sobre su bisagra: se toca, o en VR
+  se toma la hoja y se empuja. Recuerda si quedó abierta.
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/puerta.hsml" resources="read_pose_stream"
+             events="cambio" props='{"estilo":"vidriada","color":"#2E5E4E"}'/>
+
+  Props: ancho, alto, estilo (tableros|tablas|vidriada|lisa), color, marco,
+  picaporte, clave. Eventos: cambio {abierta}. Mensajes: abrir, cerrar.
+-->
+<hsml>
+  <head><name>Puerta</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <group id="bisagra"/>
+    <script src="./puerta.js"/>
+  </space>
+</hsml>

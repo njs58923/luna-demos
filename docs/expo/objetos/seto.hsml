@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Un seto podado: la caja recta con bultos de hojas que la rompen. Tocarlo
+  lo vuelve a podar (otra semilla).
+
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/seto.hsml" resources="read_pose_stream"
+             props='{"largo":6,"alto":1.2}'/>
+
+  Props: largo, alto, espesor, color, semilla. Eventos: cambio {semilla}.
+-->
+<hsml>
+  <head><name>Seto</name></head>
+  <space resources="read_pose_stream">
+    <group id="obra"/>
+    <box id="toque" color="transparent" material-alpha="blend"/>
+    <script src="./seto.js"/>
+  </space>
+</hsml>

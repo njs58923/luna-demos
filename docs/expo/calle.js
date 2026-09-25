@@ -206,3 +206,22 @@ function enganchar() {
   if (cursor < ids.length) requestAnimationFrame(enganchar);
 }
 enganchar();
+
+// ── El panel de calidad ─────────────────────────────────────────────────────
+// Tres botones que vuelven a abrir la calle con otro detalle. Es el mismo
+// documento con otra query: se navega el mundo, como un portal, pero sin uno.
+(function panelDeCalidad() {
+  const modos = C.modos || [];
+  const listos = modos.map((m) => ({ m, el: $("modo_" + m.id) }));
+  if (listos.some((b) => !b.el)) return void requestAnimationFrame(panelDeCalidad);
+  for (const { m, el } of listos) {
+    if (m.id === C.detalle) continue;
+    el.addEventListener("pointerenter", () => el.setAttribute("color", "#44506A"));
+    el.addEventListener("pointerleave", () => el.setAttribute("color", "#2E3444"));
+    el.addEventListener("toque", () => {
+      el.setAttribute("color", "#FFD60A");
+      try { hiperspace.world.navigate(m.url); }
+      catch (e) { console.error("[calle] no pude cambiar de calidad: " + e); }
+    });
+  }
+})();

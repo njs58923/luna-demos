@@ -2486,6 +2486,578 @@ const Obra = (() => {
     return out;
   }
 
+  // ── El taller de mallas ─────────────────────────────────────────────────
+  //
+  // Para lo que no se arma con cajas: tubos que se curvan y se afinan (ramas,
+  // troncos, aros), hojas de doble cara y rellenos de formas. Escribe directo
+  // en acumuladores { P, C, I } (lo mismo que fundir), repartidos en tantas
+  // mallas como hagan falta para no pasar los topes del motor.
+  //
+  // Las mallas van sin luz (material-unlit), así que el volumen se pinta en
+  // el color de cada vértice: una luz fija de arriba y de costado, y un poco
+  // de oscuridad abajo, como si fuera la sombra del propio objeto.
+  const LUZ = (() => { const l = [0.35, 0.85, 0.4], m = Math.hypot(...l); return l.map((x) => x / m); })();
+  const linealRGB = (hex) => rgb(hex).map((c) => lineal(c / 255));
+  function lienzo() {
+    const mallas = [acumulador()];
+    return {
+      mallas,
+      /** El acumulador donde entran `nv` vértices y `ni` índices más. */
+      lugar(nv, ni) {
+        const a = mallas[mallas.length - 1];
+        if (a.P.length / 3 + nv > TOPE_VERTICES || a.I.length + ni > TOPE_INDICES) mallas.push(acumulador());
+        return mallas[mallas.length - 1];
+      },
+      vertices: () => mallas.reduce((s, a) => s + a.P.length / 3, 0),
+    };
+  }
+  /** El brillo de un vértice con normal `n`: 0,5 a la sombra, 1 de frente a la luz. */
+  const brillo = (n, ao) => (0.5 + 0.5 * Math.max(0, n[0] * LUZ[0] + n[1] * LUZ[1] + n[2] * LUZ[2])) * (ao == null ? 1 : ao);
+  const v3 = {
+    sum: (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]],
+    res: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]],
+    esc: (a, k) => [a[0] * k, a[1] * k, a[2] * k],
+    dot: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+    cruz: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+    norm: (a) => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; },
+    /** Un vector perpendicular a `a`. */
+    perp: (a) => v3.norm(Math.abs(a[1]) < 0.9 ? v3.cruz(a, [0, 1, 0]) : v3.cruz(a, [1, 0, 0])),
+    /** `a` girado `ang` alrededor del eje unitario `k` (Rodrigues). */
+    girar: (a, k, ang) => {
+      const c = Math.cos(ang), s = Math.sin(ang), d = v3.dot(k, a), x = v3.cruz(k, a);
+      return [a[0] * c + x[0] * s + k[0] * d * (1 - c), a[1] * c + x[1] * s + k[1] * d * (1 - c), a[2] * c + x[2] * s + k[2] * d * (1 - c)];
+    },
+  };
+
+  /** Un tubo por los puntos `pts` ([{ p, r }]), con `lados` caras. `color(i, j)`
+   *  da el color de la cara (un rgb lineal); `ao(i)` oscurece por anillo. */
+  function tubo(L, pts, lados, color, ao) {
+    if (pts.length < 2) return;
+    const nv = pts.length * lados, ni = (pts.length - 1) * lados * 6;
+    const a = L.lugar(nv, ni);
+    const i0 = a.P.length / 3;
+    let n = null;
+    const anillos = [];
+    for (let i = 0; i < pts.length; i++) {
+      const t = v3.norm(i + 1 < pts.length ? v3.res(pts[i + 1].p, pts[i].p) : v3.res(pts[i].p, pts[i - 1].p));
+      // Marco que viaja con el tubo (transporte paralelo): sin giros bruscos.
+      n = n ? v3.norm(v3.res(n, v3.esc(t, v3.dot(n, t)))) : v3.perp(t);
+      const b = v3.cruz(t, n);
+      anillos.push({ t, n, b });
+      for (let j = 0; j < lados; j++) {
+        const ang = (j / lados) * Math.PI * 2;
+        const o = v3.sum(v3.esc(n, Math.cos(ang)), v3.esc(b, Math.sin(ang)));
+        const p = v3.sum(pts[i].p, v3.esc(o, pts[i].r));
+        const c = color(i, j), k = brillo(o, ao ? ao(i) : 1);
+        a.P.push(p[0], p[1], p[2]);
+        a.C.push(c[0] * k, c[1] * k, c[2] * k, 1);
+      }
+    }
+    for (let i = 0; i + 1 < pts.length; i++) {
+      for (let j = 0; j < lados; j++) {
+        const j2 = (j + 1) % lados;
+        const A = i0 + i * lados + j, B = i0 + (i + 1) * lados + j, C = i0 + (i + 1) * lados + j2, D = i0 + i * lados + j2;
+        // Hacia afuera: la normal del triángulo contra la dirección del radio.
+        const pa = [a.P[A * 3], a.P[A * 3 + 1], a.P[A * 3 + 2]], pb = [a.P[B * 3], a.P[B * 3 + 1], a.P[B * 3 + 2]], pd = [a.P[D * 3], a.P[D * 3 + 1], a.P[D * 3 + 2]];
+        const nn = v3.cruz(v3.res(pb, pa), v3.res(pd, pa));
+        const afuera = v3.dot(nn, v3.res(pa, pts[i].p)) >= 0;
+        if (afuera) a.I.push(A, B, C, A, C, D); else a.I.push(A, C, B, A, D, C);
+      }
+    }
+  }
+  /** Una hoja: un cuadrilátero de doble cara en `c`, con ejes `u` (largo) y `v`
+   *  (ancho) ya escalados. El brillo sale de la cara que mira más a la luz. */
+  function hoja(L, c, u, v, color, ao) {
+    const a = L.lugar(4, 12);
+    const i0 = a.P.length / 3;
+    const n = v3.norm(v3.cruz(u, v));
+    const k = brillo(v3.dot(n, LUZ) >= 0 ? n : v3.esc(n, -1), ao);
+    for (const [su, sv] of [[-0.5, -0.5], [0.5, -0.3], [0.5, 0.3], [-0.5, 0.5]]) {
+      const p = v3.sum(c, v3.sum(v3.esc(u, su), v3.esc(v, sv)));
+      a.P.push(p[0], p[1], p[2]);
+      a.C.push(color[0] * k, color[1] * k, color[2] * k, 1);
+    }
+    a.I.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3, i0, i0 + 2, i0 + 1, i0, i0 + 3, i0 + 2);
+  }
+  /** Un bloque de piedra: una caja deformada al azar, en coordenadas con
+   *  centro `c` y ejes `ex`, `ey`, `ez` ya escalados (medios lados). */
+  function bloque(L, c, ex, ey, ez, color, r, desorden) {
+    const a = L.lugar(24, 36);
+    const d = desorden == null ? 0.08 : desorden;
+    const esq = [];
+    for (let k = 0; k < 8; k++) {
+      const sx = k & 4 ? 1 : -1, sy = k & 2 ? 1 : -1, sz = k & 1 ? 1 : -1;
+      esq.push(v3.sum(c, v3.sum(v3.esc(ex, sx * (1 + (r() - 0.5) * d)), v3.sum(v3.esc(ey, sy * (1 + (r() - 0.5) * d)), v3.esc(ez, sz * (1 + (r() - 0.5) * d))))));
+    }
+    // Cada cara con sus cuatro vértices propios: así cada una tiene su brillo.
+    for (const cara of CARAS) {
+      const idx = cara.v.map(([x, y, z]) => (x > 0 ? 4 : 0) | (y > 0 ? 2 : 0) | (z > 0 ? 1 : 0));
+      const nloc = cara.n;
+      const nw = v3.norm(v3.sum(v3.esc(v3.norm(ex), nloc[0]), v3.sum(v3.esc(v3.norm(ey), nloc[1]), v3.esc(v3.norm(ez), nloc[2]))));
+      const k = brillo(nw);
+      const i0 = a.P.length / 3;
+      for (const q of idx) { a.P.push(...esq[q]); a.C.push(color[0] * k, color[1] * k, color[2] * k, 1); }
+      const p0 = esq[idx[0]], p1 = esq[idx[1]], p3 = esq[idx[3]];
+      const afuera = v3.dot(v3.cruz(v3.res(p1, p0), v3.res(p3, p0)), nw) >= 0;
+      if (afuera) a.I.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); else a.I.push(i0, i0 + 2, i0 + 1, i0, i0 + 3, i0 + 2);
+    }
+  }
+
+  // ── Árboles en malla ────────────────────────────────────────────────────
+  //
+  // Un árbol de verdad: el tronco se abre en ramas, cada rama en otras, con
+  // su curva (la gravedad las dobla, un poco de azar las tuerce) y su
+  // afinamiento, y en las puntas miles de hojas. Cada especie es una receta
+  // de esos números. Sale en dos lienzos: `tronco` (lo grueso, quieto) y
+  // `copa` (ramitas y hojas, que se mecen), la copa con el origen en `yCopa`.
+  const ESPECIES_MALLA = {
+    copa: { nombre: "roble", tronco: 0.34, profundidad: 6, ramas: [2, 4], angulo: [0.45, 0.8], largo: 0.72, radio: 0.62, gravedad: 0.04, hojas: 30, hoja: [0.16, 0.1], verde: ["#3F7A2E", "#5E9A3A", "#2F6326"], corteza: "#5B4331" },
+    otono: { nombre: "arce", tronco: 0.3, profundidad: 6, ramas: [2, 4], angulo: [0.5, 0.85], largo: 0.72, radio: 0.6, gravedad: 0.03, hojas: 28, hoja: [0.15, 0.12], verde: ["#D9622B", "#E9A23B", "#B83A24", "#F2C14E"], corteza: "#4E3B30" },
+    abedul: { nombre: "abedul", tronco: 0.45, profundidad: 6, ramas: [2, 3], angulo: [0.22, 0.42], largo: 0.7, radio: 0.6, gravedad: 0.012, grosor: 0.024, hojas: 26, hoja: [0.09, 0.07], verde: ["#9DC45A", "#C8D96A", "#7FAF45"], corteza: "#EDEAE0", marcas: "#2A2A2A" },
+    sauce: { nombre: "sauce", tronco: 0.36, profundidad: 4, ramas: [3, 4], angulo: [0.5, 0.9], largo: 0.7, radio: 0.6, gravedad: 0.05, colgantes: 11, hojas: 0, hoja: [0.1, 0.03], verde: ["#8DB55A", "#A9C86A", "#6E9A44"], corteza: "#5A4A3A" },
+    pino: { nombre: "pino", conifera: true, pisos: 16, porPiso: 7, hoja: [0.16, 0.02], verde: ["#234D2E", "#2E5E3A", "#1C3F26"], corteza: "#4A3426" },
+    palmera: { nombre: "palmera", palmera: true, frondas: 17, hoja: [0.5, 0.06], verde: ["#4E8A36", "#6AA646", "#3C7430"], corteza: "#8A6E4E" },
+    cerezo: { nombre: "cerezo", tronco: 0.3, profundidad: 6, ramas: [2, 4], angulo: [0.6, 1.0], largo: 0.74, radio: 0.62, gravedad: 0.06, hojas: 34, hoja: [0.08, 0.07], verde: ["#F4A7C0", "#FBD3E0", "#FFFFFF", "#E88AAB"], corteza: "#4A332C" },
+    cipres: { nombre: "ciprés", columna: true, hoja: [0.09, 0.05], verde: ["#2A5530", "#335F38", "#224A29"], corteza: "#4A3426" },
+    acacia: { nombre: "acacia", tronco: 0.42, profundidad: 5, ramas: [3, 4], angulo: [0.5, 0.75], largo: 0.78, radio: 0.62, gravedad: -0.02, plana: true, hojas: 40, hoja: [0.1, 0.06], verde: ["#6E8A38", "#879C45", "#5A7430"], corteza: "#5C4A38" },
+  };
+
+  function arbolMalla(op) {
+    op = op || {};
+    const clave = ESPECIES_MALLA[op.especie] ? op.especie : "copa";
+    const E = ESPECIES_MALLA[clave];
+    const H = num(op.alto, 5, 1, 30);
+    const detalle = num(op.detalle, 1, 0.1, 2);
+    const r = azar(op.semilla || 1);
+    const tronco = lienzo(), copa = lienzo();
+    const verdes = (op.hoja ? [op.hoja] : E.verde).map((c) => linealRGB(color(c, E.verde[0])));
+    const corteza = linealRGB(color(op.tronco, E.corteza));
+    const marcas = E.marcas ? linealRGB(E.marcas) : null;
+    const verde = () => { const c = verdes[Math.floor(r() * verdes.length)], k = 0.85 + r() * 0.3; return [c[0] * k, c[1] * k, c[2] * k]; };
+    const oscuridad = (y) => 0.72 + 0.28 * Math.min(1, Math.max(0, y / H));
+    let yCopa = H * (E.tronco || 0.3);
+    const LADOS_TRONCO = Math.round(8 * Math.min(1.5, detalle + 0.3));
+    const colorCorteza = (conMarcas) => (i, j) => (conMarcas && marcas && ((i * 7 + j * 13) % 11 === 0) ? marcas : corteza);
+
+    /** Una rama que sale de `p` hacia `d`: devuelve los puntos de su curva. */
+    function curva(p, d, largo, r0, r1, grav, tramos) {
+      const pts = [{ p, r: r0 }];
+      let dir = d;
+      for (let i = 1; i <= tramos; i++) {
+        dir = v3.norm(v3.sum(dir, [(r() - 0.5) * 0.18, -grav, (r() - 0.5) * 0.18]));
+        const q = v3.sum(pts[i - 1].p, v3.esc(dir, largo / tramos));
+        pts.push({ p: q, r: r0 + (r1 - r0) * (i / tramos) });
+      }
+      return pts;
+    }
+    function racimo(L, c, cantidad, tam, extension) {
+      for (let k = 0; k < cantidad * detalle; k++) {
+        const o = [(r() - 0.5) * extension, (r() - 0.3) * extension * 0.8, (r() - 0.5) * extension];
+        const u = v3.esc(v3.norm([r() - 0.5, r() * 0.6 - 0.1, r() - 0.5]), tam[0] * (0.7 + r() * 0.6));
+        const v = v3.esc(v3.perp(u), tam[1] * (0.7 + r() * 0.6));
+        const pos = v3.sum(c, o);
+        hoja(L, pos, u, v, verde(), oscuridad(pos[1]));
+      }
+    }
+    /** Las ramas de las especies de copa: recursivas. */
+    function rama(p, d, largo, radio, nivel) {
+      const L = nivel <= 1 ? tronco : copa;
+      const tramos = Math.max(3, Math.round((nivel <= 1 ? 7 : 5) * Math.min(1.4, detalle)));
+      const grav = E.gravedad * (1 + nivel * 0.6);
+      const pts = curva(p, d, largo, radio, radio * E.radio, grav, tramos);
+      tubo(L, pts, nivel <= 1 ? LADOS_TRONCO : Math.max(4, LADOS_TRONCO - 2 * nivel), colorCorteza(nivel <= 2), (i) => oscuridad(pts[i].p[1]));
+      const fin = pts[pts.length - 1].p;
+      const dirFin = v3.norm(v3.res(fin, pts[pts.length - 2].p));
+      if (nivel >= E.profundidad) {
+        if (E.colgantes) colgantes(fin, radio);
+        else racimo(copa, fin, E.hojas, E.hoja, largo * (E.plana ? 1.4 : 0.9));
+        return;
+      }
+      const n = E.ramas[0] + Math.floor(r() * (E.ramas[1] - E.ramas[0] + 1));
+      const eje = v3.perp(dirFin);
+      const fase = r() * Math.PI * 2;
+      for (let k = 0; k < n; k++) {
+        const ang = E.angulo[0] + r() * (E.angulo[1] - E.angulo[0]);
+        // Filotaxis: cada hija rota 2π/n más un poco alrededor de la madre.
+        let hija = v3.girar(dirFin, v3.girar(eje, dirFin, fase + (k / n) * Math.PI * 2 + (r() - 0.5) * 0.5), ang);
+        if (E.plana && nivel >= 2) hija = v3.norm([hija[0], hija[1] * 0.3, hija[2]]);
+        // No hacia el piso: las de abajo se enderezan un poco.
+        if (hija[1] < -0.2) hija = v3.norm(v3.sum(hija, [0, 0.5, 0]));
+        const desde = k === 0 ? fin : pts[Math.max(1, pts.length - 2 - Math.floor(r() * 2))].p;
+        rama(desde, hija, largo * E.largo * (0.85 + r() * 0.3), radio * E.radio, nivel + 1);
+      }
+      // Hojas también a lo largo de las ramas finas, no sólo en las puntas.
+      if (nivel >= E.profundidad - 1 && !E.colgantes) racimo(copa, pts[Math.floor(pts.length / 2)].p, E.hojas * 0.4, E.hoja, largo * 0.6);
+    }
+    /** Sauce: de cada punta cuelgan tiras largas con hojitas. */
+    function colgantes(p, radio) {
+      const n = Math.round(E.colgantes * detalle);
+      for (let k = 0; k < n; k++) {
+        const largo = H * (0.25 + r() * 0.3);
+        const d = v3.norm([(r() - 0.5) * 0.6, 0.2, (r() - 0.5) * 0.6]);
+        const pts = [{ p, r: radio * 0.5 }];
+        let dir = d;
+        const tramos = 8;
+        for (let i = 1; i <= tramos; i++) {
+          dir = v3.norm(v3.sum(dir, [0, -0.45, 0]));
+          const q = v3.sum(pts[i - 1].p, v3.esc(dir, largo / tramos));
+          pts.push({ p: q, r: radio * 0.5 * (1 - i / tramos) + 0.004 });
+          for (let h = 0; h < 6 * detalle; h++) {
+            const u = v3.esc(v3.norm([(r() - 0.5) * 0.4, -1, (r() - 0.5) * 0.4]), E.hoja[0] * (0.8 + r() * 0.5));
+            hoja(copa, v3.sum(q, [(r() - 0.5) * 0.08, 0, (r() - 0.5) * 0.08]), u, v3.esc(v3.perp(u), E.hoja[1] * 2), verde(), oscuridad(q[1]));
+          }
+        }
+        tubo(copa, pts, 3, () => verdes[0], null);
+      }
+    }
+
+    if (E.conifera) {
+      // Pino: un tronco derecho hasta la punta y pisos de ramas casi
+      // horizontales que se achican hacia arriba, cubiertas de agujas.
+      const pts = [];
+      for (let i = 0; i <= 12; i++) pts.push({ p: [(r() - 0.5) * 0.03, (i / 12) * H, (r() - 0.5) * 0.03], r: H * 0.028 * (1 - i / 13) + 0.01 });
+      tubo(tronco, pts, LADOS_TRONCO, colorCorteza(false), (i) => oscuridad(pts[i].p[1]));
+      yCopa = H * 0.15;
+      const pisos = Math.round(E.pisos * Math.min(1.3, detalle));
+      for (let s = 0; s < pisos; s++) {
+        const y = H * (0.18 + (s / pisos) * 0.78);
+        const largo = H * 0.34 * (1 - s / pisos) + 0.15;
+        const n = E.porPiso + (r() < 0.5 ? 1 : 0);
+        for (let k = 0; k < n; k++) {
+          const a = (k / n) * Math.PI * 2 + s * 0.7 + r() * 0.3;
+          const d = v3.norm([Math.cos(a), -0.12 - r() * 0.1, Math.sin(a)]);
+          const rp = curva([0, y, 0], d, largo, H * 0.009, 0.004, 0.06, 4);
+          tubo(copa, rp, 4, () => corteza, null);
+          // Agujas: manojos a lo largo de la rama, apuntando hacia afuera y abajo.
+          for (let q = 1; q < rp.length; q++) {
+            for (let m = 0; m < 16 * detalle; m++) {
+              const u = v3.esc(v3.norm(v3.sum(d, [(r() - 0.5) * 1.2, -0.3 + (r() - 0.5) * 0.6, (r() - 0.5) * 1.2])), E.hoja[0] * (0.7 + r() * 0.6) * (1.3 - s / pisos * 0.5));
+              hoja(copa, v3.sum(rp[q].p, [(r() - 0.5) * 0.1, (r() - 0.5) * 0.06, (r() - 0.5) * 0.1]), u, v3.esc(v3.perp(u), E.hoja[1] * 3), verde(), oscuridad(y));
+            }
+          }
+        }
+      }
+      // La punta.
+      racimo(copa, [0, H, 0], 30, [0.14, 0.03], 0.3);
+    } else if (E.palmera) {
+      // Palmera: un tronco curvo de anillos y un penacho de frondas; cada
+      // fronda es un nervio que se arquea con folíolos a los dos lados.
+      const pts = [];
+      const inc = (r() - 0.5) * 0.3, dirX = Math.cos(r() * 6.28), dirZ = Math.sin(r() * 6.28);
+      for (let i = 0; i <= 16; i++) {
+        const t = i / 16;
+        const curva = Math.sin(t * Math.PI * 0.5) * H * (0.1 + Math.abs(inc) * 0.4);
+        pts.push({ p: [dirX * curva, t * H, dirZ * curva], r: H * 0.035 * (1 - t * 0.35) });
+      }
+      tubo(tronco, pts, LADOS_TRONCO, (i) => (i % 2 ? corteza : corteza.map((c) => c * 0.75)), (i) => oscuridad(pts[i].p[1]));
+      const tope = pts[pts.length - 1].p;
+      yCopa = tope[1];
+      const n = Math.round(E.frondas * Math.min(1.3, detalle));
+      for (let k = 0; k < n; k++) {
+        const a = (k / n) * Math.PI * 2 + r() * 0.3;
+        const elev = 0.25 + r() * 0.55;
+        let d = v3.norm([Math.cos(a) * Math.cos(elev), Math.sin(elev), Math.sin(a) * Math.cos(elev)]);
+        const largo = H * (0.32 + r() * 0.12);
+        const nervio = [{ p: tope, r: 0.03 }];
+        const tramos = 18;
+        for (let i = 1; i <= tramos; i++) {
+          d = v3.norm(v3.sum(d, [0, -0.15, 0]));
+          nervio.push({ p: v3.sum(nervio[i - 1].p, v3.esc(d, largo / tramos)), r: 0.03 * (1 - i / tramos) + 0.004 });
+        }
+        tubo(copa, nervio, 4, () => verdes[0], null);
+        const lado = v3.norm(v3.cruz(d, [0, 1, 0]));
+        for (let i = 2; i <= tramos; i++) {
+          const p = nervio[i].p;
+          const t = v3.norm(v3.res(p, nervio[i - 1].p));
+          const tam = E.hoja[0] * Math.sin((i / tramos) * Math.PI) + 0.08;
+          for (const s of [-1, 1]) {
+            for (let m = 0; m < 4 * detalle; m++) {
+              const u = v3.esc(v3.norm(v3.sum(v3.esc(lado, s), v3.sum(v3.esc(t, 0.5), [0, -0.35 - r() * 0.3, 0]))), tam);
+              hoja(copa, v3.sum(p, v3.esc(u, 0.5)), u, v3.esc(t, E.hoja[1] * 1.5), verde(), oscuridad(p[1]));
+            }
+          }
+        }
+      }
+      // Cocos.
+      for (let k = 0; k < 4; k++) {
+        const a = k * 1.7;
+        tubo(tronco, [{ p: [tope[0] + Math.cos(a) * 0.12, tope[1] - 0.15, tope[2] + Math.sin(a) * 0.12], r: 0.001 }, { p: [tope[0] + Math.cos(a) * 0.12, tope[1] - 0.08, tope[2] + Math.sin(a) * 0.12], r: 0.08 }, { p: [tope[0] + Math.cos(a) * 0.12, tope[1] + 0.02, tope[2] + Math.sin(a) * 0.12], r: 0.001 }], 6, () => linealRGB("#5C3D1E"), null);
+      }
+    } else if (E.columna) {
+      // Ciprés: un tronco derecho y cientos de ramitas cortas que suben
+      // pegadas, cubiertas de hojas: una columna que se afina arriba.
+      const pts = [];
+      for (let i = 0; i <= 8; i++) pts.push({ p: [0, (i / 8) * H * 0.92, 0], r: H * 0.022 * (1 - i / 9) + 0.01 });
+      tubo(tronco, pts, LADOS_TRONCO, colorCorteza(false), (i) => oscuridad(pts[i].p[1]));
+      yCopa = H * 0.1;
+      const n = Math.round(1100 * detalle);
+      for (let k = 0; k < n; k++) {
+        const t = 0.08 + r() * 0.9;
+        const y = t * H;
+        const ancho = H * 0.13 * Math.sin(Math.min(1, t * 1.25) * Math.PI * 0.55 + 0.35) * (1 - t * 0.55);
+        const a = r() * Math.PI * 2, d0 = r() * ancho;
+        const c = [Math.cos(a) * d0, y, Math.sin(a) * d0];
+        const u = v3.esc(v3.norm([Math.cos(a) * 0.3 + (r() - 0.5) * 0.4, 1, Math.sin(a) * 0.3 + (r() - 0.5) * 0.4]), E.hoja[0] * 1.8);
+        for (let m = 0; m < 3; m++) hoja(copa, v3.sum(c, [(r() - 0.5) * 0.12, (r() - 0.5) * 0.1, (r() - 0.5) * 0.12]), v3.girar(u, [0, 1, 0], r() * 6.28), v3.esc(v3.perp(u), E.hoja[1] * 1.6), verde(), oscuridad(y) * (0.8 + 0.2 * (d0 / (ancho || 1))));
+      }
+    } else {
+      // Las de copa: un tronco que se abre en ramas.
+      const base = H * (E.grosor || 0.045);
+      rama([0, 0, 0], v3.norm([(r() - 0.5) * 0.08, 1, (r() - 0.5) * 0.08]), H * (E.tronco || 0.35), base, 1);
+      // Raíces: tres o cuatro engrosamientos al pie.
+      for (let k = 0; k < 4; k++) {
+        const a = (k / 4) * Math.PI * 2 + r();
+        tubo(tronco, [{ p: [Math.cos(a) * base * 0.3, 0.25, Math.sin(a) * base * 0.3], r: base * 0.5 }, { p: [Math.cos(a) * base * 1.6, 0.02, Math.sin(a) * base * 1.6], r: base * 0.15 }], 5, colorCorteza(false), null);
+      }
+    }
+    return { tronco, copa, yCopa, especie: clave, alto: H };
+  }
+
+  // ── Portales en malla ───────────────────────────────────────────────────
+  //
+  // Un portal es tres cosas: el marco (quieto), la abertura con su efecto (una
+  // malla que rellena la forma exacta del vano, con los colores animados) y
+  // los adornos que giran (partículas, runas). La abertura se describe como
+  // un polígono con forma de estrella respecto de su centro, y el efecto es
+  // una grilla polar adentro: anillos × rayos, con el borde siguiendo el
+  // polígono. Así cualquier forma —un arco gótico, un hexágono, una grieta—
+  // tiene su remolino sin máscaras.
+  const TIPOS_PORTAL = ["aro", "arco", "puerta", "monolitos", "espejo", "hexagono", "runas", "grieta"];
+  const EFECTOS_PORTAL = ["remolino", "ondas", "estrellas", "plasma", "vortice"];
+  const MATERIALES_PORTAL = { piedra: "#7C7770", metal: "#8A9098", madera: "#7A5234", cristal: "#9FD8F0", hueso: "#E8DEC8", obsidiana: "#2E2A36" };
+
+  /** La abertura de cada tipo: polígono (antihorario) y centro, en metros, a escala 1. */
+  function aberturaDe(tipo, r) {
+    const circulo = (cx, cy, R, n, fase) => Array.from({ length: n }, (_, i) => { const a = (i / n) * PI * 2 + (fase || 0); return [cx + Math.cos(a) * R, cy + Math.sin(a) * R]; });
+    if (tipo === "aro") return { pts: circulo(0, 1.25, 0.82, 64), c: [0, 1.25] };
+    if (tipo === "runas") return { pts: circulo(0, 1.45, 0.9, 64), c: [0, 1.45] };
+    if (tipo === "espejo") return { pts: Array.from({ length: 64 }, (_, i) => { const a = (i / 64) * PI * 2; return [Math.cos(a) * 0.6, 1.35 + Math.sin(a) * 0.95]; }), c: [0, 1.35] };
+    if (tipo === "hexagono") return { pts: circulo(0, 1.3, 0.95, 6, PI / 2), c: [0, 1.3] };
+    if (tipo === "puerta") return { pts: [[-0.62, 0.05], [0.62, 0.05], [0.62, 2.2], [-0.62, 2.2]], c: [0, 1.1] };
+    if (tipo === "monolitos") return { pts: [[-0.78, 0.05], [0.78, 0.05], [0.78, 2.3], [-0.78, 2.3]], c: [0, 1.15] };
+    if (tipo === "arco") {
+      // Gótico: dos arcos de radio igual al ancho del vano, que se cortan en
+      // la clave. El derecho tiene centro en la jamba izquierda y viceversa.
+      const w = 0.62, arr = 1.4, R = 2 * w, fin = Math.asin(Math.sqrt(R * R - w * w) / R);
+      const pts = [[-w, 0.05], [w, 0.05]];
+      for (let k = 0; k <= 12; k++) { const a = (k / 12) * fin; pts.push([-w + R * Math.cos(a), arr + R * Math.sin(a)]); }
+      for (let k = 11; k >= 0; k--) { const a = (k / 12) * fin; pts.push([w - R * Math.cos(a), arr + R * Math.sin(a)]); }
+      return { pts, c: [0, 1.2] };
+    }
+    // Grieta: una lente vertical dentada.
+    const izq = [], der = [];
+    for (let k = 0; k <= 16; k++) {
+      const t = k / 16, y = 0.15 + t * 2.4, ancho = 0.5 * Math.pow(Math.sin(t * PI), 0.8) + 0.01;
+      izq.push([-ancho * (0.75 + r() * 0.5), y]);
+      der.push([ancho * (0.75 + r() * 0.5), y]);
+    }
+    return { pts: [...der, ...izq.reverse()], c: [0, 1.35] };
+  }
+  /** Hasta dónde llega el polígono desde `c` en la dirección `a`. */
+  function alcance(pts, c, a) {
+    const dx = Math.cos(a), dy = Math.sin(a);
+    let mejor = Infinity;
+    for (let i = 0; i < pts.length; i++) {
+      const [x1, y1] = pts[i], [x2, y2] = pts[(i + 1) % pts.length];
+      const ex = x2 - x1, ey = y2 - y1;
+      const den = dx * ey - dy * ex;
+      if (Math.abs(den) < 1e-12) continue;
+      const t = ((x1 - c[0]) * ey - (y1 - c[1]) * ex) / den;
+      const u = ((x1 - c[0]) * dy - (y1 - c[1]) * dx) / den;
+      if (t > 0 && u >= -1e-9 && u <= 1 + 1e-9) mejor = Math.min(mejor, t);
+    }
+    return Number.isFinite(mejor) ? mejor : 0;
+  }
+
+  function portalMalla(op) {
+    op = op || {};
+    const tipo = elegir(op.tipo, TIPOS_PORTAL, "aro");
+    const efecto = elegir(op.efecto, EFECTOS_PORTAL, "remolino");
+    const material = MATERIALES_PORTAL[op.material] ? op.material : { hexagono: "metal", espejo: "madera", grieta: "cristal", runas: "obsidiana" }[tipo] || "piedra";
+    const S = num(op.tamano, 1, 0.4, 4);
+    const r = azar(op.semilla || 3);
+    const c1 = linealRGB(color(op.color, "#7B2FF7")), c2 = linealRGB(color(op.color2, "#40E0D0"));
+    const pie = color(op.piedra, MATERIALES_PORTAL[material]);
+    const piedraRGB = linealRGB(pie);
+    const varia = (k) => { const f = 1 + (r() - 0.5) * (k == null ? 0.2 : k); return piedraRGB.map((c) => Math.min(1, c * f)); };
+    const brillante = (c) => c.map((x) => Math.min(1, x * 1.6 + 0.08));
+    const esc = (p) => [p[0] * S, p[1] * S, (p[2] || 0) * S];
+    const marco = lienzo(), runas = lienzo(), part = [lienzo(), lienzo()];
+    const ab = aberturaDe(tipo, r);
+    const pts = ab.pts, cc = ab.c;
+    const ys = pts.map((p) => p[1]), xs = pts.map((p) => p[0]);
+    const tope = Math.max(...ys), ancho = Math.max(...xs) - Math.min(...xs);
+    const B = (c, ex, ey, ez, col, des) => bloque(marco, esc(c), esc(ex), esc(ey), esc(ez), col || varia(), r, des);
+    /** Dovelas a lo largo del borde del vano, desde el tramo `desde` al `hasta`. */
+    const dovelas = (lista, grosor, prof) => {
+      for (let k = 0; k + 1 < lista.length; k++) {
+        const [x1, y1] = lista[k], [x2, y2] = lista[k + 1];
+        const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+        const t = v3.norm([x2 - x1, y2 - y1, 0]);
+        let n2 = [t[1], -t[0], 0];
+        if (n2[0] * (mx - cc[0]) + n2[1] * (my - cc[1]) < 0) n2 = v3.esc(n2, -1);
+        B([mx + n2[0] * grosor, my + n2[1] * grosor, 0], v3.esc(t, Math.hypot(x2 - x1, y2 - y1) / 2 + 0.008), v3.esc(n2, grosor), [0, 0, prof]);
+      }
+    };
+
+    // ── El marco ──
+    if (tipo === "aro") {
+      const anillo = pts.filter((_, i) => i % 3 === 0);
+      anillo.push(anillo[0]);
+      dovelas(anillo.filter(([, y]) => y > 0.35), 0.14, 0.18);
+      for (const s of [-1, 1]) B([s * 0.66, 0.22, 0], [0.26, 0, 0], [0, 0.22, 0], [0, 0, 0.24], varia(0.1).map((c) => c * 0.85));
+      B([0, cc[1] + 0.82 + 0.18, 0], [0.11, 0, 0], [0, 0.17, 0], [0, 0, 0.21], brillante(c1).map((c) => c * 0.6));
+    } else if (tipo === "arco") {
+      const w = 0.62, arr = 1.4;
+      for (const s of [-1, 1]) {
+        for (let k = 0; k < 6; k++) B([s * (w + 0.15), 0.12 + k * (arr / 6) + arr / 12, 0], [0.15, 0, 0], [0, arr / 12 - 0.005, 0], [0, 0, 0.2]);
+        B([s * (w + 0.15), 0.06, 0], [0.22, 0, 0], [0, 0.06, 0], [0, 0, 0.26], varia().map((c) => c * 0.85));
+      }
+      dovelas(pts.filter(([, y]) => y >= arr - 1e-6), 0.15, 0.2);
+      B([0, tope + 0.17, 0], [0.1, 0, 0], [0, 0.18, 0], [0, 0, 0.23], brillante(c1).map((c) => c * 0.6));
+    } else if (tipo === "puerta") {
+      const madera = material === "madera";
+      for (const s of [-1, 1]) {
+        if (madera) for (let k = 0; k < 3; k++) B([s * 0.71, 1.13, (k - 1) * 0.07], [0.09, 0, 0], [0, 1.13, 0], [0, 0, 0.035], varia(0.25), 0.02);
+        else for (let k = 0; k < 7; k++) B([s * 0.76, 0.16 + k * 0.31, 0], [k % 2 ? 0.14 : 0.18, 0, 0], [0, 0.15, 0], [0, 0, 0.2]);
+      }
+      B([0, 2.34, 0], [0.94, 0, 0], [0, 0.14, 0], [0, 0, 0.24]);
+      B([0, 2.52, 0], [1.02, 0, 0], [0, 0.05, 0], [0, 0, 0.28], varia().map((c) => c * 0.8));
+      B([0, 0.03, 0.12], [0.8, 0, 0], [0, 0.03, 0], [0, 0, 0.18], varia().map((c) => c * 0.75));
+      B([0, 2.36, 0.02], [0.09, 0, 0], [0, 0.17, 0], [0, 0, 0.24], brillante(c1).map((c) => c * 0.6));
+    } else if (tipo === "monolitos") {
+      for (const s of [-1, 1]) B([s * 1.06, 1.3, 0], [0.26, 0, 0], [0, 1.3, 0], [0, 0, 0.3], varia(0.15), 0.28);
+      B([0, 2.72, 0], [1.45, 0, 0], [0, 0.22, 0], [0, 0, 0.32], varia(0.15), 0.2);
+      for (let k = 0; k < 7; k++) { const a = r() * PI * 2, d = 1.6 + r() * 0.8; B([Math.cos(a) * d, 0.08, Math.sin(a) * d], [0.12 + r() * 0.1, 0, 0], [0, 0.08 + r() * 0.06, 0], [0, 0, 0.12 + r() * 0.1], varia(0.3), 0.4); }
+    } else if (tipo === "espejo") {
+      // Un marco torneado: un tubo alrededor del óvalo, con cuentas, y un pie.
+      const camino = [];
+      for (let i = 0; i <= 64; i++) { const a = (i / 64) * PI * 2; camino.push({ p: esc([Math.cos(a) * 0.68, 1.35 + Math.sin(a) * 1.03, 0]), r: 0.07 * S }); }
+      tubo(marco, camino, 8, () => piedraRGB, null);
+      for (let i = 0; i < 20; i++) { const a = (i / 20) * PI * 2; B([Math.cos(a) * 0.68, 1.35 + Math.sin(a) * 1.03, 0.06], [0.035, 0, 0], [0, 0.035, 0], [0, 0, 0.035], brillante(c2).map((c) => c * 0.7)); }
+      for (const s of [-1, 1]) tubo(marco, [{ p: esc([s * 0.3, 0.02, -0.25]), r: 0.03 * S }, { p: esc([s * 0.2, 0.4, -0.05]), r: 0.028 * S }, { p: esc([s * 0.15, 0.4, 0]), r: 0.025 * S }], 6, () => piedraRGB, null);
+      B([0, 0.02, -0.1], [0.45, 0, 0], [0, 0.02, 0], [0, 0, 0.25], varia().map((c) => c * 0.8));
+      B([0, 2.42, 0], [0.12, 0, 0], [0, 0.1, 0], [0, 0, 0.06], brillante(c1).map((c) => c * 0.7));
+    } else if (tipo === "hexagono") {
+      // Seis vigas de metal en los lados, nodos en las esquinas y tiras de luz.
+      for (let i = 0; i < 6; i++) {
+        const [x1, y1] = pts[i], [x2, y2] = pts[(i + 1) % 6];
+        const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+        const t = v3.norm([x2 - x1, y2 - y1, 0]);
+        let n2 = [t[1], -t[0], 0];
+        if (n2[0] * (mx - cc[0]) + n2[1] * (my - cc[1]) < 0) n2 = v3.esc(n2, -1);
+        const L2 = Math.hypot(x2 - x1, y2 - y1) / 2;
+        B([mx + n2[0] * 0.12, my + n2[1] * 0.12, 0], v3.esc(t, L2 - 0.05), v3.esc(n2, 0.1), [0, 0, 0.14], varia(0.05), 0.01);
+        for (const z of [0.1, -0.1]) B([mx + n2[0] * 0.02, my + n2[1] * 0.02, z], v3.esc(t, L2 - 0.12), v3.esc(n2, 0.012), [0, 0, 0.012], brillante(c2), 0);
+        B([x1 + (x1 - cc[0]) * 0.13, y1 + (y1 - cc[1]) * 0.13, 0], [0.1, 0, 0], [0, 0.1, 0], [0, 0, 0.18], varia(0.05).map((c) => c * 0.8), 0.01);
+      }
+      for (const s of [-1, 1]) B([s * 0.45, 0.06, 0], [0.18, 0, 0], [0, 0.06, 0], [0, 0, 0.3], varia(0.05).map((c) => c * 0.7), 0.01);
+    } else if (tipo === "runas") {
+      // Una plataforma de losas en círculo; las runas flotan aparte (giran).
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * PI * 2;
+        B([Math.cos(a) * 1.05, 0.05, Math.sin(a) * 1.05 * 0.6], [0.3, 0, 0], [0, 0.05, 0], [0, 0, 0.22], varia(0.2), 0.12);
+      }
+      B([0, 0.08, 0], [0.62, 0, 0], [0, 0.06, 0], [0, 0, 0.4], varia(0.1).map((c) => c * 0.9), 0.05);
+    } else {
+      // Grieta: cristales que asoman por el borde, apuntando hacia afuera.
+      for (let i = 0; i < pts.length; i++) {
+        const [x, y] = pts[i];
+        const dir = v3.norm([x - cc[0], (y - cc[1]) * 0.3, 0]);
+        const n = 2 + Math.floor(r() * 2);
+        for (let k = 0; k < n; k++) {
+          const largo = 0.15 + r() * 0.35, d = v3.norm(v3.sum(dir, [(r() - 0.5) * 0.8, (r() - 0.5) * 0.8, (r() - 0.5) * 0.9]));
+          const base = [x, y, (r() - 0.5) * 0.15];
+          const colr = r() < 0.3 ? brillante(c2).map((c) => c * 0.8) : varia(0.3);
+          tubo(marco, [{ p: esc(base), r: (0.04 + r() * 0.04) * S }, { p: esc(v3.sum(base, v3.esc(d, largo * 0.6))), r: (0.03 + r() * 0.02) * S }, { p: esc(v3.sum(base, v3.esc(d, largo))), r: 0.002 }], 5, () => colr, null);
+        }
+      }
+      for (let k = 0; k < 10; k++) B([(r() - 0.5) * 1.6, 0.03, (r() - 0.5) * 1.2], [0.1 + r() * 0.2, 0, 0], [0, 0.03, 0], [0, 0, 0.05 + r() * 0.1], varia(0.3).map((c) => c * 0.5), 0.3);
+    }
+
+    // ── Runas flotantes (tipo runas, o `runas: true` en cualquiera) ──
+    if (tipo === "runas" || op.runas) {
+      const n = tipo === "runas" ? 10 : 8, R = alcance(pts, cc, 0) + 0.35;
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * PI * 2;
+        // Relativas al centro del vano: el grupo que las gira está ahí.
+        const c = [Math.cos(a) * R, Math.sin(a) * R, 0];
+        bloque(runas, esc(c), esc([0.09, 0, 0]), esc([0, 0.14, 0]), esc([0, 0, 0.05]), varia(0.2), r, 0.2);
+        for (let k = 0; k < 2 + (i % 2); k++) {
+          const ang = r() * PI;
+          bloque(runas, esc([c[0] + (r() - 0.5) * 0.05, c[1] + (k - 1) * 0.06, 0.055]), esc([Math.cos(ang) * 0.05, Math.sin(ang) * 0.05, 0]), esc([-Math.sin(ang) * 0.008, Math.cos(ang) * 0.008, 0]), esc([0, 0, 0.006]), brillante(c2), r, 0);
+        }
+      }
+    }
+
+    // ── Partículas: dos anillos de chispas que giran en sentidos contrarios,
+    //    relativas al centro del vano ──
+    const np = Math.round(num(op.particulas, 60, 0, 600));
+    for (let i = 0; i < np; i++) {
+      const L = part[i % 2];
+      const a = r() * PI * 2, borde = alcance(pts, cc, a);
+      const d = borde * (0.95 + r() * 0.35);
+      const c = [Math.cos(a) * d, Math.sin(a) * d, (r() - 0.5) * 0.3];
+      const t = 0.012 + r() * 0.025;
+      hoja(L, esc(c), esc([Math.cos(a + PI / 2) * t * 2, Math.sin(a + PI / 2) * t * 2, 0]), esc([0, 0, t]), brillante(r() < 0.5 ? c1 : c2), 1);
+    }
+
+    // ── La abertura: una grilla polar que llena el polígono ──
+    const ANILLOS = 20, RAYOS = 80;
+    const P = [], I = [], polar = [];
+    const add = (x, y, rho, th) => { P.push(x * S, y * S, 0.004 * S); polar.push([rho, th, x, y]); };
+    add(cc[0], cc[1], 0, 0);
+    const bordes = Array.from({ length: RAYOS }, (_, j) => alcance(pts, cc, (j / RAYOS) * PI * 2));
+    for (let i = 1; i <= ANILLOS; i++) {
+      const rho = i / ANILLOS;
+      for (let j = 0; j < RAYOS; j++) {
+        const th = (j / RAYOS) * PI * 2, R = bordes[j] * rho;
+        add(cc[0] + Math.cos(th) * R, cc[1] + Math.sin(th) * R, rho, th);
+      }
+    }
+    const at = (i, j) => (i === 0 ? 0 : 1 + (i - 1) * RAYOS + (j % RAYOS));
+    for (let j = 0; j < RAYOS; j++) I.push(at(0, 0), at(1, j), at(1, j + 1));
+    for (let i = 1; i < ANILLOS; i++) for (let j = 0; j < RAYOS; j++) I.push(at(i, j), at(i + 1, j), at(i + 1, j + 1), at(i, j), at(i + 1, j + 1), at(i, j + 1));
+    // De los dos lados: los mismos triángulos, al revés.
+    const n0 = I.length;
+    for (let k = 0; k < n0; k += 3) I.push(I[k], I[k + 2], I[k + 1]);
+    const hash = polar.map((_, k) => { let h = Math.imul(k + 17, 2654435761) >>> 0; h ^= h >>> 15; return (h >>> 0) / 4294967296; });
+    const vel = num(op.velocidad, 1, 0, 4);
+    /** Los colores del efecto en el instante `t` (s), en `out` (RGBA lineal). */
+    function colores(t, out) {
+      for (let k = 0; k < polar.length; k++) {
+        const [rho, th, x, y] = polar[k];
+        let s;
+        if (efecto === "remolino") s = Math.sin(3 * th + 9 * rho - t * vel * 2.2);
+        else if (efecto === "ondas") s = Math.sin(16 * rho - t * vel * 3.5) * (1 - rho * 0.3);
+        else if (efecto === "plasma") s = (Math.sin(th * 2 + t * vel) + Math.sin(rho * 9 - t * vel * 1.3) + Math.sin((x + y) * 5 + t * vel * 0.7)) / 3;
+        else if (efecto === "vortice") s = Math.sin(5 * th + 16 * Math.sqrt(rho) - t * vel * 4) * rho;
+        else s = -0.7 + (hash[k] > 0.9 ? 1.7 * (0.5 + 0.5 * Math.sin(t * vel * 3 + hash[k] * 60)) : 0) + rho * 0.2;
+        let m = Math.max(0, Math.min(1, 0.5 + 0.5 * s));
+        let luz = efecto === "vortice" ? 0.15 + 0.85 * rho : efecto === "estrellas" ? 0.25 + 0.2 * rho : 0.55 + 0.45 * (1 - rho * 0.5);
+        // El borde brilla hacia el segundo color.
+        const orla = Math.max(0, (rho - 0.85) / 0.15);
+        m = m * (1 - orla) + orla;
+        luz = Math.min(1, luz + orla * 0.5);
+        for (let q = 0; q < 3; q++) out[k * 4 + q] = Math.min(1, Math.max(0, (c1[q] + (c2[q] - c1[q]) * m) * luz));
+        out[k * 4 + 3] = 1;
+      }
+      return out;
+    }
+    const alto = { monolitos: 2.94, puerta: 2.57, espejo: 2.52 }[tipo] || tope + 0.35;
+    return {
+      tipo, efecto, material,
+      marco, runas, particulas: part,
+      abertura: { positions: new Float32Array(P), indices: new Uint32Array(I), colores, vertices: polar.length },
+      centro: [cc[0] * S, cc[1] * S], alto: alto * S,
+      ancho: (ancho + 0.5) * S, radio: alcance(pts, cc, 0) * S,
+    };
+  }
+
+  /** Un lienzo como nodos para montar: un <model> por malla. Lo usa quien
+   *  crea las mallas (MeshResource) del lado del cliente. */
+  function mallasDe(L) { return L.mallas.filter((a) => a.I.length).map(buffers); }
+
   // ── Salida ──────────────────────────────────────────────────────────────
   const fmt = (v) => (typeof v === "number" ? (Math.abs(v) < 1e-4 ? "0" : v.toFixed(3).replace(/\.?0+$/, "")) : String(v));
   const escXml = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
@@ -2528,6 +3100,68 @@ const Obra = (() => {
     return (nodos) => {
       for (const el of hechos) el.remove();
       hechos = construir(nodos, padre, crear);
+      return hechos;
+    };
+  }
+
+  /** Como montar(), pero lo que tiene muchas piezas va en mallas.
+   *
+   *  Un objeto es un include, con su isolate y su propio cupo de mallas: es
+   *  el lugar para fundir. Si lo que se arma tiene al menos `umbral` piezas
+   *  fundibles, se funden; si no, van como nodos, que son más fáciles de
+   *  inspeccionar y no gastan cupo.
+   *
+   *  Lo que se mueve no se puede fundir con lo quieto: un grupo con id (la
+   *  copa de un árbol, la hoja de una puerta) queda como nodo, con su propia
+   *  malla adentro, y el script lo sigue encontrando y moviendo. Al rearmar,
+   *  las mallas nuevas se crean antes de soltar las viejas. */
+  function montarConMallas(padre, crear, op) {
+    op = op || {};
+    const umbral = op.umbral == null ? 24 : op.umbral;
+    let hechos = [], recursos = [];
+    const cuantas = (nodos) => nodos.reduce((s, n) => s + (!n ? 0 : fundible(n) ? 1 : n.h ? cuantas(n.h) : 0), 0);
+    const tieneIsla = (n) => !!(n && n.h && (n.a.id || n.h.some(tieneIsla)));
+    function nivel(nodos, destino, arriba, mallas) {
+      const acc = acumulador(), fundidos = [];
+      const poner = (el) => { if (arriba) arriba.push(el); };
+      for (const n of nodos) {
+        if (!n) continue;
+        if (n.t === "group" && tieneIsla(n)) {
+          const [el] = construir([{ t: "group", a: n.a }], destino, crear);
+          poner(el);
+          nivel(n.h, el, null, mallas);
+        } else if (fundible(n) || n.h) {
+          const resto = fundir([n], acc);
+          fundidos.push(n);
+          for (const el of construir(resto, destino, crear)) poner(el);
+        } else {
+          for (const el of construir([n], destino, crear)) poner(el);
+        }
+      }
+      if (!acc.I.length) return;
+      try {
+        const m = MeshResource.create(buffers(acc));
+        mallas.push(m);
+        const el = crear("model", { touchable: "false", "material-unlit": "true" }, destino);
+        el.src = m.src;
+        poner(el);
+      } catch (e) {
+        // Sin cupo: esta parte va como nodos.
+        console.error("[obra] MeshResource: " + (e && e.message || e) + " — va con nodos");
+        for (const el of construir(soloFundibles(fundidos), destino, crear)) poner(el);
+      }
+    }
+    return (nodos) => {
+      // Los nodos viejos se van antes de crear los nuevos (si no, por un
+      // momento hay dos grupos con el mismo id y el script puede agarrar el
+      // que se va); las mallas viejas, después de crear las nuevas.
+      for (const el of hechos) el.remove();
+      const nuevos = [], mallas = [];
+      if (typeof MeshResource !== "undefined" && cuantas(nodos) >= umbral) nivel(nodos, padre, nuevos, mallas);
+      else nuevos.push(...construir(nodos, padre, crear));
+      for (const m of recursos) { try { m.dispose(); } catch (e) { /* ya no estaba */ } }
+      hechos = nuevos;
+      recursos = mallas;
       return hechos;
     };
   }
@@ -2798,8 +3432,10 @@ const Obra = (() => {
     pared, piso, columna, baranda, escalera,
     puerta, ventana, porton, techo, toldo,
     arbol, arbusto, seto, cerco, cantero,
-    aHsml, construir, montar, siguiente, contar,
+    aHsml, construir, montar, montarConMallas, siguiente, contar,
     matriz, componer, fundir, soloFundibles, verticesDe, indicesDe, noEntra, acumulador, buffers, bytesDe,
+    v3, lienzo, tubo, hoja, bloque, linealRGB, brillo, arbolMalla, mallasDe, ESPECIES_MALLA,
+    portalMalla, TIPOS_PORTAL, EFECTOS_PORTAL, MATERIALES_PORTAL,
   };
 })();
 if (typeof module !== "undefined" && module.exports) module.exports = Obra;
@@ -2814,17 +3450,17 @@ else globalThis.Obra = Obra;
 //
 // Tres maneras de dibujarse, con `modo`:
 //
-//   box    cada ladrillo, cada piedra, un <box>. Lo más fácil de tocar y de
-//          inspeccionar, y lo más caro: una pared de fachada son miles.
-//   linea  el cuerpo liso con las hiladas marcadas: pocas decenas de nodos.
-//   mesh   los mismos ladrillos que box, fundidos en una malla dinámica que
+//   mesh   (la de siempre) cada ladrillo, fundido en una malla dinámica que
 //          arma esta pared en su propio isolate. Por eso escala: cada pared
 //          tiene su cupo de mallas (64 MB, 128 recursos) y se arma cuando se
 //          monta, no todas a la vez en el documento que la incluye.
+//   box    cada ladrillo, cada piedra, un <box>. Lo más fácil de inspeccionar
+//          y lo más caro: una pared de fachada son miles de entidades.
+//   linea  el cuerpo liso con las hiladas marcadas: pocas decenas de nodos.
 //
 // Se arma entera de nuevo cada vez que cambia algo. En mesh la malla nueva
 // se crea antes de soltar la vieja, así no parpadea.
-const P = Obj.props({ ancho: 2.4, alto: 2.4, espesor: 0.2, material: "ladrillo", color: "", junta: "", detalle: "alto", huecos: "", contorno: "", modo: "box", caras: 2, zocalo: true, semilla: 7 });
+const P = Obj.props({ ancho: 2.4, alto: 2.4, espesor: 0.2, material: "ladrillo", color: "", junta: "", detalle: "alto", huecos: "", contorno: "", modo: "mesh", caras: 2, zocalo: true, semilla: 7 });
 const ORDEN = ["ladrillo", "piedra", "madera", "azulejo", "hormigon", "revoque"];
 const MODOS = ["box", "linea", "mesh"];
 const obra = Obj.$("obra");
@@ -2850,7 +3486,7 @@ function soltarMalla() {
 
 function dibujar() {
   const t0 = Date.now();
-  const modo = MODOS.includes(P.modo) ? P.modo : "box";
+  const modo = MODOS.includes(P.modo) ? P.modo : "mesh";
   const E = Obra.num(P.espesor, 0.2, 0.02, 1.5);
   const nodos = Obra.pared(Object.assign({}, P, {
     material, huecos: huecos(), caras: Number(P.caras) === 1 ? 1 : 2, zocalo: P.zocalo !== false,

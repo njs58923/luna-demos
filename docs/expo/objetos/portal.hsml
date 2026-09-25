@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Portal. Un aro de piedra con un remolino adentro: tocarlo lleva a otro mundo.
+  Portal: un marco, un vano con un efecto que se mueve y chispas o runas que
+  giran alrededor. Tocarlo lleva a otro mundo. Todo en mallas propias.
 
-  De piso: apoya en y=0, se atraviesa por Z. Mide 1.9 × 2.5 × 0.5 m.
+  De piso: apoya en y=0, se atraviesa por Z. A tamaño 1 mide unos 2 × 2,6 m.
 
     <include src="https://njs58923.github.io/luna-demos/expo/objetos/portal.hsml"
              resources="navigate_world" events="entrar"
-             props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","titulo":"El atrio de noche"}'/>
+             props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","titulo":"El atrio de noche",
+                     "tipo":"arco","efecto":"plasma","material":"obsidiana","runas":true}'/>
 
   Para navegar necesita `navigate_world` delegado (y que el mundo lo tenga), y
   `destino` absoluto: una ruta relativa se resolvería contra este documento,
   no contra el mundo que lo aloja. Sin destino sólo emite `entrar` y el que lo
   monta decide qué hacer.
 
-  Props: destino (URL absoluta), titulo, sub, color (del remolino), piedra.
+  Props: destino (URL absoluta), titulo, sub,
+    tipo (aro|arco|puerta|monolitos|espejo|hexagono|runas|grieta),
+    efecto (remolino|ondas|estrellas|plasma|vortice), color, color2,
+    material (piedra|metal|madera|cristal|hueso|obsidiana), piedra (su color),
+    tamano (0.4 a 4), particulas (0 a 600), velocidad (0 a 4), runas, semilla.
   Eventos: entrar {destino}.
 -->
 <hsml>
   <head><name>Portal</name></head>
   <space resources="navigate_world">
-    <group id="aro"/>
-    <group id="remolino" y="1.2"/>
+    <group id="marco"/>
     <group id="cartel" y="2.62">
       <box id="cartel_fondo" z="-0.02" sx="1.4" sy="0.24" sz="0.04" color="#1C1C26" border-radius="0.04"/>
       <text id="titulo" y="0.03" z="0.005" value="" size="0.085" color="#FFFFFF"/>

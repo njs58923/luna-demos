@@ -144,6 +144,12 @@ const Obra = (() => {
     return out;
   }
 
+  /** Marca una pieza como pegada a la cara `lado` (1 adelante, -1 atrás) de
+   *  una pared: al fundirla, la cara que da contra la pared se ahorra. Va
+   *  fuera de los atributos (no es HSML) y sólo la pone pared(): una pieza
+   *  fina cualquiera, como un postigo abierto, puede mostrar esa cara. */
+  const pegada = (n, lado) => Object.assign(n, { r: lado });
+
   /** Las piezas del dibujo, como rectángulos con color y relieve. */
   function dibujo(material, o, W, H, r) {
     const piezas = [];
@@ -233,13 +239,13 @@ const Obra = (() => {
       for (const p of piezas) {
         if (p.linea) {
           for (const s of solidos) {
-            if (p.y > s.y0 && p.y < s.y1) out.push(caja({ x: (s.x0 + s.x1) / 2, y: p.y, z: z + lado * 0.002, sx: s.x1 - s.x0, sy: 0.018, sz: 0.006, color: p.color }));
+            if (p.y > s.y0 && p.y < s.y1) out.push(pegada(caja({ x: (s.x0 + s.x1) / 2, y: p.y, z: z + lado * 0.002, sx: s.x1 - s.x0, sy: 0.018, sz: 0.006, color: p.color }), lado));
           }
           continue;
         }
         if (p.vlinea) {
           for (const s of solidos) {
-            if (p.x > s.x0 && p.x < s.x1) out.push(caja({ x: p.x, y: (s.y0 + s.y1) / 2, z: z + lado * 0.002, sx: 0.018, sy: s.y1 - s.y0, sz: 0.006, color: p.color }));
+            if (p.x > s.x0 && p.x < s.x1) out.push(pegada(caja({ x: p.x, y: (s.y0 + s.y1) / 2, z: z + lado * 0.002, sx: 0.018, sy: s.y1 - s.y0, sz: 0.006, color: p.color }), lado));
           }
           continue;
         }
@@ -252,7 +258,7 @@ const Obra = (() => {
         for (const q of recortar(p, solidos)) {
           const a = { x: (q.x0 + q.x1) / 2, y: (q.y0 + q.y1) / 2, z: z + lado * p.relieve / 2, sx: q.x1 - q.x0, sy: q.y1 - q.y0, sz: p.relieve, color: p.color };
           if (p.rx) a.rx = p.rx * lado;
-          out.push(caja(a));
+          out.push(pegada(caja(a), lado));
         }
       }
     }
@@ -529,7 +535,12 @@ const Obra = (() => {
         } else {
           for (let y = 0.1; y < H - 0.08; y += 0.06) nodos.push(caja({ x: -s * pw / 2, y, rx: -0.5, sx: pw - 0.1, sy: 0.055, sz: 0.008, color: tono(pc, 0.08) }));
         }
-        postigos.push({ bisagra: { x: s * (W / 2 + M), y: 0, z: 0.06 }, dir: -s, nodos });
+        // Los postigos van por afuera de la pared: con `frente` (dónde queda
+        // la cara de la pared, contando lo que sobresalen los ladrillos,
+        // medido desde el marco) la bisagra se apoya ahí, y cerrados o
+        // abiertos contra la fachada no se meten en ella.
+        const zb = op.frente != null ? Number(op.frente) + 0.016 : 0.06;
+        postigos.push({ bisagra: { x: s * (W / 2 + M), y: 0, z: zb }, dir: -s, nodos });
       }
     }
     return { marco, hojas, postigos, ancho: W, alto: H };
@@ -998,19 +1009,102 @@ const Obra = (() => {
     { n: [0, -1, 0], v: [[-1, -1, -1], [1, -1, -1], [1, -1, 1], [-1, -1, 1]] },
   ];
 
-  const fundible = (n) => n.t === "box" && !n.h && !n.a.id && !n.a["material-alpha"] && !n.a["border-radius"] &&
-    /^#[0-9a-f]{6}$/i.test(String(n.a.color || ""));
+  /** Cilindro y esfera unidad como los del motor (main.rs: Cylinder::new(0.5,
+   *  1.0) parado en Y, Sphere::new(0.5)), en pocas caras: se ven de lejos y
+   *  son cientos. Cada triángulo se orienta hacia afuera mirando su normal
+   *  contra el centro, así que no importa en qué orden se armó. */
+  //
+  // Los vértices se comparten entre triángulos y no llevan normal: las
+  // mallas van sin luz, así que un vértice es posición y color y nada más.
+  // Con los vértices repetidos por cara una esfera eran 300; así, 70.
+  function formaUnidad(v, tris) {
+    const I = [];
+    for (const [a, b, c] of tris) {
+      const A = v[a], B = v[b], C = v[c];
+      const ux = B[0] - A[0], uy = B[1] - A[1], uz = B[2] - A[2];
+      const wx = C[0] - A[0], wy = C[1] - A[1], wz = C[2] - A[2];
+      const nx = uy * wz - uz * wy, ny = uz * wx - ux * wz, nz = ux * wy - uy * wx;
+      if (Math.hypot(nx, ny, nz) < 1e-12) continue; // los del polo, degenerados
+      const cx = (A[0] + B[0] + C[0]) / 3, cy = (A[1] + B[1] + C[1]) / 3, cz = (A[2] + B[2] + C[2]) / 3;
+      if (nx * cx + ny * cy + nz * cz >= 0) I.push(a, b, c);
+      else I.push(a, c, b);
+    }
+    return { P: v, I };
+  }
+  function cilindroUnidad(seg) {
+    const v = [], t = [];
+    for (let j = 0; j < seg; j++) {
+      const a = (j / seg) * PI * 2;
+      v.push([Math.cos(a) * 0.5, -0.5, Math.sin(a) * 0.5], [Math.cos(a) * 0.5, 0.5, Math.sin(a) * 0.5]);
+    }
+    const abajo = v.push([0, -0.5, 0]) - 1, arriba = v.push([0, 0.5, 0]) - 1;
+    for (let j = 0; j < seg; j++) {
+      const k = (j + 1) % seg;
+      t.push([2 * j, 2 * k, 2 * k + 1], [2 * j, 2 * k + 1, 2 * j + 1]);
+      t.push([abajo, 2 * j, 2 * k], [arriba, 2 * j + 1, 2 * k + 1]);
+    }
+    return formaUnidad(v, t);
+  }
+  function esferaUnidad(LAT, LON) {
+    const v = [], t = [];
+    v.push([0, 0.5, 0]);
+    for (let i = 1; i < LAT; i++) {
+      const th = (i / LAT) * PI;
+      for (let j = 0; j < LON; j++) {
+        const ph = (j / LON) * PI * 2;
+        v.push([Math.sin(th) * Math.cos(ph) * 0.5, Math.cos(th) * 0.5, Math.sin(th) * Math.sin(ph) * 0.5]);
+      }
+    }
+    const sur = v.push([0, -0.5, 0]) - 1;
+    const at = (i, j) => 1 + (i - 1) * LON + (j % LON);
+    for (let j = 0; j < LON; j++) {
+      t.push([0, at(1, j), at(1, j + 1)]);
+      t.push([sur, at(LAT - 1, j + 1), at(LAT - 1, j)]);
+      for (let i = 1; i < LAT - 1; i++) t.push([at(i, j), at(i + 1, j), at(i, j + 1)], [at(i, j + 1), at(i + 1, j), at(i + 1, j + 1)]);
+    }
+    return formaUnidad(v, t);
+  }
+  // Dos detalles: lo que mide menos de 15 cm (una flor, un taco) va con
+  // menos caras; de lejos no se nota y son la mayoría.
+  const FORMAS = {
+    cylinder: [cilindroUnidad(10), cilindroUnidad(5)],
+    sphere: [esferaUnidad(6, 10), esferaUnidad(3, 5)],
+  };
+  const formaDe = (n) => {
+    const s = Math.max(Math.abs(Number(n.a.sx ?? 1)), Math.abs(Number(n.a.sy ?? 1)), Math.abs(Number(n.a.sz ?? 1)));
+    return FORMAS[n.t][s < 0.15 ? 1 : 0];
+  };
+
+  const fundible = (n) => (n.t === "box" || n.t === "cylinder" || n.t === "sphere") && !n.h && !n.a.id &&
+    !n.a["material-alpha"] && !n.a["border-radius"] && /^#[0-9a-f]{6}$/i.test(String(n.a.color || ""));
 
   /** Cuántos vértices daría fundir estos nodos (para repartir en mallas). */
   function verticesDe(nodos) {
     let v = 0;
     for (const n of nodos) {
       if (!n) continue;
-      if (fundible(n)) v += Number(n.a.sz) <= 0.03 ? 20 : 24;
+      if (fundible(n)) v += n.t === "box" ? 8 : formaDe(n).P.length;
       else if (n.h) v += verticesDe(n.h);
     }
     return v;
   }
+
+  /** Cuántos índices daría fundirlos: el motor tiene tope para los dos, y
+   *  con las esquinas compartidas se llega antes al de índices (una caja son
+   *  8 vértices y 36 índices). */
+  function indicesDe(nodos) {
+    let v = 0;
+    for (const n of nodos) {
+      if (!n) continue;
+      if (fundible(n)) v += n.t === "box" ? 36 : formaDe(n).I.length;
+      else if (n.h) v += indicesDe(n.h);
+    }
+    return v;
+  }
+  /** Topes del motor por malla (mesh.rs), con un margen. */
+  const TOPE_VERTICES = 250000, TOPE_INDICES = 760000;
+  /** Si fundir `nodos` en `acc` pasaría algún tope: hay que entregar antes. */
+  const noEntra = (acc, nodos) => acc.P.length / 3 + verticesDe(nodos) > TOPE_VERTICES || acc.I.length + indicesDe(nodos) > TOPE_INDICES;
 
   /** Funde las cajas de `nodos` (con la transformación `base` encima) en un
    *  acumulador { P, N, C, I } de arrays planos. Devuelve el árbol sin ellas. */
@@ -1019,34 +1113,36 @@ const Obra = (() => {
     const resto = [];
     for (const n of nodos) {
       if (!n) continue;
-      if (fundible(n)) {
+      if (fundible(n) && n.t !== "box") {
+        const m = componer(base, matriz(n.a));
+        const [r, g, b] = rgb(n.a.color).map((c) => lineal(c / 255));
+        const F = formaDe(n);
+        const i0 = acc.P.length / 3;
+        for (const [x, y, z] of F.P) {
+          acc.P.push(m[0] * x + m[1] * y + m[2] * z + m[3], m[4] * x + m[5] * y + m[6] * z + m[7], m[8] * x + m[9] * y + m[10] * z + m[11]);
+          acc.C.push(r, g, b, 1);
+        }
+        for (const i of F.I) acc.I.push(i0 + i);
+        acc.cajas++;
+      } else if (fundible(n)) {
         const m = componer(base, matriz(n.a));
         const [r, g, b] = rgb(n.a.color).map((c) => lineal(c / 255));
         // Una pieza de relieve (un ladrillo, una tabla) está pegada a la
         // pared: la cara que da contra ella no se ve nunca y se ahorra. En
         // las de adelante es la de -z; en las de atrás (caras: 2), la de +z.
-        const enterrada = Number(n.a.sz) <= 0.03 ? ((n.a.z || 0) < 0 ? 0 : 1) : -1;
+        const enterrada = n.r === 1 ? 1 : n.r === -1 ? 0 : -1;
+        // Sin luz no hace falta una normal por cara: las ocho esquinas se
+        // comparten entre las caras que las tocan.
+        const i0 = acc.P.length / 3;
+        for (let k = 0; k < 8; k++) {
+          const x = k & 4 ? 0.5 : -0.5, y = k & 2 ? 0.5 : -0.5, z = k & 1 ? 0.5 : -0.5;
+          acc.P.push(m[0] * x + m[1] * y + m[2] * z + m[3], m[4] * x + m[5] * y + m[6] * z + m[7], m[8] * x + m[9] * y + m[10] * z + m[11]);
+          acc.C.push(r, g, b, 1);
+        }
         for (let k = 0; k < 6; k++) {
           if (k === enterrada) continue;
-          const cara = CARAS[k];
-          const i0 = acc.P.length / 3;
-          const w = cara.v.map(([x, y, z]) => {
-            x *= 0.5; y *= 0.5; z *= 0.5;
-            return [m[0] * x + m[1] * y + m[2] * z + m[3], m[4] * x + m[5] * y + m[6] * z + m[7], m[8] * x + m[9] * y + m[10] * z + m[11]];
-          });
-          // La normal de la cara ya transformada: vale también con escalas
-          // desparejas y deformaciones (los rombos de los triángulos).
-          const ux = w[1][0] - w[0][0], uy = w[1][1] - w[0][1], uz = w[1][2] - w[0][2];
-          const vx = w[3][0] - w[0][0], vy = w[3][1] - w[0][1], vz = w[3][2] - w[0][2];
-          let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
-          const l = Math.hypot(nx, ny, nz) || 1;
-          nx /= l; ny /= l; nz /= l;
-          for (const p of w) {
-            acc.P.push(p[0], p[1], p[2]);
-            acc.N.push(nx, ny, nz);
-            acc.C.push(r, g, b, 1);
-          }
-          acc.I.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
+          const [a, b2, c, d] = CARAS[k].v.map(([x, y, z]) => i0 + ((x > 0 ? 4 : 0) | (y > 0 ? 2 : 0) | (z > 0 ? 1 : 0)));
+          acc.I.push(a, b2, c, a, c, d);
         }
         acc.cajas++;
       } else if (n.h) {
@@ -1059,12 +1155,29 @@ const Obra = (() => {
     }
     return resto;
   }
-  const acumulador = () => ({ P: [], N: [], C: [], I: [], cajas: 0 });
-  /** El acumulador como buffers tipados, listos para MeshResource.create. */
+  /** Lo contrario de lo que devuelve fundir: el árbol con sólo lo que se
+   *  funde. Es lo que hay que armar como nodos si la malla no se pudo crear. */
+  function soloFundibles(nodos) {
+    const out = [];
+    for (const n of nodos) {
+      if (!n) continue;
+      if (fundible(n)) out.push(n);
+      else if (n.h) {
+        const h = soloFundibles(n.h);
+        if (h.length) out.push(Object.assign({}, n, { a: Object.assign({}, n.a, { id: undefined }), h }));
+      }
+    }
+    return out;
+  }
+  const acumulador = () => ({ P: [], C: [], I: [], cajas: 0 });
+  /** El acumulador como buffers tipados, listos para MeshResource.create.
+   *  Sin normales: las mallas van sin luz, y si faltan el motor las calcula
+   *  (dynamic_mesh.rs) sin que viajen ni cuenten para el cupo. */
   const buffers = (acc) => ({
-    positions: new Float32Array(acc.P), normals: new Float32Array(acc.N),
-    colors: new Float32Array(acc.C), indices: new Uint32Array(acc.I),
+    positions: new Float32Array(acc.P), colors: new Float32Array(acc.C), indices: new Uint32Array(acc.I),
   });
+  /** Lo que una malla le cuenta al cupo del motor (mesh.rs): los bytes que viajan. */
+  const bytesDe = (b) => b.positions.byteLength + b.colors.byteLength + b.indices.byteLength;
 
   /** Cuántos nodos hay, contando los de adentro. */
   const contar = (nodos) => nodos.reduce((s, n) => s + 1 + (n && n.h ? contar(n.h) : 0), 0);
@@ -1076,7 +1189,7 @@ const Obra = (() => {
     puerta, ventana, porton, techo, toldo,
     arbol, arbusto, seto, cerco, cantero,
     aHsml, construir, montar, siguiente, contar,
-    matriz, componer, fundir, verticesDe, acumulador, buffers,
+    matriz, componer, fundir, soloFundibles, verticesDe, indicesDe, noEntra, acumulador, buffers, bytesDe,
   };
 })();
 if (typeof module !== "undefined" && module.exports) module.exports = Obra;
@@ -1085,30 +1198,37 @@ if (typeof module !== "undefined" && module.exports) module.exports = Obra;
 else globalThis.Obra = Obra;
 
 ;
-// Las fachadas de la calle como mallas (/calle__detalle-alto.hsml_mesh).
+// Lo pesado de la calle, fundido en mallas.
 //
 // El servidor lo sirve con _obra.js adelante (/obra_calle.js = _obra.js +
-// este archivo). La calle no trae las fachadas: trae su receta en
-// CALLE.fachadas, y acá cada una se arma con Obra.pared —los mismos ladrillos
-// que en ?detalle=alto, uno por uno— y en vez de volverse miles de nodos se
-// funde con Obra.fundir en un buffer de triángulos. Cuando el buffer llega al
-// tope se entrega como MeshResource a un <model> y se empieza otro.
+// este archivo). La calle no trae como nodos lo que tiene muchas piezas:
+//
+//   CALLE.fachadas  (?detalle=alto_mesh) la receta de cada fachada de
+//                   ladrillo: acá se arma con Obra.pared, uno por uno.
+//   CALLE.piezas    (todos los modos salvo alto) edificios, árboles,
+//                   canteros y setos ya armados, como datos, en coordenadas
+//                   del mundo.
+//
+// Todo pasa por Obra.fundir a un buffer de triángulos que, al llegar al
+// tope, se entrega como MeshResource a un <model> y se empieza otro.
 //
 // Topes del motor (crates/js_runtime/src/mesh.rs): 262.144 vértices por malla,
 // 64 MB entre todas y 128 mallas por sesión, que no se devuelven al navegar
 // (guides/trampas.md). Por eso se llenan pocas mallas grandes y no una por
-// edificio: recargar la calle diez veces no agota el cupo.
+// pieza. Si igual una no se puede crear, lo de esa tanda se arma como nodos:
+// la calle queda más pesada pero completa.
+//
+// Las mallas van sin luz (material-unlit), como los <box> del DOM (render.rs
+// los crea unlit): con el material iluminado de las mallas dinámicas los
+// colores salían un tercio más oscuros que los mismos nodos.
 //
 // El trabajo se reparte en cuadros de a 12 ms: armar y fundir una fachada de
-// tres pisos de ladrillo lleva decenas de milisegundos, y la calle entera de
-// una vez congelaba la imagen.
+// tres pisos de ladrillo lleva decenas de milisegundos.
 (function arranque() {
   const C = globalThis.CALLE;
-  if (!C || !Array.isArray(C.fachadas) || typeof Obra === "undefined" || typeof MeshResource === "undefined") {
-    return void requestAnimationFrame(arranque);
-  }
+  const Obra = globalThis.Obra;
+  if (!C || !Obra || typeof MeshResource === "undefined") return void requestAnimationFrame(arranque);
   const raiz = hiperspace.dimention;
-  const TOPE = 240000;
   const crear = (tag, attrs, padre) => {
     const el = raiz.createElement(tag);
     for (const k in attrs) el.setAttribute(k, String(attrs[k]));
@@ -1121,58 +1241,69 @@ else globalThis.Obra = Obra;
     if (e2 && b != null) e2.setAttribute("value", b);
   };
 
+  // La cola: primero las fachadas (hay que armarlas), después las piezas.
+  const cola = [];
+  for (const f of C.fachadas || []) cola.push(() => [Obra.grupo({ x: f.x, z: f.z, ry: f.ry }, [Obra.grupo({ z: 0.1 }, Obra.pared(f.pared))])]);
+  for (const p of C.piezas || []) cola.push(() => [p]);
+  if (!cola.length) return;
+
   let acc = Obra.acumulador();
-  let i = 0, mallas = 0, cajas = 0, vertices = 0, sueltos = 0, fallo = null;
+  let tanda = [];
+  let i = 0, mallas = 0, fundidas = 0, vertices = 0, sueltos = 0, comoNodos = 0, fallo = null;
   const t0 = performance.now();
-  let armar = 0;
+  let calculo = 0;
 
   function entregar() {
     if (!acc.I.length) return;
     const b = Obra.buffers(acc);
     try {
+      if (fallo) throw new Error(fallo);
       const m = MeshResource.create(b);
-      // Sin luz, como los <box> del DOM (render.rs los crea `unlit`): con el
-      // material iluminado de las mallas dinámicas los ladrillos salían un
-      // tercio más oscuros que los mismos ladrillos como nodos.
-      const el = crear("model", { id: "fachadas_" + mallas, touchable: "false", "material-unlit": "true" });
+      const el = crear("model", { id: "obra_malla_" + mallas, touchable: "false", "material-unlit": "true" });
       el.src = m.src;
       mallas++;
-      cajas += acc.cajas;
+      fundidas += acc.cajas;
       vertices += b.positions.length / 3;
     } catch (e) {
-      // Sin cupo de mallas (la sesión ya gastó las 128) o sin memoria: se
-      // dice en el atril, que es lo único que ve quien está parado ahí.
+      // Sin cupo de mallas o de memoria: lo de esta tanda va como nodos, y
+      // lo que venga también (no tiene sentido volver a intentar).
+      if (!fallo) console.error("[obra] MeshResource: " + (e && e.message || e) + " — sigo con nodos");
       fallo = String(e && e.message || e);
-      console.error("[obra] MeshResource: " + fallo);
+      for (const nodos of tanda) {
+        const fundibles = Obra.soloFundibles(nodos);
+        Obra.construir(fundibles, raiz, crear);
+        comoNodos += Obra.contar(fundibles);
+      }
     }
     acc = Obra.acumulador();
+    tanda = [];
   }
 
   function paso() {
     const antes = performance.now();
-    while (i < C.fachadas.length && performance.now() - antes < 12 && !fallo) {
-      const f = C.fachadas[i++];
+    while (i < cola.length && performance.now() - antes < 12) {
       const a0 = performance.now();
-      const nodos = [Obra.grupo({ x: f.x, z: f.z, ry: f.ry }, [Obra.grupo({ z: 0.1 }, Obra.pared(f.pared))])];
-      if (acc.P.length / 3 + Obra.verticesDe(nodos) > TOPE) entregar();
-      // Lo que no se funde (los tacos del hormigón, que son cilindros) va
+      const nodos = cola[i++]();
+      if (Obra.noEntra(acc, nodos)) entregar();
+      // Lo que no se funde (lo que tiene id, los vidrios, lo redondeado) va
       // como nodos, con sus grupos.
       const resto = Obra.fundir(nodos, acc);
+      tanda.push(nodos);
       sueltos += Obra.contar(resto);
       Obra.construir(resto, raiz, crear);
-      armar += performance.now() - a0;
+      calculo += performance.now() - a0;
     }
-    if (fallo) return void estado("no se pudo: " + fallo.slice(0, 60), "");
-    if (i < C.fachadas.length) {
-      estado("fundiendo… " + i + "/" + C.fachadas.length, null);
+    if (i < cola.length) {
+      estado("fundiendo… " + i + "/" + cola.length, null);
       return void requestAnimationFrame(paso);
     }
     entregar();
     const ms = Math.round(performance.now() - t0);
-    const resumen = C.fachadas.length + " fachadas: " + cajas.toLocaleString("es") + " cajas en " + mallas + (mallas === 1 ? " malla" : " mallas");
-    const detalle = vertices.toLocaleString("es") + " vértices · " + Math.round(armar) + " ms de cálculo, " + ms + " ms en total · " + sueltos + " nodos sueltos";
-    estado(resumen, detalle);
-    console.log("[obra] " + resumen + " · " + detalle);
+    const resumen = cola.length + " piezas: " + fundidas.toLocaleString("es") + " nodos en " + mallas + (mallas === 1 ? " malla" : " mallas");
+    const detalle = vertices.toLocaleString("es") + " vértices · " + Math.round(calculo) + " ms de cálculo, " + ms + " en total" +
+      (comoNodos ? " · " + comoNodos.toLocaleString("es") + " como nodos (sin cupo)" : "");
+    estado(fallo ? "sin cupo de mallas: van como nodos" : resumen, detalle);
+    console.log("[obra] " + resumen + " · " + detalle + " · " + sueltos + " nodos sueltos");
   }
   requestAnimationFrame(paso);
 })();

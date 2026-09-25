@@ -121,7 +121,13 @@ async function volcar(d: (typeof DEMOS)[number]): Promise<Volcado> {
 
     const traer = async (u: string) => {
       if (cuerpos.has(u)) return cuerpos.get(u)!;
-      const r = await fetch(origen + u);
+      // Algún pedido se corta con ECONNRESET cuando el servidor viene cargado:
+      // se reintenta en vez de tirar abajo todo el volcado.
+      let r: Response | null = null;
+      for (let i = 0; i < 4 && !r; i++) {
+        try { r = await fetch(origen + u); } catch (e) { if (i === 3) throw e; await Bun.sleep(300 * (i + 1)); }
+      }
+      if (!r) return null;
       const b = r.ok ? Buffer.from(await r.arrayBuffer()) : null;
       if (b) cuerpos.set(u, b);
       return b;
@@ -164,8 +170,15 @@ async function volcar(d: (typeof DEMOS)[number]): Promise<Volcado> {
         const archivo = path.join(salida, f);
         let t = fs.readFileSync(archivo, "utf8");
         const antes = t;
-        for (const [viejo, nuevo] of renombres) {
-          t = t.split(viejo).join(nuevo).split(viejo.replace(/&/g, "&amp;")).join(nuevo);
+        // Las más largas primero, y sólo si la query termina ahí: con
+        // "calle.hsml?detalle=alto" antes que "…=alto_mesh", el segundo enlace
+        // quedaba "calle__detalle-alto.hsml_mesh" y no llevaba a ningún lado.
+        const orden = [...renombres].sort((a, b) => b[0].length - a[0].length);
+        for (const [viejo, nuevo] of orden) {
+          for (const forma of [viejo, viejo.replace(/&/g, "&amp;")]) {
+            const re = new RegExp(forma.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?![\\w&=%.-])", "g");
+            t = t.replace(re, nuevo);
+          }
         }
         if (t !== antes) fs.writeFileSync(archivo, t);
       }

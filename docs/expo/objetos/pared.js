@@ -3460,7 +3460,12 @@ else globalThis.Obra = Obra;
 //
 // Se arma entera de nuevo cada vez que cambia algo. En mesh la malla nueva
 // se crea antes de soltar la vieja, así no parpadea.
-const P = Obj.props({ ancho: 2.4, alto: 2.4, espesor: 0.2, material: "ladrillo", color: "", junta: "", detalle: "alto", huecos: "", contorno: "", modo: "mesh", caras: 2, zocalo: true, semilla: 7 });
+//
+// Con tocable: false (la fachada de una casa, que no es un muestrario) el
+// toque no le cambia el material. Conviene pasarlo también en la query de la
+// URL (…/pared.hsml?tocable=false): las props de un include pueden llegar
+// después de que arranca el script, y la query se lee de entrada.
+const P = Obj.props({ ancho: 2.4, alto: 2.4, espesor: 0.2, material: "ladrillo", color: "", junta: "", detalle: "alto", huecos: "", contorno: "", modo: "mesh", caras: 2, zocalo: true, semilla: 7, tocable: true });
 const ORDEN = ["ladrillo", "piedra", "madera", "azulejo", "hormigon", "revoque"];
 const MODOS = ["box", "linea", "mesh"];
 const obra = Obj.$("obra");
@@ -3526,6 +3531,7 @@ function dibujar() {
   }
   toque.position = { x: (x0 + x1) / 2, y: (y0 + y1) / 2, z: 0 };
   toque.scale = { x: x1 - x0, y: y1 - y0, z: E + 0.06 };
+  toque.setAttribute("touchable", P.tocable === false ? "false" : "true");
   ultimoAviso = Object.assign(resumen, { ms: Date.now() - t0 });
   Obj.emitir("armada", ultimoAviso);
 }
@@ -3537,6 +3543,7 @@ let ultimoAviso = null;
 Obj.mensaje("informar", () => { if (ultimoAviso) Obj.emitir("armada", ultimoAviso); });
 
 Obj.boton(toque, () => {
+  if (P.tocable === false) return;
   material = Obra.siguiente(ORDEN, material);
   dibujar();
   Obj.emitir("cambio", { material });

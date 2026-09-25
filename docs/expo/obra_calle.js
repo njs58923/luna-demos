@@ -2042,9 +2042,11 @@ else globalThis.Obra = Obra;
     const lugar = crear("group", { x: f.x, z: f.z, ry: f.ry });
     const frente = crear("group", { z: 0.1 }, lugar);
     const inc = raiz.createElement("include");
-    inc.setAttribute("src", C.base + "/objetos/pared.hsml");
+    // Las fachadas no son un muestrario: no cambian de material al tocarlas.
+    // Va en la query además de en las props: la query se lee al arrancar.
+    inc.setAttribute("src", C.base + "/objetos/pared.hsml?tocable=false");
     inc.setAttribute("events", "armada");
-    inc.setAttribute("props", JSON.stringify(Object.assign({}, f.pared, { modo: "mesh", caras: 1 })));
+    inc.setAttribute("props", JSON.stringify(Object.assign({}, f.pared, { modo: "mesh", caras: 1, tocable: false })));
     const pared = { inc, avisada: false, pedidos: 0 };
     todas.push(pared);
     inc.addEventListener("component:armada", (e) => {

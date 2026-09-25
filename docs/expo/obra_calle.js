@@ -1083,3 +1083,96 @@ if (typeof module !== "undefined" && module.exports) module.exports = Obra;
 // Un `const` de un <script> no se ve desde los otros del documento: se deja
 // también en globalThis para quien lo cargue aparte (obra_calle.js, una sonda).
 else globalThis.Obra = Obra;
+
+;
+// Las fachadas de la calle como mallas (/calle__detalle-alto.hsml_mesh).
+//
+// El servidor lo sirve con _obra.js adelante (/obra_calle.js = _obra.js +
+// este archivo). La calle no trae las fachadas: trae su receta en
+// CALLE.fachadas, y acá cada una se arma con Obra.pared —los mismos ladrillos
+// que en ?detalle=alto, uno por uno— y en vez de volverse miles de nodos se
+// funde con Obra.fundir en un buffer de triángulos. Cuando el buffer llega al
+// tope se entrega como MeshResource a un <model> y se empieza otro.
+//
+// Topes del motor (crates/js_runtime/src/mesh.rs): 262.144 vértices por malla,
+// 64 MB entre todas y 128 mallas por sesión, que no se devuelven al navegar
+// (guides/trampas.md). Por eso se llenan pocas mallas grandes y no una por
+// edificio: recargar la calle diez veces no agota el cupo.
+//
+// El trabajo se reparte en cuadros de a 12 ms: armar y fundir una fachada de
+// tres pisos de ladrillo lleva decenas de milisegundos, y la calle entera de
+// una vez congelaba la imagen.
+(function arranque() {
+  const C = globalThis.CALLE;
+  if (!C || !Array.isArray(C.fachadas) || typeof Obra === "undefined" || typeof MeshResource === "undefined") {
+    return void requestAnimationFrame(arranque);
+  }
+  const raiz = hiperspace.dimention;
+  const TOPE = 240000;
+  const crear = (tag, attrs, padre) => {
+    const el = raiz.createElement(tag);
+    for (const k in attrs) el.setAttribute(k, String(attrs[k]));
+    (padre || raiz).appendChild(el);
+    return el;
+  };
+  const estado = (a, b) => {
+    const e1 = raiz.getElementById("obra_estado"), e2 = raiz.getElementById("obra_estado2");
+    if (e1 && a != null) e1.setAttribute("value", a);
+    if (e2 && b != null) e2.setAttribute("value", b);
+  };
+
+  let acc = Obra.acumulador();
+  let i = 0, mallas = 0, cajas = 0, vertices = 0, sueltos = 0, fallo = null;
+  const t0 = performance.now();
+  let armar = 0;
+
+  function entregar() {
+    if (!acc.I.length) return;
+    const b = Obra.buffers(acc);
+    try {
+      const m = MeshResource.create(b);
+      // Sin luz, como los <box> del DOM (render.rs los crea `unlit`): con el
+      // material iluminado de las mallas dinámicas los ladrillos salían un
+      // tercio más oscuros que los mismos ladrillos como nodos.
+      const el = crear("model", { id: "fachadas_" + mallas, touchable: "false", "material-unlit": "true" });
+      el.src = m.src;
+      mallas++;
+      cajas += acc.cajas;
+      vertices += b.positions.length / 3;
+    } catch (e) {
+      // Sin cupo de mallas (la sesión ya gastó las 128) o sin memoria: se
+      // dice en el atril, que es lo único que ve quien está parado ahí.
+      fallo = String(e && e.message || e);
+      console.error("[obra] MeshResource: " + fallo);
+    }
+    acc = Obra.acumulador();
+  }
+
+  function paso() {
+    const antes = performance.now();
+    while (i < C.fachadas.length && performance.now() - antes < 12 && !fallo) {
+      const f = C.fachadas[i++];
+      const a0 = performance.now();
+      const nodos = [Obra.grupo({ x: f.x, z: f.z, ry: f.ry }, [Obra.grupo({ z: 0.1 }, Obra.pared(f.pared))])];
+      if (acc.P.length / 3 + Obra.verticesDe(nodos) > TOPE) entregar();
+      // Lo que no se funde (los tacos del hormigón, que son cilindros) va
+      // como nodos, con sus grupos.
+      const resto = Obra.fundir(nodos, acc);
+      sueltos += Obra.contar(resto);
+      Obra.construir(resto, raiz, crear);
+      armar += performance.now() - a0;
+    }
+    if (fallo) return void estado("no se pudo: " + fallo.slice(0, 60), "");
+    if (i < C.fachadas.length) {
+      estado("fundiendo… " + i + "/" + C.fachadas.length, null);
+      return void requestAnimationFrame(paso);
+    }
+    entregar();
+    const ms = Math.round(performance.now() - t0);
+    const resumen = C.fachadas.length + " fachadas: " + cajas.toLocaleString("es") + " cajas en " + mallas + (mallas === 1 ? " malla" : " mallas");
+    const detalle = vertices.toLocaleString("es") + " vértices · " + Math.round(armar) + " ms de cálculo, " + ms + " ms en total · " + sueltos + " nodos sueltos";
+    estado(resumen, detalle);
+    console.log("[obra] " + resumen + " · " + detalle);
+  }
+  requestAnimationFrame(paso);
+})();

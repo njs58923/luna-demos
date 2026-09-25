@@ -2404,6 +2404,124 @@ const Obra = (() => {
   /** El siguiente de una lista, dando la vuelta. */
   const siguiente = (lista, actual) => lista[(lista.indexOf(actual) + 1) % lista.length];
 
+  // ── Fundir en una malla ─────────────────────────────────────────────────
+  //
+  // Miles de <box> son miles de entidades, cada una con su transform, su
+  // malla y su material. Para dibujar lo mismo con una entidad, las cajas se
+  // pasan a triángulos en un solo buffer (MeshResource, en el cliente): 24
+  // vértices y 36 índices por caja, con la normal de cada cara y el color de
+  // la caja en cada vértice.
+  //
+  // Se funden sólo las cajas opacas sin redondeo ni id; lo demás (cilindros,
+  // esferas, vidrios, lo que un script busca por id) queda como nodos, en el
+  // árbol que se devuelve en `resto`, con los grupos intactos.
+
+  /** Matriz afín 3×4 (fila mayor) de un nodo: T · Rx · Ry · Rz · S, el orden
+   *  del motor (Quat::from_euler(EulerRot::XYZ, …)). */
+  function matriz(a) {
+    const cx = Math.cos(a.rx || 0), sx = Math.sin(a.rx || 0);
+    const cy = Math.cos(a.ry || 0), sy = Math.sin(a.ry || 0);
+    const cz = Math.cos(a.rz || 0), sz = Math.sin(a.rz || 0);
+    // Rx · Ry · Rz
+    const r00 = cy * cz, r01 = -cy * sz, r02 = sy;
+    const r10 = sx * sy * cz + cx * sz, r11 = -sx * sy * sz + cx * cz, r12 = -sx * cy;
+    const r20 = -cx * sy * cz + sx * sz, r21 = cx * sy * sz + sx * cz, r22 = cx * cy;
+    const ex = a.sx == null ? 1 : Number(a.sx), ey = a.sy == null ? 1 : Number(a.sy), ez = a.sz == null ? 1 : Number(a.sz);
+    return [r00 * ex, r01 * ey, r02 * ez, a.x || 0, r10 * ex, r11 * ey, r12 * ez, a.y || 0, r20 * ex, r21 * ey, r22 * ez, a.z || 0];
+  }
+  function componer(p, h) {
+    const m = new Array(12);
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 4; j++) {
+        m[i * 4 + j] = p[i * 4] * h[j] + p[i * 4 + 1] * h[4 + j] + p[i * 4 + 2] * h[8 + j] + (j === 3 ? p[i * 4 + 3] : 0);
+      }
+    }
+    return m;
+  }
+  const IDENTIDAD = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0];
+
+  /** sRGB → lineal: el motor espera los colores de vértice en lineal. */
+  const lineal = (c) => (c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+
+  // Las seis caras del cubo unidad, cada una con sus cuatro esquinas en
+  // sentido antihorario vistas desde afuera, y la normal.
+  const CARAS = [
+    { n: [0, 0, 1], v: [[-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]] },
+    { n: [0, 0, -1], v: [[1, -1, -1], [-1, -1, -1], [-1, 1, -1], [1, 1, -1]] },
+    { n: [1, 0, 0], v: [[1, -1, 1], [1, -1, -1], [1, 1, -1], [1, 1, 1]] },
+    { n: [-1, 0, 0], v: [[-1, -1, -1], [-1, -1, 1], [-1, 1, 1], [-1, 1, -1]] },
+    { n: [0, 1, 0], v: [[-1, 1, 1], [1, 1, 1], [1, 1, -1], [-1, 1, -1]] },
+    { n: [0, -1, 0], v: [[-1, -1, -1], [1, -1, -1], [1, -1, 1], [-1, -1, 1]] },
+  ];
+
+  const fundible = (n) => n.t === "box" && !n.h && !n.a.id && !n.a["material-alpha"] && !n.a["border-radius"] &&
+    /^#[0-9a-f]{6}$/i.test(String(n.a.color || ""));
+
+  /** Cuántos vértices daría fundir estos nodos (para repartir en mallas). */
+  function verticesDe(nodos) {
+    let v = 0;
+    for (const n of nodos) {
+      if (!n) continue;
+      if (fundible(n)) v += Number(n.a.sz) <= 0.03 ? 20 : 24;
+      else if (n.h) v += verticesDe(n.h);
+    }
+    return v;
+  }
+
+  /** Funde las cajas de `nodos` (con la transformación `base` encima) en un
+   *  acumulador { P, N, C, I } de arrays planos. Devuelve el árbol sin ellas. */
+  function fundir(nodos, acc, base) {
+    base = base || IDENTIDAD;
+    const resto = [];
+    for (const n of nodos) {
+      if (!n) continue;
+      if (fundible(n)) {
+        const m = componer(base, matriz(n.a));
+        const [r, g, b] = rgb(n.a.color).map((c) => lineal(c / 255));
+        // Una pieza de relieve (un ladrillo, una tabla) está pegada a la
+        // pared: la cara que da contra ella no se ve nunca y se ahorra. En
+        // las de adelante es la de -z; en las de atrás (caras: 2), la de +z.
+        const enterrada = Number(n.a.sz) <= 0.03 ? ((n.a.z || 0) < 0 ? 0 : 1) : -1;
+        for (let k = 0; k < 6; k++) {
+          if (k === enterrada) continue;
+          const cara = CARAS[k];
+          const i0 = acc.P.length / 3;
+          const w = cara.v.map(([x, y, z]) => {
+            x *= 0.5; y *= 0.5; z *= 0.5;
+            return [m[0] * x + m[1] * y + m[2] * z + m[3], m[4] * x + m[5] * y + m[6] * z + m[7], m[8] * x + m[9] * y + m[10] * z + m[11]];
+          });
+          // La normal de la cara ya transformada: vale también con escalas
+          // desparejas y deformaciones (los rombos de los triángulos).
+          const ux = w[1][0] - w[0][0], uy = w[1][1] - w[0][1], uz = w[1][2] - w[0][2];
+          const vx = w[3][0] - w[0][0], vy = w[3][1] - w[0][1], vz = w[3][2] - w[0][2];
+          let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+          const l = Math.hypot(nx, ny, nz) || 1;
+          nx /= l; ny /= l; nz /= l;
+          for (const p of w) {
+            acc.P.push(p[0], p[1], p[2]);
+            acc.N.push(nx, ny, nz);
+            acc.C.push(r, g, b, 1);
+          }
+          acc.I.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
+        }
+        acc.cajas++;
+      } else if (n.h) {
+        const h = fundir(n.h, acc, componer(base, matriz(n.a)));
+        // Un grupo que quedó vacío no hace falta; uno con id sí (lo buscan).
+        if (h.length || n.a.id) resto.push(Object.assign({}, n, { h }));
+      } else {
+        resto.push(n);
+      }
+    }
+    return resto;
+  }
+  const acumulador = () => ({ P: [], N: [], C: [], I: [], cajas: 0 });
+  /** El acumulador como buffers tipados, listos para MeshResource.create. */
+  const buffers = (acc) => ({
+    positions: new Float32Array(acc.P), normals: new Float32Array(acc.N),
+    colors: new Float32Array(acc.C), indices: new Uint32Array(acc.I),
+  });
+
   /** Cuántos nodos hay, contando los de adentro. */
   const contar = (nodos) => nodos.reduce((s, n) => s + 1 + (n && n.h ? contar(n.h) : 0), 0);
 
@@ -2414,9 +2532,13 @@ const Obra = (() => {
     puerta, ventana, porton, techo, toldo,
     arbol, arbusto, seto, cerco, cantero,
     aHsml, construir, montar, siguiente, contar,
+    matriz, componer, fundir, verticesDe, acumulador, buffers,
   };
 })();
 if (typeof module !== "undefined" && module.exports) module.exports = Obra;
+// Un `const` de un <script> no se ve desde los otros del documento: se deja
+// también en globalThis para quien lo cargue aparte (obra_calle.js, una sonda).
+else globalThis.Obra = Obra;
 
 ;
 // El cartel: cuatro renglones que se escriben con el teclado.

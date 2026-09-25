@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Pared de ladrillo, piedra, madera, azulejo, hormigón o revoque, con
-  huecos para puertas y ventanas: el dibujo se recorta contra cada hueco. Tocarla
-  la pasa al material siguiente.
+  huecos para puertas y ventanas y el contorno que haga falta (un hastial, un
+  trapecio): el dibujo se recorta contra cada hueco y contra el contorno.
+  Tocarla la pasa al material siguiente.
+
+  Con modo "mesh" funde todos sus ladrillos en una malla que arma ella misma,
+  en su isolate y con su propio cupo: así una calle entera de fachadas de
+  ladrillo no le pesa al documento que las incluye.
 
     <include src="https://njs58923.github.io/luna-demos/expo/objetos/pared.hsml" resources="read_pose_stream"
              props='{"material":"piedra","ancho":3,"huecos":"0,0,0.9,2.05"}'/>
+    <include src="https://njs58923.github.io/luna-demos/expo/objetos/pared.hsml" events="armada"
+             props='{"modo":"mesh","contorno":"-2,0 2,0 2,2.6 0,3.8 -2,2.6","huecos":"0,0,0.9,2.05"}'/>
 
   Props: ancho, alto, espesor, material, color, junta, detalle (alto|bajo),
-  huecos ("x,y,ancho,alto;…", y desde el piso), zocalo, semilla.
-  Eventos: cambio {material}. Mensajes: material {material}.
+  huecos ("x,y,ancho,alto;…", y desde el piso), contorno ("x,y x,y …", x
+  centrado; recorte exacto si es convexo), modo (box|linea|mesh), caras (1|2),
+  zocalo, semilla.
+  Eventos: cambio {material}; armada {modo, piezas, vertices, nodos, ms}.
+  Mensajes: material {material}.
 -->
 <hsml>
   <head><name>Pared</name></head>

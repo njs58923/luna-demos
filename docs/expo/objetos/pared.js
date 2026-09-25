@@ -1674,8 +1674,128 @@ const Obra = (() => {
     return piezas;
   }
 
+  // ── Contornos ───────────────────────────────────────────────────────────
+  //
+  // Una pared no tiene por qué ser un rectángulo: con `contorno` (un
+  // polígono en el plano de la pared, x centrado, y desde el piso) se arma
+  // sobre el rectángulo que lo encierra y después cada pieza se recorta
+  // contra él. Lo que queda adentro sigue igual; lo que queda afuera se va;
+  // lo que el borde corta depende de cómo se va a dibujar:
+  //
+  //   con `prismas` (para fundir en malla) el pedazo exacto, como un prisma
+  //     de la forma recortada: el borde queda limpio;
+  //   como nodos, el cuerpo en fajas horizontales de 6 cm (un <box> no puede
+  //     ser un trapecio) y las piezas chicas cortadas, afuera.
+  //
+  // El recorte exacto necesita un contorno convexo (un hastial, un trapecio,
+  // un arco de pocos lados). Con uno cóncavo (una L) todo va por fajas.
+
+  /** "x,y x,y …" o "x,y;x,y;…" o [[x,y], …] → [[x,y], …], antihorario. */
+  function leerContorno(c) {
+    let pts = Array.isArray(c) ? c : String(c || "").trim().split(/[;\s]+/).filter(Boolean).map((p) => p.split(",").map(Number));
+    pts = pts.filter((p) => Array.isArray(p) && p.length >= 2 && Number.isFinite(+p[0]) && Number.isFinite(+p[1])).map((p) => [+p[0], +p[1]]);
+    if (pts.length < 3) return null;
+    let area = 0;
+    for (let i = 0; i < pts.length; i++) { const [a, b] = pts[i], [c2, d] = pts[(i + 1) % pts.length]; area += a * d - c2 * b; }
+    if (Math.abs(area) < 1e-6) return null;
+    return area < 0 ? pts.reverse() : pts;
+  }
+  function esConvexo(pts) {
+    for (let i = 0; i < pts.length; i++) {
+      const [ax, ay] = pts[i], [bx, by] = pts[(i + 1) % pts.length], [cx, cy] = pts[(i + 2) % pts.length];
+      if ((bx - ax) * (cy - by) - (by - ay) * (cx - bx) < -1e-9) return false;
+    }
+    return true;
+  }
+  function adentro(pts, x, y) {
+    let si = false;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      const [xi, yi] = pts[i], [xj, yj] = pts[j];
+      if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) si = !si;
+    }
+    return si;
+  }
+  /** Sutherland–Hodgman: el polígono `sujeto` recortado por el convexo `borde`. */
+  function recortarConvexo(sujeto, borde) {
+    let out = sujeto;
+    for (let i = 0; i < borde.length && out.length; i++) {
+      const [ax, ay] = borde[i], [bx, by] = borde[(i + 1) % borde.length];
+      const lado = (p) => (bx - ax) * (p[1] - ay) - (by - ay) * (p[0] - ax);
+      const entrada = out;
+      out = [];
+      for (let k = 0; k < entrada.length; k++) {
+        const P = entrada[k], Q = entrada[(k + 1) % entrada.length];
+        const lp = lado(P), lq = lado(Q);
+        if (lp >= 0) out.push(P);
+        if ((lp >= 0) !== (lq >= 0)) {
+          const t = lp / (lp - lq);
+          out.push([P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t]);
+        }
+      }
+    }
+    return out;
+  }
+  const areaDe = (pts) => Math.abs(pts.reduce((s, [a, b], i) => { const [c, d] = pts[(i + 1) % pts.length]; return s + a * d - c * b; }, 0)) / 2;
+  /** Dónde corta la horizontal `y` al polígono, de a pares [x0, x1]. */
+  function tramos(pts, y) {
+    const xs = [];
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      const [xi, yi] = pts[i], [xj, yj] = pts[j];
+      if (yi > y !== yj > y) xs.push(((xj - xi) * (y - yi)) / (yj - yi) + xi);
+    }
+    xs.sort((a, b) => a - b);
+    const out = [];
+    for (let k = 0; k + 1 < xs.length; k += 2) out.push([xs[k], xs[k + 1]]);
+    return out;
+  }
+
+  /** Las piezas de una pared recortadas contra su contorno (ver arriba). */
+  function alContorno(nodos, pts, prismas) {
+    const convexo = esConvexo(pts);
+    const out = [];
+    for (const n of nodos) {
+      const a = n.a;
+      if (n.t !== "box") { if (adentro(pts, a.x || 0, a.y || 0)) out.push(n); continue; }
+      const x0 = (a.x || 0) - a.sx / 2, x1 = (a.x || 0) + a.sx / 2, y0 = (a.y || 0) - a.sy / 2, y1 = (a.y || 0) + a.sy / 2;
+      const rect = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+      const esquinas = rect.filter(([x, y]) => adentro(pts, x, y)).length;
+      const verticeAdentro = pts.some(([x, y]) => x > x0 + 1e-9 && x < x1 - 1e-9 && y > y0 + 1e-9 && y < y1 - 1e-9);
+      if (esquinas === 4 && !verticeAdentro) { out.push(n); continue; }
+      if (convexo) {
+        const q = recortarConvexo(rect, pts);
+        if (q.length < 3 || areaDe(q) < 1e-5) continue;
+        if (prismas) {
+          out.push(Object.assign({ t: "prisma", a: { pts: q, z: a.z || 0, sz: a.sz, color: a.color } }, n.r ? { r: n.r } : {}));
+          continue;
+        }
+      } else if (!esquinas && !verticeAdentro) continue;
+      // Como nodos: las piezas finas cortadas se van; el cuerpo, en fajas.
+      if (a.sz <= 0.03) continue;
+      const paso = 0.06;
+      for (let y = y0; y < y1 - 1e-6; y += paso) {
+        const ya = y, yb = Math.min(y1, y + paso);
+        for (const [ta, tb] of tramos(pts, (ya + yb) / 2)) {
+          const xa = Math.max(x0, ta), xb = Math.min(x1, tb);
+          if (xb - xa > 0.005) out.push(Object.assign(caja({ x: (xa + xb) / 2, y: (ya + yb) / 2, z: a.z, sx: xb - xa, sy: yb - ya, sz: a.sz, color: a.color }), n.r ? { r: n.r } : {}));
+        }
+      }
+    }
+    return out;
+  }
+
   function pared(op) {
     op = op || {};
+    const contorno = op.contorno ? leerContorno(op.contorno) : null;
+    if (contorno) {
+      // Se arma sobre el rectángulo que encierra el contorno, centrado en x.
+      const xs = contorno.map((p) => p[0]), ys = contorno.map((p) => p[1]);
+      const nodos = pared(Object.assign({}, op, {
+        contorno: null, remate: null,
+        ancho: 2 * Math.max(Math.abs(Math.min(...xs)), Math.abs(Math.max(...xs))) + 0.02,
+        alto: Math.max(...ys) + 0.01,
+      }));
+      return alContorno(nodos, contorno, !!op.prismas);
+    }
     const W = num(op.ancho, 2.4, 0.2, 60), H = num(op.alto, 2.4, 0.2, 40), E = num(op.espesor, 0.2, 0.02, 1.5);
     const material = elegir(op.material, Object.keys(MATERIALES), "ladrillo");
     const M = MATERIALES[material];
@@ -2375,7 +2495,7 @@ const Obra = (() => {
     sangria = sangria || "";
     const out = [];
     for (const n of nodos) {
-      if (!n) continue;
+      if (!n || n.t === "prisma") continue; // los prismas sólo existen para fundirse
       const attrs = Object.entries(n.a || {}).filter(([, v]) => v != null && v !== "").map(([k, v]) => `${k}="${escXml(fmt(v))}"`).join(" ");
       if (n.h && n.h.length) {
         out.push(`${sangria}<${n.t}${attrs ? " " + attrs : ""}>`);
@@ -2391,7 +2511,7 @@ const Obra = (() => {
   function construir(nodos, padre, crear) {
     const out = [];
     for (const n of nodos) {
-      if (!n) continue;
+      if (!n || n.t === "prisma") continue;
       const a = {};
       for (const k in n.a || {}) if (n.a[k] != null && n.a[k] !== "") a[k] = typeof n.a[k] === "number" ? fmt(n.a[k]) : n.a[k];
       const el = crear(n.t, a, padre);
@@ -2531,7 +2651,37 @@ const Obra = (() => {
     return FORMAS[n.t][s < 0.15 ? 1 : 0];
   };
 
-  const fundible = (n) => (n.t === "box" || n.t === "cylinder" || n.t === "sphere") && !n.h && !n.a.id &&
+  /** Un prisma (el pedazo de una pared recortado por su contorno): el
+   *  polígono convexo `pts` en el plano xy, extruido de z - sz/2 a z + sz/2.
+   *  Sólo existe para fundirse: no es HSML. */
+  function prismaUnidad(n) {
+    const k = n.a.pts.length, z = n.a.z || 0, h = n.a.sz / 2;
+    const v = [...n.a.pts.map(([x, y]) => [x, y, z + h]), ...n.a.pts.map(([x, y]) => [x, y, z - h])];
+    const cx = n.a.pts.reduce((s, p) => s + p[0], 0) / k, cy = n.a.pts.reduce((s, p) => s + p[1], 0) / k;
+    const t = [];
+    const enterrada = n.r === 1 ? "atras" : n.r === -1 ? "adelante" : "";
+    for (let i = 1; i + 1 < k; i++) {
+      if (enterrada !== "adelante") t.push([0, i, i + 1]);
+      if (enterrada !== "atras") t.push([k, k + i + 1, k + i]);
+    }
+    for (let i = 0; i < k; i++) {
+      const j = (i + 1) % k;
+      t.push([i, j, k + j], [i, k + j, k + i]);
+    }
+    // Orientación hacia afuera respecto del centro del prisma (es convexo).
+    const I = [];
+    for (const [a, b, c] of t) {
+      const A = v[a], B = v[b], C = v[c];
+      const nx = (B[1] - A[1]) * (C[2] - A[2]) - (B[2] - A[2]) * (C[1] - A[1]);
+      const ny = (B[2] - A[2]) * (C[0] - A[0]) - (B[0] - A[0]) * (C[2] - A[2]);
+      const nz = (B[0] - A[0]) * (C[1] - A[1]) - (B[1] - A[1]) * (C[0] - A[0]);
+      const mx = (A[0] + B[0] + C[0]) / 3 - cx, my = (A[1] + B[1] + C[1]) / 3 - cy, mz = (A[2] + B[2] + C[2]) / 3 - z;
+      if (nx * mx + ny * my + nz * mz >= 0) I.push(a, b, c); else I.push(a, c, b);
+    }
+    return { P: v, I };
+  }
+
+  const fundible = (n) => (n.t === "prisma" ? Array.isArray(n.a.pts) && n.a.pts.length >= 3 : n.t === "box" || n.t === "cylinder" || n.t === "sphere") && !n.h && !n.a.id &&
     !n.a["material-alpha"] && !n.a["border-radius"] && /^#[0-9a-f]{6}$/i.test(String(n.a.color || ""));
 
   /** Cuántos vértices daría fundir estos nodos (para repartir en mallas). */
@@ -2539,7 +2689,7 @@ const Obra = (() => {
     let v = 0;
     for (const n of nodos) {
       if (!n) continue;
-      if (fundible(n)) v += n.t === "box" ? 8 : formaDe(n).P.length;
+      if (fundible(n)) v += n.t === "box" ? 8 : n.t === "prisma" ? 2 * n.a.pts.length : formaDe(n).P.length;
       else if (n.h) v += verticesDe(n.h);
     }
     return v;
@@ -2552,7 +2702,7 @@ const Obra = (() => {
     let v = 0;
     for (const n of nodos) {
       if (!n) continue;
-      if (fundible(n)) v += n.t === "box" ? 36 : formaDe(n).I.length;
+      if (fundible(n)) v += n.t === "box" ? 36 : n.t === "prisma" ? 12 * n.a.pts.length : formaDe(n).I.length;
       else if (n.h) v += indicesDe(n.h);
     }
     return v;
@@ -2570,9 +2720,11 @@ const Obra = (() => {
     for (const n of nodos) {
       if (!n) continue;
       if (fundible(n) && n.t !== "box") {
-        const m = componer(base, matriz(n.a));
+        // El prisma trae sus puntos en coordenadas de la pared: no tiene
+        // transformación propia (y su `sz` es el espesor, no una escala).
+        const m = n.t === "prisma" ? base : componer(base, matriz(n.a));
         const [r, g, b] = rgb(n.a.color).map((c) => lineal(c / 255));
-        const F = formaDe(n);
+        const F = n.t === "prisma" ? prismaUnidad(n) : formaDe(n);
         const i0 = acc.P.length / 3;
         for (const [x, y, z] of F.P) {
           acc.P.push(m[0] * x + m[1] * y + m[2] * z + m[3], m[4] * x + m[5] * y + m[6] * z + m[7], m[8] * x + m[9] * y + m[10] * z + m[11]);
@@ -2632,8 +2784,10 @@ const Obra = (() => {
   const buffers = (acc) => ({
     positions: new Float32Array(acc.P), colors: new Float32Array(acc.C), indices: new Uint32Array(acc.I),
   });
-  /** Lo que una malla le cuenta al cupo del motor (mesh.rs): los bytes que viajan. */
-  const bytesDe = (b) => b.positions.byteLength + b.colors.byteLength + b.indices.byteLength;
+  /** Lo que una malla le cuenta al cupo del motor (mesh.rs): los bytes que
+   *  viajan más las normales que genera él cuando no vienen (tantas como
+   *  posiciones). */
+  const bytesDe = (b) => 2 * b.positions.byteLength + b.colors.byteLength + b.indices.byteLength;
 
   /** Cuántos nodos hay, contando los de adentro. */
   const contar = (nodos) => nodos.reduce((s, n) => s + 1 + (n && n.h ? contar(n.h) : 0), 0);
@@ -2654,29 +2808,97 @@ if (typeof module !== "undefined" && module.exports) module.exports = Obra;
 else globalThis.Obra = Obra;
 
 ;
-// La pared: el cuerpo rodea los huecos y el dibujo del material se recorta
-// contra ellos (Obra.pared, en _obra.js). Tocarla pasa al material siguiente.
-// Se arma entera de nuevo cada vez: son unos cientos de cajas y cambian todas.
-const P = Obj.props({ ancho: 2.4, alto: 2.4, espesor: 0.2, material: "ladrillo", color: "", junta: "", detalle: "alto", huecos: "", zocalo: true, semilla: 7 });
+// La pared: el cuerpo rodea los huecos, el dibujo del material se recorta
+// contra ellos y, si tiene `contorno`, todo se recorta contra ese polígono
+// (Obra.pared, en _obra.js). Tocarla pasa al material siguiente.
+//
+// Tres maneras de dibujarse, con `modo`:
+//
+//   box    cada ladrillo, cada piedra, un <box>. Lo más fácil de tocar y de
+//          inspeccionar, y lo más caro: una pared de fachada son miles.
+//   linea  el cuerpo liso con las hiladas marcadas: pocas decenas de nodos.
+//   mesh   los mismos ladrillos que box, fundidos en una malla dinámica que
+//          arma esta pared en su propio isolate. Por eso escala: cada pared
+//          tiene su cupo de mallas (64 MB, 128 recursos) y se arma cuando se
+//          monta, no todas a la vez en el documento que la incluye.
+//
+// Se arma entera de nuevo cada vez que cambia algo. En mesh la malla nueva
+// se crea antes de soltar la vieja, así no parpadea.
+const P = Obj.props({ ancho: 2.4, alto: 2.4, espesor: 0.2, material: "ladrillo", color: "", junta: "", detalle: "alto", huecos: "", contorno: "", modo: "box", caras: 2, zocalo: true, semilla: 7 });
 const ORDEN = ["ladrillo", "piedra", "madera", "azulejo", "hormigon", "revoque"];
-const armar = Obra.montar(Obj.$("obra"), Obj.crear);
+const MODOS = ["box", "linea", "mesh"];
+const obra = Obj.$("obra");
+const armar = Obra.montar(obra, Obj.crear);
 const toque = Obj.$("toque");
 let material = ORDEN.includes(P.material) ? P.material : "ladrillo";
+let malla = null, modelo = null;
 
-/** "x,y,ancho,alto;x,y,ancho,alto" → [{ x, y, ancho, alto }] */
+/** "x,y,ancho,alto;x,y,ancho,alto" → [{ x, y, ancho, alto }] (o ya como lista). */
 function huecos() {
+  if (Array.isArray(P.huecos)) return P.huecos.filter((h) => h && [h.x, h.y, h.ancho, h.alto].every(Number.isFinite));
   return String(P.huecos || "").split(";")
     .map((s) => s.split(",").map(Number))
     .filter((h) => h.length === 4 && h.every(Number.isFinite) && h[2] > 0 && h[3] > 0)
     .map(([x, y, ancho, alto]) => ({ x, y, ancho, alto }));
 }
 
-function dibujar() {
-  const W = Obra.num(P.ancho, 2.4, 0.2, 60), H = Obra.num(P.alto, 2.4, 0.2, 40), E = Obra.num(P.espesor, 0.2, 0.02, 1.5);
-  armar(Obra.pared(Object.assign({}, P, { material, huecos: huecos(), caras: 2, zocalo: P.zocalo !== false })));
-  toque.position = { x: 0, y: H / 2, z: 0 };
-  toque.scale = { x: W, y: H, z: E + 0.06 };
+function soltarMalla() {
+  if (malla) { try { malla.dispose(); } catch (e) { /* ya no estaba */ } }
+  malla = null;
+  if (modelo) { modelo.remove(); modelo = null; }
 }
+
+function dibujar() {
+  const t0 = Date.now();
+  const modo = MODOS.includes(P.modo) ? P.modo : "box";
+  const E = Obra.num(P.espesor, 0.2, 0.02, 1.5);
+  const nodos = Obra.pared(Object.assign({}, P, {
+    material, huecos: huecos(), caras: Number(P.caras) === 1 ? 1 : 2, zocalo: P.zocalo !== false,
+    detalle: modo === "linea" ? "linea" : P.detalle, prismas: modo === "mesh",
+  }));
+  let resumen;
+  if (modo === "mesh" && typeof MeshResource !== "undefined") {
+    const acc = Obra.acumulador();
+    const resto = Obra.fundir(nodos, acc);
+    armar(resto);
+    const anterior = malla, anteriorModelo = modelo;
+    malla = null; modelo = null;
+    try {
+      malla = MeshResource.create(Obra.buffers(acc));
+      modelo = Obj.crear("model", { touchable: "false", "material-unlit": "true" }, obra);
+      modelo.src = malla.src;
+      resumen = { modo, piezas: acc.cajas, vertices: acc.P.length / 3, nodos: Obra.contar(resto) + 1 };
+    } catch (e) {
+      // Sin cupo: la pared se arma como nodos, igual que en box.
+      console.error("[pared] MeshResource: " + (e && e.message || e) + " — la armo con nodos");
+      armar(nodos.filter((n) => n.t !== "prisma"));
+      resumen = { modo: "box", piezas: 0, vertices: 0, nodos: Obra.contar(nodos), error: String(e && e.message || e) };
+    }
+    if (anterior) { try { anterior.dispose(); } catch (e) { /* ya no estaba */ } }
+    if (anteriorModelo) anteriorModelo.remove();
+  } else {
+    soltarMalla();
+    armar(nodos);
+    resumen = { modo: modo === "mesh" ? "box" : modo, piezas: 0, vertices: 0, nodos: Obra.contar(nodos) };
+  }
+  // El blanco del toque cubre el rectángulo que ocupa (el del contorno, si hay).
+  let x0 = -Obra.num(P.ancho, 2.4, 0.2, 60) / 2, x1 = -x0, y0 = 0, y1 = Obra.num(P.alto, 2.4, 0.2, 40);
+  const c = String(P.contorno || "").trim() ? String(P.contorno).split(/[;\s]+/).map((p) => p.split(",").map(Number)).filter((p) => p.length >= 2 && p.every(Number.isFinite)) : [];
+  if (c.length >= 3) {
+    x0 = Math.min(...c.map((p) => p[0])); x1 = Math.max(...c.map((p) => p[0]));
+    y0 = Math.min(...c.map((p) => p[1])); y1 = Math.max(...c.map((p) => p[1]));
+  }
+  toque.position = { x: (x0 + x1) / 2, y: (y0 + y1) / 2, z: 0 };
+  toque.scale = { x: x1 - x0, y: y1 - y0, z: E + 0.06 };
+  ultimoAviso = Object.assign(resumen, { ms: Date.now() - t0 });
+  Obj.emitir("armada", ultimoAviso);
+}
+// La primera vez la pared se arma apenas corre su script, y ese aviso puede
+// salir antes de que el canal del include esté conectado del lado de quien la
+// incluye: en la calle se perdían los de las primeras en montarse. Quien lo
+// necesite lo pide con el mensaje "informar".
+let ultimoAviso = null;
+Obj.mensaje("informar", () => { if (ultimoAviso) Obj.emitir("armada", ultimoAviso); });
 
 Obj.boton(toque, () => {
   material = Obra.siguiente(ORDEN, material);

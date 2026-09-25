@@ -44,4 +44,7 @@ export const DEMOS: Demo[] = [
   { id: "manos", dir: "server_manipulador", puerto: 2062, entrada: "/index.hsml", color: "#1E3A5A",
     nombre: "El taller de las manos", sub: "manipular y tirar con arco",
     descripcion: "Para los mandos de VR: mover, girar y escalar un objeto, y un arco para tirarle a dianas y globos." },
+  { id: "stress", dir: "server_stress", puerto: 2056, entrada: "/index.hsml", color: "#37576B",
+    nombre: "Luna Stress", sub: "banco de pruebas de carga",
+    descripcion: "Un test por eje (figuras, includes, isolates, modelos, montaje, scroll) que sube la carga hasta que el motor se cae." },
 ];

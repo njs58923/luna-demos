@@ -16,6 +16,7 @@ plaza con una puerta a cada demo.
 | La sala de los ecos | `eco/index.hsml` | `server_eco` |
 | El framework de UI | `ui/index.hsml` | `server_ui` |
 | El taller de las manos | `manos/index.hsml` | `server_manipulador` |
+| Luna Stress | `stress/index.hsml` (y `stress/mundo.hsml`) | `server_stress` |
 
 Estos servidores generan sus documentos, pero no guardan estado ni hablan por
 WebSocket. Lo que devuelven se puede pedir una vez y guardar.
@@ -30,7 +31,6 @@ WebSocket. Lo que devuelven se puede pedir una vez y guardar.
 | `server_hsml` | La sala de física habla con el servidor (8080). Además pesa 375 MB y trae modelos de terceros. |
 | `server_jugadores` | La multitud llega por WebSocket (8082), y los resultados se guardan en el servidor. |
 | `server_mosca` | El conectoma y MuJoCo corren en Python del lado del servidor. |
-| `server_stress` | Cada prueba se arma por query (`pieza.hsml?m=…&tipo=…`) y los puntajes se guardan en el servidor. |
 | `server_puente` | Es el directorio de servidores vivos. Acá lo reemplaza la portada. |
 
 ## Regenerar

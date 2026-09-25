@@ -188,7 +188,7 @@
     <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_01.glb" x="-55.144" y="-0.4" z="35.432" ry="3.251" sx="1.287" sy="1.287" sz="1.287" touchable="false"/>
     <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="-37.31" y="-0.4" z="58.739" ry="0.054" sx="1.767" sy="1.767" sz="1.767" touchable="false"/>
 
-    <group id="s_noche" x="3.2" y="0" z="-5.543" ry="-0.524">
+    <group id="s_noche" x="2.777" y="0" z="-5.766" ry="-0.449">
     <group x="0" y="0" z="0" ry="0">
       <include id="p_noche" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/noche/index.hsml","id":"p_noche","titulo":"El atrio de noche","sub":"veintiocho escenas","roca":"#8F897E","color":"#1C2336"}'/>
     </group>
@@ -205,7 +205,7 @@
       </group>
     </group>
 
-    <group id="s_nave" x="6.4" y="0" z="0" ry="-1.571">
+    <group id="s_nave" x="6.24" y="0" z="-1.424" ry="-1.346">
     <group x="0" y="0" z="0" ry="0">
       <include id="p_nave" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/nave/index.hsml","id":"p_nave","titulo":"La nave","sub":"tripulantes e impostores","roca":"#8F897E","color":"#1B2430"}'/>
     </group>
@@ -222,7 +222,7 @@
       </group>
     </group>
 
-    <group id="s_expo" x="3.2" y="0" z="5.543" ry="-2.618">
+    <group id="s_expo" x="5.004" y="0" z="3.99" ry="-2.244">
     <group x="0" y="0" z="0" ry="0">
       <include id="p_expo" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/expo/calle.hsml","id":"p_expo","titulo":"La calle de los objetos","sub":"cosas para llevar a tu mundo","roca":"#8F897E","color":"#2E3A22"}'/>
     </group>
@@ -241,7 +241,7 @@
       </group>
     </group>
 
-    <group id="s_eco" x="-3.2" y="0" z="5.543" ry="2.618">
+    <group id="s_eco" x="0" y="0" z="6.4" ry="-3.142">
     <group x="0" y="0" z="0" ry="0">
       <include id="p_eco" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/eco/index.hsml","id":"p_eco","titulo":"La sala de los ecos","sub":"un juego de memoria","roca":"#8F897E","color":"#1E3A34"}'/>
     </group>
@@ -259,7 +259,7 @@
       </group>
     </group>
 
-    <group id="s_ui" x="-6.4" y="0" z="0" ry="1.571">
+    <group id="s_ui" x="-5.004" y="0" z="3.99" ry="2.244">
     <group x="0" y="0" z="0" ry="0">
       <include id="p_ui" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/ui/index.hsml","id":"p_ui","titulo":"El framework de UI","sub":"controles y ventanas","roca":"#8F897E","color":"#2A2440"}'/>
     </group>
@@ -275,7 +275,7 @@
       </group>
     </group>
 
-    <group id="s_manos" x="-3.2" y="0" z="-5.543" ry="0.524">
+    <group id="s_manos" x="-6.24" y="0" z="-1.424" ry="1.346">
     <group x="0" y="0" z="0" ry="0">
       <include id="p_manos" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/index.hsml","id":"p_manos","titulo":"El taller de las manos","sub":"manipular y tirar con arco","roca":"#8F897E","color":"#1E3A5A"}'/>
     </group>
@@ -293,12 +293,30 @@
       </group>
     </group>
 
+    <group id="s_stress" x="-2.777" y="0" z="-5.766" ry="0.449">
+    <group x="0" y="0" z="0" ry="0">
+      <include id="p_stress" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/stress/index.hsml","id":"p_stress","titulo":"Luna Stress","sub":"banco de pruebas de carga","roca":"#8F897E","color":"#37576B"}'/>
+    </group>
+      <group x="2.3" y="1.2">
+        <box x="-0.46" y="-0.955" sx="0.08" sy="0.49" sz="0.08" color="#8F897E" touchable="false"/>
+        <box x="0.46" y="-0.955" sx="0.08" sy="0.49" sz="0.08" color="#8F897E" touchable="false"/>
+        <box sx="1.26" sy="1.5" sz="0.05" color="#1E2735" border-radius="0.05" touchable="false"/>
+        <box y="0.73" z="0.005" sx="1.26" sy="0.04" sz="0.052" color="#37576B" touchable="false"/>
+        <text y="0.62" z="0.035" value="Luna Stress" size="0.082" color="#F4F1EA"/>
+        <text y="0.46" z="0.035" value="Un test por eje (figuras," size="0.05" color="#C9D2DE"/>
+        <text y="0.392" z="0.035" value="includes, isolates," size="0.05" color="#C9D2DE"/>
+        <text y="0.324" z="0.035" value="modelos, montaje, scroll)" size="0.05" color="#C9D2DE"/>
+        <text y="0.256" z="0.035" value="que sube la carga hasta que" size="0.05" color="#C9D2DE"/>
+        <text y="0.188" z="0.035" value="el motor se cae." size="0.05" color="#C9D2DE"/>
+      </group>
+    </group>
+
     <group x="0" y="0" z="0.3">
       <cylinder y="0.4" sx="0.14" sy="0.8" sz="0.14" color="#8F897E" touchable="false"/>
       <group y="0.88" rx="-0.75">
         <box sx="1.46" sy="0.5" sz="0.05" color="#1E2735" border-radius="0.05" touchable="false"/>
         <text y="0.1" z="0.03" value="Demos de Luna" size="0.065" color="#F4F1EA"/>
-        <text y="-0.02" z="0.03" value="6 sitios · cada puerta lleva a uno" size="0.034" color="#9FB0C4"/>
+        <text y="-0.02" z="0.03" value="7 sitios · cada puerta lleva a uno" size="0.034" color="#9FB0C4"/>
         <text y="-0.1" z="0.03" value="github.com/njs58923/LunaRust" size="0.03" color="#E0B35A"/>
       </group>
     </group>

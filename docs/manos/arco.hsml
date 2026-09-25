@@ -2,7 +2,7 @@
 <!-- generado por server_manipulador - no editar a mano -->
 <hsml>
   <head><name>El arco</name></head>
-  <space resources="navigate_self,navigate_world,spawn,skybox,read_camera_pose,desktop_camera_control,vr_locomotion,read_pose_stream">
+  <space resources="navigate_self,navigate_world,spawn,skybox,read_camera_pose,desktop_camera_control,vr_locomotion,read_pose_stream,audio">
     <spawn id="entrada" default="true" x="0" y="0" z="0.4" ry="0"/>
 
     <!-- El campo: cielo y escenografía de server_noche, por URL. -->

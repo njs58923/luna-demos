@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hsml>
+  <!-- Un include con script que anima 8 nodos: o sea un isolate de JS. La
+       fase la lee animado.js de su propia query (?fase=). -->
+  <head><name>animado 8</name></head>
+  <space>
+    <group id="animado">
+      <box id="a0" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a1" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a2" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a3" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a4" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a5" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a6" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box id="a7" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+    </group>
+    <script src="./animado.js"/>
+  </space>
+</hsml>

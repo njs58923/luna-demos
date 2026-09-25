@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hsml>
+  <!-- La pieza de los tests de includes, montaje y scroll: 8 figuras, hace de
+       "chunk". stress.js la monta con ?sem=<n> para que cada include tenga su
+       propia URL, como los chunks de verdad; el contenido no cambia. -->
+  <head><name>pieza 8</name></head>
+  <space>
+    <group id="pieza">
+      <box x="1" y="0" z="0" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box x="-0.737" y="0.7" z="0.676" sx="0.5" sy="0.5" sz="0.5" color="#7EA6C2" touchable="false"/>
+      <box x="0.086" y="1.4" z="-0.996" sx="0.5" sy="0.5" sz="0.5" color="#C27E9B" touchable="false"/>
+      <box x="0.611" y="2.1" z="0.792" sx="0.5" sy="0.5" sz="0.5" color="#8FC27E" touchable="false"/>
+      <box x="-0.985" y="2.8" z="-0.171" sx="0.5" sy="0.5" sz="0.5" color="#C29A7E" touchable="false"/>
+      <box x="0.841" y="3.5" z="-0.541" sx="0.5" sy="0.5" sz="0.5" color="#C2AE5E" touchable="false"/>
+      <box x="-0.254" y="4.2" z="0.967" sx="0.5" sy="0.5" sz="0.5" color="#7EA6C2" touchable="false"/>
+      <box x="-0.467" y="4.9" z="-0.884" sx="0.5" sy="0.5" sz="0.5" color="#C27E9B" touchable="false"/>
+    </group>
+  </space>
+</hsml>

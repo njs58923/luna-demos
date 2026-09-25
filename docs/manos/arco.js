@@ -26,6 +26,9 @@
 // flecha se queda donde pegó; en el blanco que se mueve, se mueve con él.
 //
 // Rondas de doce flechas. El mejor puntaje queda en localStorage.
+//
+// Suena todo lo que pasa (tomar, cargar, tensar, soltar, cada impacto, el fin
+// de la ronda), con clips sintetizados en el propio script: ver "Sonido".
 const root = hiperspace.dimention;
 const byId = (id) => root.getElementById(id);
 
@@ -146,6 +149,152 @@ function azar(i) {
   h = Math.imul(h ^ (h >>> 13), 1274126177);
   return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
 }
+
+// ── Sonido ──────────────────────────────────────────────────────────────────
+// Sintetizado acá, como en server_nave: cada clip se arma una vez como WAV en
+// memoria y se le pasa al `Audio` del motor, que acepta bytes. No hay archivos
+// de audio que versionar, y afinar un sonido es cambiar un número.
+//
+// El audio de Luna no es espacial, así que la distancia se hace con volumen:
+// un impacto a 26 m suena más flojo que uno a 9.
+//
+// Sin el permiso `audio` —o en el arnés de pruebas, donde no hay mezclador—
+// `Audio` no existe y `sonar()` no hace nada.
+const sonido = (() => {
+  const HZ = 22050;
+  const VOL = 0.3;
+
+  /** Un WAV mono de 16 bits a partir de muestras en -1..1. */
+  function wav(pcm) {
+    const n = pcm.length;
+    const b = new Uint8Array(44 + n * 2);
+    const v = new DataView(b.buffer);
+    const txt = (o, s) => { for (let i = 0; i < s.length; i++) b[o + i] = s.charCodeAt(i); };
+    txt(0, "RIFF"); v.setUint32(4, 36 + n * 2, true); txt(8, "WAVEfmt ");
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, HZ, true); v.setUint32(28, HZ * 2, true);
+    v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    txt(36, "data"); v.setUint32(40, n * 2, true);
+    for (let i = 0; i < n; i++) v.setInt16(44 + i * 2, acotar(pcm[i], -1, 1) * 32767, true);
+    return b;
+  }
+
+  /** `fn(t, u)` con t en segundos y u de 0 a 1. Los primeros 2 ms entran en
+   *  rampa: sin eso cada clip arranca con un chasquido. */
+  function armar(dur, fn) {
+    const n = Math.floor(HZ * dur);
+    const a = new Float32Array(n);
+    const ataque = HZ * 0.002;
+    for (let i = 0; i < n; i++) a[i] = fn(i / HZ, i / n) * VOL * Math.min(1, i / ataque);
+    return a;
+  }
+
+  const seno = (t, f) => Math.sin(2 * Math.PI * f * t);
+  const caida = (u, k) => Math.exp(-u * k);
+  /** Ruido con semilla fija, pasado por un filtro de un polo: `k` cerca de 0
+   *  es un golpe sordo, cerca de 1 un siseo. */
+  function ruido(k, semilla) {
+    let x = semilla || 0x2545f491, y = 0;
+    return () => {
+      x ^= x << 13; x ^= x >>> 17; x ^= x << 5;
+      y += k * (((x >>> 0) / 2147483648 - 1) - y);
+      return y;
+    };
+  }
+  /** La cuerda: una fundamental que cae un poco de tono con sus armónicos, y
+   *  los agudos muriendo antes que el grave, que es lo que la hace sonar a
+   *  cuerda y no a pito. */
+  function cuerda(t, u, f) {
+    const g = f * (1 - 0.06 * u);
+    return seno(t, g) * caida(u, 4) + 0.5 * seno(t, g * 2) * caida(u, 7) + 0.25 * seno(t, g * 3) * caida(u, 11);
+  }
+  function notas(frecuencias, dur) {
+    return armar(dur * frecuencias.length, (t) => {
+      const i = Math.min(frecuencias.length - 1, Math.floor(t / dur));
+      const tl = t - i * dur, u = tl / dur;
+      return (seno(tl, frecuencias[i]) + 0.3 * seno(tl, frecuencias[i] * 2)) * 0.7 * caida(u, 3);
+    });
+  }
+
+  const CLIPS = {
+    // Tomar el arco del soporte: la mano contra la madera.
+    tomar: () => { const r = ruido(0.25, 11); return armar(0.09, (t, u) => (r() * 1.6 + seno(t, 170) * 0.6) * caida(u, 7)); },
+    // Colgarlo de nuevo: un golpe de madera más seco.
+    dejar: () => { const r = ruido(0.35, 12); return armar(0.12, (t, u) => (r() * 1.2 + seno(t, 240) * 0.7) * caida(u, 9)); },
+    // Encajar la flecha en la cuerda: un clic corto.
+    cargar: () => { const r = ruido(0.9, 13); return armar(0.045, (t, u) => (r() * 0.6 + seno(t, 2300) * 0.5) * caida(u, 10)); },
+    // La madera que cruje al tensar. Suena por tramos de tensión.
+    cruje: () => { const r = ruido(0.5, 14); return armar(0.13, (t, u) => r() * (0.5 + 0.5 * seno(t, 38)) * Math.sin(Math.PI * u) * 1.4); },
+    // Soltar: la cuerda vibra y la flecha sale silbando.
+    disparo: () => { const r = ruido(0.6, 15); return armar(0.4, (t, u) => cuerda(t, u, 118) * 0.8 + r() * caida(u, 14) * 0.9); },
+    // Clavarse en el fardo de paja: un golpe sordo.
+    diana: () => { const r = ruido(0.12, 16); return armar(0.2, (t, u) => (r() * 3 + seno(t, 85) * 0.8) * caida(u, 8)); },
+    // Al centro: una campanita, además del golpe.
+    centro: () => armar(0.7, (t, u) => (seno(t, 1318) + 0.6 * seno(t, 1976) + 0.3 * seno(t, 2637)) * 0.55 * caida(u, 4)),
+    // Un globo que revienta: ruido abierto y cortísimo.
+    globo: () => { const r = ruido(0.95, 17); return armar(0.08, (t, u) => r() * 1.5 * caida(u, 16)); },
+    // Al pasto: más flojo y más apagado que la paja.
+    pasto: () => { const r = ruido(0.07, 18); return armar(0.14, (t, u) => r() * 3 * caida(u, 9)); },
+    // Botón de ronda nueva.
+    boton: () => armar(0.06, (t, u) => seno(t, 1250) * caida(u, 9)),
+    // Fin de ronda, y fin de ronda con récord.
+    ronda: () => notas([523, 659, 784], 0.14),
+    record: () => notas([523, 659, 784, 1047, 1319], 0.12),
+  };
+
+  const voces = {};
+  let hay = typeof Audio === "function";
+
+  function voz(nombre) {
+    let v = voces[nombre];
+    if (!v) {
+      v = new Audio(wav(CLIPS[nombre]()));
+      v.nombre = nombre;
+      voces[nombre] = v;
+    }
+    return v;
+  }
+
+  function fallo(e) {
+    hay = false;
+    console.warn("[arco] sin sonido:", (e && e.message) || e);
+  }
+
+  /** `volumen` de 0 a 1. */
+  function sonar(nombre, volumen = 1) {
+    if (!hay || !CLIPS[nombre]) return;
+    try {
+      const v = voz(nombre);
+      v.volume = acotar(volumen, 0, 1);
+      // Volver a empezar: sin el stop, un clip que ya terminó no vuelve a sonar.
+      try { v.stop(); } catch (e) { /* todavía no cargó: play lo arranca igual */ }
+      const p = v.play();
+      if (p && p.catch) p.catch(fallo);
+    } catch (e) {
+      fallo(e);
+    }
+  }
+
+  /** Decodificar todo al entrar: el primer play de cada clip, si no, llega
+   *  tarde, y un disparo que suena 100 ms después de soltar no es un disparo.
+   *  Son 12 voces de las 16 que tiene el espacio. */
+  if (hay) {
+    try {
+      for (const nombre in CLIPS) {
+        const p = voz(nombre).load();
+        if (p && p.catch) p.catch(fallo);
+      }
+    } catch (e) {
+      fallo(e);
+    }
+  }
+
+  /** Volumen de algo que pasa a `d` metros de la línea de tiro. */
+  const lejos = (d) => acotar(1.15 - d / 35, 0.35, 1);
+
+  return { sonar, lejos };
+})();
+const { sonar } = sonido;
 
 // ── Nodos ───────────────────────────────────────────────────────────────────
 function crear(tag, attrs, padre) {
@@ -357,8 +506,10 @@ function cerrarRonda() {
     juego.record = juego.puntos;
     try { localStorage.setItem(CLAVE_RECORD, String(juego.record)); } catch (e) { /* sin almacén */ }
     ultimo("¡récord nuevo! " + juego.puntos + " puntos");
+    sonar("record", 0.8);
   } else {
     ultimo("ronda: " + juego.puntos + " puntos");
+    sonar("ronda", 0.7);
   }
   tablero();
 }
@@ -373,6 +524,7 @@ const botonReiniciar = byId("reiniciar");
 if (botonReiniciar) {
   botonReiniciar.addEventListener("toque", () => {
     for (const f of flechas) if (f.estado !== "cargada") soltarFlecha(f);
+    sonar("boton");
     nuevaRonda();
     ultimo("ronda nueva");
   });
@@ -442,11 +594,13 @@ function tomarArco(mano) {
   // Se toma como está: el giro relativo a la mano en ese momento es el que
   // se conserva. Tomarlo con la muñeca girada no lo endereza de golpe.
   qAgarre = qMul(qConj(manos[mano].q || IDENTIDAD), Q_SOPORTE);
+  sonar("tomar", 0.8);
   ultimo("cargá una flecha con la otra mano");
 }
 function dejarArco() {
   if (carga) { soltarFlecha(carga.flecha); carga = null; }
   manoArco = null;
+  sonar("dejar", 0.7);
   dibujarArco();
 }
 
@@ -455,6 +609,21 @@ function cargar(mano) {
   if (!f) return;
   f.estado = "cargada";
   carga = { mano, flecha: f };
+  cruje = CRUJE;
+  sonar("cargar", 0.8);
+}
+
+/** La madera cruje cada CRUJE metros de cuerda abierta, más fuerte cuanto más
+ *  tensa. Sólo al abrir: aflojar sin tirar no cruje. `cruje` es el próximo
+ *  tramo que suena. */
+const CRUJE = 0.14;
+let cruje = CRUJE;
+function crujir() {
+  const t = tension();
+  if (t >= cruje) {
+    sonar("cruje", 0.35 + 0.65 * (t / TENSION_MAX));
+    cruje = (Math.floor(t / CRUJE) + 1) * CRUJE;
+  }
 }
 
 function disparar() {
@@ -468,6 +637,7 @@ function disparar() {
     return;
   }
   if (juego.terminada) nuevaRonda();
+  sonar("disparo", 0.45 + 0.55 * (t / TENSION_MAX));
   const velocidad = V_MIN + (V_MAX - V_MIN) * (t / TENSION_MAX);
   f.estado = "vuela";
   f.p = suma(p, rotar(q, v3(0, 0, REPOSO + t)));
@@ -509,6 +679,7 @@ function onPose(evt) {
     tomarArco(mano);
   }
 
+  if (carga) crujir();
   if (manoArco) dibujarArco();
 }
 if (zona) zona.addEventListener("posemove", onPose);
@@ -574,6 +745,9 @@ function volar(f, dt, ahora) {
     if (mejor && mejor.diana) {
       clavar(f, mejor.h, dir, mejor.diana.mueve ? mejor.diana : null);
       const pts = puntosDe(mejor.diana, mejor.r);
+      const vol = sonido.lejos(largo(mejor.h));
+      sonar("diana", vol);
+      if (pts >= 10) sonar("centro", vol);
       sumar(pts);
       avisar(mejor.h, pts ? "+" + pts : "0", pts >= 10 ? "#FFD60A" : "#FFFFFF", ahora);
       ultimo(pts ? (pts >= 10 ? "¡al centro! +" : "+") + pts + (mejor.diana.extra ? "  (blanco móvil x" + mejor.diana.extra + ")" : "") : "en el fardo");
@@ -582,13 +756,16 @@ function volar(f, dt, ahora) {
     if (mejor && mejor.globo) {
       // Un globo no frena la flecha: revienta y ella sigue.
       reventar(mejor.globo, ahora);
+      sonar("globo", sonido.lejos(largo(mejor.globo.pos)));
       sumar(5);
       avisar(mejor.globo.pos, "+5", "#40E0D0", ahora);
       ultimo("¡globo! +5");
     }
     if (b.y <= 0.02) {
       const s = (a.y - 0.02) / Math.max(1e-6, a.y - b.y);
-      clavar(f, suma(a, por(resta(b, a), acotar(s, 0, 1))), dir, null);
+      const punta = suma(a, por(resta(b, a), acotar(s, 0, 1)));
+      clavar(f, punta, dir, null);
+      sonar("pasto", sonido.lejos(largo(punta)) * 0.8);
       ultimo("al pasto");
       return terminarVuelo();
     }

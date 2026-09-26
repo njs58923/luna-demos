@@ -256,8 +256,13 @@ const sonido = (() => {
   }
 
   function fallo(e) {
+    const msg = (e && e.message) || String(e);
+    // Volver a tocar un clip antes de que arranque cancela el play anterior
+    // ("Audio play cancelled"): es el uso normal, no un fallo. Apagar el
+    // sonido por eso lo dejaba mudo el resto de la sesión.
+    if (/cancel/i.test(msg)) return;
     hay = false;
-    console.warn("[arco] sin sonido:", (e && e.message) || e);
+    console.warn("[arco] sin sonido:", msg);
   }
 
   /** `volumen` de 0 a 1. */

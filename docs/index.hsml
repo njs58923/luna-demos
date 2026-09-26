@@ -277,7 +277,7 @@
 
     <group id="s_manos" x="-6.24" y="0" z="-1.424" ry="1.346">
     <group x="0" y="0" z="0" ry="0">
-      <include id="p_manos" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/index.hsml","id":"p_manos","titulo":"El taller de las manos","sub":"manipular y tirar con arco","roca":"#8F897E","color":"#1E3A5A"}'/>
+      <include id="p_manos" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/index.hsml","id":"p_manos","titulo":"El taller de las manos","sub":"manipular, el arco y el tiro","roca":"#8F897E","color":"#1E3A5A"}'/>
     </group>
       <group x="2.3" y="1.2">
         <box x="-0.46" y="-0.955" sx="0.08" sy="0.49" sz="0.08" color="#8F897E" touchable="false"/>
@@ -288,8 +288,10 @@
         <text y="0.52" z="0.035" value="manos" size="0.082" color="#F4F1EA"/>
         <text y="0.36" z="0.035" value="Para los mandos de VR:" size="0.05" color="#C9D2DE"/>
         <text y="0.292" z="0.035" value="mover, girar y escalar un" size="0.05" color="#C9D2DE"/>
-        <text y="0.224" z="0.035" value="objeto, y un arco para" size="0.05" color="#C9D2DE"/>
-        <text y="0.156" z="0.035" value="tirarle a dianas y globos." size="0.05" color="#C9D2DE"/>
+        <text y="0.224" z="0.035" value="objeto, un arco para" size="0.05" color="#C9D2DE"/>
+        <text y="0.156" z="0.035" value="tirarle a dianas y globos," size="0.05" color="#C9D2DE"/>
+        <text y="0.088" z="0.035" value="y una galería de tiro con" size="0.05" color="#C9D2DE"/>
+        <text y="0.02" z="0.035" value="seis armas que se …" size="0.05" color="#C9D2DE"/>
       </group>
     </group>
 

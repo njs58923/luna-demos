@@ -79,7 +79,7 @@
       nodo: nodoTapa, eje: v3(1, 0, 0), abierta: ABIERTA, velocidad: 7,
       punto: () => v3(base.x, base.y + ALTO, base.z), radio: 0.07,
       alAbrir() { S.sonar("tomar", 0.6); if (caja.alAbrir) caja.alAbrir(caja); },
-      alCerrar() { S.sonar("dejar", 0.6); if (caja.alCerrar) caja.alCerrar(caja); },
+      alCerrar() { S.sonar("tomar", 0.4); if (caja.alCerrar) caja.alCerrar(caja); },
     });
     for (const n of [placa, frente]) n.addEventListener("toque", () => caja.tapa.alternar());
     return caja;

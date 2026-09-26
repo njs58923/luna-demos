@@ -202,16 +202,42 @@
     <group id="escenario"/>
 
     <group x="-1.9" z="-1.3" ry="0.841">
-      <cylinder y="0.65" sx="0.07" sy="1.3" sz="0.07" color="#5A3E2A" touchable="false"/>
-      <group y="1.3" rx="-0.22">
-        <box sx="1.1" sy="0.78" sz="0.04" color="#1C1C26" border-radius="0.04" touchable="false"/>
-        <text y="0.287" z="0.03" value="PUNTOS" size="0.045" color="#C8CCD8"/>
-        <text id="tablero_puntos" y="0.115" z="0.03" value="0" size="0.2" color="#FFD60A"/>
-        <text id="tablero_flechas" y="-0.06" z="0.03" value="flecha 0 de 12" size="0.05" color="#FFFFFF"/>
-        <text id="tablero_record" y="-0.158" z="0.03" value="récord 0" size="0.045" color="#40E0D0"/>
-        <text id="tablero_ultimo" y="-0.25" z="0.03" value="" size="0.04" color="#C8CCD8"/>
-        <box id="reiniciar" y="-0.52" z="0.01" sx="0.5" sy="0.12" sz="0.03" color="#2A2A38" border-radius="0.03" touchable="true"/>
-        <text y="-0.52" z="0.035" value="RONDA NUEVA" size="0.042" color="#FFFFFF"/>
+      <box x="-0.45" y="0.876" z="-0.1" sx="0.06" sy="1.753" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="-0.45" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <box x="0.45" y="0.876" z="-0.1" sx="0.06" sy="1.753" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="0.45" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <group y="1.452" rx="-0.12">
+        <box z="-0.015" sx="1.16" sy="1.064" sz="0.03" color="#5A3E2A" border-radius="0.04" touchable="false"/>
+        <box sx="1.1" sy="1.004" sz="0.03" color="#1C1C26" border-radius="0.035" touchable="false"/>
+        <box y="0.4" z="0.016" sx="1.1" sy="0.203" sz="0.004" color="#5A2A1E" border-radius="0.035" touchable="false"/>
+        <text y="0.4" z="0.021" value="PUNTOS" size="0.07" color="#FFFFFF"/>
+        <text id="tablero_puntos" y="0.121" z="0.021" value="0" size="0.18" color="#FFD60A"/>
+        <text id="tablero_flechas" y="-0.075" z="0.021" value="flecha 0 de 12" size="0.05" color="#FFFFFF"/>
+        <text id="tablero_record" y="-0.155" z="0.021" value="récord 0" size="0.045" color="#40E0D0"/>
+        <text id="tablero_ultimo" y="-0.228" z="0.021" value="" size="0.04" color="#C8CCD8"/>
+        <box id="reiniciar" y="-0.367" z="0.02" sx="0.55" sy="0.12" sz="0.03" color="#2A2A38" border-radius="0.03" touchable="true"/>
+        <text y="-0.367" z="0.037" value="RONDA NUEVA" size="0.042" color="#FFFFFF"/>
+      </group>
+    </group>
+
+    <group x="1.9" z="-1.3" ry="-0.841">
+      <box x="-0.426" y="0.795" z="-0.1" sx="0.06" sy="1.59" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="-0.426" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <box x="0.426" y="0.795" z="-0.1" sx="0.06" sy="1.59" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="0.426" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <group y="1.35" rx="-0.12">
+        <box z="-0.015" sx="1.113" sy="0.861" sz="0.03" color="#5A3E2A" border-radius="0.04" touchable="false"/>
+        <box sx="1.053" sy="0.801" sz="0.03" color="#1C1C26" border-radius="0.035" touchable="false"/>
+        <box y="0.299" z="0.016" sx="1.053" sy="0.203" sz="0.004" color="#5A2A1E" border-radius="0.035" touchable="false"/>
+        <text y="0.299" z="0.021" value="EL ARCO" size="0.07" color="#FFFFFF"/>
+        <text y="0.137" z="0.021" value="grip cerca del arco: tomarlo del soporte" size="0.042" color="#40E0D0"/>
+        <text y="0.065" z="0.021" value="la otra mano en la cuerda: cargar la flecha" size="0.042" color="#FF9F0A"/>
+        <text y="-0.006" z="0.021" value="alejarla tensa · soltar dispara" size="0.042" color="#FF9F0A"/>
+        <text y="-0.073" z="0.021" value="más tensión, más lejos llega" size="0.036" color="#C8CCD8"/>
+        <text y="-0.167" z="0.021" value="anillos 2 · 4 · 6 · 8 · 10 · globos 5" size="0.04" color="#30D158"/>
+        <text y="-0.235" z="0.021" value="la diana que se mueve vale doble" size="0.04" color="#30D158"/>
+        <text y="-0.3" z="0.021" value="rondas de 12 flechas" size="0.036" color="#C8CCD8"/>
+
       </group>
     </group>
 

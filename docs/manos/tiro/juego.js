@@ -44,7 +44,7 @@
       juego.record = juego.puntos;
       try { localStorage.setItem(CLAVE_RECORD, String(juego.record)); } catch (e) { /* sin almacén */ }
       ultimo("¡récord nuevo! " + juego.puntos + " puntos");
-      S.sonar("record", 0.8);
+      S.sonar("ronda", 1);
     } else {
       ultimo("ronda: " + juego.puntos + " puntos");
       S.sonar("ronda", 0.7);

@@ -231,16 +231,21 @@
     <cylinder x="0" y="0.725" z="-0.75" sx="0.54" sy="0.01" sz="0.54" color="#5A5A70" touchable="false"/>
 
     <group x="1.9" z="-1.7" ry="-0.841">
-      <cylinder y="0.65" sx="0.07" sy="1.3" sz="0.07" color="#5A3E2A" touchable="false"/>
-      <group y="1.3" rx="-0.22">
-        <box sx="1.5" sy="0.86" sz="0.04" color="#1C1C26" border-radius="0.04" touchable="false"/>
-        <text y="0.31" z="0.03" value="EL MANIPULADOR" size="0.08" color="#FFFFFF"/>
-        <text y="0.197" z="0.03" value="grip en el cuerpo: mover y girar" size="0.045" color="#40E0D0"/>
-        <text y="0.102" z="0.03" value="grip en una esquina: escalar" size="0.045" color="#FF9F0A"/>
-        <text y="0.007" z="0.03" value="grip en una arista: girar en X / Y / Z" size="0.045" color="#30D158"/>
-        <text y="-0.088" z="0.03" value="dos manos: mover, girar y escalar" size="0.045" color="#BF5AF2"/>
-        <text y="-0.183" z="0.03" value="gatillo mientras tanto: encaje" size="0.045" color="#FFD60A"/>
-        <text id="estado" y="-0.273" z="0.03" value="la pose se guarda al soltar" size="0.036" color="#C8CCD8"/>
+      <box x="-0.405" y="0.784" z="-0.1" sx="0.06" sy="1.567" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="-0.405" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <box x="0.405" y="0.784" z="-0.1" sx="0.06" sy="1.567" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="0.405" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <group y="1.336" rx="-0.12">
+        <box z="-0.015" sx="1.07" sy="0.832" sz="0.03" color="#5A3E2A" border-radius="0.04" touchable="false"/>
+        <box sx="1.01" sy="0.772" sz="0.03" color="#1C1C26" border-radius="0.035" touchable="false"/>
+        <box y="0.284" z="0.016" sx="1.01" sy="0.203" sz="0.004" color="#1E3A5A" border-radius="0.035" touchable="false"/>
+        <text y="0.284" z="0.021" value="EL MANIPULADOR" size="0.07" color="#FFFFFF"/>
+        <text y="0.12" z="0.021" value="grip en el cuerpo: mover y girar" size="0.045" color="#40E0D0"/>
+        <text y="0.043" z="0.021" value="grip en una esquina: escalar" size="0.045" color="#FF9F0A"/>
+        <text y="-0.033" z="0.021" value="grip en una arista: girar en X / Y / Z" size="0.045" color="#30D158"/>
+        <text y="-0.11" z="0.021" value="dos manos: mover, girar y escalar" size="0.045" color="#BF5AF2"/>
+        <text y="-0.186" z="0.021" value="gatillo mientras tanto: encaje" size="0.045" color="#FFD60A"/>
+        <text id="estado" y="-0.285" z="0.021" value="la pose se guarda al soltar" size="0.036" color="#C8CCD8"/>
 
       </group>
     </group>

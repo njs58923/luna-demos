@@ -227,6 +227,27 @@
           return g;
         },
       });
+
+      lista.push({
+        id: "delanteraMano", nombre: "Mano de adelante", color: "#FF6FD8",
+        ayuda: "Dónde queda el mando de adelante respecto del guardamanos al tirar con dos manos: el arma apunta para que este punto caiga en la mano. La línea sale del guardamanos.",
+        valor: { p: a.manoDelantera.p },
+        aplicar(v) { a.manoDelantera = { p: v.p }; W.reponer(a); },
+        marco: gun,
+        // Se muestra y se arrastra donde queda, en el marco del arma; se guarda
+        // como un desfase del guardamanos.
+        punto: (v) => suma(t.delantera.punto, v.p),
+        moverA(v, m) { v.p = resta(m, t.delantera.punto); },
+        arrastrable: () => true,
+        figuras(v, sel) {
+          const g = crear("group", { class: "ajuste" }, a.el);
+          const m = suma(t.delantera.punto, v.p);
+          esfera(g, m, 0.02, tono(this.color, sel));
+          esfera(g, m, 0.005, tono(this.color, sel, true));
+          barra(g, t.delantera.punto, m, 0.002, tono(this.color, sel, true));
+          return g;
+        },
+      });
     }
 
     const modelo = K.MODELOS[id];
@@ -280,14 +301,20 @@
     return lista;
   }
 
+  /** Lo que depende de la mano y no del modelo: sobrevive a un cambio de
+   *  modelo. El resto (la boca, la corredera, el pozo...) son puntos del
+   *  modelo, y si el modelo cambió lo guardado ya no vale. */
+  const DE_LA_MANO = new Set(["empunadura", "cargadorMano", "delanteraMano"]);
+
   const porArma = {};
   for (const a of W.armas) {
     porArma[a.id] = { arma: a, refs: referencias(a) };
     // Lo guardado, encima de lo de fábrica: campo por campo, y sólo números.
     let guardado = null;
     try { guardado = JSON.parse(localStorage.getItem(CLAVE(a.id)) || "null"); } catch (e) { /* sin almacén o roto */ }
+    const mismoModelo = !!guardado && guardado._modelo === a.tipo.modelo;
     for (const r of porArma[a.id].refs) {
-      const g = guardado && guardado[r.id];
+      const g = guardado && (mismoModelo || DE_LA_MANO.has(r.id)) && guardado[r.id];
       if (g && typeof g === "object") {
         for (const k in r.valor) {
           if (typeof r.valor[k] === "number" && Number.isFinite(g[k])) r.valor[k] = g[k];
@@ -301,7 +328,7 @@
   }
 
   function guardar(armaId) {
-    const datos = {};
+    const datos = { _modelo: porArma[armaId].arma.tipo.modelo };
     for (const r of porArma[armaId].refs) datos[r.id] = r.valor;
     try { localStorage.setItem(CLAVE(armaId), JSON.stringify(datos)); } catch (e) { /* sin almacén */ }
   }

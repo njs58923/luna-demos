@@ -95,11 +95,13 @@
    *    disponible()      si se puede tomar ahora
    *    alLlegar()        la mano lo llevó hasta el tope
    *    alVolver()        volvió al inicio después de haber llegado al tope
+   *    alMover(ds)       (opcional) la mano lo corrió ds metros: para el roce
+   *    alTope()          (opcional) la mano lo llevó contra el tope, cada vez
    *  } */
   function riel(o) {
     // `o` queda a la vista: sus números se pueden ajustar en vivo, porque cada
     // cuenta los lee de ahí en el momento.
-    const r = { s: 0, mano: null, desfase: 0, trabado: false, llego: false, o };
+    const r = { s: 0, mano: null, desfase: 0, trabado: false, llego: false, enTope: false, o };
     r.poner = (s) => {
       r.s = acotar(s, 0, o.largo);
       o.nodo.position = suma(o.desde, por(o.eje, r.s));
@@ -112,6 +114,8 @@
     };
     r.tomar = (mano, ctx) => {
       r.mano = mano;
+      // Tomado ya en el tope (trabado): no cuenta como un golpe nuevo.
+      r.enTope = r.s >= o.largo - 1e-4;
       // Tomarlo trabado lo destraba: tirar un poco y soltar es lo que lo libera.
       if (r.trabado) { r.trabado = false; r.llego = true; }
       r.desfase = proyectar(ctx.pos) - r.s;
@@ -119,7 +123,14 @@
     r.mover = (mano, ctx) => {
       // El padre dejó de estar disponible (lo soltaron): suelta también esta mano.
       if (o.disponible && !o.disponible()) { r.mano = null; return "soltar"; }
+      const antes = r.s;
       r.poner(proyectar(ctx.pos) - r.desfase);
+      if (r.s !== antes && o.alMover) o.alMover(r.s - antes);
+      // Contra el tope: un golpe por vez, hasta que se separe 3 mm.
+      if (r.s >= o.largo - 1e-4 && !r.enTope) {
+        r.enTope = true;
+        if (o.alTope) o.alTope();
+      } else if (r.s < o.largo - 0.003) r.enTope = false;
       if (r.s >= o.largo - 1e-4 && !r.llego) {
         r.llego = true;
         if (o.alLlegar) o.alLlegar();

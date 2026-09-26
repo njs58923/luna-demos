@@ -21,37 +21,37 @@
 
   const MODELOS = {
     pistola: {
-      capacidad: 8, grosor: 0.012, agarre: v3(-0.0032, -0.1274, -0.003), radio: 0.07,
+      capacidad: 8, grosor: 0.012, agarre: v3(0, -0.11, 0), radio: 0.07,
       enMano: { p: v3(0, 0.1, 0), r: v3(0, 0, 0) },
       construir(g) { E.modelo(g, "pistola_cargador.glb"); },
     },
     // Curvo: el segundo tramo se va hacia adelante (−Z).
     mp5: {
-      capacidad: 30, grosor: 0.013, agarre: v3(0, -0.11, -0.015), radio: 0.07,
-      enMano: { p: v3(0, 0.11, 0.015), r: v3(0, 0, 0) },
+      capacidad: 30, grosor: 0.011, agarre: v3(0, -0.115, -0.035), radio: 0.07,
+      enMano: { p: v3(0, 0.11, 0.035), r: v3(0, 0, 0) },
       construir(g) { E.modelo(g, "mp5_cargador.glb"); },
     },
     mac10: {
-      capacidad: 32, grosor: 0.0165, agarre: v3(0, -0.14, 0), radio: 0.07,
-      enMano: { p: v3(0, 0.14, 0), r: v3(0, 0, 0) },
+      capacidad: 32, grosor: 0.014, agarre: v3(0, -0.19, 0), radio: 0.07,
+      enMano: { p: v3(0, 0.19, 0), r: v3(0, 0, 0) },
       construir(g) { E.modelo(g, "mac10_cargador.glb"); },
     },
     // El "banana" de la AK: 30 de 7,62×39, bien curvo hacia adelante.
     ak47: {
-      capacidad: 30, grosor: 0.015, agarre: v3(0, -0.15, -0.05), radio: 0.08,
-      enMano: { p: v3(0, 0.15, 0.05), r: v3(0, 0, 0) },
+      capacidad: 30, grosor: 0.011, agarre: v3(0, -0.18, -0.07), radio: 0.08,
+      enMano: { p: v3(0, 0.18, 0.07), r: v3(0, 0, 0) },
       construir(g) { E.modelo(g, "ak47_cargador.glb"); },
     },
     // El de la M14: recto, 20 de 7,62×51.
     m14: {
-      capacidad: 20, grosor: 0.016, agarre: v3(0, -0.085, -0.01), radio: 0.07,
-      enMano: { p: v3(0, 0.085, 0.01), r: v3(0, 0, 0) },
+      capacidad: 20, grosor: 0.012, agarre: v3(0, -0.11, 0), radio: 0.07,
+      enMano: { p: v3(0, 0.11, 0), r: v3(0, 0, 0) },
       construir(g) { E.modelo(g, "m14_cargador.glb"); },
     },
     // El STANAG de la M4: 30 de 5,56, apenas curvo.
     m4: {
-      capacidad: 30, grosor: 0.013, agarre: v3(0, -0.12, -0.02), radio: 0.07,
-      enMano: { p: v3(0, 0.12, 0.02), r: v3(0, 0, 0) },
+      capacidad: 30, grosor: 0.014, agarre: v3(0, -0.12, -0.01), radio: 0.07,
+      enMano: { p: v3(0, 0.12, 0.01), r: v3(0, 0, 0) },
       construir(g) { E.modelo(g, "m4_cargador.glb"); },
     },
   };

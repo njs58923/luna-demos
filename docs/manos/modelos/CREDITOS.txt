@@ -1,0 +1,13 @@
+Modelos de las armas del tiro
+
+Todos de TastyTony (https://sketchfab.com/TastyTony), con licencia
+Creative Commons Attribution 4.0 (http://creativecommons.org/licenses/by/4.0/).
+Adaptados: escalados, separados en cuerpo, pieza móvil y cargador, y llevados
+al marco de cada arma (blender/sketchfab.py).
+
+  pistola  Low-Poly G17      https://sketchfab.com/3d-models/low-poly-g17-60efc54ac59e47d18bdff94b2f5144ff
+  mp5      Low-Poly HK MP5   https://sketchfab.com/3d-models/low-poly-hk-mp5-80980f757c2c463ebc73460a31611652
+  mac10    Low-Poly Mac 10   https://sketchfab.com/3d-models/low-poly-mac-10-5e0f166601554ed89ebf363e4b3f6c84
+  ak47     Low-Poly AKM      https://sketchfab.com/3d-models/low-poly-akm-849b7cdf8622487485febc40db89e734
+  m4       Low-Poly M4a1     https://sketchfab.com/3d-models/low-poly-m4a1-8cab1cbeb82c4396a154f9fc8771417b
+  m14      Low-Poly M14      https://sketchfab.com/3d-models/low-poly-m14-30e47673a17b434386e9c3af54670bed

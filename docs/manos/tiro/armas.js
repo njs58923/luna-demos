@@ -19,7 +19,10 @@
 //   delantera   si tiene, dónde toma la otra mano para tirar con dos.
 //
 // Los modelos son .glb de public/modelos/, uno para el cuerpo y otro para la
-// pieza que se mueve; salen de los scripts de blender/, con estas medidas.
+// pieza que se mueve: los "Low-Poly" de TastyTony en Sketchfab (CC-BY 4.0),
+// adaptados con blender/sketchfab.py. Las medidas de acá salen de ellos.
+// `modelo` es la versión de esa geometría: si cambia, los puntos ajustados y
+// guardados de la versión anterior se descartan (tiro/ajustes.js).
 //
 // Además cada arma tiene su `empunadura`: dónde queda respecto del mando al
 // tomarla (posición en metros y giro en grados, en el marco del rayo). Los
@@ -40,8 +43,8 @@
   /** El eje de una empuñadura inclinada `a` radianes en X: por ahí entra el cargador. */
   const ejeInclinado = (a) => v3(0, Math.cos(a), Math.sin(a));
 
-  /** El pozo que sale de una empuñadura: el cargador entra por abajo y calza
-   *  con la boca en `tope`, subiendo por el eje de la empuñadura. */
+  /** El pozo: el cargador entra por abajo y calza con la boca en `tope`,
+   *  subiendo por un eje inclinado `inclinacion` radianes en X. */
   function pozoEnEmpunadura(tope, inclinacion, recorrido) {
     const eje = ejeInclinado(inclinacion);
     return { entrada: resta(tope, por(eje, recorrido)), eje, largo: recorrido, q: qEnX(inclinacion) };
@@ -53,21 +56,21 @@
     // cargador sube por toda la empuñadura (10 cm) y, vacío, deja la corredera
     // trabada atrás.
     pistola: {
-      nombre: "pistola", automatica: false, rpm: 0, cierre: "cerrado",
+      nombre: "pistola", modelo: 2, automatica: false, rpm: 0, cierre: "cerrado",
       sonido: "disparo", nombreCorredera: "corredera",
-      boca: v3(0, 0.072, -0.165),
+      boca: v3(0, 0.072, -0.1304),
       centro: v3(0, 0.04, -0.06),
-      mesa: { dx: -0.42, dz: -0.02, alto: 0.016 },
+      mesa: { dx: -0.42, dz: -0.02, alto: 0.014 },
       patada: { ang: 0.3, atras: 0.025, ms: 130 },
       dispersion: { base: 0, porTiro: 0, max: 0, vuelve: 0 },
       subida: { porTiro: 0, max: 0, vuelve: 0 },
-      contador: v3(0, 0.108, 0.03),
+      contador: v3(0, 0.115, 0.03),
       empunadura: { p: v3(0, 0.009, -0.025), r: v3(10, 0, 0) },
       // La zona es un cilindro a lo largo de toda la corredera; se llega de
       // arriba o de costado (casi cualquier dirección menos subiendo).
-      corredera: { eje: v3(0, 0, 1), largo: 0.04, agarre: v3(-0.0002, 0.0795, -0.0539), radio: 0.065, forma: "cilindro", largoZona: 0.205,
+      corredera: { eje: v3(0, 0, 1), largo: 0.04, agarre: v3(0, 0.086, -0.045), radio: 0.065, forma: "cilindro", largoZona: 0.19,
                    dir: { rumbo: 0, altura: -90, cono: 160 }, resorte: 1.5, trabaVacia: true, reciproca: true },
-      pozo: pozoEnEmpunadura(v3(0, 0.039, -0.0095), -0.26, 0.1),
+      pozo: pozoEnEmpunadura(v3(0, 0.0788, -0.0119), -0.332, 0.1),
       construir(g, id) {
         modelo(g, "pistola_cuerpo.glb");
         const corredera = crear("group", { id: "corredera_" + id }, g);
@@ -78,26 +81,26 @@
 
     // ── MP5 ─────────────────────────────────────────────────────────────────
     // La manija de carga va en el tubo de arriba, a la izquierda: la manija es
-    // chica y el recorrido largo (10 cm). El cargador curvo calza con un
+    // chica y corre 8 cm por la ranura. El cargador curvo calza con un
     // recorrido corto (3,5 cm). Se toma con dos manos por el guardamanos.
     mp5: {
-      nombre: "MP5", automatica: true, rpm: 800, cierre: "cerrado",
+      nombre: "MP5", modelo: 2, automatica: true, rpm: 800, cierre: "cerrado",
       sonido: "disparo_mp5", nombreCorredera: "manija",
-      boca: v3(0, 0.048, -0.39),
+      boca: v3(0, 0.048, -0.366),
       centro: v3(0, 0.03, -0.1),
       mesa: { dx: 0.02, dz: 0.1, alto: 0.026 },
       patada: { ang: 0.06, atras: 0.012, ms: 60 },
       dispersion: { base: 0, porTiro: 0.08, max: 1.0, vuelve: 5 },
       subida: { porTiro: 0.3, max: 3, vuelve: 6 },
-      contador: v3(0, 0.1, 0.07),
+      contador: v3(0, 0.12, 0.07),
       empunadura: { p: v3(0, 0.025, -0.018), r: v3(5, 0, 0) },
       // La manija: un cilindro a lo largo del tubo, al que la mano llega de
       // costado (desde la izquierda, hacia +X). Casi en el mismo lugar está el
       // guardamanos, al que se llega de abajo: la dirección los separa.
-      corredera: { eje: v3(0, 0, 1), largo: 0.1, agarre: v3(-0.052, 0.07, -0.29), radio: 0.045, forma: "cilindro", largoZona: 0.08,
+      corredera: { eje: v3(0, 0, 1), largo: 0.08, agarre: v3(-0.045, 0.074, -0.25), radio: 0.045, forma: "cilindro", largoZona: 0.08,
                    dir: { rumbo: 90, altura: 0, cono: 110 }, resorte: 1.2, trabaVacia: false },
-      pozo: { entrada: resta(v3(0, 0.02, -0.12), por(ejeInclinado(0.15), 0.035)), eje: ejeInclinado(0.15), largo: 0.035, q: qEnX(0.15) },
-      delantera: { punto: v3(0, 0.045, -0.27), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
+      pozo: pozoEnEmpunadura(v3(0, -0.0028, -0.1179), 0.2, 0.035),
+      delantera: { punto: v3(0, 0.035, -0.26), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
       construir(g, id) {
         modelo(g, "mp5_cuerpo.glb");
         const manija = crear("group", { id: "corredera_" + id }, g);
@@ -111,20 +114,20 @@
     // Más de mil tiros por minuto: se abre y sube mucho, que es su fama. El
     // cargador sube por la empuñadura, como en la pistola, 14 cm.
     mac10: {
-      nombre: "MAC-10", automatica: true, rpm: 1100, cierre: "abierto",
+      nombre: "MAC-10", modelo: 2, automatica: true, rpm: 1100, cierre: "abierto",
       sonido: "disparo_mac10", nombreCorredera: "perilla",
-      boca: v3(0, 0.045, -0.275),
-      centro: v3(0, 0.0, -0.07),
-      mesa: { dx: 0.42, dz: -0.05, alto: 0.03 },
+      boca: v3(0, 0.045, -0.1948),
+      centro: v3(0, 0.0, -0.05),
+      mesa: { dx: 0.42, dz: -0.05, alto: 0.025 },
       patada: { ang: 0.09, atras: 0.015, ms: 50 },
       dispersion: { base: 0, porTiro: 0.2, max: 2.5, vuelve: 4 },
       subida: { porTiro: 0.7, max: 6, vuelve: 5 },
-      contador: v3(0, 0.1, 0.035),
+      contador: v3(0, 0.11, 0.035),
       empunadura: { p: v3(0, 0.06, -0.01), r: v3(5, 0, 0) },
       // La perilla: una esfera arriba, a la que se llega bajando la mano.
-      corredera: { eje: v3(0, 0, 1), largo: 0.08, agarre: v3(0.0026, 0.1231, -0.0599), radio: 0.055,
+      corredera: { eje: v3(0, 0, 1), largo: 0.08, agarre: v3(0, 0.119, -0.094), radio: 0.055,
                    dir: { rumbo: 0, altura: -90, cono: 60 }, resorte: 2, trabaVacia: false },
-      pozo: pozoEnEmpunadura(v3(0, -0.0102, 0.0002), -0.08, 0.14),
+      pozo: pozoEnEmpunadura(v3(0, 0.048, 0.0007), 0.028, 0.14),
       construir(g, id) {
         modelo(g, "mac10_cuerpo.glb");
         const cerrojo = crear("group", { id: "corredera_" + id }, g);
@@ -139,21 +142,21 @@
     // cargador curvo entra corto, adelante del guardamonte. A dos manos por el
     // guardamanos de madera.
     ak47: {
-      nombre: "AK-47", automatica: true, rpm: 600, cierre: "cerrado",
+      nombre: "AK-47", modelo: 2, automatica: true, rpm: 600, cierre: "cerrado",
       sonido: "disparo_rifle", nombreCorredera: "manija de carga", rifle: true,
-      boca: v3(0, 0.045, -0.58),
+      boca: v3(0, 0.045, -0.5786),
       centro: v3(0, 0.03, -0.1),
-      mesa: { tabla: "rifles", dx: 0.15, dz: 0.2, alto: 0.022 },
+      mesa: { tabla: "rifles", dx: 0.15, dz: 0.2, alto: 0.018 },
       patada: { ang: 0.12, atras: 0.02, ms: 90 },
       dispersion: { base: 0, porTiro: 0.12, max: 1.6, vuelve: 4 },
       subida: { porTiro: 0.55, max: 4.5, vuelve: 5 },
       contador: v3(0, 0.1, 0.03),
       empunadura: { p: v3(0, 0.025, -0.018), r: v3(5, 0, 0) },
       // La manija: a la derecha del cajón, se llega de costado (hacia −X).
-      corredera: { eje: v3(0, 0, 1), largo: 0.1, agarre: v3(0.038, 0.05, -0.07), radio: 0.045,
+      corredera: { eje: v3(0, 0, 1), largo: 0.1, agarre: v3(0.033, 0.065, -0.185), radio: 0.045,
                    dir: { rumbo: -90, altura: 0, cono: 120 }, resorte: 1.4, trabaVacia: false, reciproca: true },
-      pozo: { entrada: resta(v3(0, 0.008, -0.125), por(ejeInclinado(0.2), 0.04)), eje: ejeInclinado(0.2), largo: 0.04, q: qEnX(0.2) },
-      delantera: { punto: v3(0, 0.03, -0.32), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
+      pozo: pozoEnEmpunadura(v3(0, 0.0454, -0.1249), 0.007, 0.04),
+      delantera: { punto: v3(0, 0.03, -0.34), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
       construir(g, id) {
         modelo(g, "ak47_cuerpo.glb");
         const manija = crear("group", { id: "corredera_" + id }, g);
@@ -168,21 +171,21 @@
     // atrás. Cargador recto de 20, que calza corto. Patea más que todos: sube
     // en cada tiro seguido.
     m14: {
-      nombre: "M14", automatica: false, rpm: 0, cierre: "cerrado",
+      nombre: "M14", modelo: 2, automatica: false, rpm: 0, cierre: "cerrado",
       sonido: "disparo_rifle", nombreCorredera: "varilla de operación", rifle: true,
-      boca: v3(0, 0.045, -0.7),
+      boca: v3(0, 0.045, -0.7806),
       centro: v3(0, 0.02, -0.12),
-      mesa: { tabla: "rifles", dx: 0.05, dz: -0.33, alto: 0.024 },
+      mesa: { tabla: "rifles", dx: 0.12, dz: -0.33, alto: 0.028 },
       patada: { ang: 0.22, atras: 0.03, ms: 150 },
       dispersion: { base: 0, porTiro: 0, max: 0, vuelve: 0 },
       subida: { porTiro: 1.2, max: 4, vuelve: 5 },
       contador: v3(0, 0.1, 0.05),
       empunadura: { p: v3(0, 0.025, -0.018), r: v3(5, 0, 0) },
       // La manija de la varilla: a la derecha, se llega de costado (hacia −X).
-      corredera: { eje: v3(0, 0, 1), largo: 0.1, agarre: v3(0.034, 0.035, -0.12), radio: 0.045,
+      corredera: { eje: v3(0, 0, 1), largo: 0.1, agarre: v3(0.045, 0.04, -0.128), radio: 0.045,
                    dir: { rumbo: -90, altura: 0, cono: 120 }, resorte: 1.6, trabaVacia: true, reciproca: true },
-      pozo: { entrada: resta(v3(0, 0.01, -0.11), por(ejeInclinado(0.05), 0.035)), eje: ejeInclinado(0.05), largo: 0.035, q: qEnX(0.05) },
-      delantera: { punto: v3(0, 0.02, -0.34), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
+      pozo: pozoEnEmpunadura(v3(0, 0.0316, -0.1079), 0.162, 0.035),
+      delantera: { punto: v3(0, 0.02, -0.38), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
       construir(g, id) {
         modelo(g, "m14_cuerpo.glb");
         const varilla = crear("group", { id: "corredera_" + id }, g);
@@ -197,19 +200,19 @@
     // cara; no va y viene con los tiros. Cargador casi recto de 30. A dos
     // manos por el guardamanos.
     m4: {
-      nombre: "M4A1", automatica: true, rpm: 800, cierre: "cerrado",
+      nombre: "M4A1", modelo: 2, automatica: true, rpm: 800, cierre: "cerrado",
       sonido: "disparo_rifle", nombreCorredera: "manija de carga", rifle: true,
-      boca: v3(0, 0.055, -0.5),
+      boca: v3(0, 0.055, -0.5463),
       centro: v3(0, 0.03, -0.1),
-      mesa: { tabla: "rifles", dx: 0.15, dz: -0.08, alto: 0.022 },
+      mesa: { tabla: "rifles", dx: 0.15, dz: -0.08, alto: 0.04 },
       patada: { ang: 0.08, atras: 0.015, ms: 70 },
       dispersion: { base: 0, porTiro: 0.09, max: 1.2, vuelve: 5 },
       subida: { porTiro: 0.35, max: 3.5, vuelve: 6 },
-      contador: v3(0, 0.15, 0.03),
+      contador: v3(0, 0.13, 0.03),
       empunadura: { p: v3(0, 0.025, -0.018), r: v3(5, 0, 0) },
-      corredera: { eje: v3(0, 0, 1), largo: 0.07, agarre: v3(0, 0.078, 0.07), radio: 0.045,
+      corredera: { eje: v3(0, 0, 1), largo: 0.07, agarre: v3(0, 0.078, 0.022), radio: 0.045,
                    dir: { rumbo: 0, altura: -90, cono: 120 }, resorte: 1.5, trabaVacia: false },
-      pozo: { entrada: resta(v3(0, 0.0, -0.1), por(ejeInclinado(0.1), 0.045)), eje: ejeInclinado(0.1), largo: 0.045, q: qEnX(0.1) },
+      pozo: pozoEnEmpunadura(v3(0, 0.0494, -0.0979), 0.199, 0.045),
       delantera: { punto: v3(0, 0.045, -0.3), radio: 0.08, dir: { rumbo: 0, altura: 90, cono: 120 } },
       construir(g, id) {
         modelo(g, "m4_cuerpo.glb");
@@ -238,6 +241,9 @@
       id, tipo, el, contador, enMesa,
       mano: null,          // la que la tiene de la empuñadura
       empunadura: { p: { ...tipo.empunadura.p }, r: { ...tipo.empunadura.r } },
+      /** Dónde queda el mando de adelante respecto del guardamanos (sólo las
+       *  que se toman con dos manos): de fábrica, justo en él. */
+      manoDelantera: { p: v3(0, 0, 0) },
       /** Desde dónde se la toma de la mesa: una zona alrededor de su centro. */
       zonaToma: { forma: "esfera", radio: C.RADIO_TOMAR, largoZona: 0.2 },
       ajustando: false,    // en modo ajuste: no tira y sus piezas no se tocan
@@ -265,10 +271,12 @@
         if (tipo.cierre === "abierto") {
           a.montada = true;
           a.corredera.trabar();
-          S.sonar("corredera", 0.8);
           mostrarBalas(a);
         }
       },
+      // Mientras la mano la corre, roza; contra el tope, el golpe.
+      alMover(ds) { roce(a, ds); },
+      alTope() { S.sonar("tope", 0.9); },
       alVolver() {
         if (tipo.cierre !== "cerrado") return;
         S.sonar("corredera", 0.8);
@@ -319,6 +327,19 @@
     return a;
   });
   K.conectar(() => armas.map((a) => a.pozo));
+
+  /** El roce de la corredera mientras la mano la mueve: un clip corto que se
+   *  vuelve a tocar cada ~70 ms mientras se mueva, más fuerte cuanto más rápido. */
+  function roce(a, ds) {
+    const ahora = performance.now();
+    a.roceAcum = (a.roceAcum || 0) + Math.abs(ds);
+    const dt = ahora - (a.roceUlt || 0);
+    if (dt < 70 || a.roceAcum < 0.004) return;
+    const velocidad = a.roceAcum / (Math.min(dt, 250) / 1000);   // m/s
+    S.sonar("roce", Math.max(0.2, Math.min(0.8, velocidad / 0.6)));
+    a.roceAcum = 0;
+    a.roceUlt = ahora;
+  }
 
   /** Meter en la recámara la de arriba del cargador. Sin balas, la pistola
    *  queda con la corredera trabada atrás (si hay cargador: es su elevador el
@@ -383,22 +404,29 @@
   }
 
   /** La pose del arma en la mano `m` ({ pos, q, d }): el frente es el rayo y
-   *  el arriba, el del mando. Con la otra mano en el guardamanos, el frente va
-   *  de una mano a la otra. */
+   *  el arriba, el del mando, y encima la empuñadura ajustada (corrida y
+   *  girada respecto del mando).
+   *
+   *  Con la otra mano en el guardamanos, el arma gira sobre la de atrás hasta
+   *  que el punto de la mano de adelante (el del guardamanos más su ajuste,
+   *  "Mano de adelante") quede sobre la recta entre los dos mandos. La
+   *  empuñadura entra en la cuenta: si se aplicara después, correría y giraría
+   *  el arma y el guardamanos quedaría lejos de la mano. */
   function poseEnMano(a, m) {
     const arriba = m.q ? rotar(m.q, ARRIBA_MANDO) : ARRIBA;
+    const e = a.empunadura, g = Math.PI / 180;
+    const giro = qDeEuler(e.r.x * g, e.r.y * g, e.r.z * g);
     let base;
     if (a.delantera && a.posDelantera && largo(resta(a.posDelantera, m.pos)) > 0.05) {
-      const g = unitario(a.tipo.delantera.punto);
-      base = { p: m.pos, q: qMul(qMirando(unitario(resta(a.posDelantera, m.pos)), arriba), qConj(qMirando(g, ARRIBA))) };
+      // Del mando de atrás a la mano de adelante, en el marco del mando.
+      const adelante = suma(a.tipo.delantera.punto, a.manoDelantera.p);
+      const v = unitario(suma(e.p, rotar(giro, adelante)));
+      base = qMul(qMirando(unitario(resta(a.posDelantera, m.pos)), arriba), qConj(qMirando(v, ARRIBA)));
     } else {
       const d = m.d || (m.q ? rotar(m.q, v3(0, -1, 0)) : ADELANTE);
-      base = { p: m.pos, q: qMirando(d, arriba) };
+      base = qMirando(d, arriba);
     }
-    // La empuñadura ajustada: corrida y girada respecto del mando.
-    const e = a.empunadura, g = Math.PI / 180;
-    if (!e.p.x && !e.p.y && !e.p.z && !e.r.x && !e.r.y && !e.r.z) return base;
-    return { p: suma(base.p, rotar(base.q, e.p)), q: qMul(base.q, qDeEuler(e.r.x * g, e.r.y * g, e.r.z * g)) };
+    return { p: suma(m.pos, rotar(base, e.p)), q: qMul(base, giro) };
   }
 
   /** El arma como agarrable: se toma de la mesa por su centro, y al soltarla vuelve. */
@@ -420,7 +448,7 @@
         dibujar(a);
       },
       mover(mano, ctx) { a.ctxMano = ctx; a.pose = poseEnMano(a, ctx); dibujar(a); },
-      soltar() { aLaMesa(a); S.sonar("dejar", 0.7); },
+      soltar() { aLaMesa(a); S.sonar("tomar", 0.45); },
     };
   }
 

@@ -1,12 +1,12 @@
 // Los clips de la galería. Cada uno ocupa una voz y un espacio tiene 16: son 16,
-// así que los dos rifles comparten el suyo.
+// así que se comparten: los dos rifles tienen uno, dejar un arma o cerrar una
+// caja es "tomar" más suave, y el récord es "ronda" más fuerte.
 // RONDA NUEVA usa el de "vacio": un clic seco sirve de botón, y no hay voces de sobra.
 (globalThis.__modulos ||= []).push(["tiro/sonidos", ["comun/sintesis"], (S) => {
   const { crearSonido, armar, seno, caida, ruido, clic, notas } = S;
 
   return crearSonido({
     tomar: () => { const r = ruido(0.25, 11); return armar(0.09, (t, u) => (r() * 1.6 + seno(t, 170) * 0.6) * caida(u, 7)); },
-    dejar: () => { const r = ruido(0.35, 12); return armar(0.12, (t, u) => (r() * 1.2 + seno(t, 240) * 0.7) * caida(u, 9)); },
     // La pistola: el estampido (ruido abierto que muere enseguida), el golpe
     // grave del cuerpo y una cola apagada, que es lo que hace el campo.
     disparo: () => {
@@ -37,10 +37,22 @@
       const r = ruido(0.4, 23);
       return armar(0.14, (t, u) => r() * 1.4 * caida(u, 14) + clic(t, 0.035, 2100) * 1.3);
     },
-    // La corredera (o la manija, o el cerrojo): metal que roza y el golpe del tope.
+    // La corredera (o la manija, o el cerrojo) que vuelve adelante: el golpe
+    // seco del cierre, grave y con un rebote agudo.
     corredera: () => {
-      const r = ruido(0.85, 32);
-      return armar(0.2, (t) => (t < 0.09 ? r() * 0.8 * (t / 0.09) : 0) + clic(t, 0.09, 1600) * 1.4 + clic(t, 0.1, 3100) * 0.6);
+      const r = ruido(0.6, 32);
+      return armar(0.12, (t, u) => clic(t, 0, 1500) * 1.5 + clic(t, 0.008, 3000) * 0.6 + r() * 0.6 * caida(u, 25));
+    },
+    // Metal que roza mientras se la corre: ruido fino con entrada y salida
+    // suaves, para que al volver a tocarlo cada 70 ms suene continuo.
+    roce: () => {
+      const r = ruido(0.75, 35);
+      return armar(0.09, (t, u) => r() * 0.9 * Math.sin(Math.PI * u) + seno(t, 2400) * 0.05 * Math.sin(Math.PI * u));
+    },
+    // Contra el tope de atrás: un clac metálico corto.
+    tope: () => {
+      const r = ruido(0.9, 36);
+      return armar(0.08, (t, u) => clic(t, 0, 2100) * 1.4 + clic(t, 0.003, 4200) * 0.7 + r() * 0.5 * caida(u, 40));
     },
     // Vidrio: un golpe de ruido agudo y parciales altos que no son armónicos.
     vidrio: () => {
@@ -60,6 +72,5 @@
     // El tiro que da en la tierra.
     polvo: () => { const r = ruido(0.08, 26); return armar(0.13, (t, u) => r() * 3 * caida(u, 10)); },
     ronda: () => notas([523, 659, 784], 0.14),
-    record: () => notas([523, 659, 784, 1047, 1319], 0.12),
   }, "tiro");
 }]);

@@ -252,8 +252,25 @@
     <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_01.glb" x="-61.157" y="-0.4" z="12.721" ry="3.33" sx="1.628" sy="1.628" sz="1.628" touchable="false"/>
     <model src="https://njs58923.github.io/luna-demos/noche/pradera/forest_mountain_moss_02.glb" x="-32.079" y="-0.4" z="54.065" ry="2.339" sx="1.498" sy="1.498" sz="1.498" touchable="false"/>
 
-    <text x="0" y="4.75" z="-3.2" value="El taller de las manos" size="0.3" color="#FFFFFF"/>
-    <text x="0" y="4.42" z="-3.2" value="tres escenas para los mandos de VR" size="0.1" color="#C8CCD8"/>
+    <group x="2.7" z="1.9" ry="-1.122">
+      <box x="-0.601" y="0.795" z="-0.1" sx="0.06" sy="1.59" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="-0.601" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <box x="0.601" y="0.795" z="-0.1" sx="0.06" sy="1.59" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="0.601" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <group y="1.294" rx="-0.12">
+        <box z="-0.015" sx="1.461" sy="1.047" sz="0.03" color="#5A3E2A" border-radius="0.04" touchable="false"/>
+        <box sx="1.401" sy="0.987" sz="0.03" color="#1C1C26" border-radius="0.035" touchable="false"/>
+        <box y="0.364" z="0.016" sx="1.401" sy="0.26" sz="0.004" color="#22303E" border-radius="0.035" touchable="false"/>
+        <text y="0.364" z="0.021" value="EL TALLER DE LAS MANOS" size="0.1" color="#FFFFFF"/>
+        <text y="0.162" z="0.021" value="tres escenas para los mandos de VR" size="0.055" color="#C8CCD8"/>
+        <text y="0.024" z="0.021" value="El manipulador · mover, girar y escalar" size="0.06" color="#40E0D0"/>
+        <text y="-0.078" z="0.021" value="El arco · dianas y globos, doce flechas" size="0.06" color="#FF9F0A"/>
+        <text y="-0.18" z="0.021" value="El tiro · seis armas que se recargan a mano" size="0.06" color="#30D158"/>
+        <text y="-0.312" z="0.021" value="a tus espaldas, el puente: todo el taller" size="0.048" color="#C8CCD8"/>
+        <text y="-0.388" z="0.021" value="armas del tiro: modelos de TastyTony (CC-BY 4.0), ¡gracias!" size="0.042" color="#FFD60A"/>
+
+      </group>
+    </group>
 
     <!-- Las escenas, lado a lado. Cada puerta con una muestra de lo que hay
          detrás: el robot de verdad —el mismo documento, vivo— y una diana. -->
@@ -264,7 +281,7 @@
       <include id="a_arco" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/arco.hsml","id":"a_arco","titulo":"El arco","sub":"tirar al blanco","roca":"#5E4331","color":"#5A2A1E"}'/>
     </group>
     <group x="4" y="0" z="-2.6" ry="-0.604">
-      <include id="a_tiro" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/tiro.hsml","id":"a_tiro","titulo":"El tiro","sub":"botellas, latas y placas","roca":"#5E4331","color":"#3A4A2A"}'/>
+      <include id="a_tiro" src="https://njs58923.github.io/luna-demos/noche/puerta.hsml" resources="navigate_world" props='{"destino":"https://njs58923.github.io/luna-demos/manos/tiro.hsml","id":"a_tiro","titulo":"El tiro","sub":"seis armas y sus blancos","roca":"#5E4331","color":"#3A4A2A"}'/>
     </group>
 
     <cylinder x="-4.9" y="0.35" z="0.4" sx="0.44" sy="0.7" sz="0.44" color="#1C1C26" touchable="false"/>

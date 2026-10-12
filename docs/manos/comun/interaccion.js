@@ -156,6 +156,7 @@
   // ── guia ──────────────────────────────────────────────────────────────────
   /** o = {
    *    marco()            la pose de mundo del padre
+   *    nodo               (opcional) padre visual; el ocupante hereda su pose
    *    entrada, eje       dónde está el punto de referencia del objeto al entrar
    *                       (s = 0) y hacia dónde se empuja (locales)
    *    largo              el recorrido hasta asentarse
@@ -168,7 +169,8 @@
    *  } */
   function guia(o) {
     const g = { ocupante: null, o };
-    g.pose = (s) => ({ p: aMundo(o.marco(), suma(o.entrada, por(o.eje, s))), q: qMul(o.marco().q, o.q) });
+    g.poseLocal = (s) => ({ p: suma(o.entrada, por(o.eje, s)), q: o.q });
+    g.pose = (s) => { const local = g.poseLocal(s), marco = o.marco(); return { p: aMundo(marco, local.p), q: qMul(marco.q, local.q) }; };
     g.ejeMundo = () => rotar(o.marco().q, o.eje);
     g.proyectar = (pw) => punto(resta(aLocal(o.marco(), pw), o.entrada), o.eje);
     g.disponible = () => !o.disponible || o.disponible();
@@ -188,8 +190,8 @@
 
   // ── suelto ────────────────────────────────────────────────────────────────
   /** o = {
-   *    nodo               su nodo, hijo del escenario (no se reparenta nunca:
-   *                       asentado, sigue a su guía cuadro a cuadro)
+   *    nodo               su nodo; en una guia visual es hijo de su padre
+   *    padre              (opcional) padre original al quedar libre
    *    agarre, radio      por dónde se toma (local) y a qué distancia
    *    grosor             medio espesor sobre su X local: acostado, apoya así
    *    apoyo(x, z)        la altura de lo que hay abajo
@@ -202,36 +204,60 @@
   function suelto(o) {
     const u = { estado: "apoyado", p: v3(0, 0, 0), q: { x: 0, y: 0, z: 0, w: 1 }, v: v3(0, 0, 0), mano: null, rel: null, guia: null, s: 0, desfase: 0, o };
     /** Dónde lo pone la mano: la pose fija, o la relativa de cuando se tomó. */
+    const enGuia = () => !!u.guia && (u.estado === "guia" || u.estado === "puesto" || u.estado === "sale");
+    const padreOriginal = o.padre || o.nodo.parent;
+    let padreGuia = null;
+    function usarPadreGuia(padre) {
+      if (padreGuia === padre) return;
+      const destino = padre || padreOriginal;
+      if (destino) destino.appendChild(o.nodo);
+      padreGuia = padre; u.poseLocalAnterior = null;
+    }
     const enLaMano = (ctx) => (o.enMano ? o.enMano(ctx) : { p: suma(ctx.pos, rotar(ctx.q, u.rel.p)), q: qMul(ctx.q, u.rel.q) });
     function desanclar() {
       if (!u.ancla) return;
-      o.nodo.setAttribute("anchor", ""); u.ancla = null; u.offsetAncla = null;
+      o.nodo.setAttribute("anchor", ""); u.ancla = null; u.poseLocalAnterior = null;
+    }
+    function ponerLocal(pose) {
+      const previous = u.poseLocalAnterior;
+      if (!previous || ["x", "y", "z"].some(c => Math.abs(previous.p[c] - pose.p[c]) > 1e-7) ||
+          ["x", "y", "z", "w"].some(c => Math.abs(previous.q[c] - pose.q[c]) > 1e-7)) {
+        ponerNodo(o.nodo, pose);
+        u.poseLocalAnterior = { p: { ...pose.p }, q: { ...pose.q } };
+      }
     }
     u.poner = (pose) => {
       u.p = pose.p; u.q = pose.q;
       const ctx = u.ctxMano;
+      if (enGuia() && u.guia.o.nodo) {
+        desanclar(); usarPadreGuia(u.guia.o.nodo);
+        ponerLocal(u.guia.poseLocal(Math.max(0, u.s)));
+        return;
+      }
+      usarPadreGuia(null);
       if (u.estado === "mano" && u.mano && ctx && ctx.anchor) {
         if (u.ancla !== ctx.anchor) { o.nodo.setAttribute("anchor", ctx.anchor); u.ancla = ctx.anchor; }
         const inversa = qConj(ctx.q);
         const offset = { p: rotar(inversa, resta(pose.p, ctx.pos)), q: qMul(inversa, pose.q) };
-        const previous = u.offsetAncla;
-        if (!previous || ["x", "y", "z"].some(c => Math.abs(previous.p[c] - offset.p[c]) > 1e-7) ||
-            ["x", "y", "z", "w"].some(c => Math.abs(previous.q[c] - offset.q[c]) > 1e-7)) {
-          ponerNodo(o.nodo, offset); u.offsetAncla = offset;
-        }
+        ponerLocal(offset);
       } else { desanclar(); ponerNodo(o.nodo, pose); }
     };
 
     u.distancia = (pos, llegada) => {
       if (u.mano) return null;
       if ((u.estado === "puesto" || u.estado === "guia") && !u.guia.disponible()) return null;
-      return enZona(o, u, o.agarre, pos, llegada, v3(0, 1, 0));
+      const marco = enGuia() ? u.guia.pose(Math.max(0, u.s)) : u;
+      return enZona(o, marco, o.agarre, pos, llegada, v3(0, 1, 0));
     };
     u.tomar = (mano, ctx) => {
+      if (enGuia()) u.poner(u.guia.pose(Math.max(0, u.s)));
       u.mano = mano; u.ctxMano = ctx;
       // Como está: el giro y el lugar relativos a la mano quedan fijos.
       u.rel = { p: rotar(qConj(ctx.q), resta(u.p, ctx.pos)), q: qMul(qConj(ctx.q), u.q) };
-      if (u.estado === "puesto") { u.estado = "guia"; u.s = u.guia.o.largo; }
+      if (enGuia()) {
+        if (u.estado === "puesto") u.s = u.guia.o.largo;
+        u.estado = "guia";
+      }
       else if (u.estado !== "guia") u.estado = "mano";
       // Tomado dentro de una guía: se sigue desde donde está, sin salto, aunque
       // la pose fija en la mano no coincida con la de la guía.
@@ -280,9 +306,9 @@
     };
     u.soltar = (mano, ctx) => {
       u.mano = null;
-      desanclar(); ponerNodo(o.nodo, { p: u.p, q: u.q });
       if (u.estado === "mano") { u.estado = "cae"; u.v = ctx.vel || v3(0, 0, 0); }
       else if (u.estado === "guia") u.estado = "sale";   // a medio meter: se sale solo
+      u.poner(u.guia ? u.guia.pose(Math.max(0, u.s)) : { p: u.p, q: u.q });
     };
     /** Apoyado sobre su costado: el X local hacia arriba, el Y acostado. */
     function acostar() {
@@ -299,11 +325,12 @@
       } else if (u.estado === "sale") {
         u.s -= 1.2 * dt;
         if (u.s < 0) {
-          const g = u.guia;
+          const g = u.guia, salida = g.pose(0);
           g.ocupante = null;
           u.guia = null;
           u.estado = "cae";
           u.v = por(g.ejeMundo(), -1.2);
+          u.poner(salida);
           if (g.o.alSalir) g.o.alSalir(u);
         } else u.poner(u.guia.pose(u.s));
       } else if (u.estado === "cae" && dt > 0) {

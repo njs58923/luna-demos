@@ -288,7 +288,7 @@
     });
 
     a.pozo = I.guia({
-      marco, ...tipo.pozo, holgura: 0.04, tolerancia: 30, disponible: operable,
+      marco, nodo: el, ...tipo.pozo, holgura: 0.04, tolerancia: 30, disponible: operable,
       acepta: (u) => u.tipo === id,
       alAsentar(u) {
         a.cargador = u;

@@ -106,7 +106,7 @@
       "material-unlit": "true", visible: "false", touchable: "false",
     }, el);
     const u = I.suelto({
-      nodo: el, agarre: m.agarre, radio: m.radio, grosor: m.grosor, apoyo: E.apoyo, guias: () => guias(), G,
+      nodo: el, padre: escenario, agarre: m.agarre, radio: m.radio, grosor: m.grosor, apoyo: E.apoyo, guias: () => guias(), G,
       enMano: (ctx) => poseEnMano(tipo, ctx),
     });
     u.id = "cargador_" + tipo + "_" + cuenta;
@@ -129,6 +129,7 @@
     u.guia = guia;
     u.s = guia.o.largo;
     guia.ocupante = u;
+    u.poner(guia.pose(u.s));
     return u;
   }
 

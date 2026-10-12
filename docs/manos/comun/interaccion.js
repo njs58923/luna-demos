@@ -203,7 +203,24 @@
     const u = { estado: "apoyado", p: v3(0, 0, 0), q: { x: 0, y: 0, z: 0, w: 1 }, v: v3(0, 0, 0), mano: null, rel: null, guia: null, s: 0, desfase: 0, o };
     /** Dónde lo pone la mano: la pose fija, o la relativa de cuando se tomó. */
     const enLaMano = (ctx) => (o.enMano ? o.enMano(ctx) : { p: suma(ctx.pos, rotar(ctx.q, u.rel.p)), q: qMul(ctx.q, u.rel.q) });
-    u.poner = (pose) => { u.p = pose.p; u.q = pose.q; ponerNodo(o.nodo, pose); };
+    function desanclar() {
+      if (!u.ancla) return;
+      o.nodo.setAttribute("anchor", ""); u.ancla = null; u.offsetAncla = null;
+    }
+    u.poner = (pose) => {
+      u.p = pose.p; u.q = pose.q;
+      const ctx = u.ctxMano;
+      if (u.estado === "mano" && u.mano && ctx && ctx.anchor) {
+        if (u.ancla !== ctx.anchor) { o.nodo.setAttribute("anchor", ctx.anchor); u.ancla = ctx.anchor; }
+        const inversa = qConj(ctx.q);
+        const offset = { p: rotar(inversa, resta(pose.p, ctx.pos)), q: qMul(inversa, pose.q) };
+        const previous = u.offsetAncla;
+        if (!previous || ["x", "y", "z"].some(c => Math.abs(previous.p[c] - offset.p[c]) > 1e-7) ||
+            ["x", "y", "z", "w"].some(c => Math.abs(previous.q[c] - offset.q[c]) > 1e-7)) {
+          ponerNodo(o.nodo, offset); u.offsetAncla = offset;
+        }
+      } else { desanclar(); ponerNodo(o.nodo, pose); }
+    };
 
     u.distancia = (pos, llegada) => {
       if (u.mano) return null;
@@ -211,7 +228,7 @@
       return enZona(o, u, o.agarre, pos, llegada, v3(0, 1, 0));
     };
     u.tomar = (mano, ctx) => {
-      u.mano = mano;
+      u.mano = mano; u.ctxMano = ctx;
       // Como está: el giro y el lugar relativos a la mano quedan fijos.
       u.rel = { p: rotar(qConj(ctx.q), resta(u.p, ctx.pos)), q: qMul(qConj(ctx.q), u.q) };
       if (u.estado === "puesto") { u.estado = "guia"; u.s = u.guia.o.largo; }
@@ -221,6 +238,7 @@
       u.desfase = u.estado === "guia" ? u.s - u.guia.proyectar(enLaMano(ctx).p) : 0;
     };
     u.mover = (mano, ctx) => {
+      u.ctxMano = ctx;
       const deseo = enLaMano(ctx);
       if (u.estado === "mano") {
         for (const g of o.guias()) {
@@ -262,6 +280,7 @@
     };
     u.soltar = (mano, ctx) => {
       u.mano = null;
+      desanclar(); ponerNodo(o.nodo, { p: u.p, q: u.q });
       if (u.estado === "mano") { u.estado = "cae"; u.v = ctx.vel || v3(0, 0, 0); }
       else if (u.estado === "guia") u.estado = "sale";   // a medio meter: se sale solo
     };

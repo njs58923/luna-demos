@@ -19,10 +19,10 @@
 (globalThis.__modulos ||= []).push(["tiro/manos", [
   "comun/algebra", "tiro/config", "tiro/armas", "tiro/cargadores", "tiro/cajas", "tiro/ajustes", "tiro/disparo",
 ], (A, C, W, K, X, Z, D) => {
-  const { v3, suma, resta, por, punto, unitario, qNormal, qMirando, ADELANTE } = A;
+  const { v3, suma, resta, por, punto, unitario, qNormal, qMirando, rotar, ADELANTE } = A;
   const { APRETAR, AFLOJAR, MANO_VIEJA_MS, REPOSO, APUNTE_MS, PROMEDIO_MS, COS_TEMBLOR } = C;
 
-  const nuevaMano = () => ({ pos: null, q: null, d: null, grip: false, gatillo: false, boton: false, t: 0, historia: [], reposo: 0, tomado: null });
+  const nuevaMano = () => ({ pos: null, q: null, d: null, grip: false, gatillo: false, boton: false, t: 0, historia: [], reposo: 0, tomado: null, nativa: false, disponible: false, inputNativo: false });
   const manos = { left: nuevaMano(), right: nuevaMano() };
   const agarrables = () => [...Z.agarrables(), ...W.agarrables(), ...K.agarrables(), ...X.agarrables()];
 
@@ -54,7 +54,7 @@
       const dt = (m.t - h[i].t) / 1000;
       if (dt >= 0.06 || i === 0) { if (dt > 0) vel = por(resta(m.pos, h[i].pos), 1 / dt); break; }
     }
-    return { pos: m.pos, q: m.q || qMirando(m.d || ADELANTE), d: m.d, vel };
+    return { pos: m.pos, q: m.q || qMirando(m.d || ADELANTE), d: m.d, vel, anchor: m.nativa ? m.anchor : null };
   }
 
   /** Hacia dónde venía moviéndose la mano en los últimos ~150 ms, o null si
@@ -93,13 +93,20 @@
     const mano = evt.hand === "left" ? "left" : "right";
     const m = manos[mano];
     const ahora = performance.now();
-    m.pos = v3(evt.px, evt.py, evt.pz);
-    m.q = evt.qw != null ? qNormal({ x: evt.qx, y: evt.qy, z: evt.qz, w: evt.qw }) : null;
-    m.d = evt.dx != null ? unitario(v3(evt.dx, evt.dy, evt.dz)) : null;
-    m.t = ahora;
-    m.historia.push({ t: ahora, pos: m.pos, q: m.q, d: m.d });
-    while (m.historia.length && ahora - m.historia[0].t > APUNTE_MS + PROMEDIO_MS) m.historia.shift();
+    if (!m.nativa) actualizarPose(m, v3(evt.px, evt.py, evt.pz),
+      evt.qw != null ? qNormal({ x: evt.qx, y: evt.qy, z: evt.qz, w: evt.qw }) : null,
+      evt.dx != null ? unitario(v3(evt.dx, evt.dy, evt.dz)) : null, ahora);
+    if (m.nativa && (m.inputNativo || !m.disponible)) return;
+    controles(mano, evt, ahora);
+  }
 
+  function actualizarPose(m, pos, q, d, ahora) {
+    m.pos = pos; m.q = q; m.d = d; m.t = ahora;
+    m.historia.push({ t: ahora, pos, q, d });
+    while (m.historia.length && ahora - m.historia[0].t > APUNTE_MS + PROMEDIO_MS) m.historia.shift();
+  }
+  function controles(mano, evt, ahora) {
+    const m = manos[mano];
     const g = evt.grip || 0, gt = evt.trigger || 0;
     if (gt < REPOSO) m.reposo = ahora;
     const antesGrip = m.grip, antesGatillo = m.gatillo, antesBoton = m.boton;
@@ -132,6 +139,36 @@
     }
   }
 
+  function iniciarAnclas() {
+    const anchors = globalThis.dimension && dimension.anchors;
+    if (!anchors || typeof anchors.listen !== "function") return;
+    try {
+      return anchors.listen(["left-grip", "right-grip"], frame => {
+        const lados = ["left", "right"];
+        // Primero las dos poses; luego mecanismos y botones. Un rifle nunca
+        // combina la mano de este frame con la otra del frame anterior.
+        for (let i = 0; i < lados.length; i++) {
+          const m = manos[lados[i]], sample = frame.samples[i];
+          m.nativa = true; m.anchor = lados[i] + "-grip";
+          m.disponible = sample.available; m.inputNativo = !!sample.input;
+          if (frame.discontinuous || !sample.available) { m.historia.length = 0; m.reposo = 0; }
+          if (!sample.available) continue;
+          const q = qNormal(sample.rotation);
+          actualizarPose(m, sample.position, q, unitario(rotar(q, v3(0, -1, 0))), frame.timestamp);
+          if (sample.input && sample.input.trigger < REPOSO) m.reposo = frame.timestamp;
+        }
+        W.actualizarMandos(manos, contexto);
+        for (let i = 0; i < lados.length; i++) {
+          const m = manos[lados[i]], sample = frame.samples[i];
+          if (!sample.available) continue;
+          if (sample.input) controles(lados[i], sample.input, frame.timestamp);
+          else if (m.tomado && m.tomado.mover(lados[i], contexto(m)) === "soltar") m.tomado = null;
+        }
+      }, { priority: "input", delivery: "history" });
+    } catch (e) { console.error("Anclajes de tiro:", e); }
+  }
+  const listener = iniciarAnclas();
+
   /** La ráfaga de las automáticas. */
   function animar(t) {
     for (const mano of ["left", "right"]) {
@@ -139,7 +176,7 @@
       const a = m.tomado && m.tomado.arma;
       if (!a || !a.tipo.automatica || !m.gatillo || a.ajustando) continue;
       // Sin poses, el gatillo que se vio apretado puede no estarlo: no se tira.
-      if (t - m.t >= MANO_VIEJA_MS) continue;
+      if ((m.nativa && !m.disponible) || t - m.t >= MANO_VIEJA_MS) continue;
       // Si el cuadro llegó tarde, no se recuperan los tiros perdidos de golpe.
       if (t - a.proximo > 200) a.proximo = t;
       while (t >= a.proximo) {
@@ -151,5 +188,5 @@
     }
   }
 
-  return { manos, onPose, animar };
+  return { manos, listener, onPose, animar };
 }]);

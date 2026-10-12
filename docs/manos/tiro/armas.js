@@ -464,7 +464,40 @@
     const sube = (a.tipo.patada.ang * k) + grados(a.subida);
     const qv = sube ? qMul(q, qEnX(sube)) : q;
     a.vista = { p: suma(p, rotar(q, v3(0, 0, a.tipo.patada.atras * k))), q: qv };
-    poner(a.el, a.vista.p, a.vista.q);
+    const ctx = a.ctxMano, anchor = a.mano && ctx && ctx.anchor;
+    if (anchor) {
+      if (a.ancla !== anchor) { a.el.setAttribute("anchor", anchor); a.ancla = anchor; }
+      let offset;
+      if (!a.delantera) {
+        // Grip: rayo -Y, arriba -Z. El modelo usa frente -Z, arriba +Y.
+        // Esta base fija evita convertir una pose vieja de mundo en offset.
+        const base = qEnX(-Math.PI / 2), e = a.empunadura;
+        const giro = qDeEuler(grados(e.r.x), grados(e.r.y), grados(e.r.z));
+        const qLocal = qMul(base, giro);
+        offset = { p: suma(rotar(base, e.p), rotar(qLocal, v3(0, 0, a.tipo.patada.atras * k))),
+          q: sube ? qMul(qLocal, qEnX(sube)) : qLocal };
+      } else {
+        // El mando de atras queda nativo. La direccion a dos manos es un
+        // offset calculado con las dos poses coherentes del listen.
+        const inversa = qConj(ctx.q);
+        offset = { p: rotar(inversa, resta(a.vista.p, ctx.pos)), q: qMul(inversa, a.vista.q) };
+      }
+      const previous = a.offsetAncla;
+      if (!previous || ["x", "y", "z"].some(c => Math.abs(previous.p[c] - offset.p[c]) > 1e-7) ||
+          ["x", "y", "z", "w"].some(c => Math.abs(previous.q[c] - offset.q[c]) > 1e-7)) {
+        poner(a.el, offset.p, offset.q); a.offsetAncla = offset;
+      }
+    } else {
+      if (a.ancla) { a.el.setAttribute("anchor", ""); a.ancla = null; a.offsetAncla = null; }
+      poner(a.el, a.vista.p, a.vista.q);
+    }
+  }
+  function actualizarMandos(manos, contexto) {
+    for (const a of armas) {
+      if (a.mano && manos[a.mano].disponible) a.ctxMano = contexto(manos[a.mano]);
+      if (a.delantera && manos[a.delantera].disponible) a.posDelantera = manos[a.delantera].pos;
+    }
+    for (const a of armas) if (a.mano && manos[a.mano].disponible) reposar(a);
   }
   function aLaMesa(a) {
     a.mano = null;
@@ -520,7 +553,7 @@
 
   return {
     TIPOS, armas, balas, puedeTirar, gatilloEnVacio, soltarCargador, gastar, poseEnMano, direccion, intervalo, animar,
-    reponer, centroEnMesa,
+    reponer, centroEnMesa, actualizarMandos,
     /** Todo lo que una mano puede tomar de las armas. */
     agarrables: () => armas.flatMap((a) => [a.agarrable, a.corredera, ...(a.agarreDelantero ? [a.agarreDelantero] : [])]),
   };

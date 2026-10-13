@@ -461,41 +461,33 @@
   }
   const nativeAnchors = globalThis.dimension && dimension.anchors;
   const programNamespace = "tiro-" + Math.random().toString(36).slice(2);
-  function programaDosManos(a) {
+  function programaArma(a) {
     const e = a.empunadura, giro = qDeEuler(grados(e.r.x), grados(e.r.y), grados(e.r.z));
-    const adelante = suma(a.tipo.delantera.punto, a.manoDelantera.p);
-    const eje = suma(e.p, rotar(giro, adelante));
+    const loaded = !!(a.delantera && a.tipo.delantera);
+    const eje = loaded ? suma(e.p, rotar(giro, suma(a.tipo.delantera.punto, a.manoDelantera.p))) : null;
     const xyz = v => [v.x, v.y, v.z], xyzw = q => [q.x, q.y, q.z, q.w];
     return {
       type: "program", version: 1,
-      inputs: { principal: a.mano + "-grip", secundario: { anchor: a.delantera + "-grip", holdLast: true } },
-      constants: { controllerUp: xyz(ARRIBA_MANDO), localUp: xyz(ARRIBA), forward: xyz(eje),
-        mountPosition: xyz(e.p), mountRotation: xyzw(giro), gripBasis: xyzw(qEnX(-Math.PI / 2)), minimumDistance: 0.05 },
+      inputs: { principal: a.mano + "-grip", ...(loaded ? { secundario: { anchor: a.delantera + "-grip", holdLast: true } } : {}) },
+      constants: { mountPosition: xyz(e.p), mountRotation: xyzw(giro), gripBasis: xyzw(qEnX(-Math.PI / 2)),
+        ...(loaded ? { controllerUp: xyz(ARRIBA_MANDO), localUp: xyz(ARRIBA), forward: xyz(eje), minimumDistance: 0.05 } : {}) },
       code: `
         input pose principal
-        input pose secundario
-        const vec3 controllerUp
-        const vec3 localUp
-        const vec3 forward
+        ${loaded ? "input pose secundario" : ""}
         const vec3 mountPosition
         const quat mountRotation
         const quat gripBasis
-        const float minimumDistance
-        temp vec3 direction
-        temp vec3 worldUp
+        ${loaded ? "const vec3 controllerUp\nconst vec3 localUp\nconst vec3 forward\nconst float minimumDistance\ntemp vec3 direction\ntemp vec3 worldUp\ntemp quat singleHand\ntemp float separation\ntemp bool twoHands" : ""}
         temp vec3 offset
         temp quat base
-        temp quat singleHand
-        temp float separation
-        temp bool twoHands
         output pose result = principal
-        subtract direction, secundario.position, principal.position
-        rotate worldUp, principal.rotation, controllerUp
-        aimRotation base, direction, worldUp, forward, localUp
-        multiplyQuat singleHand, principal.rotation, gripBasis
-        length separation, direction
-        greater twoHands, separation, minimumDistance
-        select base, twoHands, base, singleHand
+        ${loaded ? `subtract direction, secundario.position, principal.position
+          rotate worldUp, principal.rotation, controllerUp
+          aimRotation base, direction, worldUp, forward, localUp
+          multiplyQuat singleHand, principal.rotation, gripBasis
+          length separation, direction
+          greater twoHands, separation, minimumDistance
+          select base, twoHands, base, singleHand` : "multiplyQuat base, principal.rotation, gripBasis"}
         rotate offset, base, mountPosition
         add result.position, principal.position, offset
         multiplyQuat result.rotation, base, mountRotation
@@ -508,11 +500,11 @@
     if (a.programHandle) { a.programHandle.dispose().catch(() => {}); a.programHandle = null; a.programSignature = null; }
   }
   function usarPrograma(a, anchor) {
-    if (!nativeAnchors || !nativeAnchors.supportsPrograms || !anchor || !a.delantera) { desactivarPrograma(a); return false; }
-    const signature = JSON.stringify([a.mano, a.delantera, a.empunadura, a.tipo.delantera.punto, a.manoDelantera.p]);
+    if (!nativeAnchors || !nativeAnchors.supportsPrograms || !anchor || !a.mano) { desactivarPrograma(a); return false; }
+    const signature = JSON.stringify([a.mano, a.delantera, a.empunadura, a.tipo.delantera ? a.tipo.delantera.punto : null, a.manoDelantera.p]);
     a.programWanted = signature;
     if (!a.programPending && signature !== a.programSignature && signature !== a.programFailed) {
-      const definition = programaDosManos(a), key = a.programKey || (a.programKey = programNamespace + "-" + a.id);
+      const definition = programaArma(a), key = a.programKey || (a.programKey = programNamespace + "-" + a.id);
       a.programPending = true;
       nativeAnchors.create(key, definition).then(handle => {
         a.programPending = false;
@@ -636,7 +628,7 @@
 
   return {
     TIPOS, armas, balas, puedeTirar, gatilloEnVacio, soltarCargador, gastar, poseEnMano, direccion, intervalo, animar,
-    reponer, centroEnMesa, actualizarMandos, programaDosManos,
+    reponer, centroEnMesa, actualizarMandos, programaArma, programaDosManos: programaArma,
     /** Todo lo que una mano puede tomar de las armas. */
     agarrables: () => armas.flatMap((a) => [a.agarrable, a.corredera, ...(a.agarreDelantero ? [a.agarreDelantero] : [])]),
   };

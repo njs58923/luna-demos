@@ -394,6 +394,7 @@ function tomarFlecha() {
   return f;
 }
 function soltarFlecha(f) {
+  desanclarFlecha(f);
   f.estado = "libre";
   f.ancla = null;
   f.el.setAttribute("visible", "false");
@@ -549,6 +550,92 @@ let carga = null;   // { mano, flecha }
 let qAgarre = IDENTIDAD;
 const Q_SOPORTE = qMirando(v3(0, 0, -1));
 
+// Los programas publican poses completas; la union no depende del tick JS.
+const anchorsArco = globalThis.dimension && dimension.anchors;
+const namespaceArco = "arco-" + Math.random().toString(36).slice(2);
+const programaBow = { key: namespaceArco + "-bow", handle: null, signature: null, pending: false, wanted: null };
+const programaArrow = { key: namespaceArco + "-arrow", handle: null, signature: null, pending: false, wanted: null };
+function actualizarPrograma(slot, signature, definition, redraw) {
+  slot.wanted = signature;
+  if (!slot.pending && signature !== slot.signature && signature !== slot.failed) {
+    slot.pending = true;
+    anchorsArco.create(slot.key, definition()).then(handle => {
+      slot.pending = false;
+      if (!slot.wanted) { handle.dispose().catch(() => {}); return; }
+      slot.handle = handle; slot.signature = signature; redraw();
+    }).catch(error => { slot.pending = false; slot.failed = signature; console.error("Programa del arco:", error); });
+  }
+  return !!slot.handle;
+}
+function retirarPrograma(slot) {
+  slot.wanted = null;
+  if (slot.handle) { slot.handle.dispose().catch(() => {}); slot.handle = null; slot.signature = null; }
+}
+function programaPoseArco() {
+  const loaded = !!carga;
+  return { type: "program", version: 1,
+    inputs: { principal: manoArco + "-grip", ...(loaded ? { tensora: { anchor: carga.mano + "-grip", holdLast: true } } : {}) },
+    constants: { agarre: [qAgarre.x, qAgarre.y, qAgarre.z, qAgarre.w],
+      ...(loaded ? { up: [0,1,0], forward: [0,0,-1], epsilon: 0.001 } : {}) },
+    code: `
+      input pose principal
+      ${loaded ? "input pose tensora" : ""}
+      const quat agarre
+      ${loaded ? "const vec3 up\nconst vec3 forward\nconst float epsilon\ntemp vec3 direction\ntemp vec3 worldUp\ntemp float separation\ntemp bool aiming\ntemp quat aimed" : ""}
+      temp quat rigid
+      output pose result = principal
+      multiplyQuat rigid, principal.rotation, agarre
+      ${loaded ? `subtract direction, principal.position, tensora.position
+        rotate worldUp, rigid, up
+        aimRotation aimed, direction, worldUp, forward, up
+        length separation, direction
+        greater aiming, separation, epsilon
+        select result.rotation, aiming, aimed, rigid` : "copy result.rotation, rigid"}
+    `,
+  };
+}
+function programaFlechaCargada() {
+  return { type: "program", version: 1,
+    inputs: { bow: programaBow.key, principal: manoArco + "-grip", tensora: { anchor: carga.mano + "-grip", holdLast: true } },
+    constants: { rest: REPOSO, minimum: 0, maximum: TENSION_MAX, z: [0,0,1] },
+    code: `
+      input pose bow
+      input pose principal
+      input pose tensora
+      const float rest
+      const float minimum
+      const float maximum
+      const vec3 z
+      temp vec3 delta
+      temp vec3 offset
+      temp float draw
+      output pose result = bow
+      subtract delta, principal.position, tensora.position
+      length draw, delta
+      subtract draw, draw, rest
+      clamp draw, draw, minimum, maximum
+      add draw, draw, rest
+      multiply offset, z, draw
+      transformPoint result.position, bow, offset
+    `,
+  };
+}
+function usarProgramaArco() {
+  if (!anchorsArco || !anchorsArco.supportsPrograms || !manoArco || !manos[manoArco].nativo) {
+    retirarPrograma(programaBow); retirarPrograma(programaArrow);
+    if (arco.programActive) { arco.setAttribute("anchor", ""); arco.programActive = false; }
+    return false;
+  }
+  const signature = JSON.stringify([manoArco, carga && carga.mano, qAgarre]);
+  if (!actualizarPrograma(programaBow, signature, programaPoseArco, dibujarArco)) return false;
+  if (!arco.programActive) { arco.setAttribute("anchor", programaBow.key); arco.programActive = true; arco.position = v3(0,0,0); arco.rotation = v3(0,0,0); }
+  return true;
+}
+function desanclarFlecha(f) {
+  if (!f.programActive) return;
+  f.el.setAttribute("anchor", ""); f.programActive = false;
+}
+
 /** La pose del arco: en el soporte, o en la mano. */
 function poseArco() {
   if (!manoArco) return { p: v3(SOPORTE.x, SOPORTE.y, SOPORTE.z), q: Q_SOPORTE, frente: v3(0, 0, -1) };
@@ -582,7 +669,8 @@ function tension() {
 
 function dibujarArco() {
   const { p, q, frente } = poseArco();
-  poner(arco, p, q);
+  const native = usarProgramaArco();
+  if (!native) poner(arco, p, q);
   const t = tension();
   dibujarCuerda(Math.round(t * 200) / 200);
   if (carga) {
@@ -590,7 +678,12 @@ function dibujarArco() {
     const culatin = suma(p, rotar(q, v3(0, 0, REPOSO + t)));
     // La flecha rola con el arco: sus plumas no se quedan derechas si el
     // arco está ladeado.
-    poner(carga.flecha.el, culatin, qMirando(frente, rotar(q, ARRIBA)));
+    const f = carga.flecha;
+    if (native && actualizarPrograma(programaArrow, JSON.stringify([manoArco, carga.mano, f.orden]), programaFlechaCargada, dibujarArco)) {
+      if (!f.programActive) { f.el.setAttribute("anchor", programaArrow.key); f.programActive = true; f.el.position = v3(0,0,0); f.el.rotation = v3(0,0,0); }
+    } else poner(f.el, culatin, qMirando(frente, rotar(q, ARRIBA)));
+  } else {
+    retirarPrograma(programaArrow);
   }
 }
 
@@ -644,6 +737,7 @@ function disparar() {
   if (juego.terminada) nuevaRonda();
   sonar("disparo", 0.45 + 0.55 * (t / TENSION_MAX));
   const velocidad = V_MIN + (V_MAX - V_MIN) * (t / TENSION_MAX);
+  desanclarFlecha(f);
   f.estado = "vuela";
   f.p = suma(p, rotar(q, v3(0, 0, REPOSO + t)));
   f.v = por(frente, velocidad);
@@ -657,10 +751,17 @@ function disparar() {
 function onPose(evt) {
   const mano = evt.hand === "left" ? "left" : "right";
   const m = manos[mano];
-  m.pos = v3(evt.px, evt.py, evt.pz);
-  m.q = evt.qw != null ? qNormal({ x: evt.qx, y: evt.qy, z: evt.qz, w: evt.qw }) : null;
-  m.t = performance.now();
-
+  if (m.nativo) {
+    if (!m.available || m.inputNativo) return;
+  } else {
+    m.pos = v3(evt.px, evt.py, evt.pz);
+    m.q = evt.qw != null ? qNormal({ x: evt.qx, y: evt.qy, z: evt.qz, w: evt.qw }) : null;
+    m.t = performance.now();
+  }
+  controlesArco(mano, evt);
+}
+function controlesArco(mano, evt) {
+  const m = manos[mano];
   const g = evt.grip || 0;
   const tira = Math.max(g, evt.trigger || 0);
   const antesGrip = m.grip, antesTira = m.tira;
@@ -688,6 +789,23 @@ function onPose(evt) {
   if (manoArco) dibujarArco();
 }
 if (zona) zona.addEventListener("posemove", onPose);
+if (anchorsArco && anchorsArco.supportsPrograms) {
+  anchorsArco.listen(["left-grip", "right-grip"], frame => {
+    const lados = ["left", "right"];
+    for (let i = 0; i < 2; i++) {
+      const m = manos[lados[i]], sample = frame.samples[i];
+      m.nativo = true; m.available = sample.available; m.inputNativo = !!sample.input;
+      if (!sample.available) continue;
+      m.pos = sample.position; m.q = qNormal(sample.rotation); m.t = frame.timestamp;
+    }
+    for (let i = 0; i < 2; i++) {
+      const sample = frame.samples[i];
+      if (sample.available && sample.input) controlesArco(lados[i], sample.input);
+    }
+    if (manoArco) dibujarArco();
+  }, { priority: "input", delivery: "history" });
+}
+
 
 // ── El cuadro ───────────────────────────────────────────────────────────────
 /** El tramo a→b contra una diana. Devuelve el punto y la distancia al centro. */

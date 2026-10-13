@@ -231,14 +231,15 @@
 
   const armas = Object.keys(TIPOS).map((id) => {
     const tipo = TIPOS[id];
-    const el = crear("group", { id: "arma_" + id }, escenario);
+    const baseRoot = crear("group", { id: "arma_root_" + id }, escenario);
+    const el = crear("group", { id: "arma_" + id }, baseRoot);
     const nodoCorredera = tipo.construir(el, id);
     /** Las balas que quedan, en la cola: se leen apuntando. */
     const contador = crear("text", { id: "contador_" + id, x: tipo.contador.x, y: tipo.contador.y, z: tipo.contador.z, value: "", size: 0.026, color: "#40E0D0" }, el);
     const mesa = tipo.mesa.tabla === "rifles" ? MESA_RIFLES : MESA;
     const enMesa = { p: v3(mesa.x + tipo.mesa.dx, mesa.y + tipo.mesa.alto, mesa.z + tipo.mesa.dz), q: tipo.mesa.tabla === "rifles" ? Q_RIFLES : Q_MESA };
     const a = {
-      id, tipo, el, contador, enMesa,
+      id, tipo, el, baseRoot, contador, enMesa,
       mano: null,          // la que la tiene de la empuñadura
       empunadura: { p: { ...tipo.empunadura.p }, r: { ...tipo.empunadura.r } },
       /** Dónde queda el mando de adelante respecto del guardamanos (sólo las
@@ -458,6 +459,75 @@
     a.pose = poseEnMano(a, a.ctxMano);
     dibujar(a);
   }
+  const nativeAnchors = globalThis.dimension && dimension.anchors;
+  const programNamespace = "tiro-" + Math.random().toString(36).slice(2);
+  function programaDosManos(a) {
+    const e = a.empunadura, giro = qDeEuler(grados(e.r.x), grados(e.r.y), grados(e.r.z));
+    const adelante = suma(a.tipo.delantera.punto, a.manoDelantera.p);
+    const eje = suma(e.p, rotar(giro, adelante));
+    const xyz = v => [v.x, v.y, v.z], xyzw = q => [q.x, q.y, q.z, q.w];
+    return {
+      type: "program", version: 1,
+      inputs: { principal: a.mano + "-grip", secundario: { anchor: a.delantera + "-grip", holdLast: true } },
+      constants: { controllerUp: xyz(ARRIBA_MANDO), localUp: xyz(ARRIBA), forward: xyz(eje),
+        mountPosition: xyz(e.p), mountRotation: xyzw(giro), gripBasis: xyzw(qEnX(-Math.PI / 2)), minimumDistance: 0.05 },
+      code: `
+        input pose principal
+        input pose secundario
+        const vec3 controllerUp
+        const vec3 localUp
+        const vec3 forward
+        const vec3 mountPosition
+        const quat mountRotation
+        const quat gripBasis
+        const float minimumDistance
+        temp vec3 direction
+        temp vec3 worldUp
+        temp vec3 offset
+        temp quat base
+        temp quat singleHand
+        temp float separation
+        temp bool twoHands
+        output pose result = principal
+        subtract direction, secundario.position, principal.position
+        rotate worldUp, principal.rotation, controllerUp
+        aimRotation base, direction, worldUp, forward, localUp
+        multiplyQuat singleHand, principal.rotation, gripBasis
+        length separation, direction
+        greater twoHands, separation, minimumDistance
+        select base, twoHands, base, singleHand
+        rotate offset, base, mountPosition
+        add result.position, principal.position, offset
+        multiplyQuat result.rotation, base, mountRotation
+      `,
+    };
+  }
+  function desactivarPrograma(a) {
+    if (a.programActive) { a.baseRoot.setAttribute("anchor", ""); a.programActive = false; a.offsetAncla = null; }
+    a.programWanted = null;
+    if (a.programHandle) { a.programHandle.dispose().catch(() => {}); a.programHandle = null; a.programSignature = null; }
+  }
+  function usarPrograma(a, anchor) {
+    if (!nativeAnchors || !nativeAnchors.supportsPrograms || !anchor || !a.delantera) { desactivarPrograma(a); return false; }
+    const signature = JSON.stringify([a.mano, a.delantera, a.empunadura, a.tipo.delantera.punto, a.manoDelantera.p]);
+    a.programWanted = signature;
+    if (!a.programPending && signature !== a.programSignature && signature !== a.programFailed) {
+      const definition = programaDosManos(a), key = a.programKey || (a.programKey = programNamespace + "-" + a.id);
+      a.programPending = true;
+      nativeAnchors.create(key, definition).then(handle => {
+        a.programPending = false;
+        if (!a.programWanted) { handle.dispose().catch(() => {}); return; }
+        a.programHandle = handle; a.programSignature = signature; reposar(a);
+      }).catch(error => { a.programPending = false; a.programFailed = signature; console.error("Programa de movimiento:", error); });
+    }
+    if (!a.programHandle) return false;
+    if (!a.programActive) {
+      a.baseRoot.setAttribute("anchor", a.programKey); a.programActive = true;
+      if (a.ancla) { a.el.setAttribute("anchor", ""); a.ancla = null; }
+      a.offsetAncla = null;
+    }
+    return true;
+  }
   function dibujar(a) {
     const { p, q } = a.pose;
     const k = a.patada;
@@ -465,7 +535,13 @@
     const qv = sube ? qMul(q, qEnX(sube)) : q;
     a.vista = { p: suma(p, rotar(q, v3(0, 0, a.tipo.patada.atras * k))), q: qv };
     const ctx = a.ctxMano, anchor = a.mano && ctx && ctx.anchor;
-    if (anchor) {
+    if (usarPrograma(a, anchor)) {
+      const offset = { p: v3(0, 0, a.tipo.patada.atras * k), q: qEnX(sube) };
+      const previous = a.offsetAncla;
+      if (!previous || previous.p.z !== offset.p.z || previous.q.x !== offset.q.x || previous.q.w !== offset.q.w) {
+        poner(a.el, offset.p, offset.q); a.offsetAncla = offset;
+      }
+    } else if (anchor) {
       if (a.ancla !== anchor) { a.el.setAttribute("anchor", anchor); a.ancla = anchor; }
       let offset;
       if (!a.delantera) {
@@ -522,6 +598,13 @@
 
   function animar(t, dt) {
     for (const a of armas) {
+      if (nativeAnchors && nativeAnchors.supportsPrograms && !a.poseListener && a.baseRoot._isResolved() && a.el._isResolved()) {
+        a.poseListener = nativeAnchors.listen([a.baseRoot, a.el], frame => {
+          if (!a.programActive || !frame.samples[0].available || !frame.samples[1].available) return;
+          a.pose = { p: frame.samples[0].position, q: frame.samples[0].rotation };
+          a.vista = { p: frame.samples[1].position, q: frame.samples[1].rotation };
+        }, { priority: "input", delivery: "latest" });
+      }
       let cambio = false;
       if (a.patada > 0) {
         a.patada = Math.max(0, a.patada - (dt * 1000) / a.tipo.patada.ms);
@@ -553,7 +636,7 @@
 
   return {
     TIPOS, armas, balas, puedeTirar, gatilloEnVacio, soltarCargador, gastar, poseEnMano, direccion, intervalo, animar,
-    reponer, centroEnMesa, actualizarMandos,
+    reponer, centroEnMesa, actualizarMandos, programaDosManos,
     /** Todo lo que una mano puede tomar de las armas. */
     agarrables: () => armas.flatMap((a) => [a.agarrable, a.corredera, ...(a.agarreDelantero ? [a.agarreDelantero] : [])]),
   };

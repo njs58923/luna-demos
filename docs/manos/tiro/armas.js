@@ -448,7 +448,7 @@
           + (a.tipo.delantera ? " · la otra mano en el guardamanos" : ""));
         dibujar(a);
       },
-      mover(mano, ctx) { a.ctxMano = ctx; a.pose = poseEnMano(a, ctx); dibujar(a); },
+      mover(mano, ctx) { a.ctxMano = ctx; if (!a.programActive) a.pose = poseEnMano(a, ctx); dibujar(a); },
       soltar() { aLaMesa(a); S.sonar("tomar", 0.45); },
     };
   }
@@ -456,9 +456,14 @@
   /** Recalcular la pose en la mano con lo último que mandó la de atrás. */
   function reposar(a) {
     if (!a.mano || !a.ctxMano) return;
-    a.pose = poseEnMano(a, a.ctxMano);
+    // El listen del resultado nativo es la autoridad una vez enlazado.
+    // No sobrescribirlo con otra normalizacion/punteria basada en muestras JS.
+    if (!a.programActive) a.pose = poseEnMano(a, a.ctxMano);
     dibujar(a);
   }
+  // Respaldo habilitado por defecto. Puede desactivarse explicitamente para
+  // diagnosticar la ruta nativa sin que JS oculte un programa rechazado.
+  const RESPALDO_MOVIMIENTO = globalThis.TIRO_RESPALDO_ARMAS !== false;
   const nativeAnchors = globalThis.dimension && dimension.anchors;
   const programNamespace = "tiro-" + Math.random().toString(36).slice(2);
   function programaArma(a) {
@@ -496,6 +501,7 @@
   }
   function desactivarPrograma(a) {
     if (a.programActive) { a.baseRoot.setAttribute("anchor", ""); a.programActive = false; a.offsetAncla = null; }
+    a.programDiagnostic = null;
     a.programWanted = null;
     if (a.programHandle) { a.programHandle.dispose().catch(() => {}); a.programHandle = null; a.programSignature = null; }
   }
@@ -512,11 +518,15 @@
         a.programHandle = handle; a.programSignature = signature; reposar(a);
       }).catch(error => { a.programPending = false; a.programFailed = signature; console.error("Programa de movimiento:", error); });
     }
-    if (!a.programHandle) return false;
+    if (!a.programHandle || (!RESPALDO_MOVIMIENTO && a.programSignature !== signature)) return false;
     if (!a.programActive) {
       a.baseRoot.setAttribute("anchor", a.programKey); a.programActive = true;
       if (a.ancla) { a.el.setAttribute("anchor", ""); a.ancla = null; }
       a.offsetAncla = null;
+    }
+    if (a.programDiagnostic !== signature) {
+      a.programDiagnostic = signature;
+      console.log("[Tiro] programa nativo activo:", a.id, a.delantera ? "dos manos" : "una mano", a.programKey);
     }
     return true;
   }
@@ -528,10 +538,24 @@
     a.vista = { p: suma(p, rotar(q, v3(0, 0, a.tipo.patada.atras * k))), q: qv };
     const ctx = a.ctxMano, anchor = a.mano && ctx && ctx.anchor;
     if (usarPrograma(a, anchor)) {
+      if (a.respaldoBloqueado) { a.baseRoot.setAttribute("visible", "inherit"); a.respaldoBloqueado = null; }
       const offset = { p: v3(0, 0, a.tipo.patada.atras * k), q: qEnX(sube) };
       const previous = a.offsetAncla;
       if (!previous || previous.p.z !== offset.p.z || previous.q.x !== offset.q.x || previous.q.w !== offset.q.w) {
         poner(a.el, offset.p, offset.q); a.offsetAncla = offset;
+      }
+    } else if (a.mano && !RESPALDO_MOVIMIENTO) {
+      // Fallar de forma visible: nunca aparentar seguimiento nativo usando
+      // una posicion del grip actual y una orientacion calculada en JS.
+      if (a.ancla) { a.el.setAttribute("anchor", ""); a.ancla = null; }
+      const motivo = !nativeAnchors || !nativeAnchors.supportsPrograms ? "programas no disponibles"
+        : !anchor ? "sin anchor de entrada"
+        : a.programFailed === a.programWanted ? "programa rechazado" : "esperando programa";
+      if (a.respaldoBloqueado !== motivo) {
+        a.respaldoBloqueado = motivo;
+        a.baseRoot.setAttribute("visible", "false");
+        console.warn("[Tiro] respaldo de movimiento desactivado:", a.id, motivo);
+        J.ultimo(a.tipo.nombre + ": " + motivo + " (respaldo desactivado)");
       }
     } else if (anchor) {
       if (a.ancla !== anchor) { a.el.setAttribute("anchor", anchor); a.ancla = anchor; }
@@ -556,6 +580,7 @@
         poner(a.el, offset.p, offset.q); a.offsetAncla = offset;
       }
     } else {
+      if (a.respaldoBloqueado) { a.baseRoot.setAttribute("visible", "inherit"); a.respaldoBloqueado = null; }
       if (a.ancla) { a.el.setAttribute("anchor", ""); a.ancla = null; a.offsetAncla = null; }
       poner(a.el, a.vista.p, a.vista.q);
     }

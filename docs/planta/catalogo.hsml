@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_planta - no editar a mano -->
+<hsml>
+  <head><name>Catálogo de la planta</name></head>
+  <space resources="navigate_self,spawn,skybox,read_camera_pose,read_hmd_pose,desktop_camera_control,vr_locomotion,read_pose_stream,audio">
+    <spawn id="entrada" default="true" x="0" y="0" z="3" ry="0"/>
+    <include id="cielo" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=dia"/>
+    <box x="0" y="-0.05" z="-8" sx="24" sy="0.1" sz="20" color="#5A5E52" touchable="false"/>
+      <group x="-7.7" y="0" z="-3" s="0.048">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/alambrado.glb" x="0.269" y="3.149" z="-1.695" touchable="false"/>
+      </group>
+      <text x="-7.7" y="1.85" z="-3" value="alambrado" size="0.12" color="#FFD60A"/>
+      <text x="-7.7" y="1.7" z="-3" value="3100 tri · 2704 KB · 0.855×6.90×31.2" size="0.06" color="#FFFFFF"/>
+      <group x="-5.5" y="0" z="-3" s="1.497">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/arana.glb" x="0" y="0.009" z="0" touchable="false"/>
+      </group>
+      <text x="-5.5" y="1.85" z="-3" value="arana" size="0.12" color="#FFD60A"/>
+      <text x="-5.5" y="1.7" z="-3" value="11480 tri · 626 KB · 1.00×0.764×1.00" size="0.06" color="#FFFFFF"/>
+      <group x="-3.3" y="0" z="-3" s="0.307">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/auto.glb" x="0.046" y="-0.002" z="-0.002" touchable="false"/>
+      </group>
+      <text x="-3.3" y="1.85" z="-3" value="auto" size="0.12" color="#FFD60A"/>
+      <text x="-3.3" y="1.7" z="-3" value="22187 tri · 6540 KB · 4.89×1.33×2.09" size="0.06" color="#FFFFFF"/>
+      <group x="-1.1" y="0" z="-3" s="1.075">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/banco.glb" x="0" y="0" z="0" touchable="false"/>
+      </group>
+      <text x="-1.1" y="1.85" z="-3" value="banco" size="0.12" color="#FFD60A"/>
+      <text x="-1.1" y="1.7" z="-3" value="1708 tri · 3606 KB · 0.683×0.512×1.40" size="0.06" color="#FFFFFF"/>
+      <group x="1.1" y="0" z="-3" s="0.732">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/barrera.glb" x="0.019" y="-0.013" z="-0.042" touchable="false"/>
+      </group>
+      <text x="1.1" y="1.85" z="-3" value="barrera" size="0.12" color="#FFD60A"/>
+      <text x="1.1" y="1.7" z="-3" value="5138 tri · 1835 KB · 0.579×0.791×2.05" size="0.06" color="#FFFFFF"/>
+      <group x="3.3" y="0" z="-3" s="1.091">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/barriles.glb" x="0.016" y="0" z="0.022" touchable="false"/>
+      </group>
+      <text x="3.3" y="1.85" z="-3" value="barriles" size="0.12" color="#FFD60A"/>
+      <text x="3.3" y="1.7" z="-3" value="4052 tri · 3680 KB · 1.37×0.359×0.326" size="0.06" color="#FFFFFF"/>
+      <group x="5.5" y="0" z="-3" s="0.001">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/brazo_robot.glb" x="24.105" y="182.45" z="-154.261" touchable="false"/>
+      </group>
+      <text x="5.5" y="1.85" z="-3" value="brazo_robot" size="0.12" color="#FFD60A"/>
+      <text x="5.5" y="1.7" z="-3" value="17010 tri · 6705 KB · 644×674×1.05e+3" size="0.06" color="#FFFFFF"/>
+      <group x="7.7" y="0" z="-3" s="0.75">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/caja_electrica.glb" x="0" y="0.813" z="0" touchable="false"/>
+      </group>
+      <text x="7.7" y="1.85" z="-3" value="caja_electrica" size="0.12" color="#FFD60A"/>
+      <text x="7.7" y="1.7" z="-3" value="1475 tri · 1660 KB · 2.00×1.63×0.507" size="0.06" color="#FFFFFF"/>
+      <group x="-7.7" y="0" z="-5.6" s="1.318">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/cajas.glb" x="-0.018" y="-0.002" z="0" touchable="false"/>
+      </group>
+      <text x="-7.7" y="1.85" z="-5.6" value="cajas" size="0.12" color="#FFD60A"/>
+      <text x="-7.7" y="1.7" z="-5.6" value="4097 tri · 5360 KB · 1.14×0.622×0.338" size="0.06" color="#FFFFFF"/>
+      <group x="-5.5" y="0" z="-5.6" s="0.001">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/centinela.glb" x="65.435" y="0.058" z="-67.272" touchable="false"/>
+      </group>
+      <text x="-5.5" y="1.85" z="-5.6" value="centinela" size="0.12" color="#FFD60A"/>
+      <text x="-5.5" y="1.7" z="-5.6" value="5693 tri · 619 KB · 1.44e+3×1.66e+3×1.05e+3" size="0.06" color="#FFFFFF"/>
+      <group x="-3.3" y="0" z="-5.6" s="0.051">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/cono.glb" x="0" y="0" z="0" touchable="false"/>
+      </group>
+      <text x="-3.3" y="1.85" z="-5.6" value="cono" size="0.12" color="#FFD60A"/>
+      <text x="-3.3" y="1.7" z="-5.6" value="1664 tri · 1561 KB · 20.0×29.5×20.0" size="0.06" color="#FFFFFF"/>
+      <group x="-1.1" y="0" z="-5.6" s="0.681">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/consola.glb" x="0" y="0" z="-0.456" touchable="false"/>
+      </group>
+      <text x="-1.1" y="1.85" z="-5.6" value="consola" size="0.12" color="#FFD60A"/>
+      <text x="-1.1" y="1.7" z="-5.6" value="2137 tri · 4246 KB · 2.20×1.86×1.20" size="0.06" color="#FFFFFF"/>
+      <group x="1.1" y="0" z="-5.6" s="0.53">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/contenedor.glb" x="-0" y="0" z="-0.001" touchable="false"/>
+      </group>
+      <text x="1.1" y="1.85" z="-5.6" value="contenedor" size="0.12" color="#FFD60A"/>
+      <text x="1.1" y="1.7" z="-5.6" value="8056 tri · 4457 KB · 1.13×1.20×2.83" size="0.06" color="#FFFFFF"/>
+      <group x="3.3" y="0" z="-5.6" s="1.019">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/cubiertas.glb" x="0.002" y="0.311" z="0.014" touchable="false"/>
+      </group>
+      <text x="3.3" y="1.85" z="-5.6" value="cubiertas" size="0.12" color="#FFD60A"/>
+      <text x="3.3" y="1.7" z="-5.6" value="2478 tri · 3240 KB · 1.26×1.47×1.26" size="0.06" color="#FFFFFF"/>
+      <group x="5.5" y="0" z="-5.6" s="0.191">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/dron.glb" x="1.386" y="1.889" z="0" touchable="false"/>
+      </group>
+      <text x="5.5" y="1.85" z="-5.6" value="dron" size="0.12" color="#FFD60A"/>
+      <text x="5.5" y="1.7" z="-5.6" value="5726 tri · 3297 KB · 7.84×3.37×2.45" size="0.06" color="#FFFFFF"/>
+      <group x="7.7" y="0" z="-5.6" s="0.02">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/dron_k07.glb" x="-0.022" y="17.409" z="5.337" touchable="false" animation-clip="0"/>
+      </group>
+      <text x="7.7" y="1.85" z="-5.6" value="dron_k07" size="0.12" color="#FFD60A"/>
+      <text x="7.7" y="1.7" z="-5.6" value="9446 tri · 4286 KB · 75.2×46.8×55.2" size="0.06" color="#FFFFFF"/>
+      <group x="-7.7" y="0" z="-8.2" s="0.021">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/estante.glb" x="0" y="0" z="0" touchable="false"/>
+      </group>
+      <text x="-7.7" y="1.85" z="-8.2" value="estante" size="0.12" color="#FFD60A"/>
+      <text x="-7.7" y="1.7" z="-8.2" value="1696 tri · 2394 KB · 41.6×72.0×24.0" size="0.06" color="#FFFFFF"/>
+      <group x="-5.5" y="0" z="-8.2" s="0.002">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/estanteria.glb" x="14.646" y="0" z="81.291" touchable="false"/>
+      </group>
+      <text x="-5.5" y="1.85" z="-8.2" value="estanteria" size="0.12" color="#FFD60A"/>
+      <text x="-5.5" y="1.7" z="-8.2" value="23416 tri · 14192 KB · 504×600×833" size="0.06" color="#FFFFFF"/>
+      <group x="-3.3" y="0" z="-8.2" s="0.018">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/expendedora.glb" x="12.924" y="0" z="-10.946" touchable="false"/>
+      </group>
+      <text x="-3.3" y="1.85" z="-8.2" value="expendedora" size="0.12" color="#FFD60A"/>
+      <text x="-3.3" y="1.7" z="-8.2" value="5208 tri · 4233 KB · 42.0×84.0×36.5" size="0.06" color="#FFFFFF"/>
+      <group x="-1.1" y="0" z="-8.2" s="0.003">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/farol.glb" x="37.288" y="2.619" z="0" touchable="false"/>
+      </group>
+      <text x="-1.1" y="1.85" z="-8.2" value="farol" size="0.12" color="#FFD60A"/>
+      <text x="-1.1" y="1.7" z="-8.2" value="1304 tri · 2150 KB · 109×469×43.1" size="0.06" color="#FFFFFF"/>
+      <group x="1.1" y="0" z="-8.2" s="0.055">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/g17.glb" x="-5.61" y="15.161" z="0.065" touchable="false"/>
+      </group>
+      <text x="1.1" y="1.85" z="-8.2" value="g17" size="0.12" color="#FFD60A"/>
+      <text x="1.1" y="1.7" z="-8.2" value="2317 tri · 197 KB · 27.3×18.9×2.20" size="0.06" color="#FFFFFF"/>
+      <group x="3.3" y="0" z="-8.2" s="0.217">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/garita.glb" x="-0.372" y="0" z="0.999" touchable="false"/>
+      </group>
+      <text x="3.3" y="1.85" z="-8.2" value="garita" size="0.12" color="#FFD60A"/>
+      <text x="3.3" y="1.7" z="-8.2" value="954 tri · 2454 KB · 6.91×2.50×3.34" size="0.06" color="#FFFFFF"/>
+      <group x="5.5" y="0" z="-8.2" s="0.004">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/generador.glb" x="0" y="0" z="0" touchable="false"/>
+      </group>
+      <text x="5.5" y="1.85" z="-8.2" value="generador" size="0.12" color="#FFD60A"/>
+      <text x="5.5" y="1.7" z="-8.2" value="9746 tri · 5542 KB · 414×290×294" size="0.06" color="#FFFFFF"/>
+      <group x="7.7" y="0" z="-8.2" s="0.14">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/generador_scifi.glb" x="1.031" y="-0.273" z="-0.068" touchable="false"/>
+      </group>
+      <text x="7.7" y="1.85" z="-8.2" value="generador_scifi" size="0.12" color="#FFD60A"/>
+      <text x="7.7" y="1.7" z="-8.2" value="14393 tri · 777 KB · 4.61×10.7×4.68" size="0.06" color="#FFFFFF"/>
+      <group x="-7.7" y="0" z="-10.8" s="0.181">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/helicoptero.glb" x="-0.035" y="-0.003" z="0.975" touchable="false" animation-clip="0"/>
+      </group>
+      <text x="-7.7" y="1.85" z="-10.8" value="helicoptero" size="0.12" color="#FFD60A"/>
+      <text x="-7.7" y="1.7" z="-10.8" value="1865 tri · 2515 KB · 7.36×3.10×8.31" size="0.06" color="#FFFFFF"/>
+      <group x="-5.5" y="0" z="-10.8" s="0.041">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/helipuerto.glb" x="0" y="0.091" z="2.238" touchable="false"/>
+      </group>
+      <text x="-5.5" y="1.85" z="-10.8" value="helipuerto" size="0.12" color="#FFD60A"/>
+      <text x="-5.5" y="1.7" z="-10.8" value="48532 tri · 4586 KB · 32.2×5.29×36.3" size="0.06" color="#FFFFFF"/>
+      <group x="-3.3" y="0" z="-10.8" s="0.549">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/jefe.glb" x="-0.012" y="0.02" z="-0.084" touchable="false" animation-clip="0"/>
+      </group>
+      <text x="-3.3" y="1.85" z="-10.8" value="jefe" size="0.12" color="#FFD60A"/>
+      <text x="-3.3" y="1.7" z="-10.8" value="72609 tri · 11979 KB · 2.73×2.09×1.66" size="0.06" color="#FFFFFF"/>
+      <group x="-1.1" y="0" z="-10.8" s="0.75">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/matafuego.glb" x="0" y="1" z="0" touchable="false"/>
+      </group>
+      <text x="-1.1" y="1.85" z="-10.8" value="matafuego" size="0.12" color="#FFD60A"/>
+      <text x="-1.1" y="1.7" z="-10.8" value="2792 tri · 1849 KB · 1.08×2.00×0.551" size="0.06" color="#FFFFFF"/>
+      <group x="1.1" y="0" z="-10.8" s="0.004">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/montacargas.glb" x="-0.003" y="1.418" z="-13.832" touchable="false"/>
+      </group>
+      <text x="1.1" y="1.85" z="-10.8" value="montacargas" size="0.12" color="#FFD60A"/>
+      <text x="1.1" y="1.7" z="-10.8" value="4426 tri · 2736 KB · 118×212×371" size="0.06" color="#FFFFFF"/>
+      <group x="3.3" y="0" z="-10.8" s="0.223">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/palets.glb" x="0.541" y="0.009" z="2.135" touchable="false"/>
+      </group>
+      <text x="3.3" y="1.85" z="-10.8" value="palets" size="0.12" color="#FFD60A"/>
+      <text x="3.3" y="1.7" z="-10.8" value="36964 tri · 6101 KB · 6.71×1.70×3.61" size="0.06" color="#FFFFFF"/>
+      <group x="5.5" y="0" z="-10.8" s="0.005">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/pare.glb" x="-0.051" y="-1.456" z="-0.727" touchable="false"/>
+      </group>
+      <text x="5.5" y="1.85" z="-10.8" value="pare" size="0.12" color="#FFD60A"/>
+      <text x="5.5" y="1.7" z="-10.8" value="5576 tri · 7318 KB · 100×300×9.35" size="0.06" color="#FFFFFF"/>
+      <group x="7.7" y="0" z="-10.8" s="0.296">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/patrullero.glb" x="-0.021" y="-0.002" z="3.999" touchable="false"/>
+      </group>
+      <text x="7.7" y="1.85" z="-10.8" value="patrullero" size="0.12" color="#FFD60A"/>
+      <text x="7.7" y="1.7" z="-10.8" value="17372 tri · 7838 KB · 5.07×1.57×1.83" size="0.06" color="#FFFFFF"/>
+      <group x="-7.7" y="0" z="-13.4" s="0.225">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/robot.glb" x="-1.9" y="0.03" z="-2.057" touchable="false" animation-clip="0"/>
+      </group>
+      <text x="-7.7" y="1.85" z="-13.4" value="robot" size="0.12" color="#FFD60A"/>
+      <text x="-7.7" y="1.7" z="-13.4" value="6294 tri · 448 KB · 6.68×2.64×6.36" size="0.06" color="#FFFFFF"/>
+      <group x="-5.5" y="0" z="-13.4" s="0.75">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/servidor.glb" x="0" y="1" z="0" touchable="false"/>
+      </group>
+      <text x="-5.5" y="1.85" z="-13.4" value="servidor" size="0.12" color="#FFD60A"/>
+      <text x="-5.5" y="1.7" z="-13.4" value="744 tri · 3212 KB · 0.647×2.00×0.647" size="0.06" color="#FFFFFF"/>
+      <group x="-3.3" y="0" z="-13.4" s="0.004">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tanque_aceite.glb" x="-46.974" y="0" z="-15.496" touchable="false"/>
+      </group>
+      <text x="-3.3" y="1.85" z="-13.4" value="tanque_aceite" size="0.12" color="#FFD60A"/>
+      <text x="-3.3" y="1.7" z="-13.4" value="14579 tri · 2461 KB · 397×301×334" size="0.06" color="#FFFFFF"/>
+      <group x="-1.1" y="0" z="-13.4" s="0.002">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tanque_agua.glb" x="18.866" y="22.593" z="0.506" touchable="false"/>
+      </group>
+      <text x="-1.1" y="1.85" z="-13.4" value="tanque_agua" size="0.12" color="#FFD60A"/>
+      <text x="-1.1" y="1.7" z="-13.4" value="756 tri · 4921 KB · 337×655×300" size="0.06" color="#FFFFFF"/>
+      <group x="1.1" y="0" z="-13.4" s="0.002">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/techo.glb" x="-16.956" y="-164.93" z="5.413" touchable="false"/>
+      </group>
+      <text x="1.1" y="1.85" z="-13.4" value="techo" size="0.12" color="#FFD60A"/>
+      <text x="1.1" y="1.7" z="-13.4" value="224829 tri · 15445 KB · 650×249×913" size="0.06" color="#FFFFFF"/>
+      <group x="3.3" y="0" z="-13.4" s="0.033">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tuberias.glb" x="13.866" y="0" z="37.544" touchable="false"/>
+      </group>
+      <text x="3.3" y="1.85" z="-13.4" value="tuberias" size="0.12" color="#FFD60A"/>
+      <text x="3.3" y="1.7" z="-13.4" value="4174 tri · 381 KB · 41.1×45.7×36.2" size="0.06" color="#FFFFFF"/>
+      <group x="5.5" y="0" z="-13.4" s="0.004">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tuberias_hangar.glb" x="-79.98" y="0" z="15.897" touchable="false"/>
+      </group>
+      <text x="5.5" y="1.85" z="-13.4" value="tuberias_hangar" size="0.12" color="#FFD60A"/>
+      <text x="5.5" y="1.7" z="-13.4" value="53614 tri · 3645 KB · 391×139×284" size="0.06" color="#FFFFFF"/>
+      <group x="7.7" y="0" z="-13.4" s="0.049">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/ventilador.glb" x="0" y="1.879" z="3.967" touchable="false"/>
+      </group>
+      <text x="7.7" y="1.85" z="-13.4" value="ventilador" size="0.12" color="#FFD60A"/>
+      <text x="7.7" y="1.7" z="-13.4" value="1600 tri · 89 KB · 30.3×30.3×13.8" size="0.06" color="#FFFFFF"/>
+      <group x="-7.7" y="0" z="-16" s="0.155">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/volquete.glb" x="0" y="-0.38" z="-3.94" touchable="false"/>
+      </group>
+      <text x="-7.7" y="1.85" z="-16" value="volquete" size="0.12" color="#FFD60A"/>
+      <text x="-7.7" y="1.7" z="-16" value="624 tri · 1828 KB · 9.70×7.77×6.37" size="0.06" color="#FFFFFF"/>
+  </space>
+</hsml>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_planta - no editar a mano -->
+<hsml>
+  <head><name>La azotea</name></head>
+  <space>
+      <box x="0" y="-0.02" z="-10" sx="16" sy="0.04" sz="20" color="#6A6E70" touchable="false"/>
+      <box x="-8" y="0.55" z="-10" sx="0.4" sy="1.1" sz="20" color="#8A8C88" touchable="false"/>
+      <box x="8" y="0.55" z="-10" sx="0.4" sy="1.1" sz="20" color="#8A8C88" touchable="false"/>
+      <box x="0" y="0.55" z="-20" sx="16" sy="1.1" sz="0.4" color="#8A8C88" touchable="false"/>
+      <group x="0" y="0" z="-12" s="0.373">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/helipuerto.glb" x="0" y="0.091" z="2.238" touchable="false"/>
+      </group>
+      <group x="1.5" y="0.9" z="-12.5" ry="2.2" s="1.084">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/helicoptero.glb" x="-0.035" y="-0.003" z="0.975" touchable="false" animation-clip="0" animation-loop="true"/>
+      </group>
+      <group x="-6" y="0" z="-3" s="0.011">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tanque_agua.glb" x="18.866" y="22.593" z="0.506" touchable="false"/>
+      </group>
+      <group x="6.2" y="0" z="-3" ry="-1.571" s="0.059">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/ventilador.glb" x="0" y="1.879" z="3.967" touchable="false"/>
+      </group>
+      <group x="6.2" y="0" z="-5.5" ry="-1.571" s="0.059">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/ventilador.glb" x="0" y="1.879" z="3.967" touchable="false"/>
+      </group>
+      <group x="-7.4" y="0" z="-18" ry="1.571" s="0.984">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/caja_electrica.glb" x="0" y="0.813" z="0" touchable="false"/>
+      </group>
+      <group x="5.8" y="0" z="-18" s="1.581">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/cajas.glb" x="-0.018" y="-0.002" z="0" touchable="false"/>
+      </group>
+
+    <script src="https://njs58923.github.io/luna-demos/planta/area.js"/>
+  </space>
+</hsml>

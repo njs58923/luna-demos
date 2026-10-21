@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_planta - no editar a mano -->
+<hsml>
+  <head><name>La sala de máquinas</name></head>
+  <space>
+      <box x="0" y="-0.02" z="-10" sx="16" sy="0.04" sz="20" color="#4A4E52" touchable="false"/>
+      <box x="-8" y="2.5" z="-10" sx="0.4" sy="5" sz="20" color="#55595E" touchable="false"/>
+      <box x="8" y="2.5" z="-10" sx="0.4" sy="5" sz="20" color="#55595E" touchable="false"/>
+      <group x="-4" y="3.3" z="-6" ry="1.571" s="0.035">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tuberias_hangar.glb" x="-79.98" y="0" z="15.897" touchable="false"/>
+      </group>
+      <group x="4" y="3.3" z="-14" ry="1.571" s="0.035">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tuberias_hangar.glb" x="-79.98" y="0" z="15.897" touchable="false"/>
+      </group>
+      <group x="-5.6" y="0" z="-3" ry="1.571" s="0.006">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/generador.glb" x="0" y="0" z="0" touchable="false"/>
+      </group>
+      <group x="-5.6" y="0" z="-7" ry="1.571" s="0.006">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/generador.glb" x="0" y="0" z="0" touchable="false"/>
+      </group>
+      <group x="5.8" y="0" z="-3.5" s="0.28">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/generador_scifi.glb" x="1.031" y="-0.273" z="-0.068" touchable="false"/>
+      </group>
+      <group x="5.8" y="0" z="-6.5" s="0.28">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/generador_scifi.glb" x="1.031" y="-0.273" z="-0.068" touchable="false"/>
+      </group>
+      <group x="5" y="0" z="-11" s="0.012">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tanque_aceite.glb" x="-46.974" y="0" z="-15.496" touchable="false"/>
+      </group>
+      <group x="-6.8" y="0" z="-12" s="0.066">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/tuberias.glb" x="13.866" y="0" z="37.544" touchable="false"/>
+      </group>
+      <group x="-3.5" y="0" z="-11.5" ry="0.8" s="0.004">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/brazo_robot.glb" x="24.105" y="182.45" z="-154.261" touchable="false"/>
+      </group>
+      <group x="-4.2" y="0" z="-16.5" s="1">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/servidor.glb" x="0" y="1" z="0" touchable="false"/>
+      </group>
+      <group x="-3.5" y="0" z="-16.5" s="1">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/servidor.glb" x="0" y="1" z="0" touchable="false"/>
+      </group>
+      <group x="-2.8" y="0" z="-16.5" s="1">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/servidor.glb" x="0" y="1" z="0" touchable="false"/>
+      </group>
+      <group x="-2.1" y="0" z="-16.5" s="1">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/servidor.glb" x="0" y="1" z="0" touchable="false"/>
+      </group>
+      <group x="2.4" y="0" z="-16.2" ry="3.142" s="0.645">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/consola.glb" x="0" y="0" z="-0.456" touchable="false"/>
+      </group>
+      <group x="3.4" y="0" z="-16.2" ry="3.142" s="0.645">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/consola.glb" x="0" y="0" z="-0.456" touchable="false"/>
+      </group>
+      <group x="7.6" y="0" z="-18" ry="-1.571" s="0.984">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/caja_electrica.glb" x="0" y="0.813" z="0" touchable="false"/>
+      </group>
+      <group x="-7.6" y="0" z="-18" ry="1.571" s="0.059">
+        <model class="pieza" src="https://njs58923.github.io/luna-demos/planta/modelos/ventilador.glb" x="0" y="1.879" z="3.967" touchable="false"/>
+      </group>
+      <box x="-5.5" y="2.5" z="-20" sx="5" sy="5" sz="0.4" color="#55595E" touchable="false"/>
+      <box x="5.5" y="2.5" z="-20" sx="5" sy="5" sz="0.4" color="#55595E" touchable="false"/>
+      <box x="-3.2" y="2.25" z="-20" sx="0.4" sy="4.5" sz="0.6" color="#3A3A3A" touchable="false"/>
+      <box x="3.2" y="2.25" z="-20" sx="0.4" sy="4.5" sz="0.6" color="#3A3A3A" touchable="false"/>
+      <box x="0" y="4.35" z="-20" sx="6.8" sy="0.3" sz="0.6" color="#3A3A3A" touchable="false"/>
+      <box x="0" y="4.75" z="-20" sx="6.8" sy="0.5" sz="0.4" color="#55595E" touchable="false"/>
+
+    <script src="https://njs58923.github.io/luna-demos/planta/area.js"/>
+  </space>
+</hsml>

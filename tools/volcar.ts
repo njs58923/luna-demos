@@ -34,9 +34,11 @@ function recorrer(dir: string, base = ""): string[] {
   return out;
 }
 
-/** Lo que no se publica: pruebas sueltas, respaldos y capturas de trabajo. */
+/** Lo que no se publica: pruebas sueltas, respaldos y capturas de trabajo.
+ *  `nul` es la salida de un `bun build --outfile nul` corrido desde bash en
+ *  Windows, que ahí es un archivo común. */
 function descartar(p: string) {
-  return /\/_prueba[^/]*$|\.bak$|\.log$|\.blend1?$/i.test(p);
+  return /\/_prueba[^/]*$|\.bak$|\.log$|\.blend1?$|\/nul$/i.test(p);
 }
 
 /** Las rutas literales que el servidor registra, además de lo que hay en public/. */

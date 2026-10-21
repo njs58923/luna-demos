@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generado por server_planta - no editar a mano -->
+<hsml>
+  <head><name>La planta</name></head>
+  <space resources="navigate_self,spawn,skybox,read_camera_pose,read_hmd_pose,desktop_camera_control,vr_locomotion,read_pose_stream,audio">
+    <spawn id="entrada" default="true" x="0" y="0" z="3" ry="0"/>
+    <include id="cielo" resources="skybox" src="https://njs58923.github.io/luna-demos/noche/componentes/cielo.hsml?preset=atardecer"/>
+
+    <!-- Los mandos se escuchan en todo el recorrido. -->
+    <posezone id="zona" x="0" y="6" z="-45" sx="80" sy="16" sz="140" visible="false"/>
+
+    <!-- El suelo de afuera: las áreas traen el suyo. -->
+    <box x="0" y="-0.06" z="-45" sx="160" sy="0.1" sz="220" color="#4A4F3A" touchable="false"/>
+
+    <!-- Las áreas se montan acá, de a tres (comun/areas.js). -->
+    <group id="mundo"/>
+    <!-- Lo que arman los scripts: armas, cargadores, enemigos, portones, efectos. -->
+    <group id="escenario" data-base="https://njs58923.github.io/luna-demos/planta"/>
+
+    <group x="-2.3" z="1.4" ry="0.963">
+      <box x="-0.47" y="0.848" z="-0.1" sx="0.06" sy="1.696" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="-0.47" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <box x="0.47" y="0.848" z="-0.1" sx="0.06" sy="1.696" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="0.47" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <group y="1.416" rx="-0.12">
+        <box z="-0.015" sx="1.2" sy="0.992" sz="0.03" color="#5A3E2A" border-radius="0.04" touchable="false"/>
+        <box sx="1.14" sy="0.932" sz="0.03" color="#1C1C26" border-radius="0.035" touchable="false"/>
+        <box y="0.365" z="0.016" sx="1.14" sy="0.203" sz="0.004" color="#6A4A1E" border-radius="0.035" touchable="false"/>
+        <text y="0.365" z="0.021" value="LA PLANTA" size="0.07" color="#FFFFFF"/>
+        <text y="0.202" z="0.021" value="una fábrica tomada por drones y robots" size="0.042" color="#C8CCD8"/>
+        <text y="0.101" z="0.021" value="cinco áreas: cada portón se abre al despejarla" size="0.042" color="#FFD60A"/>
+        <text y="0.001" z="0.021" value="las pistolas, en la cintura: G17 a la derecha," size="0.04" color="#40E0D0"/>
+        <text y="-0.067" z="0.021" value="Desert Eagle a la izquierda · grip para sacarlas" size="0.04" color="#40E0D0"/>
+        <text y="-0.135" z="0.021" value="A (o X) suelta el cargador · los de repuesto," size="0.04" color="#30D158"/>
+        <text y="-0.203" z="0.021" value="en el cinturón, adelante · y tirar de la corredera" size="0.04" color="#30D158"/>
+        <text y="-0.301" z="0.021" value="las esferas rojas se esquivan o se derriban" size="0.04" color="#FF9F0A"/>
+        <text y="-0.365" z="0.021" value="el marcador está en la muñeca izquierda" size="0.036" color="#C8CCD8"/>
+      </group>
+    </group>
+
+    <group x="2.4" z="1.6" ry="-1.043">
+      <box x="-0.385" y="0.79" z="-0.1" sx="0.06" sy="1.58" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="-0.385" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <box x="0.385" y="0.79" z="-0.1" sx="0.06" sy="1.58" sz="0.06" color="#5A3E2A" touchable="false"/>
+      <box x="0.385" y="0.03" z="-0.1" sx="0.14" sy="0.06" sz="0.18" color="#4A3222" touchable="false"/>
+      <group y="1.344" rx="-0.12">
+        <box z="-0.015" sx="1.031" sy="0.848" sz="0.03" color="#5A3E2A" border-radius="0.04" touchable="false"/>
+        <box sx="0.971" sy="0.788" sz="0.03" color="#1C1C26" border-radius="0.035" touchable="false"/>
+        <box y="0.292" z="0.016" sx="0.971" sy="0.203" sz="0.004" color="#22303E" border-radius="0.035" touchable="false"/>
+        <text y="0.292" z="0.021" value="GRACIAS" size="0.07" color="#FFFFFF"/>
+        <text y="0.135" z="0.021" value="modelos de Sketchfab, CC-BY 4.0 — gracias a:" size="0.036" color="#C8CCD8"/>
+        <text y="0.081" z="0.021" value="Anaïs3Dcraft · anDDDres · Anthony Yanez · Arsen Ismailov" size="0.028" color="#FFFFFF"/>
+        <text y="0.033" z="0.021" value="Cyril43 · Daniel Zhabotinsky · Dedrad · Duane's Mind" size="0.028" color="#FFFFFF"/>
+        <text y="-0.014" z="0.021" value="Eh · FrodoUndead · Götz von Berlichingen · Gouhadouken" size="0.028" color="#FFFFFF"/>
+        <text y="-0.062" z="0.021" value="Greg Thorburn · HGowl · ittoKubashi7 · James de Bock" size="0.028" color="#FFFFFF"/>
+        <text y="-0.11" z="0.021" value="jimbogies · KBM7 · Lagst · Loïc" size="0.028" color="#FFFFFF"/>
+        <text y="-0.157" z="0.021" value="Lora · LordSamueliSolo · Mathieu Godard · MaX3Dd" size="0.028" color="#FFFFFF"/>
+        <text y="-0.205" z="0.021" value="Memorie · Michele.Passerino · Mozhet_Moroz · Orange Olenji" size="0.028" color="#FFFFFF"/>
+        <text y="-0.252" z="0.021" value="PT34 · Ricardo Sanchez · Spellkaze · TastyTony" size="0.028" color="#FFFFFF"/>
+        <text y="-0.3" z="0.021" value="Veterock · widthRider · ZiemniaQ" size="0.028" color="#FFFFFF"/>
+      </group>
+    </group>
+
+    <script src="https://njs58923.github.io/luna-demos/planta/comun/modulos.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/comun/algebra.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/comun/sintesis.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/comun/interaccion.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/comun/areas.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/datos.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/config.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/sonidos.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/escena.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/cuerpo.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/efectos.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/juego.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/cargadores.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/armas.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/enemigos.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/disparo.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/manos.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/progreso.js"/>
+    <script src="https://njs58923.github.io/luna-demos/planta/juego/main.js"/>
+  </space>
+</hsml>

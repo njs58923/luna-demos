@@ -16,6 +16,7 @@ plaza con una puerta a cada demo.
 | La sala de los ecos | `eco/index.hsml` | `server_eco` |
 | El framework de UI | `ui/index.hsml` | `server_ui` |
 | El taller de las manos | `manos/index.hsml` | `server_manipulador` |
+| Sables de Luna | `sables/index.hsml` | `server_sables` |
 | Luna Stress | `stress/index.hsml` (y `stress/mundo.hsml`) | `server_stress` |
 
 Estos servidores generan sus documentos, pero no guardan estado ni hablan por
